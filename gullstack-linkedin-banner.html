@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * { margin: 0; padding: 0; }
+    body { 
+      width: 1128px; 
+      height: 191px; 
+      overflow: hidden;
+    }
+    .banner {
+      width: 1128px;
+      height: 191px;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo-icon {
+      width: 60px;
+      height: 60px;
+    }
+    .logo-text {
+      font-family: 'Space Grotesk', -apple-system, sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -1px;
+    }
+    .tagline {
+      position: absolute;
+      bottom: 20px;
+      right: 40px;
+      font-family: -apple-system, sans-serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="banner">
+    <div class="logo-container">
+      <img src="https://gullstack.com/gull-logo.png" alt="GullStack" class="logo-icon">
+      <span class="logo-text">GullStack</span>
+    </div>
+    <div class="tagline">Marketing that works.</div>
+  </div>
+</body>
+</html>

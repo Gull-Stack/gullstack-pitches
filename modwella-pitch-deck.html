@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modwella SEO Growth Opportunity - GullStack Pitch</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .deck {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .slide {
+            min-height: 100vh;
+            padding: 60px 80px;
+            display: none;
+            position: relative;
+            background: white;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide.cover {
+            background: linear-gradient(135deg, #2D3748 0%, #4A5568 100%);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide.cover h1 {
+            color: white;
+            -webkit-text-fill-color: white;
+        }
+
+        .slide h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #2D3748;
+        }
+
+        .slide.cover h2 {
+            color: #E2E8F0;
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .slide h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #4A5568;
+        }
+
+        .big-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #F7FAFC, #EDF2F7);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+
+        .metric-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-card .label {
+            font-size: 1rem;
+            color: #4A5568;
+            font-weight: 500;
+        }
+
+        .competitor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .competitor-card {
+            background: white;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .competitor-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2D3748;
+        }
+
+        .competitor-stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+        }
+
+        .competitor-stats span {
+            font-size: 0.9rem;
+            color: #4A5568;
+        }
+
+        .roi-section {
+            background: linear-gradient(135deg, #48BB78, #38A169);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .roi-section h3 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .roi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .roi-item {
+            text-align: center;
+        }
+
+        .roi-item .number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .roi-item .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 2rem;
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #E2E8F0;
+        }
+
+        .timeline-item h4 {
+            font-weight: 600;
+            color: #2D3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: #4A5568;
+            font-size: 0.9rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .cta-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 1000;
+        }
+
+        .logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .logo {
+            width: 120px;
+            height: 60px;
+            background: #F7FAFC;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #4A5568;
+            border: 2px solid #E2E8F0;
+        }
+
+        .problem-highlight {
+            background: #FED7D7;
+            border-left: 4px solid #E53E3E;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .problem-highlight h4 {
+            color: #C53030;
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-highlight {
+            background: #C6F6D5;
+            border-left: 4px solid #38A169;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .solution-highlight h4 {
+            color: #2F855A;
+            margin-bottom: 0.5rem;
+        }
+
+        ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 30px;
+            }
+            
+            .slide h1 {
+                font-size: 2.5rem;
+            }
+            
+            .slide h2 {
+                font-size: 2rem;
+            }
+            
+            .big-number {
+                font-size: 3rem;
+            }
+            
+            .metric-grid,
+            .competitor-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .roi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="deck">
+        <!-- Slide 1: Cover -->
+        <div class="slide cover active">
+            <h1>Modwella SEO Growth Opportunity</h1>
+            <h2>Capturing $2.8M+ in Annual Organic Search Value</h2>
+            <div class="logos">
+                <div class="logo">Modwella</div>
+                <div style="font-size: 2rem; color: rgba(255,255,255,0.5);">×</div>
+                <div class="logo">GullStack</div>
+            </div>
+            <p style="margin-top: 3rem; font-size: 1.1rem; opacity: 0.8;">Mobile IV Therapy SEO Domination Strategy</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.6;">Prepared by GullStack • February 2026</p>
+        </div>
+
+        <!-- Slide 2: Market Opportunity -->
+        <div class="slide">
+            <h2>The $47B Opportunity</h2>
+            <div class="big-number">$2.8M+</div>
+            <p style="text-align: center; font-size: 1.2rem; color: #4A5568; margin-bottom: 3rem;">Annual organic search value you're missing</p>
+            
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="number">174K+</div>
+                    <div class="label">Monthly Searches<br>for IV Therapy Keywords</div>
+                </div>
+                <div class="metric-card">
+                    <div class="number">93%</div>
+                    <div class="label">Of Search Traffic<br>Going to Competitors</div>
+                </div>
+                <div class="metric-card">
+                    <div class="number">$47.8B</div>
+                    <div class="label">Global Market Size<br>by 2030</div>
+                </div>
+                <div class="metric-card">
+                    <div class="number">8.4%</div>
+                    <div class="label">Annual Growth Rate<br>(CAGR)</div>
+                </div>
+            </div>
+
+            <h3>Primary Search Opportunities</h3>
+            <ul>
+                <li><strong>"IV therapy near me"</strong> → 74,000 searches/month</li>
+                <li><strong>"Mobile IV therapy"</strong> → 33,100 searches/month</li>
+                <li><strong>"Hangover IV"</strong> → 22,200 searches/month</li>
+                <li><strong>"Vitamin IV drip"</strong> → 18,100 searches/month</li>
+                <li><strong>"In home IV therapy"</strong> → 14,800 searches/month</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: Competitive Landscape -->
+        <div class="slide">
+            <h2>Who's Dominating Search (And Why You Should Be)</h2>
+            
+            <div class="competitor-grid">
+                <div class="competitor-card">
+                    <h4>🏆 Drip Hydration (Market Leader)</h4>
+                    <div class="competitor-stats">
+                        <span><strong>45K+</strong> monthly visitors</span>
+                        <span><strong>$67.5K</strong> monthly value</span>
+                    </div>
+                    <p><strong>Why they win:</strong> Massive content library, city-specific pages, technical SEO</p>
+                </div>
+                
+                <div class="competitor-card">
+                    <h4>📱 Hydreight (Tech-Forward)</h4>
+                    <div class="competitor-stats">
+                        <span><strong>28K+</strong> monthly visitors</span>
+                        <span><strong>$42K</strong> monthly value</span>
+                    </div>
+                    <p><strong>Why they win:</strong> Telemedicine integration, local SEO dominance</p>
+                </div>
+                
+                <div class="competitor-card">
+                    <h4>🏢 Prime IV (Franchise Model)</h4>
+                    <div class="competitor-stats">
+                        <span><strong>21K+</strong> monthly visitors</span>
+                        <span><strong>$31.5K</strong> monthly value</span>
+                    </div>
+                    <p><strong>Why they win:</strong> Franchise network creating local backlinks</p>
+                </div>
+                
+                <div class="competitor-card" style="border: 3px solid #E53E3E;">
+                    <h4>🔵 Modwella (Current Position)</h4>
+                    <div class="competitor-stats">
+                        <span><strong>3.2K</strong> monthly visitors</span>
+                        <span><strong>$4.8K</strong> monthly value</span>
+                    </div>
+                    <p><strong>The gap:</strong> Missing $62.7K/month in organic value</p>
+                </div>
+            </div>
+
+            <div class="problem-highlight">
+                <h4>Current Ranking Reality Check</h4>
+                <ul>
+                    <li>"Mobile IV therapy" → Not in top 50</li>
+                    <li>"IV therapy Utah" → Position #12</li>
+                    <li>"Hangover IV" → Not in top 100</li>
+                    <li>"In home IV therapy" → Position #47</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: Your Hidden Advantages -->
+        <div class="slide">
+            <h2>Your Competitive Advantages (That Others Can't Touch)</h2>
+            
+            <div class="solution-highlight">
+                <h4>🎯 What Makes Modwella Unique</h4>
+            </div>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="number">4</div>
+                    <div class="label">Service Lines<br>(IV + Labs + Botox + Hormones)<br><em>vs competitors' single focus</em></div>
+                </div>
+                <div class="metric-card">
+                    <div class="number">10+</div>
+                    <div class="label">States Covered<br><em>vs competitors' regional reach</em></div>
+                </div>
+                <div class="metric-card">
+                    <div class="number">4,000+</div>
+                    <div class="label">Five-Star Reviews<br><em>vs competitors' under 1,000</em></div>
+                </div>
+                <div class="metric-card">
+                    <div class="number">RN</div>
+                    <div class="label">Registered Nurses<br><em>vs competitors' less qualified staff</em></div>
+                </div>
+            </div>
+
+            <h3>SEO Strategy Tailored to Your Strengths</h3>
+            <ul>
+                <li><strong>Multi-service landing pages</strong> → Capture traffic for IV + hormone therapy searches</li>
+                <li><strong>State-by-state authority</strong> → Dominate each geographic market completely</li>
+                <li><strong>Medical-grade content</strong> → Leverage RN credentials for E-A-T authority</li>
+                <li><strong>Review integration</strong> → Use 4,000+ reviews for local SEO dominance</li>
+                <li><strong>Premium service SEO</strong> → Target high-value, low-competition keywords</li>
+            </ul>
+        </div>
+
+        <!-- Slide 5: The Technical Problem -->
+        <div class="slide">
+            <h2>What's Holding You Back</h2>
+            
+            <div class="problem-highlight">
+                <h4>Current Site Diagnosis</h4>
+                <p><strong>The good news:</strong> Your site looks beautiful and converts well</p>
+                <p><strong>The challenge:</strong> It's invisible to search engines</p>
+            </div>
+
+            <h3>✅ Current Strengths</h3>
+            <ul>
+                <li>Beautiful, professional design</li>
+                <li>High-quality content and imagery</li>
+                <li>Strong brand presence</li>
+                <li>Good user experience flow</li>
+                <li>Multiple service offerings clearly presented</li>
+            </ul>
+
+            <h3>❌ Critical SEO Issues</h3>
+            <div class="metric-grid">
+                <div class="metric-card" style="border-left-color: #E53E3E; background: #FED7D7;">
+                    <div class="number" style="color: #E53E3E;">45-65</div>
+                    <div class="label">Mobile Page Speed<br><em>(Google wants 90+)</em></div>
+                </div>
+                <div class="metric-card" style="border-left-color: #E53E3E; background: #FED7D7;">
+                    <div class="number" style="color: #E53E3E;">15%</div>
+                    <div class="label">Keyword Optimization<br><em>(Should be 80%+)</em></div>
+                </div>
+                <div class="metric-card" style="border-left-color: #E53E3E; background: #FED7D7;">
+                    <div class="number" style="color: #E53E3E;">10</div>
+                    <div class="label">Location Pages<br><em>(Competitors have 50+)</em></div>
+                </div>
+                <div class="metric-card" style="border-left-color: #E53E3E; background: #FED7D7;">
+                    <div class="number" style="color: #E53E3E;">0</div>
+                    <div class="label">Educational Content<br><em>(Competitors have 100+)</em></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: The Solution -->
+        <div class="slide">
+            <h2>The $2.8M SEO Strategy</h2>
+            
+            <div class="solution-highlight">
+                <h4>Our Recommendation: Optimize (Don't Rebuild)</h4>
+                <p>Keep your beautiful design, fix what search engines need</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Phase 1: Technical Foundation (Month 1-2)</h4>
+                    <p>Core Web Vitals optimization, schema markup, XML sitemaps. <strong>Expected: 40% speed improvement, 25% ranking boost</strong></p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Phase 2: Content Expansion (Month 2-4)</h4>
+                    <p>50+ city-specific pages, 30+ educational articles, FAQ optimization. <strong>Expected: 150% more indexed pages, 200% traffic growth</strong></p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Phase 3: Authority Building (Month 4-6)</h4>
+                    <p>Link building, digital PR, advanced technical SEO. <strong>Expected: 300% ranking improvement, 400% organic traffic growth</strong></p>
+                </div>
+            </div>
+
+            <h3>What We'll Deliver</h3>
+            <ul>
+                <li>Keep your design 100% intact</li>
+                <li>Optimize backend for speed and SEO</li>
+                <li>50+ location pages using your existing design system</li>
+                <li>30+ educational articles (first 6 months)</li>
+                <li>Complete local SEO management</li>
+                <li>Monthly reporting and strategy calls</li>
+            </ul>
+        </div>
+
+        <!-- Slide 7: ROI Projections -->
+        <div class="slide">
+            <h2>Conservative ROI Projections</h2>
+            
+            <div class="roi-section">
+                <h3>Year 1 Conservative Targets</h3>
+                <div class="roi-grid">
+                    <div class="roi-item">
+                        <div class="number">25K</div>
+                        <div class="label">Monthly Visitors<br>(from 3.2K)</div>
+                    </div>
+                    <div class="roi-item">
+                        <div class="number">50+</div>
+                        <div class="label">Top 3 Rankings<br>(from 5)</div>
+                    </div>
+                    <div class="roi-item">
+                        <div class="number">125+</div>
+                        <div class="label">Additional Monthly Bookings<br>(2.5% conversion)</div>
+                    </div>
+                    <div class="roi-item">
+                        <div class="number">$312K</div>
+                        <div class="label">Additional Monthly Revenue<br>($150 avg. treatment)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-grid">
+                <div class="metric-card" style="border-left-color: #38A169; background: #C6F6D5;">
+                    <div class="number" style="color: #38A169;">$3.75M</div>
+                    <div class="label">Annual Revenue Impact<br>(Conservative)</div>
+                </div>
+                <div class="metric-card" style="border-left-color: #38A169; background: #C6F6D5;">
+                    <div class="number" style="color: #38A169;">3,676%</div>
+                    <div class="label">First Year ROI</div>
+                </div>
+                <div class="metric-card" style="border-left-color: #38A169; background: #C6F6D5;">
+                    <div class="number" style="color: #38A169;">2.7</div>
+                    <div class="label">Payback Period<br>(Days)</div>
+                </div>
+                <div class="metric-card" style="border-left-color: #667eea;">
+                    <div class="number">$8.5K</div>
+                    <div class="label">Monthly Investment</div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; font-style: italic; color: #4A5568;">
+                <strong>Conservative estimate:</strong> Based on 2.5% conversion rate and $150 average treatment value
+            </p>
+        </div>
+
+        <!-- Slide 8: Why GullStack -->
+        <div class="slide">
+            <h2>Why GullStack for Modwella</h2>
+            
+            <div class="solution-highlight">
+                <h4>Our Healthcare SEO Track Record</h4>
+            </div>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="number">400%</div>
+                    <div class="label">Sun Dermatology<br>Organic Traffic Growth<br>$2M+ Revenue Impact</div>
+                </div>
+                <div class="metric-card">
+                    <div class="number">75+</div>
+                    <div class="label">Quantum Health<br>Page 1 Medical Keywords</div>
+                </div>
+                <div class="metric-card">
+                    <div class="number">95+</div>
+                    <div class="label">Average PageSpeed Scores<br>(3x faster than WordPress)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="number">100%</div>
+                    <div class="label">Transparency<br>Full access to data & strategies</div>
+                </div>
+            </div>
+
+            <h3>Our Technical Advantage</h3>
+            <ul>
+                <li><strong>Modern Stack:</strong> 11ty static sites (3x faster than WordPress)</li>
+                <li><strong>Performance First:</strong> Average 95+ PageSpeed scores</li>
+                <li><strong>Conversion Focused:</strong> Design and SEO optimized for bookings</li>
+                <li><strong>Healthcare Experience:</strong> HIPAA-compliant, medical SEO expertise</li>
+            </ul>
+
+            <h3>Partnership Approach</h3>
+            <ul>
+                <li><strong>No Black Box:</strong> Full transparency on all SEO activities</li>
+                <li><strong>Business First:</strong> SEO strategies tied to revenue goals</li>
+                <li><strong>Long-term Thinking:</strong> Building sustainable organic growth</li>
+                <li><strong>Risk-Free:</strong> 90-day trial with measurable results guarantee</li>
+            </ul>
+        </div>
+
+        <!-- Slide 9: Investment & Guarantee -->
+        <div class="slide">
+            <h2>Investment & Risk-Free Guarantee</h2>
+            
+            <div class="metric-grid">
+                <div class="metric-card" style="border-left-color: #667eea;">
+                    <div class="number">$8,500</div>
+                    <div class="label">Monthly Investment<br>Complete SEO Management</div>
+                </div>
+                <div class="metric-card" style="border-left-color: #38A169; background: #C6F6D5;">
+                    <div class="number" style="color: #38A169;">$312K</div>
+                    <div class="label">Expected Monthly Return<br>Conservative Estimate</div>
+                </div>
+                <div class="metric-card" style="border-left-color: #38A169; background: #C6F6D5;">
+                    <div class="number" style="color: #38A169;">37:1</div>
+                    <div class="label">Return Ratio<br>Every $1 → $37</div>
+                </div>
+                <div class="metric-card" style="border-left-color: #E53E3E; background: #FED7D7;">
+                    <div class="number" style="color: #E53E3E;">$62.7K</div>
+                    <div class="label">Monthly Loss Right Now<br>Going to Competitors</div>
+                </div>
+            </div>
+
+            <h3>What's Included</h3>
+            <ul>
+                <li>✅ Complete technical SEO optimization</li>
+                <li>✅ 50+ location-specific landing pages</li>
+                <li>✅ 30+ educational blog articles</li>
+                <li>✅ Local SEO management across all markets</li>
+                <li>✅ Monthly keyword ranking reports</li>
+                <li>✅ Competitive monitoring and response</li>
+            </ul>
+
+            <div class="solution-highlight">
+                <h4>Risk-Free Guarantee</h4>
+                <ul>
+                    <li><strong>90-day trial period</strong> - See measurable improvements or get refunded</li>
+                    <li><strong>No long-term contract</strong> - Month-to-month agreement</li>
+                    <li><strong>Transparent reporting</strong> - Full access to all data</li>
+                    <li><strong>Guaranteed results</strong> - Ranking improvements within 90 days</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 10: Call to Action -->
+        <div class="slide">
+            <div class="cta-section">
+                <h2 style="color: white; margin-bottom: 2rem;">Ready to Capture $3.75M in Additional Annual Revenue?</h2>
+                <div class="big-number" style="color: white;">$62,700</div>
+                <p style="font-size: 1.3rem; margin-bottom: 3rem;">Every month you wait is $62,700 going to your competitors</p>
+                
+                <div class="metric-grid" style="margin: 3rem 0;">
+                    <div style="text-align: center; color: white;">
+                        <div style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">174,300+</div>
+                        <div style="opacity: 0.9;">Monthly searches waiting for you</div>
+                    </div>
+                    <div style="text-align: center; color: white;">
+                        <div style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">93%</div>
+                        <div style="opacity: 0.9;">Market share available to capture</div>
+                    </div>
+                    <div style="text-align: center; color: white;">
+                        <div style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">2.7 days</div>
+                        <div style="opacity: 0.9;">To pay back your investment</div>
+                    </div>
+                    <div style="text-align: center; color: white;">
+                        <div style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">90 days</div>
+                        <div style="opacity: 0.9;">Risk-free guarantee period</div>
+                    </div>
+                </div>
+
+                <h3 style="color: white;">Next Step: 30-Minute Strategy Call</h3>
+                <p>Let's review this analysis and discuss immediate quick wins we can implement</p>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="mailto:bryce@gullstack.com?subject=Modwella SEO Strategy Call" class="btn">Schedule Strategy Call</a>
+                </div>
+                
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.3);">
+                    <p style="font-size: 1rem;">
+                        <strong>Contact:</strong> Bryce Morgan | bryce@gullstack.com | GullStack.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">10</span>
+    </div>
+    
+    <div class="navigation">
+        <button id="prev-btn" class="nav-btn" onclick="changeSlide(-1)">‹</button>
+        <button id="next-btn" class="nav-btn" onclick="changeSlide(1)">›</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+            
+            document.getElementById('current-slide').textContent = n + 1;
+            document.getElementById('prev-btn').disabled = n === 0;
+            document.getElementById('next-btn').disabled = n === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 0 && newSlide < totalSlides) {
+                currentSlide = newSlide;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // Initialize
+        showSlide(0);
+
+        // Auto-advance for presentation mode (optional)
+        let autoAdvance = false;
+        if (autoAdvance) {
+            setInterval(() => {
+                if (currentSlide < totalSlides - 1) {
+                    changeSlide(1);
+                }
+            }, 10000); // 10 seconds per slide
+        }
+    </script>
+</body>
+</html>

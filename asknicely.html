@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AskNicely — The Future of Customer Success | GullStack</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Young+Serif&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #141414;
+      --bg-card: #1a1a1a;
+      --text: #fafafa;
+      --text-muted: #a1a1aa;
+      --purple: #8b5cf6;
+      --purple-light: #a78bfa;
+      --green: #22c55e;
+      --red: #71717a;
+      --orange: #f97316;
+      --blue: #3b82f6;
+      --asknicely-blue: #0ea5e9;
+      --border: rgba(255,255,255,0.08);
+      --font-serif: 'Young Serif', Georgia, serif;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Header */
+    .header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo img { height: 28px; }
+    
+    .badge {
+      background: rgba(14, 165, 233, 0.2);
+      color: var(--asknicely-blue);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    /* Client Logo Hero */
+    .client-hero {
+      padding: 60px 0 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .client-logo {
+      max-width: 320px;
+      height: auto;
+      margin: 0 auto 24px;
+    }
+    
+    .client-hero .prepared-for {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    /* Hero */
+    .hero {
+      padding: 60px 0 80px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .hero-eyebrow {
+      color: var(--orange);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+    
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    
+    .hero h1 span { color: var(--green); }
+    .hero h1 .red { color: var(--red); }
+    
+    .hero-sub {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Pain Section */
+    .pain-section {
+      padding: 80px 0;
+      background: linear-gradient(180deg, rgba(239, 68, 68, 0.05) 0%, transparent 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .pain-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .pain-header h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      margin-bottom: 12px;
+      color: var(--red);
+    }
+    
+    .pain-header p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    
+    @media (max-width: 768px) {
+      .pain-grid { grid-template-columns: 1fr; }
+    }
+    
+    .pain-card {
+      background: var(--bg-elevated);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    
+    .pain-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .pain-card h4 .icon { font-size: 1.5rem; }
+    
+    .pain-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    
+    .pain-card .stat {
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: rgba(239, 68, 68, 0.1);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--red);
+      font-weight: 600;
+    }
+    
+    /* Vision Section */
+    .vision-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .vision-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .vision-header h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    
+    .vision-header h2 span { color: var(--green); }
+    
+    .vision-header p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .reagan-quote {
+      background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+      border: 2px solid var(--green);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .reagan-quote .avatar {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--green) 0%, #16a34a 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 20px;
+    }
+    
+    .reagan-quote blockquote {
+      font-size: 1.3rem;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    
+    .reagan-quote .attribution {
+      color: var(--green);
+      font-weight: 600;
+    }
+    
+    .pivot-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    @media (max-width: 768px) {
+      .pivot-cards { grid-template-columns: 1fr; }
+    }
+    
+    .pivot-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+    }
+    
+    .pivot-card .number {
+      width: 48px;
+      height: 48px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin: 0 auto 16px;
+    }
+    
+    .pivot-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    
+    .pivot-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    
+    /* Savings Banner */
+    .savings-banner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    @media (max-width: 768px) {
+      .savings-banner { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    .savings-item {
+      text-align: center;
+    }
+    
+    .savings-item .amount {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--red);
+    }
+    
+    .savings-item .amount.green { color: var(--green); }
+    
+    .savings-item .label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    
+    /* Section */
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .section-header h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    
+    .section-header p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Problem/Solution Grid */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    
+    @media (max-width: 900px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+      .comparison-arrow { display: none; }
+    }
+    
+    .comparison-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    
+    .comparison-card.problem {
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+    
+    .comparison-card.solution {
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+    
+    .comparison-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .comparison-card h3 .icon {
+      font-size: 1.5rem;
+    }
+    
+    .cost-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .cost-line:last-child { border-bottom: none; }
+    
+    .cost-line .name { color: var(--text-muted); }
+    
+    .cost-line .amount { font-weight: 600; }
+    
+    .cost-line .amount.red { color: var(--red); }
+    .cost-line .amount.green { color: var(--green); }
+    
+    .cost-total {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    
+    .comparison-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--purple);
+    }
+    
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    @media (max-width: 768px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+    
+    .feature-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    
+    .feature-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    
+    .feature-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    
+    /* How It Works */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    
+    @media (max-width: 900px) {
+      .how-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (max-width: 600px) {
+      .how-grid { grid-template-columns: 1fr; }
+    }
+    
+    .how-step {
+      text-align: center;
+    }
+    
+    .how-step .number {
+      width: 48px;
+      height: 48px;
+      background: var(--purple);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin: 0 auto 16px;
+    }
+    
+    .how-step h4 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    
+    .how-step p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    
+    /* Use Cases */
+    .usecase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    
+    @media (max-width: 768px) {
+      .usecase-grid { grid-template-columns: 1fr; }
+    }
+    
+    .usecase-card {
+      background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    
+    .usecase-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .usecase-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    
+    .usecase-card .result {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      color: var(--green);
+    }
+    
+    /* Pricing */
+    .pricing-section {
+      background: var(--bg-elevated);
+    }
+    
+    .pricing-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg) 100%);
+      border: 2px solid var(--purple);
+      border-radius: 20px;
+      padding: 48px;
+      text-align: center;
+    }
+    
+    .pricing-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+    
+    .pricing-card .subtitle {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    
+    .pricing-card .price {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--green);
+    }
+    
+    .pricing-card .price span {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    
+    .pricing-card .vs {
+      margin: 24px 0;
+      padding: 16px;
+      background: rgba(239, 68, 68, 0.1);
+      border-radius: 12px;
+      color: var(--text-muted);
+    }
+    
+    .pricing-card .vs strong {
+      color: var(--red);
+    }
+    
+    .pricing-includes {
+      text-align: left;
+      margin: 32px 0;
+    }
+    
+    .pricing-includes h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    
+    .pricing-includes ul {
+      list-style: none;
+    }
+    
+    .pricing-includes li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .pricing-includes li:last-child { border-bottom: none; }
+    
+    .pricing-includes .check {
+      color: var(--green);
+      font-weight: bold;
+    }
+    
+    /* CTA */
+    .cta-section {
+      padding: 80px 0;
+      text-align: center;
+      background: linear-gradient(135deg, var(--purple) 0%, #6366f1 100%);
+    }
+    
+    .cta-section h2 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    
+    .cta-section p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 32px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 16px 40px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    
+    /* Footer */
+    .footer {
+      padding: 32px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    
+    .footer a { color: var(--purple-light); }
+    
+    /* Quote Block */
+    .quote-block {
+      background: var(--bg-elevated);
+      border-left: 4px solid var(--purple);
+      padding: 24px 32px;
+      margin: 40px 0;
+      border-radius: 0 12px 12px 0;
+    }
+    
+    .quote-block p {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    
+    .quote-block .author {
+      font-weight: 600;
+      font-style: normal;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="https://gullstack.com" class="logo">
+        <img src="/gull-logo.png" alt="">
+        GullStack
+      </a>
+      <span class="badge">Strategic Partnership Proposal</span>
+    </div>
+  </header>
+  
+  <section class="client-hero">
+    <div class="container">
+      <img src="/pitch/assets/asknicely-logo.png" alt="AskNicely" class="client-logo">
+      <p class="prepared-for">Prepared for Reagan Nickl</p>
+    </div>
+  </section>
+  
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">A Vision for AskNicely's Future</p>
+      <h1>Your Customers Collect NPS Data.<br>But <span class="red">Nobody Acts On It.</span><br><span>Until Now.</span></h1>
+      <p class="hero-sub">Detractors churn silently. Promoters never leave reviews. Every AskNicely customer has the data — they just don't have the bandwidth to do anything with it. You can give them the AI that closes the loop.</p>
+    </div>
+  </section>
+  
+  <section class="pain-section">
+    <div class="container">
+      <div class="pain-header">
+        <h2>The Painful Reality Your Customers Face</h2>
+        <p>They won't tell you this in their NPS feedback, but every day they're fighting these battles:</p>
+      </div>
+      
+      <div class="pain-grid">
+        <div class="pain-card">
+          <h4><span class="icon">💸</span> The Reputation Tax</h4>
+          <p>They're paying Birdeye or Podium $2K/month just to ask for reviews. Meanwhile, promoters slip through the cracks. Happy customers who would've left 5 stars never get asked — or get asked too late.</p>
+          <div class="stat">Only 10% of satisfied customers leave reviews unprompted</div>
+        </div>
+        <div class="pain-card">
+          <h4><span class="icon">👥</span> The Follow-Up Black Hole</h4>
+          <p>Detractor scores hit the dashboard... then nothing happens. Nobody has time to personally follow up with every unhappy customer. So they churn silently while the team works on "more urgent" things.</p>
+          <div class="stat">70% of detractors never get a follow-up call</div>
+        </div>
+        <div class="pain-card">
+          <h4><span class="icon">🔄</span> The NPS Graveyard</h4>
+          <p>Beautiful NPS dashboards. Trend lines going up and down. Quarterly reports nobody reads. But what actually changes? The data exists, but nobody acts on it in real-time.</p>
+          <div class="stat">Only 5% of companies close the loop with every detractor</div>
+        </div>
+        <div class="pain-card">
+          <h4><span class="icon">⏰</span> The Churn Blindspot</h4>
+          <p>A detractor today is a cancellation in 30 days. But by the time someone sees the score, researches the account, and drafts an email? That customer already found a competitor.</p>
+          <div class="stat">48 hours: average time to first response on detractor feedback</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="vision-section">
+    <div class="container">
+      <div class="vision-header">
+        <h2>Reagan's <span>Big Play</span></h2>
+        <p>You've built a company that measures customer sentiment. Now imagine offering them the whole solution.</p>
+      </div>
+      
+      <div class="reagan-quote">
+        <div class="avatar">🎯</div>
+        <blockquote>"What if every AskNicely customer could replace their entire $200K CS stack with a single intelligent platform — powered by AI, custom-built for their business — for less than they're paying now?"</blockquote>
+        <p class="attribution">— The AskNicely Evolution</p>
+      </div>
+      
+      <div class="pivot-cards">
+        <div class="pivot-card">
+          <div class="number">1</div>
+          <h4>Stop the Bleeding</h4>
+          <p>Your customers are at-risk not because of you — but because they're exhausted by their CS stack. Save them.</p>
+        </div>
+        <div class="pivot-card">
+          <div class="number">2</div>
+          <h4>Become the Platform</h4>
+          <p>AskNicely already owns the relationship. Expand from surveys to the complete CS operating system.</p>
+        </div>
+        <div class="pivot-card">
+          <div class="number">3</div>
+          <h4>10x the Contract</h4>
+          <p>Turn $30K NPS contracts into $150K AI platform deals. Same customer. Massive upside.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <div class="savings-banner">
+    <div class="container" style="display: contents;">
+      <div class="savings-item">
+        <div class="amount">$24K</div>
+        <div class="label">Birdeye/Podium (eliminated)</div>
+      </div>
+      <div class="savings-item">
+        <div class="amount">$85K+</div>
+        <div class="label">Manual follow-up labor (eliminated)</div>
+      </div>
+      <div class="savings-item">
+        <div class="amount">30%</div>
+        <div class="label">Detractor churn (prevented)</div>
+      </div>
+      <div class="savings-item">
+        <div class="amount green">$100K+</div>
+        <div class="label">Net Value/Customer</div>
+      </div>
+    </div>
+  </div>
+  
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What We Actually Build</h2>
+        <p>Not another SaaS product. A custom AI platform built specifically for each customer's workflows.</p>
+      </div>
+      
+      <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 48px;">
+        <h3 style="margin-bottom: 16px; color: var(--asknicely-blue);">🔧 How It Works: Custom-Built, Not Off-the-Shelf</h3>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">We don't sell software licenses. We build <strong style="color: var(--text);">bespoke AI platforms</strong> tailored to each customer's exact needs:</p>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+          <div style="background: var(--bg-card); padding: 20px; border-radius: 12px; border-left: 3px solid var(--green);">
+            <h4 style="margin-bottom: 8px;">✓ Reputation Management (Birdeye/Podium Killer)</h4>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Promoters automatically get review requests routed to Google, Yelp, or industry-specific sites. AI generates personalized asks based on their feedback. Turns NPS data into actual 5-star reviews.</p>
+          </div>
+          <div style="background: var(--bg-card); padding: 20px; border-radius: 12px; border-left: 3px solid var(--green);">
+            <h4 style="margin-bottom: 8px;">✓ AI Service Recovery Agent</h4>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Detractor? AI follows up instantly — empathetic, trained on <em>their</em> policies, authorized to offer resolutions. Prevents churn before it happens. Escalates to humans only when needed.</p>
+          </div>
+        </div>
+        <p style="color: var(--text-muted); margin-top: 20px; font-size: 0.95rem;"><strong style="color: var(--green);">The result:</strong> NPS feedback doesn't just get measured — it gets <em>acted on</em>. Promoters become reviews. Detractors become saves. Zero manual follow-up required.</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="icon">🤖</div>
+          <h4>AI Service Recovery Agent</h4>
+          <p>Detractor detected? AI reaches out within minutes — empathetic, trained on their policies, authorized to make it right. Saves customers before they churn.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">⭐</div>
+          <h4>Smart Review Generator</h4>
+          <p>Promoters get personalized review requests routed to Google, Yelp, or industry sites. AI times it perfectly and writes the ask based on their specific feedback.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🎯</div>
+          <h4>Predictive Churn Prevention</h4>
+          <p>AI monitors NPS trends, response patterns, and behavioral signals. Flags at-risk accounts before the detractor score even hits.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📊</div>
+          <h4>Reputation Dashboard</h4>
+          <p>Real-time view: review velocity, platform distribution, sentiment trends, competitor comparison. One screen, all platforms.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📈</div>
+          <h4>Automated Reporting</h4>
+          <p>Weekly reports: NPS trends, service recovery outcomes, review generation stats. Delivered to Slack/email. Zero manual work.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">💬</div>
+          <h4>Natural Language Control</h4>
+          <p>Slack bot: "Who's at risk?" "Follow up with the Miami detractors." "How many reviews did we get this week?" Just ask.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>The Economics</h2>
+        <p>What your customers are paying now vs. what you could offer them.</p>
+      </div>
+      
+      <div class="comparison-grid">
+        <div class="comparison-card problem">
+          <h3><span class="icon">❌</span> Their Current Reality</h3>
+          <div class="cost-line">
+            <span class="name">Birdeye/Podium (Reputation)</span>
+            <span class="amount red">$24,000/yr</span>
+          </div>
+          <div class="cost-line">
+            <span class="name">Manual detractor follow-up (labor)</span>
+            <span class="amount red">$85,000/yr</span>
+          </div>
+          <div class="cost-line">
+            <span class="name">NPS + Survey tools</span>
+            <span class="amount red">$30,000/yr</span>
+          </div>
+          <div class="cost-line">
+            <span class="name">Lost customers (detractor churn)</span>
+            <span class="amount red">$50,000+/yr</span>
+          </div>
+          <div class="cost-line">
+            <span class="name">Reviews never captured (lost leads)</span>
+            <span class="amount red">Incalculable</span>
+          </div>
+          <div class="cost-total">
+            <span>Total Annual Cost</span>
+            <span class="red">$189,000+</span>
+          </div>
+        </div>
+        
+        <div class="comparison-arrow">→</div>
+        
+        <div class="comparison-card solution">
+          <h3><span class="icon">✓</span> AskNicely AI Platform</h3>
+          <div class="cost-line">
+            <span class="name">NPS + Surveys (AskNicely core)</span>
+            <span class="amount green">Included</span>
+          </div>
+          <div class="cost-line">
+            <span class="name">AI Service Recovery Agent</span>
+            <span class="amount green">Included</span>
+          </div>
+          <div class="cost-line">
+            <span class="name">Automated Review Generation</span>
+            <span class="amount green">Included</span>
+          </div>
+          <div class="cost-line">
+            <span class="name">Predictive Churn Prevention</span>
+            <span class="amount green">Included</span>
+          </div>
+          <div class="cost-line">
+            <span class="name">Real-time Reputation Dashboard</span>
+            <span class="amount green">Included</span>
+          </div>
+          <div class="cost-total">
+            <span>Total Annual Cost</span>
+            <span class="green">~$120,000</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="quote-block" style="margin-top: 48px; border-color: var(--green);">
+        <p>"Your customer saves $70K+ per year. They stop losing customers to silent churn. They start winning reviews on autopilot. And AskNicely turns a $30K NPS contract into a $120K platform deal. Everyone wins."</p>
+        <span class="author">— The Win-Win-Win</span>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Real Use Cases</h2>
+        <p>What the AI platform handles autonomously — so CS teams can do strategic work.</p>
+      </div>
+      
+      <div class="usecase-grid">
+        <div class="usecase-card">
+          <h4>🔥 Instant Detractor Recovery</h4>
+          <p>Customer submits NPS 3 with "service was terrible." Within 5 minutes, AI reaches out: empathetic apology, asks what went wrong, offers to make it right. Human-like, policy-compliant.</p>
+          <div class="result">40% of detractors converted to neutrals/promoters</div>
+        </div>
+        <div class="usecase-card">
+          <h4>⭐ Promoter → Review Pipeline</h4>
+          <p>Customer submits NPS 9: "Best experience ever!" AI sends personalized thank-you with direct link to leave a Google review — pre-filled with context from their feedback.</p>
+          <div class="result">3x more reviews captured vs. generic email blasts</div>
+        </div>
+        <div class="usecase-card">
+          <h4>🛡️ Escalation Intelligence</h4>
+          <p>AI knows when to hand off. VIP customer? High-value account? Angry AND influential? Flags for human follow-up with full context and recommended actions.</p>
+          <div class="result">Zero important customers fall through the cracks</div>
+        </div>
+        <div class="usecase-card">
+          <h4>📊 Zero-Touch Reporting</h4>
+          <p>Every Monday: automated report with NPS trends, service recovery outcomes, review generation stats, competitor review comparison. Delivered to Slack. No analyst required.</p>
+          <div class="result">4-6 hours/week saved on manual reporting</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section pricing-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Partnership Model</h2>
+        <p>GullStack builds it. AskNicely sells it. Your customers love it.</p>
+      </div>
+      
+      <div class="pricing-card">
+        <h3>AI Service Recovery + Reputation Platform</h3>
+        <p class="subtitle">White-labeled for AskNicely</p>
+        
+        <div class="price">$10,000<span>/month per customer</span></div>
+        
+        <div class="vs">
+          Customer pays <strong>$10K/mo</strong> instead of <strong>$15K+/mo</strong> for reputation tools + manual follow-up labor.<br>
+          They save money AND save customers. You make 4x what you made on NPS alone.
+        </div>
+        
+        <div class="pricing-includes">
+          <h4>What GullStack Delivers</h4>
+          <ul>
+            <li><span class="check">✓</span> AI Service Recovery Agent (24/7 detractor follow-up)</li>
+            <li><span class="check">✓</span> Smart review generation engine</li>
+            <li><span class="check">✓</span> Predictive churn prevention</li>
+            <li><span class="check">✓</span> Real-time reputation dashboard</li>
+            <li><span class="check">✓</span> Weekly automated reports</li>
+            <li><span class="check">✓</span> All integrations (Google, Yelp, HubSpot, Slack, etc.)</li>
+            <li><span class="check">✓</span> Ongoing optimization & support</li>
+          </ul>
+        </div>
+        
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Revenue share model available for qualified partners</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta-section">
+    <div class="container">
+      <h2>Let's Talk</h2>
+      <p>20 minutes to explore what this could look like for AskNicely.</p>
+      <a href="mailto:bryce@gullstack.com?subject=AskNicely%20Partnership%20Discussion" class="btn btn-primary">Schedule a Call →</a>
+    </div>
+  </section>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>Prepared by <a href="https://gullstack.com">GullStack</a> • February 2026</p>
+    </div>
+  </footer>
+</body>
+</html>

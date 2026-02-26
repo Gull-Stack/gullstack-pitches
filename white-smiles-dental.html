@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>White Smiles Family Dentistry × GullStack | Growth Proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a1a;
+      --bg-elevated: #111128;
+      --bg-card: #16163a;
+      --text: #f0f0f5;
+      --text-muted: #8888a8;
+      --accent: #a855f7;
+      --accent-hover: #c084fc;
+      --accent-glow: rgba(168, 85, 247, 0.15);
+      --gold: #22d3ee;
+      --gold-soft: rgba(34, 211, 238, 0.10);
+      --muted: #6b7280;
+      --muted-soft: rgba(107, 114, 128, 0.15);
+      --border: rgba(255,255,255,0.06);
+      --font-serif: 'Young Serif', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative;
+      background: radial-gradient(ellipse at top, var(--accent-glow) 0%, transparent 50%);
+    }
+
+    .hero::after {
+      content: '↓'; position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%); font-size: 2rem; opacity: 0.2;
+      animation: drift 2s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .hero-logos {
+      display: flex; align-items: center; justify-content: center;
+      gap: 28px; margin-bottom: 40px;
+    }
+    .hero-logos img { height: 44px; border-radius: 8px; }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 400; line-height: 1.12; margin-bottom: 20px;
+    }
+    .hero h1 .glow {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--text-muted); max-width: 560px; margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-glow), rgba(168,85,247,0.08));
+      border: 1px solid rgba(168,85,247,0.2);
+      color: var(--accent-hover); padding: 6px 18px; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+
+    .prepared-for {
+      margin-top: 40px; padding: 16px 24px;
+      background: var(--bg-elevated); border-radius: 10px; display: inline-block;
+      border: 1px solid var(--border);
+    }
+    .prepared-for .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 2px; }
+    .prepared-for .name { font-size: 1.1rem; font-weight: 700; }
+
+    /* Sections */
+    section { padding: 80px 0; }
+
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400; margin-bottom: 16px; line-height: 1.2;
+    }
+    .section-sub {
+      color: var(--text-muted); font-size: 1rem; max-width: 640px; margin-bottom: 40px;
+    }
+
+    /* Stats */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin: 40px 0;
+    }
+
+    .stat {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px; text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-2px);
+      border-color: rgba(168,85,247,0.2);
+    }
+
+    .stat .number {
+      font-family: var(--font-serif); font-size: 2rem; font-weight: 400;
+      color: var(--accent-hover); margin-bottom: 6px; line-height: 1;
+    }
+
+    .stat .label {
+      color: var(--text-muted); font-size: 0.85rem; line-height: 1.4;
+    }
+
+    .stat.gold .number { color: var(--gold); }
+    .stat.muted .number { color: var(--muted); }
+
+    /* Insight cards */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px; margin: 24px 0;
+    }
+
+    .card.problem {
+      border-left: 3px solid var(--muted);
+      background: linear-gradient(135deg, var(--muted-soft), transparent 40%);
+    }
+    .card.opportunity {
+      border-left: 3px solid var(--accent);
+      background: linear-gradient(135deg, var(--accent-glow), transparent 40%);
+    }
+    .card.win {
+      border-left: 3px solid var(--gold);
+      background: linear-gradient(135deg, var(--gold-soft), transparent 40%);
+    }
+
+    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; }
+    .card.problem h3 { color: var(--muted); }
+    .card.opportunity h3 { color: var(--accent-hover); }
+    .card.win h3 { color: var(--gold); }
+
+    .card ul { list-style: none; margin: 0; }
+    .card li {
+      position: relative; padding: 7px 0 7px 28px;
+      color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;
+      border-bottom: 1px solid var(--border);
+    }
+    .card li:last-child { border-bottom: none; }
+    .card.problem li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+    .card.opportunity li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+    .card.win li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+    .card li strong { color: var(--text); }
+
+    /* Big callout */
+    .callout {
+      text-align: center; padding: 48px 32px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; margin: 40px 0;
+      position: relative; overflow: hidden;
+    }
+    .callout::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
+    }
+    .callout .number {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 400; margin-bottom: 10px; line-height: 1;
+    }
+    .callout .number.gold { color: var(--gold); }
+    .callout .number.muted { color: var(--muted); }
+    .callout .label { font-size: 1.1rem; color: var(--text-muted); }
+    .callout .sublabel { font-size: 0.85rem; color: var(--text-muted); opacity: 0.7; margin-top: 6px; }
+
+    /* Timeline */
+    .timeline { margin: 40px 0; }
+
+    .phase {
+      display: grid; grid-template-columns: 100px 1fr; gap: 20px;
+      padding: 24px 0; border-bottom: 1px solid var(--border);
+    }
+    .phase:last-child { border-bottom: none; }
+
+    .phase-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--accent);
+      padding-top: 4px;
+    }
+
+    .phase h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .phase p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+
+    .phase .result {
+      margin-top: 10px; padding: 10px 14px;
+      background: var(--gold-soft); border-left: 3px solid var(--gold);
+      border-radius: 8px; font-size: 0.85rem; color: var(--gold);
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin: 40px 0;
+    }
+    @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+    .tier {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px; text-align: center;
+      transition: all 0.3s ease;
+    }
+    .tier.featured {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, rgba(168,85,247,0.08) 0%, var(--bg-card) 40%);
+      transform: scale(1.02);
+    }
+    .tier .tier-label {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px;
+    }
+    .tier.featured .tier-label { color: var(--accent); }
+
+    .tier .price {
+      font-family: var(--font-serif); font-size: 2.2rem;
+      font-weight: 400; margin-bottom: 4px;
+    }
+    .tier .price-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; }
+    .tier ul { list-style: none; text-align: left; margin-bottom: 24px; }
+    .tier li {
+      padding: 6px 0 6px 22px; position: relative;
+      color: var(--text-muted); font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .tier li:last-child { border-bottom: none; }
+    .tier li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+
+    .tier-btn {
+      display: block; width: 100%; padding: 14px;
+      border-radius: 10px; font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; transition: all 0.2s ease; text-align: center;
+      border: none; cursor: pointer;
+    }
+    .tier-btn.outline {
+      background: transparent; color: var(--accent-hover);
+      border: 1px solid rgba(168,85,247,0.3);
+    }
+    .tier-btn.outline:hover { background: var(--accent-glow); }
+    .tier-btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: white;
+    }
+    .tier-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(168,85,247,0.3); }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 60%);
+      padding: 80px 0;
+    }
+
+    .cta-card {
+      max-width: 540px; margin: 0 auto;
+      background: var(--bg-card); border: 2px solid var(--accent);
+      border-radius: 20px; padding: 40px 32px;
+      position: relative; overflow: hidden;
+    }
+    .cta-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
+    }
+
+    .cta-card h2 {
+      font-family: var(--font-serif); font-size: 1.8rem;
+      font-weight: 400; margin-bottom: 16px; line-height: 1.2;
+    }
+    .cta-card p { color: var(--text-muted); margin-bottom: 28px; font-size: 1rem; }
+
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: white; padding: 16px 40px; border-radius: 10px;
+      font-size: 1.05rem; font-weight: 800; text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(168,85,247,0.35);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center; padding: 48px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .footer p { color: var(--text-muted); font-size: 0.85rem; }
+    .footer .mark {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; margin-bottom: 12px; opacity: 0.5;
+    }
+    .footer .mark img { height: 28px; }
+    .footer .mark span { font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-logos { flex-wrap: wrap; gap: 12px; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .phase { grid-template-columns: 1fr; }
+      .phase-label { padding-top: 0; margin-bottom: -12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-logos">
+        <div style="background: white; padding: 12px 16px; border-radius: 8px; color: #2563eb; font-weight: 800; font-size: 1.1rem;">
+          White Smiles Family Dentistry
+        </div>
+        <span style="font-size: 1.5rem; opacity: 0.2;">×</span>
+        <img src="/gull-logo.png" alt="GullStack">
+      </div>
+      <div class="badge">Growth Proposal</div>
+      <h1>Revive <span class="glow">24 Years of Trust</span></h1>
+      <p>Since 2002, you've served Orem families with exceptional care. Your website should reflect that legacy — not hide it from search engines.</p>
+      <div class="prepared-for">
+        <div class="label">Prepared for</div>
+        <div class="name">White Smiles Family Dentistry</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cost of Inaction -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Cost of Standing Still</div>
+        <div class="section-title">24 years of reputation. Zero search visibility.</div>
+        <p class="section-sub">Dr. White and Dr. Gardner are both BYU honors graduates with Virginia Commonwealth training. Your in-house insurance plan is revolutionary. Yet families searching for dentists can't find you.</p>
+
+        <div class="callout">
+          <div class="number muted">$450,000</div>
+          <div class="label">Annual revenue lost to inferior practices</div>
+          <div class="sublabel">Based on 375+ monthly patients choosing dentists with better SEO</div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <div class="number">22,400</div>
+            <div class="label">Monthly "dentist Orem" searches</div>
+          </div>
+          <div class="stat muted">
+            <div class="number">Page 3+</div>
+            <div class="label">Your current ranking</div>
+          </div>
+          <div class="stat">
+            <div class="number">$200/yr</div>
+            <div class="label">Your unmarketed insurance plan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagnosis -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Diagnosis</div>
+        <div class="section-title">Exceptional dentistry. Outdated marketing.</div>
+        <p class="section-sub">Two highly credentialed doctors, 24 years of trust, and an innovative insurance program — buried under a website that looks like it's from 2015.</p>
+
+        <div class="card problem">
+          <h3>Why Families Are Choosing Other Dentists</h3>
+          <ul>
+            <li><strong>"Family dentist Orem"</strong> — you're not ranking on page 1</li>
+            <li><strong>"Dental implants Orem"</strong> — competitors with worse credentials outrank you</li>
+            <li><strong>"TMJ treatment Utah"</strong> — your expertise is invisible</li>
+            <li><strong>In-house insurance buried</strong> — your biggest differentiator is hidden</li>
+            <li><strong>No blog or FAQ content</strong> — Google has no reason to send you traffic</li>
+            <li><strong>2015-era website design</strong> — families judge competence by web presence</li>
+          </ul>
+        </div>
+
+        <div class="card win">
+          <h3>Your Hidden Competitive Advantages</h3>
+          <ul>
+            <li><strong>24+ years of established trust</strong> — newer practices can't match this</li>
+            <li><strong>Two honors-graduate doctors</strong> — BYU + Virginia Commonwealth credentials</li>
+            <li><strong>In-house insurance plan</strong> — $200/year beats most dental insurance</li>
+            <li><strong>Full-service practice</strong> — implants, TMJ, orthodontics, pediatric under one roof</li>
+            <li><strong>Native Orem doctors</strong> — Dr. White and Dr. Gardner understand the community</li>
+            <li><strong>University of Utah residency</strong> — Dr. Gardner brings additional specialization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emotional Hook -->
+  <section>
+    <div class="container">
+      <div class="fade-in" style="max-width: 640px; margin: 0 auto; text-align: center;">
+        <div class="section-label">Imagine This</div>
+        <div class="section-title" style="font-size: clamp(1.6rem, 3vw, 2.2rem); font-style: italic; color: var(--accent-hover);">
+          A young Orem family searches "affordable family dentist." Your in-house insurance plan appears first. Not some corporate chain. You.
+        </div>
+        <p class="section-sub" style="margin: 20px auto 0;">
+          That's what happens when 24 years of trust meets modern digital strategy. Your reputation deserves to be found.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategy -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Strategy</div>
+        <div class="section-title">Local SEO. Insurance marketing. Trust amplification.</div>
+        <p class="section-sub">We'll rebuild your website to showcase your credentials and make that $200 insurance plan the star. Then dominate "affordable dentist" searches across Utah Valley.</p>
+
+        <div class="card opportunity">
+          <h3>Target Keywords (High-Intent, Local)</h3>
+          <ul>
+            <li><strong>"Affordable family dentist Orem"</strong> — 1,800/mo searches</li>
+            <li><strong>"TMJ treatment Utah County"</strong> — 900/mo searches</li>
+            <li><strong>"Dental insurance plan Utah"</strong> — 1,200/mo searches</li>
+            <li><strong>"Experienced dentist Orem"</strong> — 650/mo searches</li>
+            <li><strong>"Dental implants Orem Utah"</strong> — 1,100/mo searches</li>
+            <li><strong>"Pediatric dentist near BYU"</strong> — 800/mo searches</li>
+          </ul>
+        </div>
+
+        <div class="timeline">
+          <div class="phase">
+            <div class="phase-label">Month 1-2</div>
+            <div>
+              <h4>Website Rebuild + Insurance Showcase</h4>
+              <p>Modern, trust-focused dental website with dedicated insurance plan landing page. Doctor credentials front and center. Local SEO foundation built properly.</p>
+              <div class="result">New site live, insurance plan optimized, Google Business Profile updated</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Month 2-4</div>
+            <div>
+              <h4>Trust Content + Local Dominance</h4>
+              <p>Patient education blog, procedure explanations, insurance comparisons. Content that positions you as the trusted choice for Utah Valley families.</p>
+              <div class="result">120% organic traffic increase, ranking for 75+ local keywords</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Month 4-6</div>
+            <div>
+              <h4>Review Generation + Market Leadership</h4>
+              <p>Systematic review campaigns highlighting your 24-year track record. Insurance plan marketing that attracts families tired of traditional dental insurance.</p>
+              <div class="result">Page 1 for "affordable dentist Orem", 200% increase in insurance plan inquiries</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Return</div>
+        <div class="section-title">Conservative Year 1 projections for established practice.</div>
+        <p class="section-sub">Based on 2.8% conversion rate and $7,500 average patient lifetime value.</p>
+
+        <div class="callout">
+          <div class="number gold">$1.35M</div>
+          <div class="label">Projected additional annual revenue</div>
+          <div class="sublabel">180 new patients at $7,500 lifetime value (mix of insurance plan members + traditional)</div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat gold">
+            <div class="number">9,000</div>
+            <div class="label">Monthly organic visitors<br><span style="font-size:0.75rem;">(from 850)</span></div>
+          </div>
+          <div class="stat gold">
+            <div class="number">180</div>
+            <div class="label">New patients per year<br><span style="font-size:0.75rem;">(15 per month)</span></div>
+          </div>
+          <div class="stat gold">
+            <div class="number">375%</div>
+            <div class="label">First-year ROI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why GullStack -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Why GullStack</div>
+        <div class="section-title">Established practice specialists.</div>
+        <p class="section-sub">We understand that established practices need different strategies than new ones. You have trust and reputation — we'll amplify it digitally.</p>
+
+        <!-- Comparison Table -->
+        <div style="overflow-x: auto; margin: 32px 0;">
+          <table style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.85rem;">
+            <thead>
+              <tr>
+                <th style="text-align: left; padding: 14px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border); font-weight: 600;"></th>
+                <th style="padding: 14px 16px; color: var(--muted); border-bottom: 1px solid var(--border); font-weight: 600;">DIY / WordPress</th>
+                <th style="padding: 14px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border); font-weight: 600;">Traditional Agency</th>
+                <th style="padding: 14px 16px; color: var(--accent-hover); border-bottom: 2px solid var(--accent); font-weight: 700; background: var(--accent-glow); border-radius: 8px 8px 0 0;">GullStack</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text);">Trust Amplification</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">❌</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">Generic approach</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">✓ Specialized</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text);">Insurance Plan Marketing</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">❌</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">❌</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">✓ Dedicated campaign</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text);">Timeline</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">6+ months</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">12-16 weeks</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">8 weeks</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text);">Review Management</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">DIY</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">Extra cost</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">✓ Included</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text);">Local SEO</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">❌</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">Basic</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">✓ Advanced</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; color: var(--text);">Content Creation</td>
+                <td style="padding: 12px 16px; text-align: center; color: var(--muted);">DIY</td>
+                <td style="padding: 12px 16px; text-align: center; color: var(--text-muted);">$200/page</td>
+                <td style="padding: 12px 16px; text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">AI-assisted</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Social Proof -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 40px;">
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">Sun Dermatology</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">Healthcare / Panama City, FL</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">400% organic traffic growth</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">New patient bookings doubled in 4 months</p>
+          </div>
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">Best Sports Surfaces</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">National Directory / 179 Vendors</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">Page 1 rankings in 60 days</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">From zero to 179 vendor listings nationwide</p>
+          </div>
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">Gold Wash Plants</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">Industrial Equipment / B2B</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">First revenue from organic</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">Zero to profitable organic leads in 90 days</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Investment</div>
+        <div class="section-title">Three growth pathways for established practices.</div>
+        <p class="section-sub">Choose the approach that matches your growth goals. All plans include website rebuild, trust amplification, and insurance plan marketing.</p>
+
+        <div class="pricing-grid">
+          <!-- Starter -->
+          <div class="tier">
+            <div class="tier-label">Starter</div>
+            <div class="price">$1,500</div>
+            <div class="price-note">/month</div>
+            <ul>
+              <li>Website rebuild</li>
+              <li>Insurance plan landing page</li>
+              <li>Local SEO optimization</li>
+              <li>Google Business Profile</li>
+              <li>Monthly blog content</li>
+              <li>Basic reporting</li>
+            </ul>
+            <button class="tier-btn outline">Get Started</button>
+          </div>
+
+          <!-- Growth (Featured) -->
+          <div class="tier featured">
+            <div class="tier-label">⚡ Growth — Recommended</div>
+            <div class="price" style="color: var(--accent-hover);">$3,000</div>
+            <div class="price-note">/month</div>
+            <ul>
+              <li>Everything in Starter</li>
+              <li>Paid ads management</li>
+              <li>Review generation</li>
+              <li>Social media content</li>
+              <li>Insurance marketing campaign</li>
+              <li>Competitor monitoring</li>
+              <li>Monthly reporting</li>
+            </ul>
+            <button class="tier-btn primary">Choose Growth</button>
+          </div>
+
+          <!-- Dominate -->
+          <div class="tier">
+            <div class="tier-label">Dominate</div>
+            <div class="price">$5,500</div>
+            <div class="price-note">/month</div>
+            <ul>
+              <li>Everything in Growth</li>
+              <li>Full content marketing</li>
+              <li>Video testimonials</li>
+              <li>Reputation management</li>
+              <li>Quarterly strategy</li>
+              <li>Dedicated manager</li>
+            </ul>
+            <button class="tier-btn outline">Let's Dominate</button>
+          </div>
+        </div>
+
+        <div class="card win" style="margin-top: 32px;">
+          <h3>What to Expect</h3>
+          <ul>
+            <li><strong>Minimum 10% organic traffic growth baseline</strong> — most clients see 5x+ within 12 months</li>
+            <li><strong>New website live in 60 days</strong> — your 24-year reputation finally gets the showcase it deserves</li>
+            <li><strong>Month-to-month after launch</strong> — no long-term contracts after the initial build period</li>
+            <li><strong>Full transparency</strong> — track every visitor, lead, and insurance plan inquiry</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Ready to showcase 24 years of excellence?</h2>
+        <p>Every month White Smiles stays hidden, Orem families choose inferior dentists. Your reputation deserves better.</p>
+        <a href="mailto:bryce@gullstack.com?subject=White Smiles Family Dentistry Growth Strategy&body=Hi Bryce,%0A%0AI'd like to discuss the digital marketing strategy for White Smiles Family Dentistry.%0A%0ABest regards" class="cta-btn">Schedule a Call →</a>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 16px;">30-minute strategy call · No commitment</p>
+        <div style="margin-top: 20px; padding: 12px 20px; background: var(--gold-soft); border: 1px solid rgba(34,211,238,0.2); border-radius: 8px; display: inline-block;">
+          <p style="color: var(--gold); font-size: 0.8rem; font-weight: 600; margin: 0;">⚡ We take 3 new clients per month. This proposal is reserved for 14 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="mark">
+      <img src="/gull-logo.png" alt="GullStack">
+      <span>GullStack</span>
+    </div>
+    <p><strong>Bryce Morgan</strong> · bryce@gullstack.com · GullStack.com</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

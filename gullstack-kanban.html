@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GullStack Sales Pipeline</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0d1117; color: #c9d1d9; min-height: 100vh; padding: 20px; }
+  h1 { text-align: center; color: #58a6ff; margin-bottom: 6px; font-size: 1.5rem; }
+  .subtitle { text-align: center; color: #8b949e; margin-bottom: 20px; font-size: 0.85rem; }
+  .board { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 20px; }
+  .column { background: #161b22; border-radius: 12px; min-width: 260px; flex: 1; padding: 14px; border: 1px solid #30363d; }
+  .column-header { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--col-color, #30363d); }
+  .column-header h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--col-color, #8b949e); }
+  .count { background: var(--col-color, #30363d); color: #0d1117; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; }
+  .card { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 12px; margin-bottom: 10px; cursor: default; transition: border-color 0.2s; }
+  .card:hover { border-color: #58a6ff; }
+  .card-title { font-weight: 600; font-size: 0.9rem; color: #f0f6fc; margin-bottom: 6px; }
+  .card-meta { font-size: 0.75rem; color: #8b949e; margin-bottom: 8px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { font-size: 0.65rem; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+  .tag-aa { background: #1f3a1f; color: #3fb950; }
+  .tag-sales { background: #1a2740; color: #58a6ff; }
+  .tag-bss { background: #3d2000; color: #f0883e; }
+  .tag-hot { background: #3d1010; color: #f85149; }
+  .tag-warm { background: #3d2a00; color: #d29922; }
+  .tag-new { background: #1a1a3d; color: #a371f7; }
+  .card-link { display: inline-block; margin-top: 8px; font-size: 0.7rem; color: #58a6ff; text-decoration: none; }
+  .card-link:hover { text-decoration: underline; }
+  .card-notes { font-size: 0.75rem; color: #8b949e; margin-top: 6px; font-style: italic; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 16px; }
+  .legend-item { display: flex; align-items: center; gap: 4px; font-size: 0.7rem; color: #8b949e; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+</style>
+</head>
+<body>
+
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:10px;">
+  <h1>🦅 GullStack Sales Pipeline</h1>
+  <div style="display:flex; gap:8px;">
+    <a href="gullstack-tasks.html" style="background:#21262d; color:#58a6ff; padding:8px 14px; border-radius:6px; text-decoration:none; font-size:0.8rem; border:1px solid #30363d;">📋 Tasks</a>
+    <a href="reference/sites-i-like.html" style="background:#21262d; color:#58a6ff; padding:8px 14px; border-radius:6px; text-decoration:none; font-size:0.8rem; border:1px solid #30363d;">✨ Inspiration</a>
+  </div>
+</div>
+<p class="subtitle">Last updated: Feb 3, 2026 • All Projects</p>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#3fb950"></div> AugmentAdvertise</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#58a6ff"></div> Sales</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f0883e"></div> BSS / ATSports</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f85149"></div> Hot Lead</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#d29922"></div> Warm Lead</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#a371f7"></div> New Lead</div>
+</div>
+
+<div class="board">
+
+  <!-- PROSPECTS -->
+  <div class="column" style="--col-color: #a371f7;">
+    <div class="column-header">
+      <h2>📋 Prospects</h2>
+      <span class="count">4</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🧠 Josh's Neighbor (Therapist)</div>
+      <div class="card-meta">Category: Mental Health / Wellness</div>
+      <div class="tags">
+        <span class="tag tag-sales">SALES</span>
+        <span class="tag tag-new">NEW</span>
+      </div>
+      <div class="card-notes">Need more info from Josh. Potential Cereal Growth client.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🪵 Stump Grinder</div>
+      <div class="card-meta">Category: Local Services</div>
+      <div class="tags">
+        <span class="tag tag-sales">SALES</span>
+        <span class="tag tag-new">NEW</span>
+      </div>
+      <div class="card-notes">@Maxfuhn has details. Need biz name + contact info.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🎨 Olympic Paint USA</div>
+      <div class="card-meta">Category: Sports Surfaces • Paying for Google Ads</div>
+      <div class="tags">
+        <span class="tag tag-sales">SALES</span>
+        <span class="tag tag-hot">HOT</span>
+      </div>
+      <a class="card-link" href="https://www.olympicpaintusa.com" target="_blank">→ Current Site (terrible)</a>
+      <div class="card-notes">Paying for ads with garbage site = prime target. ATSports competitor.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏓 Pickleball Court Supply</div>
+      <div class="card-meta">Category: Sports Surfaces / Equipment</div>
+      <div class="tags">
+        <span class="tag tag-sales">SALES</span>
+        <span class="tag tag-new">NEW</span>
+      </div>
+      <a class="card-link" href="https://www.pickleballcourtsupply.com" target="_blank">→ Current Site (bad)</a>
+      <div class="card-notes">Bad site. Pickleball niche = growing market. Website redesign opportunity.</div>
+    </div>
+  </div>
+
+  <!-- WARM LEADS -->
+  <div class="column" style="--col-color: #d29922;">
+    <div class="column-header">
+      <h2>🔥 Warm Leads</h2>
+      <span class="count">2</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏥 Dr. Tony Pham</div>
+      <div class="card-meta">San Jose, CA • Plastic Surgeon • Yale-trained, 23+ yrs</div>
+      <div class="tags">
+        <span class="tag tag-aa">AA</span>
+        <span class="tag tag-sales">SALES</span>
+        <span class="tag tag-warm">WARM</span>
+      </div>
+      <a class="card-link" href="https://brycedmorgan.github.io/dr-tony-pham" target="_blank">→ Demo Site</a>
+      <div class="card-notes">Demo built. Board certified, 5000+ procedures. Ready to pitch.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏥 Perimeter Plastic Surgery</div>
+      <div class="card-meta">Atlanta, GA • Dr. Mark Deutsch • Double board-certified, 30+ yrs</div>
+      <div class="tags">
+        <span class="tag tag-aa">AA</span>
+        <span class="tag tag-sales">SALES</span>
+        <span class="tag tag-warm">WARM</span>
+      </div>
+      <a class="card-link" href="https://brycedmorgan.github.io/perimeter-plastic-surgery" target="_blank">→ Demo Site</a>
+      <div class="card-notes">Demo built. Castle Connolly Top Doctor x10. Ready to pitch.</div>
+    </div>
+  </div>
+
+  <!-- IN PROGRESS -->
+  <div class="column" style="--col-color: #58a6ff;">
+    <div class="column-header">
+      <h2>⚡ In Progress</h2>
+      <span class="count">1</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏓 ATSports.com</div>
+      <div class="card-meta">Multi-pronged pitch • Meeting Wed Feb 4 in Dallas</div>
+      <div class="tags">
+        <span class="tag tag-bss">BSS</span>
+        <span class="tag tag-sales">SALES</span>
+        <span class="tag tag-hot">HOT</span>
+      </div>
+      <div class="card-notes">Brad from ATSports. Brand integration + court designer + Acrytech page already live on BSS. Donald Young site pitch. Lunch meeting — must impress.</div>
+    </div>
+  </div>
+
+  <!-- CLOSED / WON -->
+  <div class="column" style="--col-color: #3fb950;">
+    <div class="column-header">
+      <h2>✅ Closed / Won</h2>
+      <span class="count">0</span>
+    </div>
+    <div style="text-align:center; color:#30363d; padding:40px 10px; font-size:0.8rem;">
+      Let's fill this column today 💰
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Build outputs
+dist/
+build/
+_site/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Large binaries
+*.dmg
+*.iso
+*.tar.gz
+*.zip
+*.node
+
+# Next.js SWC binaries (very large)
+**/swc-darwin-arm64/next-swc.darwin-arm64.node
+**/swc-*/next-swc.*.node
+
+# Next.js
+.next/
+out/
+
+# Vercel
+.vercel
+
+# Cache
+.cache/
+.parcel-cache/
