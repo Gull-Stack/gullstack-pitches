@@ -83,11 +83,10 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), 
-                        linear-gradient(rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.1)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f8ff" width="1200" height="600"/><text x="600" y="250" text-anchor="middle" font-size="48" fill="%23666">Professional HVAC Service</text><text x="600" y="300" text-anchor="middle" font-size="36" fill="%23888">Since 2012 in Macon</text><text x="600" y="350" text-anchor="middle" font-size="24" fill="%23888">4.5 ★ Rated • 59 Reviews</text></svg>');
+                        url('PLACEHOLDER_FOR_HERO_IMAGE');
             background-size: cover;
             background-position: center;
-            height: 100vh;
+            height: 75vh;
             display: flex;
             align-items: center;
             color: white;
@@ -371,6 +370,10 @@
         
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+            }
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
