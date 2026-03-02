@@ -21,8 +21,6 @@
       --accent-glow: rgba(168, 85, 247, 0.15);
       --gold: #22d3ee;
       --gold-soft: rgba(34, 211, 238, 0.10);
-      --bbq-orange: #ff6b35;
-      --bbq-red: #dc2626;
       --muted: #6b7280;
       --muted-soft: rgba(107, 114, 128, 0.15);
       --border: rgba(255,255,255,0.06);
@@ -71,7 +69,7 @@
       font-weight: 400; line-height: 1.12; margin-bottom: 20px;
     }
     .hero h1 .glow {
-      background: linear-gradient(135deg, var(--bbq-orange), var(--bbq-red));
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .hero p {
@@ -80,9 +78,9 @@
 
     .badge {
       display: inline-block;
-      background: linear-gradient(135deg, rgba(255,107,53,0.15), rgba(220,38,38,0.08));
-      border: 1px solid rgba(255,107,53,0.2);
-      color: var(--bbq-orange); padding: 6px 18px; border-radius: 100px;
+      background: linear-gradient(135deg, var(--accent-glow), rgba(168,85,247,0.08));
+      border: 1px solid rgba(168,85,247,0.2);
+      color: var(--accent-hover); padding: 6px 18px; border-radius: 100px;
       font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
       text-transform: uppercase; margin-bottom: 24px;
     }
@@ -100,7 +98,7 @@
 
     .section-label {
       font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--bbq-orange); margin-bottom: 12px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
     }
     .section-title {
       font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem);
@@ -124,12 +122,12 @@
 
     .stat:hover {
       transform: translateY(-2px);
-      border-color: rgba(255,107,53,0.2);
+      border-color: rgba(168,85,247,0.2);
     }
 
     .stat .number {
       font-family: var(--font-serif); font-size: 2rem; font-weight: 400;
-      color: var(--bbq-orange); margin-bottom: 6px; line-height: 1;
+      color: var(--accent-hover); margin-bottom: 6px; line-height: 1;
     }
 
     .stat .label {
@@ -138,7 +136,7 @@
 
     .stat.gold .number { color: var(--gold); }
     .stat.muted .number { color: var(--muted); }
-    .stat.red .number { color: var(--bbq-red); }
+    .stat.red .number { color: var(--muted); }
 
     /* Insight cards */
     .card {
@@ -151,8 +149,8 @@
       background: linear-gradient(135deg, var(--muted-soft), transparent 40%);
     }
     .card.opportunity {
-      border-left: 3px solid var(--bbq-orange);
-      background: linear-gradient(135deg, rgba(255,107,53,0.15), transparent 40%);
+      border-left: 3px solid var(--accent);
+      background: linear-gradient(135deg, var(--accent-glow), transparent 40%);
     }
     .card.win {
       border-left: 3px solid var(--gold);
@@ -161,7 +159,7 @@
 
     .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; }
     .card.problem h3 { color: var(--muted); }
-    .card.opportunity h3 { color: var(--bbq-orange); }
+    .card.opportunity h3 { color: var(--accent-hover); }
     .card.win h3 { color: var(--gold); }
 
     .card ul { list-style: none; margin: 0; }
@@ -185,7 +183,7 @@
     }
     .callout::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--bbq-orange), var(--bbq-red), var(--gold));
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
     }
     .callout .number {
       font-family: var(--font-serif);
@@ -193,7 +191,7 @@
       font-weight: 400; margin-bottom: 10px; line-height: 1;
     }
     .callout .number.gold { color: var(--gold); }
-    .callout .number.orange { color: var(--bbq-orange); }
+    .callout .number.accent { color: var(--accent-hover); }
     .callout .number.muted { color: var(--muted); }
     .callout .label { font-size: 1.1rem; color: var(--text-muted); }
     .callout .sublabel { font-size: 0.85rem; color: var(--text-muted); opacity: 0.7; margin-top: 6px; }
@@ -220,7 +218,7 @@
     .ranking-table tr:last-child td:first-child { border-bottom-left-radius: 14px; }
     .ranking-table tr:last-child td:last-child { border-bottom-right-radius: 14px; }
     .ranking-table .rank {
-      font-weight: 700; color: var(--bbq-orange);
+      font-weight: 700; color: var(--accent-hover);
     }
     .ranking-table .missing {
       color: var(--muted); font-style: italic;
@@ -235,7 +233,7 @@
     }
     .cta::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--bbq-orange), var(--bbq-red), var(--gold));
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
     }
     .cta h2 {
       font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.5rem);
@@ -252,17 +250,17 @@
       font-weight: 600; transition: all 0.3s ease; margin: 0 8px;
     }
     .cta-button:hover {
-      background: rgba(255,107,53,0.1);
-      border-color: rgba(255,107,53,0.2);
+      background: var(--accent-glow);
+      border-color: rgba(168,85,247,0.2);
       transform: translateY(-2px);
     }
     .cta-button.primary {
-      background: linear-gradient(135deg, var(--bbq-orange), var(--bbq-red));
-      color: white; border-color: var(--bbq-orange);
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: white; border-color: var(--accent);
     }
     .cta-button.primary:hover {
-      background: linear-gradient(135deg, var(--bbq-red), var(--bbq-orange));
-      border-color: var(--bbq-red);
+      background: linear-gradient(135deg, var(--accent-hover), var(--accent));
+      border-color: var(--accent-hover);
     }
 
     .footer {
@@ -287,7 +285,7 @@
       <div class="badge">Growth Proposal</div>
       
       <div class="hero-logos">
-        <div style="color: var(--bbq-orange); font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700;">BAM BAMS</div>
+        <img src="/bambams-logo.png" alt="Bam Bams BBQ" style="height: 60px;">
         <span style="font-size: 2rem; opacity: 0.7;">×</span>
         <img src="/gull-logo.png" alt="GullStack">
       </div>
@@ -412,7 +410,7 @@
       </div>
 
       <div class="callout">
-        <div class="number orange">0</div>
+        <div class="number muted">0</div>
         <div class="label">Page 1 Rankings for Key BBQ Terms</div>
         <div class="sublabel">Your authentic BBQ is invisible when customers search</div>
       </div>
@@ -536,14 +534,14 @@
           <li><strong>Analytics & tracking</strong> — Order tracking, customer data, revenue reporting</li>
         </ul>
 
-        <div style="margin-top: 20px; padding: 16px; background: rgba(255,107,53,0.1); border-radius: 8px; border-left: 3px solid var(--bbq-orange);">
+        <div style="margin-top: 20px; padding: 16px; background: var(--accent-glow); border-radius: 8px; border-left: 3px solid var(--accent);">
           <p style="color: var(--text); font-weight: 600; margin-bottom: 8px;">💰 Revenue Impact:</p>
           <p style="color: var(--text-muted); font-size: 0.9rem;">Online ordering typically increases average order size by 20-30% and captures customers who won't call to order. Many BBQ joints see $5K-15K additional monthly revenue from online ordering alone.</p>
         </div>
       </div>
 
       <div class="callout">
-        <div class="number orange">$8,500</div>
+        <div class="number accent">$8,500</div>
         <div class="label">Website + Online Ordering Investment</div>
         <div class="sublabel">One-time build cost • $500/month SEO maintenance after launch</div>
       </div>
@@ -557,7 +555,7 @@
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 40px 0;">
         <div class="card opportunity">
-          <h3 style="color: var(--bbq-orange);">SEO-Only Results</h3>
+          <h3 style="color: var(--accent-hover);">SEO-Only Results</h3>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;">
             <div style="text-align: center;">
               <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--gold);">$180K</div>
@@ -604,7 +602,7 @@
         <h3>🎯 Path 1: SEO-Only Strategy</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin: 20px 0;">
           <div style="text-align: center;">
-            <div style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--bbq-orange); margin-bottom: 4px;">$2,500</div>
+            <div style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--accent-hover); margin-bottom: 4px;">$2,500</div>
             <div style="color: var(--text-muted); font-size: 0.85rem;">Monthly investment</div>
           </div>
           <div style="text-align: center;">
@@ -628,11 +626,11 @@
         <h3>🚀 Path 2: Complete Digital Transformation</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin: 20px 0;">
           <div style="text-align: center;">
-            <div style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--bbq-orange); margin-bottom: 4px;">$8,500</div>
+            <div style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--accent-hover); margin-bottom: 4px;">$8,500</div>
             <div style="color: var(--text-muted); font-size: 0.85rem;">Website + ordering build</div>
           </div>
           <div style="text-align: center;">
-            <div style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--bbq-orange); margin-bottom: 4px;">$500</div>
+            <div style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--accent-hover); margin-bottom: 4px;">$500</div>
             <div style="color: var(--text-muted); font-size: 0.85rem;">Monthly maintenance</div>
           </div>
           <div style="text-align: center;">
@@ -671,7 +669,7 @@
           <a href="mailto:bryce@gullstack.com?subject=Bam Bams BBQ Strategy Discussion" class="cta-button">Discuss Which Path Is Right</a>
         </div>
 
-        <div style="background: rgba(255,107,53,0.1); padding: 16px; border-radius: 8px; margin-top: 24px;">
+        <div style="background: var(--accent-glow); padding: 16px; border-radius: 8px; margin-top: 24px;">
           <p style="font-size: 0.9rem; color: var(--text); font-weight: 600; margin-bottom: 4px;">⏰ Summer BBQ Season Opportunity</p>
           <p style="font-size: 0.85rem; color: var(--text-muted);">BBQ searches peak May-August. Starting now captures the high-traffic season. We take 3 new restaurant clients per month.</p>
         </div>
