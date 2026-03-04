@@ -303,12 +303,67 @@
       padding: 4px 0; color: var(--text-muted); font-size: 0.9rem;
     }
 
+    /* Logo Concepts */
+    .logo-showcase {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 40px 0;
+    }
+    @media (max-width: 768px) { .logo-showcase { grid-template-columns: 1fr; } }
+
+    .logo-concept {
+      text-align: center; padding: 32px 24px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .logo-concept.shade {
+      border-top: 4px solid var(--accent);
+    }
+    .logo-concept.forge {
+      border-top: 4px solid var(--gold);
+    }
+
+    .mock-logo {
+      margin-bottom: 20px; padding: 24px;
+      border-radius: 12px; display: inline-block;
+    }
+
+    .shade-logo {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: white; padding: 16px 24px;
+      font-family: var(--font-serif); font-size: 1.8rem; font-weight: 400;
+      letter-spacing: 2px; text-transform: uppercase;
+      border-radius: 8px;
+    }
+
+    .forge-logo {
+      background: linear-gradient(135deg, #1f2937, #374151);
+      color: var(--gold); padding: 16px 24px;
+      font-family: 'Inter', sans-serif; font-size: 1.6rem; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      border-radius: 8px; border: 2px solid var(--gold);
+    }
+
+    .logo-concept h4 {
+      font-size: 1.1rem; color: var(--text); margin-bottom: 8px;
+    }
+
+    .logo-concept .brand-tagline {
+      font-style: italic; color: var(--text-muted);
+      margin-bottom: 16px; font-size: 0.95rem;
+    }
+
+    .logo-concept .brand-notes {
+      font-size: 0.85rem; color: var(--text-muted);
+      text-align: left; line-height: 1.4;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .hero-logos { flex-wrap: wrap; gap: 12px; }
       .stats-row { grid-template-columns: 1fr 1fr; }
       .phase { grid-template-columns: 1fr; }
       .phase-label { padding-top: 0; margin-bottom: -12px; }
+      .logo-showcase { gap: 24px; }
     }
   </style>
 </head>
@@ -397,6 +452,60 @@
             <li><strong>Zero brand confusion</strong> — Each speaks directly to its audience</li>
             <li><strong>Double the SEO surface area</strong> — Rank for lifestyle AND project keywords</li>
             <li><strong>Shared fulfillment</strong> — Same inventory, same shipping, lower overhead</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo Concepts -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Brand Identities</div>
+        <div class="section-title">Logo concepts that capture each brand's personality.</div>
+        <p class="section-sub">Typography-focused designs that work across all touchpoints — from website headers to social media posts to paint can labels.</p>
+
+        <div class="logo-showcase">
+          <div class="logo-concept shade">
+            <div class="mock-logo">
+              <div class="shade-logo">SHADE</div>
+            </div>
+            <h4>Shade Paint Studio</h4>
+            <div class="brand-tagline">"The perfect shade, every time"</div>
+            <div class="brand-notes">
+              • Sophisticated serif typography<br>
+              • Purple gradient = premium, creative<br>
+              • Clean, editorial feel<br>
+              • Perfect for Pinterest/Instagram<br>
+              • Appeals to design-conscious women
+            </div>
+          </div>
+
+          <div class="logo-concept forge">
+            <div class="mock-logo">
+              <div class="forge-logo">FORGE</div>
+            </div>
+            <h4>Forge Paint</h4>
+            <div class="brand-tagline">"Forged for projects that last"</div>
+            <div class="brand-notes">
+              • Bold sans-serif typography<br>
+              • Gold accent = quality, craftsmanship<br>
+              • Strong, industrial feel<br>
+              • Perfect for TikTok/YouTube<br>
+              • Appeals to weekend builders
+            </div>
+          </div>
+        </div>
+
+        <div class="card opportunity">
+          <h3>Logo Strategy</h3>
+          <ul>
+            <li><strong>Distinct but cohesive</strong> — Different personalities, shared quality standards</li>
+            <li><strong>Scalable design</strong> — Works from business cards to billboards</li>
+            <li><strong>Social media ready</strong> — Optimized for profile pictures and video thumbnails</li>
+            <li><strong>Brand extension ready</strong> — Can grow into brushes, rollers, accessories</li>
+            <li><strong>Trademark-friendly</strong> — Simple, unique, legally defensible</li>
           </ul>
         </div>
       </div>
