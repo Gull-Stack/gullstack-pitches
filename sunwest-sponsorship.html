@@ -359,14 +359,43 @@
       div[style*="grid-template-columns: repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
       div[style*="grid-template-columns: repeat(4, 1fr)"] { grid-template-columns: 1fr !important; }
       div[style*="grid-template-columns: repeat(auto-fit"] { grid-template-columns: 1fr !important; }
+      div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+      
+      /* CRITICAL: Fix facility section layout */
+      section[style*="padding: 0"] div[style*="grid-template-columns: 1fr 1fr"] { 
+        grid-template-columns: 1fr !important; 
+        min-height: auto !important;
+      }
+      section[style*="padding: 0"] div[style*="padding: 80px 48px"] { 
+        padding: 32px 20px !important; 
+        text-align: center;
+      }
       
       /* Reduce gaps on mobile for better spacing */
       div[style*="gap: 32px"] { gap: 16px !important; }
       div[style*="gap: 24px"] { gap: 12px !important; }
       
-      /* Better text sizing on mobile */
-      .section-title { font-size: 1.8rem !important; }
-      .hero h1 { font-size: 2.5rem !important; }
+      /* Better text sizing and line height on mobile */
+      .section-title { font-size: 1.8rem !important; line-height: 1.1 !important; }
+      .hero h1 { font-size: 2.5rem !important; line-height: 1.1 !important; }
+      h2[style*="line-height: 1.2"] { line-height: 1.0 !important; font-size: 2rem !important; }
+      h2[style*="clamp"] { line-height: 1.0 !important; }
+      
+      /* Make facility image full width and properly sized on mobile */
+      img[src="sunwest-facility-branded.png"] { 
+        width: 100% !important; 
+        height: 300px !important; 
+        object-fit: cover !important;
+        margin: 20px 0 !important;
+        border-radius: 12px !important;
+        min-height: 300px !important;
+      }
+      
+      /* Fix the parent container of the facility image */
+      div[style*="position: relative; height: 100%"] {
+        height: auto !important;
+        padding: 0 20px;
+      }
       
       /* Adjust padding on mobile */
       .container { padding: 0 16px; }
