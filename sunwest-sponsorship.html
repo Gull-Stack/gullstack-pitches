@@ -356,6 +356,13 @@
       .tournament-showcase > div { min-height: 200px; }
     }
 
+    /* Subtle pickleball design elements */
+    .section-label::before {
+      content: '🏓';
+      margin-right: 8px;
+      opacity: 0.7;
+    }
+
     .tournament-showcase {
       display: grid; grid-template-columns: 1fr 1fr 1fr; 
       height: 50vh; min-height: 400px;
@@ -792,14 +799,93 @@
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="cta">
+  <!-- Next Steps & Timeline -->
+  <section style="background: var(--bg-elevated);">
     <div class="container">
-      <div class="cta-card">
-        <h2>Secure Your Partnership Position</h2>
-        <p>Join the Utah Pickleball Center as a premier sponsor and connect with Utah's most engaged and affluent community through facility branding, team sponsorship, or combined packages with exclusive savings.</p>
-        <a href="mailto:partnerships@utahpickleballcenter.com?subject=SunWest Bank Partnership Inquiry&body=Hi,%0A%0AI'm interested in discussing partnership opportunities for SunWest Bank at the Utah Pickleball Center.%0A%0APlease provide additional information about:%0A- Facility partnership options%0A- Team sponsorship opportunities%0A- Combined package savings%0A%0AThank you!" class="cta-btn">Schedule Partnership Discussion</a>
-        <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 20px;">3-year partnership terms • Facility activation at grand opening • Team activation January 1</p>
+      <div class="fade-in">
+        <div class="section-label">Next Steps & Timeline</div>
+        <div class="section-title">Secure Your Priority Partnership Position</div>
+        <p class="section-sub">Limited premier sponsorship opportunities available. Early commitment ensures priority placement for naming rights and jersey positioning.</p>
+
+        <div class="card primary" style="text-align: center; padding: 48px 32px;">
+          <h3 style="font-size: 1.6rem; margin-bottom: 24px;">Immediate Action Required</h3>
+          <p style="font-size: 1.1rem; margin-bottom: 32px; color: var(--text);">
+            <strong>Championship Court Naming Rights</strong> and <strong>Front of Jersey</strong> sponsorships are first-come, first-served. 
+            Secure your position before competitors recognize this opportunity.
+          </p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin: 32px 0;">
+            <div style="background: var(--accent-light); padding: 24px; border-radius: 12px; border-left: 4px solid var(--accent);">
+              <h4 style="color: var(--accent); margin-bottom: 12px;">1. Schedule Site Visit</h4>
+              <p style="font-size: 0.9rem; color: var(--text); margin: 0;">Tour the facility, meet the team, see championship court positioning</p>
+            </div>
+            <div style="background: var(--gold-light); padding: 24px; border-radius: 12px; border-left: 4px solid var(--gold);">
+              <h4 style="color: var(--gold); margin-bottom: 12px;">2. Customize Package</h4>
+              <p style="font-size: 0.9rem; color: var(--text); margin: 0;">Tailor sponsorship benefits to your marketing and hospitality goals</p>
+            </div>
+            <div style="background: var(--primary-light); padding: 24px; border-radius: 12px; border-left: 4px solid var(--primary);">
+              <h4 style="color: var(--primary); margin-bottom: 12px;">3. Secure Partnership</h4>
+              <p style="font-size: 0.9rem; color: var(--text); margin: 0;">Lock in 3-year terms with early activation benefits</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 48px;">
+          <div style="background: var(--bg-card); padding: 32px; border-radius: 16px; border: 2px solid var(--primary);">
+            <h3 style="color: var(--primary); margin-bottom: 16px;">Partnership Contact</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 8px;"><strong>Utah Pickleball Center Partnership Team</strong></p>
+            <p style="color: var(--text-muted); margin-bottom: 16px;">partnerships@utahpickleballcenter.com • (801) 555-BALL</p>
+            <a href="mailto:partnerships@utahpickleballcenter.com?subject=SunWest Bank Partnership Priority Inquiry&body=Hi,%0A%0AI'm interested in securing priority partnership positioning for SunWest Bank at the Utah Pickleball Center.%0A%0APlease schedule:%0A□ Site visit and facility tour%0A□ Partnership customization meeting%0A□ Championship Court naming rights discussion%0A□ Jersey sponsorship options%0A□ Combined package pricing (20% discount)%0A%0AThank you!" class="cta-btn" style="font-size: 1rem; padding: 14px 32px;">Schedule Priority Partnership Meeting</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appendix: Additional Context -->
+  <section style="background: var(--bg); padding-top: 80px; padding-bottom: 40px;">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Additional Context</div>
+        <div class="section-title">Facility Details & Professional Pickleball Context</div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin: 48px 0;">
+          <div class="card accent" style="margin: 0;">
+            <h3>Facility Specifications</h3>
+            <ul>
+              <li><strong>47 Championship Courts</strong> — Largest dedicated facility in region</li>
+              <li><strong>Stadium Seating: 2,000+</strong> — Professional tournament capacity</li>
+              <li><strong>$35M Investment</strong> — Premier infrastructure and amenities</li>
+              <li><strong>South Jordan Location</strong> — Central Utah accessibility</li>
+              <li><strong>2,000+ Monthly Members</strong> — Established revenue base</li>
+              <li><strong>Year-Round Programming</strong> — 52 weeks of activity</li>
+            </ul>
+          </div>
+          
+          <div class="card primary" style="margin: 0;">
+            <h3>Professional Pickleball Context</h3>
+            <ul>
+              <li><strong>Major League Pickleball (MLP)</strong> — Premier professional team league</li>
+              <li><strong>PPA Tour Events</strong> — Professional Pickleball Association tournaments</li>
+              <li><strong>Utah Black Diamonds</strong> — State's MLP franchise team</li>
+              <li><strong>College Championships</strong> — Collegiate tournament hosting</li>
+              <li><strong>6+ Major Annual Events</strong> — National tournament destination</li>
+              <li><strong>ESPN Coverage</strong> — National broadcast exposure</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card gold">
+          <h3>Market Growth Data</h3>
+          <ul>
+            <li><strong>36.5M Projected Players by 2030</strong> — From 4.8M in 2023 (659% growth)</li>
+            <li><strong>85% Annual Growth Rate</strong> — Fastest-growing sport in America</li>
+            <li><strong>$2.8B Economic Impact</strong> — Equipment, facilities, tourism, events</li>
+            <li><strong>Average Age: 47 years</strong> — Prime banking demographic</li>
+            <li><strong>Average Income: $78,500</strong> — 40% above national average</li>
+            <li><strong>Utah Growth: 127% annually</strong> — Above national average adoption</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -812,6 +898,7 @@
     </div>
     <p><strong>Utah Pickleball Center</strong> • South Jordan, Utah • partnerships@utahpickleballcenter.com</p>
     <p style="margin-top: 8px; font-size: 0.8rem; opacity: 0.7;">Home to Utah Black Diamonds (MLP) • 47 Courts • $35M Facility • 2,000+ Members</p>
+    <p style="margin-top: 12px; font-size: 0.75rem; opacity: 0.5; font-style: italic;">Confidential – For Discussion Purposes • March 2026</p>
   </footer>
 
   <script>
