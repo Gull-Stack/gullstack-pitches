@@ -46,7 +46,9 @@
       min-height: 100vh;
       display: flex; align-items: center; justify-content: center;
       text-align: center; position: relative;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: 
+        linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(14, 165, 233, 0.9) 100%),
+        url('./facility-exterior-front.jpg') center/cover;
       color: white;
     }
 
@@ -349,6 +351,12 @@
       .event { grid-template-columns: 1fr; }
       .event-date { padding-top: 0; margin-bottom: -8px; }
       .package.featured { transform: none; }
+      .facility-showcase { grid-template-columns: 1fr !important; height: auto !important; min-height: 300px; }
+    }
+
+    .facility-showcase {
+      display: grid; grid-template-columns: 1fr 1fr; 
+      height: 60vh; min-height: 500px;
     }
 
     /* Animations */
@@ -365,7 +373,7 @@
   <section class="hero">
     <div class="container">
       <div class="hero-logos">
-        <img src="https://www.sunwestbank.com/wp-content/themes/sunwest/images/sunwest-bank-logo-white.png" alt="SunWest Bank" style="height: 56px;">
+        <div style="background: white; padding: 12px 24px; border-radius: 8px; font-family: var(--font-primary); font-weight: 900; color: var(--primary); font-size: 1.3rem;">SunWest Bank</div>
         <span class="separator">×</span>
         <img src="https://via.placeholder.com/200x48/2563eb/ffffff?text=Utah+Pickleball+Center" alt="Utah Pickleball Center" style="background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 8px;">
       </div>
@@ -406,6 +414,24 @@
             <div class="number">$75K+</div>
             <div class="label">Average household income of pickleball players</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facility Showcase -->
+  <section style="padding: 0; margin: 0;">
+    <div class="facility-showcase">
+      <div style="background: url('./facility-exterior-angle.jpg') center/cover; position: relative;">
+        <div style="position: absolute; bottom: 24px; left: 24px; background: rgba(0,0,0,0.7); color: white; padding: 16px 24px; border-radius: 8px;">
+          <h4 style="font-family: var(--font-primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">Modern Architecture</h4>
+          <p style="font-size: 0.9rem; margin: 0;">Premium facility design with championship-level courts</p>
+        </div>
+      </div>
+      <div style="background: url('./facility-interior.jpg') center/cover; position: relative;">
+        <div style="position: absolute; bottom: 24px; left: 24px; background: rgba(0,0,0,0.7); color: white; padding: 16px 24px; border-radius: 8px;">
+          <h4 style="font-family: var(--font-primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">Premium Hospitality</h4>
+          <p style="font-size: 0.9rem; margin: 0;">Luxury suites and entertainment spaces</p>
         </div>
       </div>
     </div>
@@ -596,35 +622,35 @@
 
         <div class="timeline">
           <div class="event">
-            <div class="event-date">Q2 2026</div>
+            <div class="event-date">Winter/Spring 2026</div>
             <div>
-              <h4>Facility Grand Opening</h4>
-              <p>Launch partnership with ribbon cutting ceremony, VIP preview events, and community celebration. Maximum media coverage and public relations opportunity.</p>
-              <div class="highlight">Major PR opportunity: Regional and national media coverage</div>
+              <h4>Permitting & Final Design</h4>
+              <p>Finalize architectural plans, secure all permits, and complete construction documentation. Early partnership announcements and community engagement opportunities.</p>
+              <div class="highlight">Foundation partnership: Early brand integration and planning</div>
             </div>
           </div>
           <div class="event">
-            <div class="event-date">Q3 2026</div>
+            <div class="event-date">February 2026</div>
             <div>
-              <h4>Summer Championship Series</h4>
-              <p>Host premier tournaments with professional players and national television coverage. Peak audience engagement and brand exposure.</p>
-              <div class="highlight">TV exposure: ESPN and Tennis Channel coverage</div>
+              <h4>Groundbreaking Ceremony</h4>
+              <p>Official groundbreaking with community celebration and media coverage. First major partnership visibility opportunity with ceremonial participation.</p>
+              <div class="highlight">Major PR launch: Regional media coverage and community celebration</div>
             </div>
           </div>
           <div class="event">
-            <div class="event-date">Q4 2026</div>
+            <div class="event-date">Construction Period</div>
             <div>
-              <h4>Youth Academy Launch</h4>
-              <p>Community development programming featuring SunWest Bank financial literacy education. Build long-term brand loyalty with next generation.</p>
-              <div class="highlight">Community impact: Educational partnership opportunities</div>
+              <h4>Build Phase Partnership</h4>
+              <p>Construction signage, progress updates, and community anticipation building. Ongoing brand presence throughout the 2+ year development process.</p>
+              <div class="highlight">Sustained visibility: 30+ months of construction phase branding</div>
             </div>
           </div>
           <div class="event">
-            <div class="event-date">Q1 2027</div>
+            <div class="event-date">October 1, 2028</div>
             <div>
-              <h4>Corporate League Season</h4>
-              <p>Business-to-business networking through corporate pickleball leagues. Direct access to Utah's business community and decision makers.</p>
-              <div class="highlight">B2B networking: 200+ Utah companies participating</div>
+              <h4>Grand Opening & Championship Launch</h4>
+              <p>Facility grand opening with inaugural tournaments, VIP events, and major media coverage. Peak partnership activation and national exposure.</p>
+              <div class="highlight">Maximum impact: National tournament coverage and facility launch</div>
             </div>
           </div>
         </div>
