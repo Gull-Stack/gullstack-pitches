@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flake & Flake × GullStack | Growth Proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a1a; --bg-elevated: #111128; --bg-card: #16163a;
+      --text: #f0f0f5; --text-muted: #8888a8;
+      --accent: #a855f7; --accent-hover: #c084fc; --accent-glow: rgba(168, 85, 247, 0.15);
+      --gold: #22d3ee; --gold-soft: rgba(34, 211, 238, 0.10);
+      --muted: #6b7280; --muted-soft: rgba(107, 114, 128, 0.15);
+      --border: rgba(255,255,255,0.06); --font-serif: 'Young Serif', Georgia, serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; background: radial-gradient(ellipse at top, var(--accent-glow) 0%, transparent 50%); }
+    .hero::after { content: '↓'; position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); font-size: 2rem; opacity: 0.2; animation: drift 2s ease-in-out infinite; }
+    @keyframes drift { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+    .hero-logos { display: flex; align-items: center; justify-content: center; gap: 28px; margin-bottom: 40px; }
+    .hero-logos img { height: 44px; border-radius: 8px; }
+    .hero h1 { font-family: var(--font-serif); font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 400; line-height: 1.12; margin-bottom: 20px; }
+    .hero h1 .glow { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 560px; margin: 0 auto; }
+    .badge { display: inline-block; background: linear-gradient(135deg, var(--accent-glow), rgba(168,85,247,0.08)); border: 1px solid rgba(168,85,247,0.2); color: var(--accent-hover); padding: 6px 18px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 24px; }
+    .prepared-for { margin-top: 40px; padding: 16px 24px; background: var(--bg-elevated); border-radius: 10px; display: inline-block; border: 1px solid var(--border); }
+    .prepared-for .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 2px; }
+    .prepared-for .name { font-size: 1.1rem; font-weight: 700; }
+    section { padding: 80px 0; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .section-title { font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 400; margin-bottom: 16px; line-height: 1.2; }
+    .section-sub { color: var(--text-muted); font-size: 1rem; max-width: 640px; margin-bottom: 40px; }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 40px 0; }
+    .stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center; transition: all 0.3s ease; }
+    .stat:hover { transform: translateY(-2px); border-color: rgba(168,85,247,0.2); }
+    .stat .number { font-family: var(--font-serif); font-size: 2rem; font-weight: 400; color: var(--accent-hover); margin-bottom: 6px; line-height: 1; }
+    .stat .label { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; }
+    .stat.gold .number { color: var(--gold); }
+    .stat.muted .number { color: var(--muted); }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin: 24px 0; }
+    .card.problem { border-left: 3px solid var(--muted); background: linear-gradient(135deg, var(--muted-soft), transparent 40%); }
+    .card.opportunity { border-left: 3px solid var(--accent); background: linear-gradient(135deg, var(--accent-glow), transparent 40%); }
+    .card.win { border-left: 3px solid var(--gold); background: linear-gradient(135deg, var(--gold-soft), transparent 40%); }
+    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; }
+    .card.problem h3 { color: var(--muted); }
+    .card.opportunity h3 { color: var(--accent-hover); }
+    .card.win h3 { color: var(--gold); }
+    .card ul { list-style: none; margin: 0; }
+    .card li { position: relative; padding: 7px 0 7px 28px; color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; border-bottom: 1px solid var(--border); }
+    .card li:last-child { border-bottom: none; }
+    .card.problem li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+    .card.opportunity li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+    .card.win li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+    .card li strong { color: var(--text); }
+    .callout { text-align: center; padding: 48px 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; margin: 40px 0; position: relative; overflow: hidden; }
+    .callout::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold)); }
+    .callout .number { font-family: var(--font-serif); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 400; margin-bottom: 10px; line-height: 1; }
+    .callout .number.gold { color: var(--gold); }
+    .callout .number.muted { color: var(--muted); }
+    .callout .label { font-size: 1.1rem; color: var(--text-muted); }
+    .callout .sublabel { font-size: 0.85rem; color: var(--text-muted); opacity: 0.7; margin-top: 6px; }
+    .timeline { margin: 40px 0; }
+    .phase { display: grid; grid-template-columns: 100px 1fr; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .phase:last-child { border-bottom: none; }
+    .phase-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); padding-top: 4px; }
+    .phase h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .phase p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+    .phase .result { margin-top: 10px; padding: 10px 14px; background: var(--gold-soft); border-left: 3px solid var(--gold); border-radius: 8px; font-size: 0.85rem; color: var(--gold); }
+    .cta { text-align: center; background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 60%); padding: 80px 0; }
+    .cta-card { max-width: 540px; margin: 0 auto; background: var(--bg-card); border: 2px solid var(--accent); border-radius: 20px; padding: 40px 32px; position: relative; overflow: hidden; }
+    .cta-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold)); }
+    .cta-card h2 { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 400; margin-bottom: 16px; line-height: 1.2; }
+    .cta-card p { color: var(--text-muted); margin-bottom: 28px; font-size: 1rem; }
+    .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-hover)); color: white; padding: 16px 40px; border-radius: 10px; font-size: 1.05rem; font-weight: 800; text-decoration: none; transition: all 0.2s ease; }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(168,85,247,0.35); }
+    .footer { text-align: center; padding: 48px 24px; border-top: 1px solid var(--border); }
+    .footer p { color: var(--text-muted); font-size: 0.85rem; }
+    .footer .mark { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; opacity: 0.5; }
+    .footer .mark span { font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 768px) { .hero-logos { flex-wrap: wrap; gap: 12px; } .stats-row { grid-template-columns: 1fr 1fr; } .phase { grid-template-columns: 1fr; } .phase-label { padding-top: 0; margin-bottom: -12px; } }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-logos">
+        <img src="https://flakeandflake.com/wp-content/uploads/2025/07/Flake-and-Flake-Logo.jpg" alt="Flake & Flake" style="background: white; padding: 8px 12px; border-radius: 8px;">
+        <span style="font-size: 1.5rem; opacity: 0.2;">×</span>
+        <img src="/gull-logo.png" alt="GullStack">
+      </div>
+      <div class="badge">Growth Proposal</div>
+      <h1>Your Credentials Are Elite. <span class="glow">Your Website Doesn't Show It.</span></h1>
+      <p>A former Assistant US Attorney. A designated Super Lawyer. University of Michigan Law. But online, families in crisis can't find you — and when they do, your old brand name greets them.</p>
+      <div class="prepared-for">
+        <div class="label">Prepared for</div>
+        <div class="name">Flake & Flake — Henderson, Nevada</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Cost of Standing Still</div>
+        <div class="section-title">Every day, Henderson families hire lesser attorneys because they found them first.</div>
+        <p class="section-sub">Your combined credentials — former federal prosecutor, Super Lawyer designation, top-10 law school — are among the strongest in Nevada. But families searching for help don't know you exist.</p>
+
+        <div class="callout">
+          <div class="number muted">"Confidence Legal"</div>
+          <div class="label">Your old brand name still appears on live pages</div>
+          <div class="sublabel">Visitors see a brand that no longer exists. This erodes trust at the exact moment they need to believe in you.</div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <div class="number">14,800+</div>
+            <div class="label">Monthly searches for PI lawyers in Las Vegas / Henderson</div>
+          </div>
+          <div class="stat muted">
+            <div class="number">11</div>
+            <div class="label">Total pages on your site<br><span style="font-size:0.75rem;">(competitors have 50-100+)</span></div>
+          </div>
+          <div class="stat">
+            <div class="number">73%</div>
+            <div class="label">Of people searching for lawyers hire one they found online</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Diagnosis</div>
+        <div class="section-title">Elite credentials. Invisible digital presence.</div>
+        <p class="section-sub">We audited every page of flakeandflake.com. Here's what we found — and what potential clients experience when they visit.</p>
+
+        <div class="card problem">
+          <h3>Critical Issues We Found</h3>
+          <ul>
+            <li><strong>"Confidence Legal" still on live pages</strong> — Your estate planning page says "Call Confidence Legal today" twice. Social media profiles still link to the old brand. This is a trust killer.</li>
+            <li><strong>Only 11 total pages</strong> — Competing Henderson/Vegas law firms have 50-100+ pages. You're bringing a business card to a content war.</li>
+            <li><strong>Only 2 blog posts</strong> — One has a URL typo (/estate-plannings/ with an extra "s"). For a firm competing in PI and estate planning, this is near-invisible to Google.</li>
+            <li><strong>No dedicated Personal Injury page</strong> — PI is a massive keyword category. Your services page lumps everything together. Each practice area needs its own deep, authoritative page.</li>
+            <li><strong>Zero local SEO pages</strong> — No Henderson, Las Vegas, or Boulder City landing pages. Local search is how 73% of legal clients find their attorney.</li>
+            <li><strong>No LegalService or Attorney schema</strong> — Basic Yoast defaults only. Google and AI search engines can't properly categorize your expertise.</li>
+            <li><strong>GoDaddy + Divi = slow and bloated</strong> — Page speed directly impacts search rankings and visitor trust.</li>
+            <li><strong>No case results or settlement amounts</strong> — PI clients want to see numbers before they call. Your competitors show them.</li>
+            <li><strong>Copyright says 2024</strong> — Small detail, but signals the site isn't actively maintained.</li>
+          </ul>
+        </div>
+
+        <div class="card opportunity">
+          <h3>What You Have That Competitors Don't</h3>
+          <ul>
+            <li><strong>Troy: former Asst. US Attorney AND SEC Trial Attorney</strong> — He literally defended the federal government and now fights for plaintiffs against it. That insider knowledge is a category-defining advantage.</li>
+            <li><strong>Jordan: designated "Super Lawyer"</strong> — Only a select few receive this recognition in Estate Planning & Probate. This should be front and center on every page.</li>
+            <li><strong>Both: University of Michigan Law School</strong> — Top-10 law school. This signals elite caliber to anyone doing due diligence.</li>
+            <li><strong>14-question VA FAQ page</strong> — Genuinely excellent legal content. Covers everything from FTCA deadlines to fee caps. Just needs FAQPage schema to become an AI search magnet.</li>
+            <li><strong>FTCA blog post reads like a law review article</strong> — Authoritative, detailed, properly sourced. The kind of content AI engines love to cite.</li>
+            <li><strong>"Brothers and Partners" story</strong> — Grew up on ranches in Montana and Utah. Relatable, trustworthy, human. In a sea of corporate law firms, this is gold.</li>
+            <li><strong>Veterans niche</strong> — Underserved, high-value, emotionally compelling. Troy should be THE lawyer veterans think of in Nevada.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="fade-in" style="max-width: 640px; margin: 0 auto; text-align: center;">
+        <div class="section-label">Imagine This</div>
+        <div class="section-title" style="font-size: clamp(1.6rem, 3vw, 2.2rem); font-style: italic; color: var(--accent-hover);">
+          A veteran in Henderson searches "can I sue the VA for medical malpractice." Troy Flake literally prosecuted cases for the federal government and now fights for veterans. But that veteran never finds Troy. They find a generic PI mill instead.
+        </div>
+        <p class="section-sub" style="margin: 20px auto 0;">
+          That case — worth $100K, $300K, or more — goes to a lawyer with a fraction of Troy's experience. Because they had a better website. This happens every day.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Strategy</div>
+        <div class="section-title">From invisible to inevitable.</div>
+        <p class="section-sub">We'll clean up the brand confusion, build the pages you're missing, implement the technical framework that makes Google and AI search engines treat you as the authority you are — and create a content engine that compounds.</p>
+
+        <div class="timeline">
+          <div class="phase">
+            <div class="phase-label">Week 1-2</div>
+            <div>
+              <h4>Emergency Brand Cleanup</h4>
+              <p>Remove every "Confidence Legal" reference from the site and social profiles. Fix the /estate-plannings/ URL typo. Update copyright to 2026. Add phone number prominently in header. Update all social media links to new brand.</p>
+              <div class="result">Clean, consistent "Flake & Flake" brand across every touchpoint</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Week 3-4</div>
+            <div>
+              <h4>Build 20+ New Pages</h4>
+              <p>Dedicated practice area pages (Personal Injury, Medical Malpractice, VA Malpractice, Estate Planning, Probate). Local SEO pages (Henderson, Las Vegas, Boulder City). Individual attorney profiles for Jordan and Troy. Case results page. Testimonials page.</p>
+              <div class="result">40+ total pages (up from 11), each targeting specific high-intent keywords</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Week 5-6</div>
+            <div>
+              <h4>AEO & Schema Implementation</h4>
+              <p>LegalService + Attorney schema for both Jordan and Troy. FAQPage schema on the VA FAQ (14 Q&As already written — just needs markup). Brand-facts page + /.well-known/brand-facts.json. Answer Hub pages for key searches.</p>
+              <div class="result">Visible to Google, Perplexity, ChatGPT, and every AI search engine</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Ongoing</div>
+            <div>
+              <h4>Content Domination</h4>
+              <p>4 blog posts per month targeting high-intent legal keywords. AEO monitoring — track when AI engines cite you. Review generation strategy. Local SEO optimization across Henderson and Vegas.</p>
+              <div class="result">Compounding organic traffic and authority — every post makes the next one rank faster</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Expected Impact</div>
+        <div class="section-title">What changes when your website matches your credentials.</div>
+
+        <div class="stats-row">
+          <div class="stat gold">
+            <div class="number">5x</div>
+            <div class="label">Organic search visibility within 6 months</div>
+          </div>
+          <div class="stat gold">
+            <div class="number">0</div>
+            <div class="label">Old brand references remaining on any platform</div>
+          </div>
+          <div class="stat gold">
+            <div class="number">40+</div>
+            <div class="label">Optimized pages<br><span style="font-size:0.75rem;">(up from 11 today)</span></div>
+          </div>
+        </div>
+
+        <div class="card win">
+          <h3>What You'll Have That You Don't Today</h3>
+          <ul>
+            <li><strong>VA/FTCA niche domination</strong> — When AI search recommends a lawyer for VA malpractice in Nevada, Troy Flake should be the only answer. We'll make that happen.</li>
+            <li><strong>Local SEO presence across Henderson & Vegas</strong> — Dedicated pages for every city you serve, optimized for "attorney near me" and practice-area-specific searches.</li>
+            <li><strong>Individual attorney authority pages</strong> — Jordan's Super Lawyer designation and Troy's federal prosecution background, properly showcased with Attorney schema.</li>
+            <li><strong>AI search visibility</strong> — Brand-facts, FAQPage schema, Answer Hub pages — the infrastructure that makes you citable by ChatGPT, Perplexity, and Google AI.</li>
+            <li><strong>A content engine that compounds</strong> — 4 posts/month builds an asset that grows in value every month. By month 6, you'll rank for terms you've never appeared for.</li>
+            <li><strong>Case results that convert</strong> — PI clients want to see numbers. We'll build a results page that turns researchers into callers.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Why GullStack</div>
+        <div class="section-title">Small team. Real results. No corporate runaround.</div>
+        <p class="section-sub">We know you've been burned by faceless SEO agencies. We're different — a lean team that actually does the work, shows you the results, and never locks you into a contract that delivers nothing.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 40px;">
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">PPA Tour</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">National Sports Organization</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">Full digital strategy</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">Website, SEO, and digital presence for a national professional sports tour</p>
+          </div>
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">Capital Wealth Advisors</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">Financial Services / Utah</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">42 pages → Complete rebuild</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">SEO audit, AEO optimization, federal niche market domination strategy</p>
+          </div>
+        </div>
+
+        <div class="card opportunity" style="margin-top: 32px;">
+          <h3>What Makes Us Different</h3>
+          <ul>
+            <li><strong>We actually do the work</strong> — No outsourcing to overseas teams. No junior account managers. Your site is built by us, personally.</li>
+            <li><strong>AI-powered, human-directed</strong> — We use AI to work faster and smarter, but every strategy decision is made by people who understand your practice.</li>
+            <li><strong>SEO + AEO built in from day one</strong> — Not an afterthought. Every page is designed to rank in Google AND be cited by AI search engines.</li>
+            <li><strong>No bloated contracts</strong> — Clear scope, clear deliverables, clear timeline. You'll know exactly what you're getting. No 6-month lockup.</li>
+            <li><strong>We understand professional services</strong> — Law firms, financial advisors, medical practices. We know your clients are making high-stakes decisions and your website needs to earn trust fast.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Investment</div>
+        <div class="section-title">Premium results. Honest pricing.</div>
+        <p class="section-sub">No hidden fees. No long-term lock-in. A complete website overhaul with ongoing growth that turns your credentials into clients.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px;">
+          <div class="card win" style="margin: 0; text-align: center;">
+            <h3 style="color: var(--gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Website Overhaul</h3>
+            <div style="font-family: var(--font-serif); font-size: 3rem; color: var(--gold); margin: 16px 0 8px;">$4,737</div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">One-time investment</p>
+            <ul style="text-align: left;">
+              <li><strong>Complete brand cleanup</strong> — remove all Confidence Legal references</li>
+              <li><strong>20+ new professionally written pages</strong> — practice areas + local SEO</li>
+              <li><strong>Dedicated PI, med mal, VA malpractice pages</strong> — each targeting high-intent keywords</li>
+              <li><strong>Individual attorney profiles</strong> — Jordan and Troy showcased properly</li>
+              <li><strong>LegalService + Attorney + FAQPage schema</strong> — full structured data</li>
+              <li><strong>AEO framework</strong> — brand-facts, Answer Hubs, AI-ready content</li>
+              <li><strong>Case results & testimonials pages</strong> — convert researchers into callers</li>
+            </ul>
+          </div>
+          <div class="card opportunity" style="margin: 0; text-align: center;">
+            <h3 style="color: var(--accent-hover); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Monthly Growth</h3>
+            <div style="font-family: var(--font-serif); font-size: 3rem; color: var(--accent-hover); margin: 16px 0 8px;">$697<span style="font-size: 1rem; color: var(--text-muted);">/mo</span></div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Ongoing growth & visibility</p>
+            <ul style="text-align: left;">
+              <li><strong>4 SEO-optimized blog posts per month</strong> — targeting high-intent legal keywords</li>
+              <li><strong>AEO monitoring & optimization</strong> — track AI search citations</li>
+              <li><strong>Local SEO management</strong> — Google Business Profile, citations, reviews</li>
+              <li><strong>Performance reporting</strong> — monthly traffic, ranking & lead reports</li>
+              <li><strong>Review generation strategy</strong> — systematic approach to building social proof</li>
+              <li><strong>Priority support</strong> — we're a message away</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Ready to match your online presence to your credentials?</h2>
+        <p>Your combined experience is among the strongest in Nevada. Let's build a digital presence that shows it — so the right clients find you first.</p>
+        <a href="mailto:bryce@gullstack.com?subject=Flake %26 Flake - Website Project&body=Hi Bryce,%0A%0AI'd like to discuss our website and digital strategy.%0A%0ABest regards" class="cta-btn">Let's Talk</a>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 16px;">30-minute strategy call · No commitment</p>
+        <div style="margin-top: 20px; padding: 12px 20px; background: var(--gold-soft); border: 1px solid rgba(34,211,238,0.2); border-radius: 8px; display: inline-block;">
+          <p style="color: var(--gold); font-size: 0.8rem; font-weight: 600; margin: 0;">We take 3 new clients per month. This proposal is reserved for 14 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="mark">
+      <span>GullStack</span>
+    </div>
+    <p><strong>Bryce Morgan</strong> · bryce@gullstack.com · GullStack.com</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
