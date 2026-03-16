@@ -85,6 +85,18 @@
     .footer .mark span { font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; margin: 24px 0; background: var(--bg-card); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+    .data-table thead th { background: var(--bg-elevated); padding: 14px 18px; text-align: left; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-hover); border-bottom: 2px solid var(--border); }
+    .data-table tbody td { padding: 12px 18px; font-size: 0.9rem; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover { background: rgba(168, 85, 247, 0.05); }
+    .data-table .highlight-row td { color: var(--text); font-weight: 600; }
+    .data-table .muted-row td { opacity: 0.5; }
+    .data-table .gold-val { color: var(--gold); font-weight: 700; }
+    .data-table .accent-val { color: var(--accent-hover); font-weight: 700; }
+    .data-table .muted-val { color: var(--muted); font-weight: 700; }
+    .data-table .danger-val { color: #ef4444; font-weight: 600; font-size: 0.8rem; }
     @media (max-width: 768px) { .hero-logos { flex-wrap: wrap; gap: 12px; } .stats-row { grid-template-columns: 1fr 1fr; } .phase { grid-template-columns: 1fr; } .phase-label { padding-top: 0; margin-bottom: -12px; } }
   </style>
 </head>
@@ -184,55 +196,113 @@
         <div class="section-title">Same city. Same practice areas. Wildly different digital presence.</div>
         <p class="section-sub">We pulled live SEMrush data on your site vs. Henderson/Vegas competitors. The gap between your credentials and your online visibility is staggering.</p>
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0;">
-          <div class="card problem" style="margin: 0; text-align: center;">
-            <h3 style="font-size: 0.9rem;">Flake & Flake</h3>
-            <div style="font-family: var(--font-serif); font-size: 2.5rem; color: var(--muted); margin: 12px 0;">8</div>
-            <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 8px;">Organic keywords</p>
-            <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--muted); margin: 8px 0;">42</div>
-            <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 8px;">Monthly visitors</p>
-            <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--muted); margin: 8px 0;">$0</div>
-            <p style="color: var(--text-muted); font-size: 0.8rem;">Traffic value</p>
-          </div>
-          <div class="card opportunity" style="margin: 0; text-align: center;">
-            <h3 style="font-size: 0.9rem;">GGRM Law Firm</h3>
-            <div style="font-family: var(--font-serif); font-size: 2.5rem; color: var(--accent-hover); margin: 12px 0;">2,449</div>
-            <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 8px;">Organic keywords</p>
-            <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--accent-hover); margin: 8px 0;">3,978</div>
-            <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 8px;">Monthly visitors</p>
-            <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--accent-hover); margin: 8px 0;">$29,852</div>
-            <p style="color: var(--text-muted); font-size: 0.8rem;">Traffic value/mo</p>
-          </div>
-          <div class="card win" style="margin: 0; text-align: center;">
-            <h3 style="font-size: 0.9rem;">Benson & Bingham</h3>
-            <div style="font-family: var(--font-serif); font-size: 2.5rem; color: var(--gold); margin: 12px 0;">8,605</div>
-            <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 8px;">Organic keywords</p>
-            <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--gold); margin: 8px 0;">11,696</div>
-            <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 8px;">Monthly visitors</p>
-            <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--gold); margin: 8px 0;">$696,152</div>
-            <p style="color: var(--text-muted); font-size: 0.8rem;">Traffic value/mo</p>
-          </div>
-        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Firm</th>
+              <th>Organic Keywords</th>
+              <th>Monthly Traffic</th>
+              <th>Traffic Value ($/mo)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight-row">
+              <td><span class="muted-val">Flake & Flake</span></td>
+              <td><span class="muted-val">8</span></td>
+              <td><span class="muted-val">42</span></td>
+              <td><span class="muted-val">$0</span></td>
+            </tr>
+            <tr>
+              <td>GGRM Law Firm</td>
+              <td><span class="accent-val">2,449</span></td>
+              <td><span class="accent-val">3,978</span></td>
+              <td><span class="accent-val">$29,852</span></td>
+            </tr>
+            <tr>
+              <td>Benson & Bingham</td>
+              <td><span class="gold-val">8,605</span></td>
+              <td><span class="gold-val">11,696</span></td>
+              <td><span class="gold-val">$696,152</span></td>
+            </tr>
+          </tbody>
+        </table>
 
-        <p style="text-align: center; color: var(--text-muted); font-style: italic; margin: 24px 0 40px;">
-          Benson & Bingham's organic traffic is worth <strong style="color: var(--gold);">$696,152/month</strong> in equivalent Google Ads spend. Yours is worth $0. Same city. Same practice areas.
+        <p style="text-align: center; color: var(--text-muted); font-style: italic; margin: 8px 0 40px; font-size: 0.85rem;">
+          Source: SEMrush US database, March 2026 · Benson & Bingham's organic traffic is worth <strong style="color: var(--gold);">$696,152/month</strong> in equivalent Google Ads spend. Yours is worth $0.
         </p>
 
-        <div class="card opportunity">
-          <h3>Keywords You Should Own — But Don't</h3>
-          <ul>
-            <li><strong>personal injury lawyer las vegas</strong> — 3,600 searches/mo · $108 CPC · NOT RANKING</li>
-            <li><strong>car accident attorney las vegas</strong> — 3,600 searches/mo · $138 CPC · NOT RANKING</li>
-            <li><strong>medical malpractice attorney las vegas</strong> — 880 searches/mo · $7 CPC · NOT RANKING</li>
-            <li><strong>probate lawyer las vegas</strong> — 590 searches/mo · $27 CPC · NOT RANKING</li>
-            <li><strong>slip and fall attorney las vegas</strong> — 480 searches/mo · $153 CPC · NOT RANKING</li>
-            <li><strong>personal injury attorney henderson nv</strong> — 320 searches/mo · $69 CPC · NOT RANKING</li>
-            <li><strong>personal injury lawyer henderson</strong> — 320 searches/mo · $58 CPC · NOT RANKING</li>
-            <li><strong>estate planning las vegas</strong> — 260 searches/mo · $9 CPC · NOT RANKING</li>
-            <li><strong>federal tort claims attorney</strong> — 170 searches/mo · $15 CPC · NOT RANKING (Troy should OWN this)</li>
-            <li><strong>car accident lawyer henderson nv</strong> — 170 searches/mo · NOT RANKING (no page exists)</li>
-          </ul>
-        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Keyword</th>
+              <th>Monthly Searches</th>
+              <th>CPC Value</th>
+              <th>Flake & Flake</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>personal injury lawyer las vegas</td>
+              <td><span class="gold-val">3,600</span></td>
+              <td>$108.26</td>
+              <td><span class="danger-val">NOT RANKING</span></td>
+            </tr>
+            <tr>
+              <td>car accident attorney las vegas</td>
+              <td><span class="gold-val">3,600</span></td>
+              <td>$138.02</td>
+              <td><span class="danger-val">NOT RANKING</span></td>
+            </tr>
+            <tr>
+              <td>medical malpractice attorney las vegas</td>
+              <td><span class="accent-val">880</span></td>
+              <td>$7.36</td>
+              <td><span class="danger-val">NOT RANKING</span></td>
+            </tr>
+            <tr>
+              <td>probate lawyer las vegas</td>
+              <td><span class="accent-val">590</span></td>
+              <td>$27.02</td>
+              <td><span class="danger-val">NOT RANKING</span></td>
+            </tr>
+            <tr>
+              <td>slip and fall attorney las vegas</td>
+              <td><span class="accent-val">480</span></td>
+              <td>$153.38</td>
+              <td><span class="danger-val">NOT RANKING</span></td>
+            </tr>
+            <tr>
+              <td>personal injury attorney henderson nv</td>
+              <td>320</td>
+              <td>$68.74</td>
+              <td><span class="danger-val">NOT RANKING</span></td>
+            </tr>
+            <tr>
+              <td>personal injury lawyer henderson</td>
+              <td>320</td>
+              <td>$57.65</td>
+              <td><span class="danger-val">NOT RANKING</span></td>
+            </tr>
+            <tr>
+              <td>estate planning las vegas</td>
+              <td>260</td>
+              <td>$8.90</td>
+              <td><span class="danger-val">NOT RANKING</span></td>
+            </tr>
+            <tr>
+              <td>federal tort claims attorney</td>
+              <td>170</td>
+              <td>$14.50</td>
+              <td><span class="danger-val">NOT RANKING</span></td>
+            </tr>
+            <tr>
+              <td>car accident lawyer henderson nv</td>
+              <td>170</td>
+              <td>—</td>
+              <td><span class="danger-val">NO PAGE EXISTS</span></td>
+            </tr>
+          </tbody>
+        </table>
 
         <div class="callout">
           <div class="number gold">10,390+</div>
