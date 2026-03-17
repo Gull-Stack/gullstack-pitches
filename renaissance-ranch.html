@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renaissance Ranch × GullStack | Digital Recovery Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a1a;
+      --bg-elevated: #111128;
+      --bg-card: #16163a;
+      --text: #f0f0f5;
+      --text-muted: #8888a8;
+      --accent: #a855f7;
+      --accent-hover: #c084fc;
+      --accent-glow: rgba(168, 85, 247, 0.15);
+      --gold: #22d3ee;
+      --gold-soft: rgba(34, 211, 238, 0.10);
+      --muted: #6b7280;
+      --muted-soft: rgba(107, 114, 128, 0.15);
+      --red: #ef4444;
+      --red-soft: rgba(239, 68, 68, 0.10);
+      --green: #22c55e;
+      --green-soft: rgba(34, 197, 94, 0.10);
+      --border: rgba(255,255,255,0.06);
+      --font-serif: 'Young Serif', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative;
+      background: radial-gradient(ellipse at top, var(--accent-glow) 0%, transparent 50%);
+    }
+
+    .hero::after {
+      content: '↓'; position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%); font-size: 2rem; opacity: 0.2;
+      animation: drift 2s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 400; line-height: 1.12; margin-bottom: 20px;
+    }
+    .hero h1 .glow {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--text-muted); max-width: 600px; margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-glow), rgba(168,85,247,0.08));
+      border: 1px solid rgba(168,85,247,0.2);
+      color: var(--accent-hover); padding: 6px 18px; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+
+    .prepared-for {
+      margin-top: 40px; padding: 16px 24px;
+      background: var(--bg-elevated); border-radius: 10px; display: inline-block;
+      border: 1px solid var(--border);
+    }
+    .prepared-for .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 2px; }
+    .prepared-for .name { font-size: 1.1rem; font-weight: 700; }
+
+    /* Sections */
+    section { padding: 80px 0; }
+
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400; margin-bottom: 16px; line-height: 1.2;
+    }
+    .section-sub {
+      color: var(--text-muted); font-size: 1rem; max-width: 640px; margin-bottom: 40px;
+    }
+
+    /* Stats */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin: 40px 0;
+    }
+
+    .stat {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px; text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-2px);
+      border-color: rgba(168,85,247,0.2);
+    }
+
+    .stat .number {
+      font-family: var(--font-serif); font-size: 2rem; font-weight: 400;
+      color: var(--accent-hover); margin-bottom: 6px; line-height: 1;
+    }
+
+    .stat .label {
+      color: var(--text-muted); font-size: 0.85rem; line-height: 1.4;
+    }
+
+    .stat.gold .number { color: var(--gold); }
+    .stat.muted .number { color: var(--muted); }
+    .stat.red .number { color: var(--red); }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px; margin: 24px 0;
+    }
+
+    .card.problem {
+      border-left: 3px solid var(--red);
+      background: linear-gradient(135deg, var(--red-soft), transparent 40%);
+    }
+    .card.opportunity {
+      border-left: 3px solid var(--accent);
+      background: linear-gradient(135deg, var(--accent-glow), transparent 40%);
+    }
+    .card.win {
+      border-left: 3px solid var(--gold);
+      background: linear-gradient(135deg, var(--gold-soft), transparent 40%);
+    }
+
+    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; }
+    .card.problem h3 { color: var(--red); }
+    .card.opportunity h3 { color: var(--accent-hover); }
+    .card.win h3 { color: var(--gold); }
+
+    .card ul { list-style: none; margin: 0; }
+    .card li {
+      position: relative; padding: 7px 0 7px 28px;
+      color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;
+      border-bottom: 1px solid var(--border);
+    }
+    .card li:last-child { border-bottom: none; }
+    .card.problem li::before { content: '✕'; position: absolute; left: 0; color: var(--red); font-weight: 600; }
+    .card.opportunity li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+    .card.win li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+    .card li strong { color: var(--text); }
+
+    /* Callout */
+    .callout {
+      text-align: center; padding: 48px 32px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; margin: 40px 0;
+      position: relative; overflow: hidden;
+    }
+    .callout::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
+    }
+    .callout .number {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 400; margin-bottom: 10px; line-height: 1;
+    }
+    .callout .number.gold { color: var(--gold); }
+    .callout .number.muted { color: var(--muted); }
+    .callout .number.red { color: var(--red); }
+    .callout .label { font-size: 1.1rem; color: var(--text-muted); }
+    .callout .sublabel { font-size: 0.85rem; color: var(--text-muted); opacity: 0.7; margin-top: 6px; }
+
+    /* Score gauge */
+    .score-section {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px; margin: 40px 0;
+    }
+
+    .score-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 32px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .score-card .score-number {
+      font-family: var(--font-serif);
+      font-size: 3.5rem; font-weight: 400; line-height: 1;
+      margin-bottom: 4px;
+    }
+    .score-card .score-total {
+      font-size: 1rem; color: var(--text-muted); margin-bottom: 16px;
+    }
+    .score-card .score-label {
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;
+    }
+    .score-card .score-desc {
+      font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;
+    }
+
+    .score-bar {
+      width: 100%; height: 8px; background: rgba(255,255,255,0.06);
+      border-radius: 4px; margin: 16px 0; overflow: hidden;
+    }
+    .score-bar .fill {
+      height: 100%; border-radius: 4px; transition: width 1s ease;
+    }
+    .score-bar .fill.red { background: var(--red); }
+    .score-bar .fill.orange { background: #f59e0b; }
+    .score-bar .fill.green { background: var(--green); }
+
+    /* 404 table */
+    .status-table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      background: var(--bg-card); border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .status-table th {
+      background: var(--bg-elevated); padding: 14px 20px;
+      text-align: left; font-size: 0.8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .status-table td {
+      padding: 14px 20px; border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .status-table tr:last-child td { border-bottom: none; }
+    .status-badge {
+      display: inline-block; padding: 4px 10px; border-radius: 6px;
+      font-size: 0.75rem; font-weight: 700;
+    }
+    .status-badge.dead { background: var(--red-soft); color: var(--red); }
+    .status-badge.live { background: var(--green-soft); color: var(--green); }
+
+    /* Competitor table */
+    .comp-table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      background: var(--bg-card); border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .comp-table th {
+      background: var(--bg-elevated); padding: 14px 16px;
+      text-align: left; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .comp-table td {
+      padding: 14px 16px; border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table tr.highlight td { background: rgba(239,68,68,0.05); }
+
+    /* Timeline */
+    .timeline { margin: 40px 0; }
+
+    .phase {
+      display: grid; grid-template-columns: 100px 1fr; gap: 20px;
+      padding: 24px 0; border-bottom: 1px solid var(--border);
+    }
+    .phase:last-child { border-bottom: none; }
+
+    .phase-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--accent);
+      padding-top: 4px;
+    }
+
+    .phase h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .phase p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+
+    .phase .result {
+      margin-top: 10px; padding: 10px 14px;
+      background: var(--gold-soft); border-left: 3px solid var(--gold);
+      border-radius: 8px; font-size: 0.85rem; color: var(--gold);
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 60%);
+      padding: 80px 0;
+    }
+
+    .cta-card {
+      max-width: 540px; margin: 0 auto;
+      background: var(--bg-card); border: 2px solid var(--accent);
+      border-radius: 20px; padding: 40px 32px;
+      position: relative; overflow: hidden;
+    }
+    .cta-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
+    }
+
+    .cta-card h2 {
+      font-family: var(--font-serif); font-size: 1.8rem;
+      font-weight: 400; margin-bottom: 16px; line-height: 1.2;
+    }
+    .cta-card p { color: var(--text-muted); margin-bottom: 28px; font-size: 1rem; }
+
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: white; padding: 16px 40px; border-radius: 10px;
+      font-size: 1.05rem; font-weight: 800; text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(168,85,247,0.35);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center; padding: 48px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .footer p { color: var(--text-muted); font-size: 0.85rem; }
+    .footer .mark {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; margin-bottom: 12px; opacity: 0.5;
+    }
+    .footer .mark img { height: 28px; }
+    .footer .mark span { font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .score-section { grid-template-columns: 1fr; }
+      .phase { grid-template-columns: 1fr; }
+      .phase-label { padding-top: 0; margin-bottom: -12px; }
+      .comp-table { font-size: 0.75rem; }
+      .comp-table th, .comp-table td { padding: 10px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge">Digital Assessment + Growth Proposal</div>
+      <h1>20 Years of Saving Lives.<br><span class="glow">Invisible Online.</span></h1>
+      <p>Renaissance Ranch has world-class addiction treatment, third-party audited outcomes, and 7 facilities across 2 states. But competitors with half your credentials capture 31x more families in crisis.</p>
+      <div class="prepared-for">
+        <div class="label">Prepared for</div>
+        <div class="name">Renaissance Ranch Treatment Centers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overall Score -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Digital Health Assessment</div>
+        <div class="section-title">Your overall digital score: 24 out of 100.</div>
+        <p class="section-sub">We audited renaissanceranch.net across three critical dimensions: SEO performance, AI/Answer Engine Optimization, and User Experience. Here's where things stand.</p>
+
+        <div class="score-section">
+          <div class="score-card">
+            <div class="score-number" style="color: var(--red);">31</div>
+            <div class="score-total">out of 100</div>
+            <div class="score-bar"><div class="fill red" style="width: 31%;"></div></div>
+            <div class="score-label">SEO</div>
+            <div class="score-desc">2,741 keywords but only 2,616 monthly visits. 60% of traffic is branded searches. Zero non-branded treatment terms in top 10.</div>
+          </div>
+          <div class="score-card">
+            <div class="score-number" style="color: var(--red);">12</div>
+            <div class="score-total">out of 100</div>
+            <div class="score-bar"><div class="fill red" style="width: 12%;"></div></div>
+            <div class="score-label">AEO (AI Visibility)</div>
+            <div class="score-desc">No brand-facts page. No FAQ schema. No LocalBusiness schema per facility. AI assistants cannot find or recommend you.</div>
+          </div>
+          <div class="score-card">
+            <div class="score-number" style="color: #f59e0b;">28</div>
+            <div class="score-total">out of 100</div>
+            <div class="score-bar"><div class="fill orange" style="width: 28%;"></div></div>
+            <div class="score-label">UX / UI</div>
+            <div class="score-desc">572KB bloated homepage. 103 images, zero lazy-loaded. No mobile viewport tag. 5 critical pages return 404. Divi builder feels dated.</div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="number red">24.4</div>
+          <div class="label">Overall Digital Health Score</div>
+          <div class="sublabel">Weighted average: SEO (40%) + AEO (30%) + UX/UI (30%)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Deep Dive -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">SEO Analysis — 31/100</div>
+        <div class="section-title">The brand everyone knows but search engines can't see.</div>
+        <p class="section-sub">With 2,741 organic keywords and a domain rank of 530,962, Renaissance Ranch is severely underperforming for a 20-year institution with 7 facilities.</p>
+
+        <div class="stats-row">
+          <div class="stat muted">
+            <div class="number">2,616</div>
+            <div class="label">Monthly organic visitors</div>
+          </div>
+          <div class="stat muted">
+            <div class="number">60%</div>
+            <div class="label">Traffic from branded searches only</div>
+          </div>
+          <div class="stat red">
+            <div class="number">0</div>
+            <div class="label">Non-branded treatment terms in top 10</div>
+          </div>
+        </div>
+
+        <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin: 40px 0 16px;">Competitive Traffic Comparison</h3>
+
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Competitor</th>
+              <th>Organic Keywords</th>
+              <th>Monthly Traffic</th>
+              <th>vs. Renaissance Ranch</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Nova Recovery Center</strong></td>
+              <td>34,295</td>
+              <td>81,895/mo</td>
+              <td style="color: var(--red); font-weight: 700;">31x more traffic</td>
+            </tr>
+            <tr>
+              <td><strong>Clean Recovery Centers</strong></td>
+              <td>12,302</td>
+              <td>10,129/mo</td>
+              <td style="color: var(--red); font-weight: 700;">4x more traffic</td>
+            </tr>
+            <tr>
+              <td><strong>Alpine Recovery Lodge</strong></td>
+              <td>3,890</td>
+              <td>5,073/mo</td>
+              <td style="color: var(--red); font-weight: 700;">2x more traffic</td>
+            </tr>
+            <tr class="highlight">
+              <td><strong>Renaissance Ranch</strong></td>
+              <td>2,741</td>
+              <td>2,616/mo</td>
+              <td style="color: var(--text-muted);">Baseline</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="card problem">
+          <h3>Critical SEO Failures</h3>
+          <ul>
+            <li><strong>No non-branded rankings</strong> — Missing from "drug rehab utah," "alcohol treatment salt lake city," "faith based rehab," and every high-intent treatment keyword</li>
+            <li><strong>No meta description on homepage</strong> — Google writes its own snippet (usually poorly)</li>
+            <li><strong>No canonical tags</strong> — Risk of duplicate content issues</li>
+            <li><strong>No Open Graph tags</strong> — Social shares display no preview image, title, or description</li>
+            <li><strong>5 critical pages return 404</strong> — Including the entire Utah facility page and all women's program pages</li>
+            <li><strong>No location-specific content</strong> — Zero pages targeting "rehab in [city]" for any of their 7 facility cities</li>
+            <li><strong>1,090 blog posts, poorly optimized</strong> — Massive content library with minimal SEO structure</li>
+          </ul>
+        </div>
+
+        <div class="card win">
+          <h3>What's Working (Build On This)</h3>
+          <ul>
+            <li><strong>#1 for branded terms</strong> — "renaissance ranch utah," "renaissance ranch idaho," etc.</li>
+            <li><strong>696 referring domains</strong> — Solid backlink foundation to leverage</li>
+            <li><strong>1,090 blog posts</strong> — Content volume exists, needs optimization</li>
+            <li><strong>Bible verses article ranks #1</strong> — Informational content can drive top-of-funnel traffic</li>
+            <li><strong>$19,871 organic traffic value</strong> — The keywords they DO rank for are valuable</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 404 Section -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Critical: Broken Navigation</div>
+        <div class="section-title">Families in crisis are hitting dead ends on your site.</div>
+        <p class="section-sub">5 key pages linked in your main navigation return 404 errors. Every click on these links is a family that needed help and hit a wall.</p>
+
+        <table class="status-table">
+          <thead>
+            <tr>
+              <th>Page</th>
+              <th>Status</th>
+              <th>Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Utah Facility</strong></td>
+              <td><span class="status-badge dead">404</span></td>
+              <td style="color: var(--text-muted);">Primary location page — broken</td>
+            </tr>
+            <tr>
+              <td><strong>Middleton Idaho Facility</strong></td>
+              <td><span class="status-badge dead">404</span></td>
+              <td style="color: var(--text-muted);">Idaho expansion market — broken</td>
+            </tr>
+            <tr>
+              <td><strong>Women's Treatment (main)</strong></td>
+              <td><span class="status-badge dead">404</span></td>
+              <td style="color: var(--red);">Entire women's program entry — gone</td>
+            </tr>
+            <tr>
+              <td><strong>Women's Logan</strong></td>
+              <td><span class="status-badge dead">404</span></td>
+              <td style="color: var(--text-muted);">Women's Utah location — broken</td>
+            </tr>
+            <tr>
+              <td><strong>Women's Sober Living</strong></td>
+              <td><span class="status-badge dead">404</span></td>
+              <td style="color: var(--text-muted);">Aftercare program — broken</td>
+            </tr>
+            <tr>
+              <td><strong>Men's Program</strong></td>
+              <td><span class="status-badge live">200</span></td>
+              <td style="color: var(--green);">Working</td>
+            </tr>
+            <tr>
+              <td><strong>Idaho Facility</strong></td>
+              <td><span class="status-badge live">200</span></td>
+              <td style="color: var(--green);">Working</td>
+            </tr>
+            <tr>
+              <td><strong>Logan Facility</strong></td>
+              <td><span class="status-badge live">200</span></td>
+              <td style="color: var(--green);">Working</td>
+            </tr>
+            <tr>
+              <td><strong>St. George Facility</strong></td>
+              <td><span class="status-badge live">200</span></td>
+              <td style="color: var(--green);">Working</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout">
+          <div class="number red">100%</div>
+          <div class="label">of women's program pages are broken</div>
+          <div class="sublabel">The entire women's treatment track is inaccessible from navigation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO Deep Dive -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">AEO Analysis — 12/100</div>
+        <div class="section-title">AI assistants don't know you exist.</div>
+        <p class="section-sub">When a desperate parent asks ChatGPT or Perplexity "best faith-based rehab in Utah," Renaissance Ranch likely doesn't appear. Here's why.</p>
+
+        <div class="stats-row">
+          <div class="stat red">
+            <div class="number">0</div>
+            <div class="label">Brand-facts pages<br>(AI identity document)</div>
+          </div>
+          <div class="stat red">
+            <div class="number">0</div>
+            <div class="label">FAQ schema pages<br>(AI answer formatting)</div>
+          </div>
+          <div class="stat red">
+            <div class="number">0</div>
+            <div class="label">LocalBusiness schemas<br>(per facility)</div>
+          </div>
+        </div>
+
+        <div class="card problem">
+          <h3>What AI Engines Need (And Can't Find)</h3>
+          <ul>
+            <li><strong>No /brand-facts page</strong> — AI models can't verify your credentials, founding date, outcomes, or specialties</li>
+            <li><strong>No /.well-known/brand-facts.json</strong> — The machine-readable identity file that AI agents use to verify businesses</li>
+            <li><strong>No FAQPage schema</strong> — AI assistants can't extract structured Q&A from your site</li>
+            <li><strong>No LocalBusiness schema per facility</strong> — Each of your 7 locations should have its own structured data</li>
+            <li><strong>No AggregateRating schema</strong> — Your success rates and reviews aren't machine-readable</li>
+            <li><strong>Only 1 Review schema</strong> — One testimonial marked up vs. the hundreds you likely have</li>
+            <li><strong>No Answer Hub content</strong> — No guide pages structured for AI to quote directly</li>
+          </ul>
+        </div>
+
+        <div class="card opportunity">
+          <h3>The AEO Opportunity: First-Mover Advantage</h3>
+          <ul>
+            <li><strong>Less than 1% of rehab facilities</strong> are optimized for AI search — first movers dominate for years</li>
+            <li><strong>Your outcomes data is PERFECT for AI citation</strong> — Third-party audited by Vista Research Group, exactly what AI trusts</li>
+            <li><strong>Faith-based differentiator</strong> — When AI compares treatment approaches, you own this category</li>
+            <li><strong>20+ year history</strong> — E-E-A-T signals (Experience, Expertise, Authority, Trust) that AI heavily weights</li>
+            <li><strong>Multi-location advantage</strong> — 7 facilities = 7 LocalBusiness schemas = broader AI coverage</li>
+            <li><strong>Band of Brothers alumni network</strong> — Unique social proof that AI can cite as differentiator</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UX/UI Deep Dive -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">UX/UI Analysis — 28/100</div>
+        <div class="section-title">Your website looks like 2021. Your program deserves 2026.</div>
+        <p class="section-sub">When a family Googles addiction treatment at 2 AM, your website is the first impression. Right now it's a bloated, broken, outdated page that doesn't match the quality of care you provide.</p>
+
+        <div class="stats-row">
+          <div class="stat red">
+            <div class="number">572 KB</div>
+            <div class="label">Homepage HTML size<br>(should be under 200 KB)</div>
+          </div>
+          <div class="stat red">
+            <div class="number">103</div>
+            <div class="label">Images on homepage<br>(zero lazy-loaded)</div>
+          </div>
+          <div class="stat red">
+            <div class="number">Missing</div>
+            <div class="label">Mobile viewport tag<br>(phones render incorrectly)</div>
+          </div>
+        </div>
+
+        <div class="card problem">
+          <h3>UX/UI Issues</h3>
+          <ul>
+            <li><strong>No mobile viewport meta tag</strong> — Site may render incorrectly on every smartphone visitor's screen</li>
+            <li><strong>Divi page builder (WordPress)</strong> — Heavy, slow framework from 2021 era. Adds significant bloat.</li>
+            <li><strong>Homepage is excessively long</strong> — Same video embedded twice, faith-based section repeated</li>
+            <li><strong>103 images, zero lazy-loaded</strong> — Every image loads upfront, killing mobile performance</li>
+            <li><strong>Image filenames non-descriptive</strong> — "galary-1.png" (misspelled "gallery") — no SEO value</li>
+            <li><strong>No clear CTA hierarchy</strong> — Phone number, insurance form, and consultation form compete for attention</li>
+            <li><strong>robots.txt references SEOnational.com</strong> — Previous agency's fingerprint still on the site</li>
+          </ul>
+        </div>
+
+        <div class="card win">
+          <h3>What's Working</h3>
+          <ul>
+            <li><strong>Video facility tours</strong> — Compelling, professional content that builds trust</li>
+            <li><strong>SSL certificate valid</strong> — HIPAA compliance signals present</li>
+            <li><strong>Insurance verification form</strong> — Critical conversion tool is present</li>
+            <li><strong>24/7 phone line (855-736-7262)</strong> — Emergency access point exists</li>
+            <li><strong>Staff photos and bios</strong> — Builds credibility (Dixon family story is powerful)</li>
+            <li><strong>GTM installed</strong> — Analytics tracking infrastructure exists</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emotional Hook -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in" style="max-width: 640px; margin: 0 auto; text-align: center;">
+        <div class="section-label">The Human Cost</div>
+        <div class="section-title" style="font-size: clamp(1.6rem, 3vw, 2.2rem); font-style: italic; color: var(--accent-hover);">
+          A mother in Provo searches "faith-based addiction help for my son" at 2 AM. She finds three competitors. She never finds Renaissance Ranch.
+        </div>
+        <p class="section-sub" style="margin: 20px auto 0;">
+          Your competitors don't have 20 years of outcomes data. They don't have the Band of Brothers. They don't have the Dixon family story. But they have better websites — and that's who gets the call.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategy -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Recovery Plan</div>
+        <div class="section-title">Three phases to digital dominance.</div>
+        <p class="section-sub">We'll fix the critical failures first, then build the infrastructure for long-term organic growth across all locations and both programs.</p>
+
+        <div class="timeline">
+          <div class="phase">
+            <div class="phase-label">Phase 1<br>Weeks 1-4</div>
+            <div>
+              <h4>Emergency Triage + Technical Foundation</h4>
+              <p>Fix all 5 broken 404 pages immediately. Add mobile viewport tag. Implement meta descriptions, canonical tags, and Open Graph tags across all pages. Optimize homepage performance (lazy loading, image compression, reduce HTML bloat from 572KB to under 200KB). Fix robots.txt.</p>
+              <div class="result">All pages live, mobile-friendly, technically sound — immediate trust improvement</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Phase 2<br>Weeks 5-12</div>
+            <div>
+              <h4>SEO + AEO Infrastructure Build</h4>
+              <p>Build location-specific landing pages for all 7 facilities. Create treatment-specific content optimized for non-branded keywords ("drug rehab utah," "faith based addiction treatment idaho"). Implement full AEO framework: brand-facts page, brand-facts.json, FAQPage schema on every service page, LocalBusiness schema per facility, AggregateRating markup. Create Answer Hub pages for AI citation.</p>
+              <div class="result">Non-branded keyword rankings begin, AI assistants start recommending Renaissance Ranch</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Phase 3<br>Months 4-6</div>
+            <div>
+              <h4>Content Acceleration + Authority Building</h4>
+              <p>Optimize the 1,090-post blog archive for SEO. Build city-specific pages for every metro area within driving distance of each facility. Launch alumni success stories as structured content. Create comparison pages ("faith-based vs secular rehab"). Digital PR campaign leveraging Vista Research outcomes data. Third-party citation building.</p>
+              <div class="result">Organic traffic 5-8x increase, dominant AI visibility, steady admission inquiries from search</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projected Impact -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Projected Impact</div>
+        <div class="section-title">Conservative 12-month projections.</div>
+        <p class="section-sub">Based on Renaissance Ranch's existing brand authority, backlink profile, and the performance of comparable rehab facilities after SEO investment.</p>
+
+        <div class="callout">
+          <div class="number gold">15,000+</div>
+          <div class="label">Projected monthly organic visitors (from 2,616 current)</div>
+          <div class="sublabel">5-8x increase based on competitor benchmarks and untapped keyword opportunity</div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat gold">
+            <div class="number">473%</div>
+            <div class="label">Projected traffic increase<br>within 12 months</div>
+          </div>
+          <div class="stat gold">
+            <div class="number">$115K+</div>
+            <div class="label">Projected organic traffic value<br>(from $19,871 current)</div>
+          </div>
+          <div class="stat gold">
+            <div class="number">37+</div>
+            <div class="label">Additional monthly admission inquiries<br>from organic search</div>
+          </div>
+        </div>
+
+        <div class="card win">
+          <h3>Why These Numbers Are Conservative</h3>
+          <ul>
+            <li><strong>696 referring domains already</strong> — Solid authority foundation means faster ranking improvements</li>
+            <li><strong>1,090 blog posts to optimize</strong> — Existing content just needs SEO structure, not creation from scratch</li>
+            <li><strong>Treatment keywords are high-value</strong> — Average CPC for "drug rehab utah" is $15-30, meaning organic traffic has massive value</li>
+            <li><strong>7 facilities = 7 local SEO opportunities</strong> — Each location can rank independently for local searches</li>
+            <li><strong>Nova Recovery proves the ceiling</strong> — A comparable facility achieves 81,895/mo traffic with proper SEO investment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Investment -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Investment</div>
+        <div class="section-title">What it takes to fix 20 years of digital neglect.</div>
+        <p class="section-sub">Renaissance Ranch's clinical program is world-class. The digital presence needs to match. Here's our recommendation.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 40px 0;">
+          <div class="card opportunity" style="margin: 0;">
+            <h3 style="color: var(--accent-hover);">Phase 1: Emergency Triage</h3>
+            <p style="color: var(--gold); font-family: var(--font-serif); font-size: 1.8rem; margin: 12px 0;">$4,750</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px;">One-time project (Weeks 1-4)</p>
+            <ul>
+              <li><strong>Fix all 404 pages</strong></li>
+              <li><strong>Mobile viewport + meta tags</strong></li>
+              <li><strong>Performance optimization</strong></li>
+              <li><strong>Technical SEO foundation</strong></li>
+            </ul>
+          </div>
+          <div class="card opportunity" style="margin: 0;">
+            <h3 style="color: var(--accent-hover);">Phase 2-3: Growth Engine</h3>
+            <p style="color: var(--gold); font-family: var(--font-serif); font-size: 1.8rem; margin: 12px 0;">$3,750/mo</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px;">Monthly retainer (6-month commitment)</p>
+            <ul>
+              <li><strong>Location-specific SEO pages</strong></li>
+              <li><strong>Full AEO framework build</strong></li>
+              <li><strong>Content optimization (1,090 posts)</strong></li>
+              <li><strong>AI visibility infrastructure</strong></li>
+              <li><strong>Monthly reporting + strategy</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 16px;">
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Total 6-month investment: <strong style="color: var(--text);">$27,250</strong> &nbsp;|&nbsp; Projected traffic value increase: <strong style="color: var(--gold);">$95,000+/mo</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Every day this isn't fixed, a family finds your competitor instead.</h2>
+        <p>Your 20-year track record, audited outcomes, and faith-based approach deserve to be found by every family that needs it.</p>
+        <a href="mailto:josh@gullstack.com?subject=Renaissance Ranch Digital Recovery&body=Hi Josh,%0A%0AWe'd like to discuss the digital assessment and next steps for Renaissance Ranch.%0A%0ABest regards" class="cta-btn">Let's Talk Recovery — Digital Recovery</a>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 16px;">30-minute strategy call · No commitment · HIPAA-conscious approach</p>
+        <div style="margin-top: 20px; padding: 12px 20px; background: var(--gold-soft); border: 1px solid rgba(34,211,238,0.2); border-radius: 8px; display: inline-block;">
+          <p style="color: var(--gold); font-size: 0.8rem; font-weight: 600; margin: 0;">We take 3 new clients per month. This proposal is reserved for 14 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="mark">
+      <img src="/gull-logo.png" alt="GullStack">
+      <span>GullStack</span>
+    </div>
+    <p><strong>Josh Cohen</strong> · josh@gullstack.com · GullStack.com</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
