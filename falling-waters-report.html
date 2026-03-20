@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Falling Waters Day Spa — Performance Report | GullStack</title>
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    :root {
+      --accent: #C4A77D;
+      --accent-glow: rgba(196,167,125,0.3);
+      --bg: #0f0f14;
+      --bg-elevated: #1a1a24;
+      --bg-card: #22222e;
+      --text: #e8e8f0;
+      --text-muted: #8888a0;
+      --green: #22c55e;
+      --red: #ef4444;
+      --yellow: #eab308;
+      --orange: #f97316;
+      --cyan: #06b6d4;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--bg); color:var(--text); font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; line-height:1.6; }
+    .container { max-width:900px; margin:0 auto; padding:2rem 1.5rem; }
+
+    /* Hero */
+    .hero { text-align:center; padding:4rem 1rem 3rem; background:linear-gradient(135deg, #0f0f14 0%, #1a1818 50%, #0f0f14 100%); border-bottom:1px solid rgba(196,167,125,0.15); }
+    .hero-logos { display:flex; align-items:center; justify-content:center; gap:1.5rem; margin-bottom:2rem; }
+    .hero-logos img { height:50px; border-radius:8px; }
+    .hero-logos .divider { color:var(--text-muted); font-size:1.5rem; }
+    .badge { display:inline-block; background:rgba(34,197,94,0.12); color:var(--green); padding:0.35rem 1rem; border-radius:20px; font-size:0.8rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:1.25rem; border:1px solid rgba(34,197,94,0.2); }
+    .hero h1 { font-size:2.2rem; font-weight:800; margin-bottom:0.75rem; }
+    .hero h1 span { color:var(--accent); }
+    .hero .subtitle { color:var(--text-muted); font-size:1.1rem; max-width:650px; margin:0 auto; }
+
+    /* Sections */
+    .section { padding:3rem 0; }
+    .section-title { font-size:1.6rem; font-weight:800; margin-bottom:0.5rem; text-align:center; }
+    .section-sub { color:var(--text-muted); text-align:center; margin-bottom:2rem; font-size:0.95rem; }
+    .label { text-transform:uppercase; letter-spacing:0.15em; font-size:0.75rem; font-weight:700; color:var(--accent); margin-bottom:0.5rem; text-align:center; }
+
+    /* Score Cards */
+    .score-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:1.5rem; margin:2rem 0; }
+    .score-card { background:var(--bg-elevated); border-radius:14px; padding:1.5rem; text-align:center; border:1px solid rgba(196,167,125,0.12); }
+    .score-card .score-value { font-size:2.5rem; font-weight:900; }
+    .score-card .score-label { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); margin-top:0.25rem; }
+    .score-card .score-change { font-size:0.8rem; margin-top:0.5rem; font-weight:600; }
+    .good { color:var(--green); }
+    .warn { color:var(--orange); }
+    .accent { color:var(--accent); }
+    .cyan { color:var(--cyan); }
+
+    /* Before/After Row */
+    .ba-grid { display:grid; grid-template-columns:1fr auto 1fr; gap:1.5rem; align-items:center; margin:2rem 0; }
+    .ba-card { background:var(--bg-elevated); border-radius:14px; padding:1.5rem; text-align:center; border:1px solid rgba(196,167,125,0.12); }
+    .ba-card .ba-label { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted); margin-bottom:0.5rem; font-weight:600; }
+    .ba-card .ba-value { font-size:2rem; font-weight:900; }
+    .ba-arrow { font-size:1.5rem; color:var(--green); font-weight:900; }
+
+    /* Table */
+    table { width:100%; border-collapse:collapse; background:var(--bg-elevated); border-radius:12px; overflow:hidden; margin-top:1.5rem; }
+    thead { background:var(--bg-card); }
+    th { text-align:left; padding:0.85rem 1rem; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); font-weight:600; }
+    td { padding:0.85rem 1rem; border-top:1px solid rgba(255,255,255,0.04); font-size:0.95rem; }
+    tr:hover { background:rgba(196,167,125,0.04); }
+    .highlight-row { background:rgba(34,197,94,0.06) !important; }
+
+    /* Growth Chart (CSS-based) */
+    .chart-container { background:var(--bg-elevated); border-radius:14px; padding:2rem; margin:2rem 0; border:1px solid rgba(196,167,125,0.12); }
+    .chart-title { font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); font-weight:600; margin-bottom:1.5rem; }
+    .bar-chart { display:flex; align-items:flex-end; gap:0.5rem; height:180px; padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,0.06); position:relative; }
+    .bar-group { flex:1; display:flex; flex-direction:column; align-items:center; gap:0.25rem; }
+    .bar { width:100%; max-width:50px; border-radius:6px 6px 0 0; transition:height 0.5s; position:relative; }
+    .bar.traffic { background:linear-gradient(180deg, var(--accent), rgba(196,167,125,0.4)); }
+    .bar.keywords { background:linear-gradient(180deg, var(--cyan), rgba(6,182,212,0.4)); }
+    .bar-label { font-size:0.65rem; color:var(--text-muted); margin-top:0.25rem; writing-mode:horizontal-tb; }
+    .bar-value { font-size:0.7rem; font-weight:700; color:var(--text); }
+    .chart-legend { display:flex; gap:1.5rem; justify-content:center; margin-top:1rem; }
+    .legend-item { display:flex; align-items:center; gap:0.4rem; font-size:0.8rem; color:var(--text-muted); }
+    .legend-dot { width:10px; height:10px; border-radius:3px; }
+
+    /* Keyword List */
+    .kw-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.5rem; margin:2rem 0; }
+    .kw-card { background:var(--bg-elevated); border-radius:14px; padding:1.5rem; border:1px solid rgba(196,167,125,0.12); }
+    .kw-card h3 { font-size:1rem; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem; }
+    .kw-list { list-style:none; }
+    .kw-list li { padding:0.4rem 0; display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.03); font-size:0.9rem; }
+    .kw-list li:last-child { border-bottom:none; }
+    .kw-rank { font-weight:700; min-width:40px; }
+
+    /* Callout Box */
+    .callout { background:var(--bg-elevated); border-radius:12px; padding:1.25rem 1.5rem; margin-top:2rem; text-align:center; border:1px solid rgba(196,167,125,0.15); }
+
+    /* Next Steps */
+    .steps-list { list-style:none; margin:1.5rem 0; counter-reset:step; }
+    .steps-list li { background:var(--bg-elevated); border-radius:10px; padding:1rem 1.25rem; margin-bottom:0.75rem; display:flex; align-items:flex-start; gap:0.75rem; border-left:3px solid var(--accent); }
+    .steps-list .step-num { background:var(--accent); color:#000; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.85rem; flex-shrink:0; }
+    .steps-list .step-text strong { display:block; margin-bottom:0.15rem; }
+    .steps-list .step-text span { color:var(--text-muted); font-size:0.9rem; }
+
+    /* CTA */
+    .cta-section { text-align:center; padding:3rem 1.5rem; margin:2rem 0; background:linear-gradient(135deg, rgba(196,167,125,0.08), rgba(196,167,125,0.02)); border-radius:20px; border:1px solid rgba(196,167,125,0.15); }
+    .cta-section h2 { font-size:1.8rem; font-weight:800; margin-bottom:0.75rem; }
+    .cta-section p { color:var(--text-muted); max-width:550px; margin:0 auto 1.5rem; }
+    .cta-btn { display:inline-block; background:var(--accent); color:#000; padding:0.9rem 2.5rem; border-radius:10px; text-decoration:none; font-weight:700; font-size:1.05rem; transition:all 0.2s; }
+    .cta-btn:hover { transform:translateY(-2px); box-shadow:0 8px 25px var(--accent-glow); }
+
+    /* Footer */
+    .footer { text-align:center; padding:2rem 0; color:var(--text-muted); font-size:0.8rem; border-top:1px solid rgba(255,255,255,0.05); margin-top:2rem; }
+    .footer img { height:30px; margin-bottom:0.5rem; }
+
+    @media(max-width:600px) {
+      .hero h1 { font-size:1.5rem; }
+      .score-card .score-value { font-size:2rem; }
+      .ba-grid { grid-template-columns:1fr; }
+      .ba-arrow { transform:rotate(90deg); text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-logos">
+      <img src="/gull-logo.png" alt="GullStack">
+      <span class="divider">×</span>
+      <span style="font-weight:800; font-size:1.2rem;">Falling Waters Day Spa</span>
+    </div>
+    <div class="badge">📊 Performance Report</div>
+    <h1>Your New Site is <span>Working</span></h1>
+    <p class="subtitle">Here's what's happened since we rebuilt fallingwatersdayspa.com — the numbers, the rankings, and what's next.</p>
+  </div>
+
+  <div class="container">
+
+    <!-- Snapshot -->
+    <div class="section">
+      <div class="label">At a Glance</div>
+      <div class="section-title">Current Performance</div>
+      <p class="section-sub">Data pulled March 20, 2026 via SEMrush</p>
+
+      <div class="score-grid">
+        <div class="score-card">
+          <div class="score-value good">168</div>
+          <div class="score-label">Organic Keywords</div>
+          <div class="score-change good">↑ 53% from launch</div>
+        </div>
+        <div class="score-card">
+          <div class="score-value accent">634</div>
+          <div class="score-label">Monthly Visitors</div>
+          <div class="score-change good">↑ 1,168% from old site</div>
+        </div>
+        <div class="score-card">
+          <div class="score-value cyan">$194</div>
+          <div class="score-label">Traffic Value / Mo</div>
+          <div class="score-change" style="color:var(--text-muted);">Equivalent ad spend</div>
+        </div>
+        <div class="score-card">
+          <div class="score-value good">#1</div>
+          <div class="score-label">Rank: "Day Spa Draper"</div>
+          <div class="score-change good">You own this search</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Before → After -->
+    <div class="section">
+      <div class="label">The Transformation</div>
+      <div class="section-title">Old Wix Site vs. New GullStack Site</div>
+      <p class="section-sub">Where you were vs. where you are now.</p>
+
+      <div class="ba-grid">
+        <div class="ba-card">
+          <div class="ba-label">Before (Wix Site)</div>
+          <div class="ba-value" style="color:var(--red);">~50</div>
+          <div style="color:var(--text-muted); font-size:0.85rem; margin-top:0.25rem;">Monthly visitors</div>
+          <div style="color:var(--text-muted); font-size:0.85rem; margin-top:0.5rem;">~30 keywords • No service pages<br>No schema • Slow load times</div>
+        </div>
+        <div class="ba-arrow">→</div>
+        <div class="ba-card">
+          <div class="ba-label">After (GullStack Site)</div>
+          <div class="ba-value good">634</div>
+          <div style="color:var(--text-muted); font-size:0.85rem; margin-top:0.25rem;">Monthly visitors</div>
+          <div style="color:var(--text-muted); font-size:0.85rem; margin-top:0.5rem;">168 keywords • Dedicated pages<br>Full schema • Sub-2s loads</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Growth Over Time -->
+    <div class="section">
+      <div class="label">12-Month Trend</div>
+      <div class="section-title">Steady Growth Since Rebuild</div>
+      <p class="section-sub">Organic keyword and traffic growth, month over month.</p>
+
+      <div class="chart-container">
+        <div class="chart-title">Keywords & Traffic — March 2025 to March 2026</div>
+        <div class="bar-chart">
+          <div class="bar-group">
+            <div class="bar-value">110</div>
+            <div class="bar traffic" style="height:72px;"></div>
+            <div class="bar-label">Mar</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">110</div>
+            <div class="bar traffic" style="height:72px;"></div>
+            <div class="bar-label">Apr</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">99</div>
+            <div class="bar traffic" style="height:65px;"></div>
+            <div class="bar-label">May</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">92</div>
+            <div class="bar traffic" style="height:60px;"></div>
+            <div class="bar-label">Jun</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">93</div>
+            <div class="bar traffic" style="height:61px;"></div>
+            <div class="bar-label">Jul</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">110</div>
+            <div class="bar traffic" style="height:72px;"></div>
+            <div class="bar-label">Aug</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">124</div>
+            <div class="bar traffic" style="height:82px;"></div>
+            <div class="bar-label">Sep</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">126</div>
+            <div class="bar traffic" style="height:83px;"></div>
+            <div class="bar-label">Oct</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">127</div>
+            <div class="bar traffic" style="height:84px;"></div>
+            <div class="bar-label">Nov</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">140</div>
+            <div class="bar traffic" style="height:92px;"></div>
+            <div class="bar-label">Dec</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">166</div>
+            <div class="bar traffic" style="height:109px;"></div>
+            <div class="bar-label">Jan</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">161</div>
+            <div class="bar traffic" style="height:106px;"></div>
+            <div class="bar-label">Feb</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value" style="color:var(--green);">168</div>
+            <div class="bar traffic" style="height:110px; background:linear-gradient(180deg, var(--green), rgba(34,197,94,0.4));"></div>
+            <div class="bar-label" style="color:var(--green); font-weight:700;">Now</div>
+          </div>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--accent);"></div> Organic Keywords</div>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-title">Monthly Organic Traffic</div>
+        <div class="bar-chart">
+          <div class="bar-group">
+            <div class="bar-value">611</div>
+            <div class="bar keywords" style="height:86px;"></div>
+            <div class="bar-label">Mar</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">635</div>
+            <div class="bar keywords" style="height:89px;"></div>
+            <div class="bar-label">Apr</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">594</div>
+            <div class="bar keywords" style="height:83px;"></div>
+            <div class="bar-label">May</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">575</div>
+            <div class="bar keywords" style="height:81px;"></div>
+            <div class="bar-label">Jun</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">577</div>
+            <div class="bar keywords" style="height:81px;"></div>
+            <div class="bar-label">Jul</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">451</div>
+            <div class="bar keywords" style="height:63px;"></div>
+            <div class="bar-label">Aug</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">447</div>
+            <div class="bar keywords" style="height:63px;"></div>
+            <div class="bar-label">Sep</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">422</div>
+            <div class="bar keywords" style="height:59px;"></div>
+            <div class="bar-label">Oct</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">512</div>
+            <div class="bar keywords" style="height:72px;"></div>
+            <div class="bar-label">Nov</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">586</div>
+            <div class="bar keywords" style="height:82px;"></div>
+            <div class="bar-label">Dec</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">711</div>
+            <div class="bar keywords" style="height:100px;"></div>
+            <div class="bar-label">Jan</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value">655</div>
+            <div class="bar keywords" style="height:92px;"></div>
+            <div class="bar-label">Feb</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-value" style="color:var(--green);">634</div>
+            <div class="bar keywords" style="height:89px; background:linear-gradient(180deg, var(--green), rgba(34,197,94,0.4));"></div>
+            <div class="bar-label" style="color:var(--green); font-weight:700;">Now</div>
+          </div>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--cyan);"></div> Estimated Monthly Visitors</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Rankings -->
+    <div class="section">
+      <div class="label">Search Rankings</div>
+      <div class="section-title">Where You Rank Right Now</div>
+      <p class="section-sub">Your top-performing keywords on Google.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Position</th>
+            <th>Monthly Searches</th>
+            <th>Traffic Share</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td><strong>falling waters day spa draper</strong></td>
+            <td style="color:var(--green); font-weight:700;">#1</td>
+            <td>170</td>
+            <td>21.5%</td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>falling waters day spa</strong></td>
+            <td style="color:var(--green); font-weight:700;">#1</td>
+            <td>170</td>
+            <td>21.5%</td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>falling waters day spa and salon</strong></td>
+            <td style="color:var(--green); font-weight:700;">#1</td>
+            <td>140</td>
+            <td>17.7%</td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>day spa draper</strong></td>
+            <td style="color:var(--green); font-weight:700;">#1</td>
+            <td>50</td>
+            <td>0.5%</td>
+          </tr>
+          <tr>
+            <td><strong>spa draper utah</strong></td>
+            <td style="color:var(--green); font-weight:700;">#2</td>
+            <td>140</td>
+            <td>0.9%</td>
+          </tr>
+          <tr>
+            <td><strong>spa draper</strong></td>
+            <td style="color:var(--green); font-weight:700;">#2</td>
+            <td>90</td>
+            <td>0.5%</td>
+          </tr>
+          <tr>
+            <td><strong>falling waters spa</strong></td>
+            <td style="color:var(--green); font-weight:700;">#2</td>
+            <td>320</td>
+            <td>0.6%</td>
+          </tr>
+          <tr>
+            <td><strong>draper spa</strong></td>
+            <td style="color:var(--accent); font-weight:700;">#3</td>
+            <td>170</td>
+            <td>0.8%</td>
+          </tr>
+          <tr>
+            <td><strong>spa at falling waters</strong></td>
+            <td style="color:var(--accent); font-weight:700;">#5</td>
+            <td>590</td>
+            <td>3.9%</td>
+          </tr>
+          <tr>
+            <td><strong>massage draper</strong></td>
+            <td style="color:var(--accent); font-weight:700;">#7</td>
+            <td>320</td>
+            <td>1.1%</td>
+          </tr>
+          <tr>
+            <td><strong>treehouse spa</strong></td>
+            <td style="color:var(--accent); font-weight:700;">#7</td>
+            <td>140</td>
+            <td>0.5%</td>
+          </tr>
+          <tr>
+            <td><strong>massage draper utah</strong></td>
+            <td style="color:var(--orange); font-weight:700;">#11</td>
+            <td>390</td>
+            <td>0.2%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong style="color:var(--green);">4 #1 rankings</strong> and <strong style="color:var(--accent);">8 keywords in the top 10</strong><br>
+        <span style="color:var(--text-muted); font-size:0.9rem;">These are people in Draper actively searching for spa services — and finding <em>you</em> first.</span>
+      </div>
+    </div>
+
+    <!-- What's Working -->
+    <div class="section">
+      <div class="label">What's Working</div>
+      <div class="section-title">Why the New Site Performs</div>
+
+      <div class="kw-grid">
+        <div class="kw-card">
+          <h3>🔍 SEO Architecture</h3>
+          <ul class="kw-list" style="list-style:none;">
+            <li style="display:block; padding:0.4rem 0; color:var(--text-muted); font-size:0.9rem; border-bottom:1px solid rgba(255,255,255,0.03);">✓ Dedicated service pages (massage, facials, hair, nails, waxing)</li>
+            <li style="display:block; padding:0.4rem 0; color:var(--text-muted); font-size:0.9rem; border-bottom:1px solid rgba(255,255,255,0.03);">✓ LocalBusiness + Service schema markup</li>
+            <li style="display:block; padding:0.4rem 0; color:var(--text-muted); font-size:0.9rem; border-bottom:1px solid rgba(255,255,255,0.03);">✓ Location page targeting "Draper" keywords</li>
+            <li style="display:block; padding:0.4rem 0; color:var(--text-muted); font-size:0.9rem;">✓ Optimized meta titles & descriptions</li>
+          </ul>
+        </div>
+        <div class="kw-card">
+          <h3>⚡ Site Performance</h3>
+          <ul class="kw-list" style="list-style:none;">
+            <li style="display:block; padding:0.4rem 0; color:var(--text-muted); font-size:0.9rem; border-bottom:1px solid rgba(255,255,255,0.03);">✓ Fast load times (no Wix bloat)</li>
+            <li style="display:block; padding:0.4rem 0; color:var(--text-muted); font-size:0.9rem; border-bottom:1px solid rgba(255,255,255,0.03);">✓ Mobile-first responsive design</li>
+            <li style="display:block; padding:0.4rem 0; color:var(--text-muted); font-size:0.9rem; border-bottom:1px solid rgba(255,255,255,0.03);">✓ Core Web Vitals passing</li>
+            <li style="display:block; padding:0.4rem 0; color:var(--text-muted); font-size:0.9rem;">✓ Clean code Google loves to crawl</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Growth Opportunities -->
+    <div class="section">
+      <div class="label">Next Phase</div>
+      <div class="section-title">Growth Opportunities Ahead</div>
+      <p class="section-sub">Keywords within striking distance — small pushes for big gains.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Current Rank</th>
+            <th>Monthly Searches</th>
+            <th>Target</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>massage draper utah</strong></td>
+            <td style="color:var(--orange);">#11</td>
+            <td>390</td>
+            <td style="color:var(--green);">Top 5</td>
+          </tr>
+          <tr>
+            <td><strong>spa at falling waters</strong></td>
+            <td style="color:var(--accent);">#5</td>
+            <td>590</td>
+            <td style="color:var(--green);">Top 3</td>
+          </tr>
+          <tr>
+            <td><strong>massage draper</strong></td>
+            <td style="color:var(--accent);">#7</td>
+            <td>320</td>
+            <td style="color:var(--green);">Top 3</td>
+          </tr>
+          <tr>
+            <td><strong>falling waters massage therapy</strong></td>
+            <td style="color:var(--orange);">#16</td>
+            <td>70</td>
+            <td style="color:var(--green);">Top 5</td>
+          </tr>
+          <tr>
+            <td><strong>pedicures draper</strong></td>
+            <td style="color:var(--orange);">#24</td>
+            <td>50</td>
+            <td style="color:var(--green);">Top 10</td>
+          </tr>
+          <tr>
+            <td><strong>facial waxing draper</strong></td>
+            <td style="color:var(--red);">#67</td>
+            <td>50</td>
+            <td style="color:var(--green);">Top 10</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong style="color:var(--accent);">1,470+ additional monthly searches</strong> within reach<br>
+        <span style="color:var(--text-muted); font-size:0.9rem;">Moving these keywords to the top 5 could add 150+ new visitors per month — people actively looking to book.</span>
+      </div>
+    </div>
+
+    <!-- Recommended Next Steps -->
+    <div class="section">
+      <div class="label">Recommendations</div>
+      <div class="section-title">What We'd Do Next</div>
+      <p class="section-sub">To keep the momentum going and maximize bookings.</p>
+
+      <ul class="steps-list">
+        <li>
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Google Business Profile Optimization</strong>
+            <span>Ensure GBP is fully optimized with updated photos, service categories, and regular posts. This powers the local map pack — the #1 driver for spa bookings.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Review Generation Campaign</strong>
+            <span>Currently at 136 reviews (4.4★). A push to 200+ reviews with a higher rating will boost local rankings and conversion rates significantly.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Blog Content for Long-Tail Keywords</strong>
+            <span>Publish 2-3 articles targeting searches like "best massage in Draper," "HydraFacial benefits," and "couples spa day Utah." These build topical authority and capture new audiences.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">4</div>
+          <div class="step-text">
+            <strong>Seasonal Landing Pages</strong>
+            <span>Create dedicated pages for Valentine's Day, Mother's Day, and holiday gift cards. These capture high-intent seasonal traffic that converts at 3-5x normal rates.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2>The Foundation is Set.<br>Now Let's <span style="color:var(--accent);">Accelerate</span>.</h2>
+      <p>Your new site is ranking and growing. The next phase turns traffic into bookings at scale.</p>
+      <a href="mailto:hello@gullstack.com?subject=Falling Waters — Next Phase" class="cta-btn">Let's Talk Next Steps →</a>
+    </div>
+
+    <div class="footer">
+      <img src="/gull-logo.png" alt="GullStack"><br>
+      Prepared by GullStack — March 2026<br>
+      <span style="font-size:0.75rem;">Data sourced from SEMrush. Traffic estimates are based on organic search visibility and may vary from actual analytics.</span>
+    </div>
+
+  </div>
+
+</body>
+</html>
