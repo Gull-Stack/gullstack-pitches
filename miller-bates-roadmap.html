@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miller Bates — Build Roadmap | GullStack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a1a;
+      --bg-elevated: #111128;
+      --bg-card: #16163a;
+      --text: #f0f0f5;
+      --text-muted: #8888a8;
+      --accent: #a855f7;
+      --accent-hover: #c084fc;
+      --accent-glow: rgba(168, 85, 247, 0.15);
+      --gold: #22d3ee;
+      --gold-soft: rgba(34, 211, 238, 0.10);
+      --muted: #6b7280;
+      --muted-soft: rgba(107, 114, 128, 0.15);
+      --border: rgba(255,255,255,0.06);
+      --font-serif: 'Young Serif', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative;
+      background: radial-gradient(ellipse at top, var(--accent-glow) 0%, transparent 50%);
+    }
+
+    .hero::after {
+      content: '\2193'; position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%); font-size: 2rem; opacity: 0.2;
+      animation: drift 2s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 400; line-height: 1.12; margin-bottom: 20px;
+    }
+    .hero h1 .glow {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--text-muted); max-width: 600px; margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-glow), rgba(168,85,247,0.08));
+      border: 1px solid rgba(168,85,247,0.2);
+      color: var(--accent-hover); padding: 6px 18px; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+
+    .prepared-for {
+      margin-top: 40px; padding: 16px 24px;
+      background: var(--bg-elevated); border-radius: 10px; display: inline-block;
+      border: 1px solid var(--border);
+    }
+    .prepared-for .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 2px; }
+    .prepared-for .name { font-size: 1.1rem; font-weight: 700; }
+
+    /* Sections */
+    section { padding: 80px 0; }
+
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400; margin-bottom: 16px; line-height: 1.2;
+    }
+    .section-sub {
+      color: var(--text-muted); font-size: 1rem; max-width: 640px; margin-bottom: 40px;
+    }
+
+    /* Stats */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin: 40px 0;
+    }
+
+    .stat {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px; text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-2px);
+      border-color: rgba(168,85,247,0.2);
+    }
+
+    .stat .number {
+      font-family: var(--font-serif); font-size: 2rem; font-weight: 400;
+      color: var(--accent-hover); margin-bottom: 6px; line-height: 1;
+    }
+
+    .stat .label {
+      color: var(--text-muted); font-size: 0.85rem; line-height: 1.4;
+    }
+
+    .stat.gold .number { color: var(--gold); }
+    .stat.muted .number { color: var(--muted); }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px; margin: 24px 0;
+    }
+
+    .card.problem {
+      border-left: 3px solid var(--muted);
+      background: linear-gradient(135deg, var(--muted-soft), transparent 40%);
+    }
+    .card.opportunity {
+      border-left: 3px solid var(--accent);
+      background: linear-gradient(135deg, var(--accent-glow), transparent 40%);
+    }
+    .card.win {
+      border-left: 3px solid var(--gold);
+      background: linear-gradient(135deg, var(--gold-soft), transparent 40%);
+    }
+
+    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; }
+    .card.problem h3 { color: var(--muted); }
+    .card.opportunity h3 { color: var(--accent-hover); }
+    .card.win h3 { color: var(--gold); }
+
+    .card ul { list-style: none; margin: 0; }
+    .card li {
+      position: relative; padding: 7px 0 7px 28px;
+      color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;
+      border-bottom: 1px solid var(--border);
+    }
+    .card li:last-child { border-bottom: none; }
+    .card.problem li::before { content: '\2014'; position: absolute; left: 0; color: var(--muted); }
+    .card.opportunity li::before { content: '\2192'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+    .card.win li::before { content: '\2713'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+    .card li strong { color: var(--text); }
+
+    .card .recommendation {
+      margin-top: 14px; padding: 10px 14px;
+      background: var(--gold-soft); border-left: 3px solid var(--gold);
+      border-radius: 8px; font-size: 0.85rem; color: var(--gold);
+    }
+
+    /* Callout */
+    .callout {
+      text-align: center; padding: 48px 32px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; margin: 40px 0;
+      position: relative; overflow: hidden;
+    }
+    .callout::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
+    }
+    .callout .number {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 400; margin-bottom: 10px; line-height: 1;
+    }
+    .callout .number.gold { color: var(--gold); }
+    .callout .number.accent { color: var(--accent-hover); }
+    .callout .label { font-size: 1.1rem; color: var(--text-muted); }
+    .callout .sublabel { font-size: 0.85rem; color: var(--text-muted); opacity: 0.7; margin-top: 6px; }
+
+    /* Timeline */
+    .timeline { margin: 40px 0; }
+
+    .phase {
+      display: grid; grid-template-columns: 120px 1fr; gap: 20px;
+      padding: 24px 0; border-bottom: 1px solid var(--border);
+    }
+    .phase:last-child { border-bottom: none; }
+
+    .phase-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--accent);
+      padding-top: 4px;
+    }
+
+    .phase h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .phase p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+
+    .phase .result {
+      margin-top: 10px; padding: 10px 14px;
+      background: var(--gold-soft); border-left: 3px solid var(--gold);
+      border-radius: 8px; font-size: 0.85rem; color: var(--gold);
+    }
+
+    .phase ul { list-style: none; margin: 8px 0; }
+    .phase li {
+      position: relative; padding: 4px 0 4px 20px;
+      color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;
+    }
+    .phase li::before { content: '\2192'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 60%);
+      padding: 80px 0;
+    }
+
+    .cta-card {
+      max-width: 540px; margin: 0 auto;
+      background: var(--bg-card); border: 2px solid var(--accent);
+      border-radius: 20px; padding: 40px 32px;
+      position: relative; overflow: hidden;
+    }
+    .cta-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
+    }
+
+    .cta-card h2 {
+      font-family: var(--font-serif); font-size: 1.8rem;
+      font-weight: 400; margin-bottom: 16px; line-height: 1.2;
+    }
+    .cta-card p { color: var(--text-muted); margin-bottom: 28px; font-size: 1rem; }
+
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: white; padding: 16px 40px; border-radius: 10px;
+      font-size: 1.05rem; font-weight: 800; text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(168,85,247,0.35);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center; padding: 48px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .footer p { color: var(--text-muted); font-size: 0.85rem; }
+    .footer .mark {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; margin-bottom: 12px; opacity: 0.5;
+    }
+    .footer .mark img { height: 28px; }
+    .footer .mark span { font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .phase { grid-template-columns: 1fr; }
+      .phase-label { padding-top: 0; margin-bottom: -12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge">Project Roadmap</div>
+      <h1>Miller Bates <span class="glow">Build Roadmap</span></h1>
+      <p>Your new investor portal and marketing website, milestone by milestone.</p>
+      <div class="prepared-for">
+        <div class="label">Prepared for</div>
+        <div class="name">Rick Miller, Taylor Berbert &amp; Melissa Miller &mdash; Miller Bates LLC</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Decisions We Need -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Before We Build</div>
+        <div class="section-title">Decisions we need from your team.</div>
+        <p class="section-sub">A few things to align on before development starts. We'll walk through these at the kickoff meeting.</p>
+
+        <div class="card problem">
+          <h3>Existing User Accounts</h3>
+          <ul>
+            <li>Do we <strong>migrate</strong> existing investor/borrower logins from Sean's current system?</li>
+            <li>Or <strong>fresh start</strong> &mdash; new accounts, new credentials for everyone?</li>
+            <li>If migrating: we need a <strong>user export</strong> (emails, names, roles) from Sean before transition</li>
+          </ul>
+          <div class="recommendation">Recommendation: Fresh start with invite emails to existing investors &mdash; cleaner, more secure, no legacy baggage</div>
+        </div>
+
+        <div class="card opportunity">
+          <h3>Authentication Approach</h3>
+          <ul>
+            <li><strong>Option A:</strong> Email + password (traditional, simple)</li>
+            <li><strong>Option B:</strong> SSO &mdash; Sign in with Google / Sign in with Apple</li>
+            <li><strong>Option C:</strong> Both &mdash; email/password + SSO options</li>
+            <li>We can also add <strong>two-factor authentication (2FA)</strong> for extra security on financial data</li>
+          </ul>
+          <div class="recommendation">Recommendation: Option C (both) &mdash; gives investors flexibility, SSO reduces password fatigue</div>
+        </div>
+
+        <div class="card problem">
+          <h3>What We Need From Sean</h3>
+          <ul>
+            <li><strong>Full user list export</strong> &mdash; investor emails, borrower emails, admin accounts</li>
+            <li><strong>Custom TMO configurations</strong> &mdash; any API work or integrations he's built</li>
+            <li><strong>Adobe Sign templates</strong> &mdash; current template configurations and settings</li>
+            <li><strong>GoDaddy domain credentials</strong> &mdash; or transfer millerbates.com to your own account</li>
+            <li><strong>Documentation</strong> &mdash; anything about how the current portal was built</li>
+          </ul>
+          <div class="recommendation">Timeline: Get this before Sean is officially let go</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portal Build Roadmap -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Portal Build</div>
+        <div class="section-title">10 weeks to a production-ready portal.</div>
+        <p class="section-sub">Investor dashboard, borrower portal, and admin panel &mdash; all connected to The Mortgage Office with real data.</p>
+
+        <div class="timeline">
+          <div class="phase">
+            <div class="phase-label">Week 1&ndash;2</div>
+            <div>
+              <h4>Foundation</h4>
+              <ul>
+                <li>Connect to TMO production API (real investor/loan data)</li>
+                <li>Build authentication system (login, registration, password reset)</li>
+                <li>SSO integration (Google + Apple sign-in)</li>
+                <li>Two-factor authentication setup</li>
+              </ul>
+              <div class="result">Secure login with real data flowing</div>
+            </div>
+          </div>
+
+          <div class="phase">
+            <div class="phase-label">Week 3&ndash;4</div>
+            <div>
+              <h4>Investor Experience</h4>
+              <ul>
+                <li>Investor dashboard with live portfolio data from TMO</li>
+                <li>Project drill-down (account details, payment history, balances)</li>
+                <li>Sortable, searchable tables everywhere (no more hunting through 35 names)</li>
+                <li>Print Investment Summary with filters (year, summary only, full report)</li>
+                <li>Document storage per project</li>
+              </ul>
+              <div class="result">Investors can log in and see their real portfolio</div>
+            </div>
+          </div>
+
+          <div class="phase">
+            <div class="phase-label">Week 5&ndash;6</div>
+            <div>
+              <h4>Borrower Portal + Admin</h4>
+              <ul>
+                <li>Borrower dashboard (loans, payment dates, payment history)</li>
+                <li>"Request Payoff Quote" feature</li>
+                <li>Admin panel &mdash; user management, project management</li>
+                <li>Inactive investor report on admin dashboard</li>
+                <li>Document generation with alphabetical sorting and search</li>
+              </ul>
+              <div class="result">Complete portal for all three user types</div>
+            </div>
+          </div>
+
+          <div class="phase">
+            <div class="phase-label">Week 7&ndash;8</div>
+            <div>
+              <h4>Integrations + Polish</h4>
+              <ul>
+                <li>Adobe Sign integration for document generation and e-signatures</li>
+                <li>Real-time notifications (new deals, payment confirmations)</li>
+                <li>Mobile optimization and testing</li>
+                <li>Report engine (Portfolio Summary, YTD Activity, CSV exports)</li>
+              </ul>
+              <div class="result">Production-ready portal</div>
+            </div>
+          </div>
+
+          <div class="phase">
+            <div class="phase-label">Week 9&ndash;10</div>
+            <div>
+              <h4>Launch + Migration</h4>
+              <ul>
+                <li>Point account.millerbates.com to new portal</li>
+                <li>Investor onboarding emails (new login credentials)</li>
+                <li>Borrower onboarding</li>
+                <li>Staff training for Rick, Taylor, and Melissa</li>
+                <li>Monitor and fix any issues</li>
+              </ul>
+              <div class="result">Live and serving real users</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketing Website Goals -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Marketing Strategy</div>
+        <div class="section-title">Attract more borrowers, brokers, and investors.</div>
+        <p class="section-sub">Taylor's priority: deal flow is the oil in the engine. Here's how the new website drives it.</p>
+
+        <div class="card win">
+          <h3>Borrower &amp; Broker Acquisition (Priority #1)</h3>
+          <ul>
+            <li><strong>Targeted landing pages</strong> for hard money loan seekers in Utah</li>
+            <li><strong>Broker-specific content</strong> and application flow</li>
+            <li><strong>Google Ads optimization</strong> &mdash; you're already running ads, let's make them convert better</li>
+            <li><strong>Retargeting</strong> &mdash; visitors from ads get followed across the web back to millerbates.com</li>
+            <li><strong>SEO targeting:</strong> "hard money lenders utah" (#14 &rarr; top 5), "private money loans utah" (#4 &rarr; #1)</li>
+          </ul>
+        </div>
+
+        <div class="card opportunity">
+          <h3>Investor Attraction</h3>
+          <ul>
+            <li><strong>Dedicated investor pages</strong> with clear value proposition</li>
+            <li><strong>Trust signals</strong> &mdash; track record, portfolio stats, $46M+ AUM</li>
+            <li><strong>Streamlined registration</strong> flow from marketing site to portal</li>
+            <li><strong>Content strategy</strong> &mdash; market insights, project case studies, investor education</li>
+          </ul>
+        </div>
+
+        <div class="card win">
+          <h3>SEO &amp; AEO (Answer Engine Optimization)</h3>
+          <ul>
+            <li><strong>Schema markup:</strong> Organization, FinancialService, FAQPage, BreadcrumbList</li>
+            <li><strong>Brand-facts page</strong> + /.well-known/brand-facts.json for AI crawlers</li>
+            <li><strong>Goal:</strong> When someone asks ChatGPT "best hard money lender in Utah" &mdash; Miller Bates is the answer</li>
+            <li><strong>Key target:</strong> "hard money lenders utah" (170 searches/mo, currently #14)</li>
+          </ul>
+        </div>
+
+        <div class="card opportunity">
+          <h3>Google Ads + Retargeting Integration</h3>
+          <ul>
+            <li><strong>Connect website analytics</strong> to your existing Google Ads campaigns</li>
+            <li><strong>Retarget every visitor</strong> &mdash; borrowers who didn't apply, investors who didn't register</li>
+            <li><strong>Refine ad targeting</strong> &mdash; use website data to reduce wasted spend</li>
+            <li><strong>Conversion tracking</strong> &mdash; know exactly which ads produce applications</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Overview -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Timeline Overview</div>
+        <div class="section-title">From kickoff to launch.</div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <div class="number">10 Weeks</div>
+            <div class="label">Portal build + launch</div>
+          </div>
+          <div class="stat gold">
+            <div class="number">$1,873/mo</div>
+            <div class="label">Ongoing development + marketing</div>
+          </div>
+          <div class="stat">
+            <div class="number">Week 1</div>
+            <div class="label">We start as soon as TMO credentials arrive</div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="number gold">Late May 2026</div>
+          <div class="label">Target Launch</div>
+          <div class="sublabel">Portal live with real data, marketing site driving new deal flow</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included Monthly -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Monthly Engagement</div>
+        <div class="section-title">What's included at $1,873/mo.</div>
+        <p class="section-sub">Everything you need to keep the portal running, the website growing, and deal flow increasing.</p>
+
+        <div class="card win">
+          <h3>Included Every Month</h3>
+          <ul>
+            <li><strong>Hosting, SSL, and security monitoring</strong></li>
+            <li><strong>Portal maintenance</strong> and bug fixes</li>
+            <li><strong>New feature development</strong> (prioritized by you)</li>
+            <li><strong>Marketing website updates</strong> and content</li>
+            <li><strong>SEO optimization</strong> and reporting</li>
+            <li><strong>Performance monitoring</strong> and analytics</li>
+            <li><strong>Priority support</strong> &mdash; same-day response</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Let's build this together.</h2>
+        <p>We'll walk through this roadmap at our kickoff meeting and lock in priorities.</p>
+        <a href="mailto:bryce@gullstack.com?subject=Miller%20Bates%20Kickoff&body=Hi%20Bryce%2C%0A%0ALet's%20get%20the%20kickoff%20scheduled.%0A%0ABest%20regards" class="cta-btn">Schedule Kickoff Meeting</a>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 16px;">Monday 3/31 morning or Tuesday 4/1 &mdash; your office or video call</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="mark">
+      <img src="/gull-logo.png" alt="GullStack">
+      <span>GullStack</span>
+    </div>
+    <p><strong>Bryce Morgan</strong> &middot; bryce@gullstack.com &middot; GullStack.com</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
