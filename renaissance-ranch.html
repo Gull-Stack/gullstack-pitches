@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renaissance Ranch × GullStack | AI Transformation Proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a1a;
+      --bg-elevated: #111128;
+      --bg-card: #16163a;
+      --text: #f0f0f5;
+      --text-muted: #8888a8;
+      --accent: #a855f7;
+      --accent-hover: #c084fc;
+      --accent-glow: rgba(168, 85, 247, 0.15);
+      --gold: #22d3ee;
+      --gold-soft: rgba(34, 211, 238, 0.10);
+      --muted: #6b7280;
+      --muted-soft: rgba(107, 114, 128, 0.15);
+      --border: rgba(255,255,255,0.06);
+      --font-serif: 'Young Serif', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative;
+      background: radial-gradient(ellipse at top, var(--accent-glow) 0%, transparent 50%);
+    }
+    .hero::after {
+      content: '↓'; position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%); font-size: 2rem; opacity: 0.2;
+      animation: drift 2s ease-in-out infinite;
+    }
+    @keyframes drift {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+    .hero-logos {
+      display: flex; align-items: center; justify-content: center;
+      gap: 28px; margin-bottom: 40px;
+    }
+    .hero-logos img { height: 44px; border-radius: 8px; }
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 400; line-height: 1.12; margin-bottom: 20px;
+    }
+    .hero h1 .glow {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-glow), rgba(168,85,247,0.08));
+      border: 1px solid rgba(168,85,247,0.2);
+      color: var(--accent-hover); padding: 6px 18px; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .prepared-for {
+      margin-top: 40px; padding: 16px 24px;
+      background: var(--bg-elevated); border-radius: 10px; display: inline-block;
+      border: 1px solid var(--border);
+    }
+    .prepared-for .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 2px; }
+    .prepared-for .name { font-size: 1.1rem; font-weight: 700; }
+
+    section { padding: 80px 0; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400; margin-bottom: 16px; line-height: 1.2;
+    }
+    .section-sub { color: var(--text-muted); font-size: 1rem; max-width: 640px; margin-bottom: 40px; }
+
+    .stats-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin: 40px 0;
+    }
+    .stat {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px; text-align: center;
+      transition: all 0.3s ease;
+    }
+    .stat:hover { transform: translateY(-2px); border-color: rgba(168,85,247,0.2); }
+    .stat .number {
+      font-family: var(--font-serif); font-size: 2rem; font-weight: 400;
+      color: var(--accent-hover); margin-bottom: 6px; line-height: 1;
+    }
+    .stat .label { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; }
+    .stat.gold .number { color: var(--gold); }
+    .stat.muted .number { color: var(--muted); }
+
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px; margin: 24px 0;
+    }
+    .card.problem {
+      border-left: 3px solid var(--muted);
+      background: linear-gradient(135deg, var(--muted-soft), transparent 40%);
+    }
+    .card.opportunity {
+      border-left: 3px solid var(--accent);
+      background: linear-gradient(135deg, var(--accent-glow), transparent 40%);
+    }
+    .card.win {
+      border-left: 3px solid var(--gold);
+      background: linear-gradient(135deg, var(--gold-soft), transparent 40%);
+    }
+    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; }
+    .card.problem h3 { color: var(--muted); }
+    .card.opportunity h3 { color: var(--accent-hover); }
+    .card.win h3 { color: var(--gold); }
+    .card ul { list-style: none; margin: 0; }
+    .card li {
+      position: relative; padding: 7px 0 7px 28px;
+      color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;
+      border-bottom: 1px solid var(--border);
+    }
+    .card li:last-child { border-bottom: none; }
+    .card.problem li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+    .card.opportunity li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+    .card.win li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+    .card li strong { color: var(--text); }
+
+    .callout {
+      text-align: center; padding: 48px 32px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; margin: 40px 0;
+      position: relative; overflow: hidden;
+    }
+    .callout::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
+    }
+    .callout .number {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 400; margin-bottom: 10px; line-height: 1;
+    }
+    .callout .number.gold { color: var(--gold); }
+    .callout .label { font-size: 1.1rem; color: var(--text-muted); }
+    .callout .sublabel { font-size: 0.85rem; color: var(--text-muted); opacity: 0.7; margin-top: 6px; }
+
+    .timeline { margin: 40px 0; }
+    .phase {
+      display: grid; grid-template-columns: 110px 1fr; gap: 20px;
+      padding: 24px 0; border-bottom: 1px solid var(--border);
+    }
+    .phase:last-child { border-bottom: none; }
+    .phase-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--accent); padding-top: 4px;
+    }
+    .phase h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .phase p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+    .phase .result {
+      margin-top: 10px; padding: 10px 14px;
+      background: var(--gold-soft); border-left: 3px solid var(--gold);
+      border-radius: 8px; font-size: 0.85rem; color: var(--gold);
+    }
+
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin: 40px 0;
+    }
+    @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .tier {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px; text-align: center;
+      transition: all 0.3s ease;
+    }
+    .tier.featured {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, rgba(168,85,247,0.08) 0%, var(--bg-card) 40%);
+      transform: scale(1.02);
+    }
+    .tier .tier-label {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px;
+    }
+    .tier.featured .tier-label { color: var(--accent); }
+    .tier .price {
+      font-family: var(--font-serif); font-size: 2.2rem;
+      font-weight: 400; margin-bottom: 4px;
+    }
+    .tier .price-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; }
+    .tier ul { list-style: none; text-align: left; margin-bottom: 24px; }
+    .tier li {
+      padding: 6px 0 6px 22px; position: relative;
+      color: var(--text-muted); font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .tier li:last-child { border-bottom: none; }
+    .tier li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+    .tier-btn {
+      display: block; width: 100%; padding: 14px;
+      border-radius: 10px; font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; transition: all 0.2s ease; text-align: center;
+      border: none; cursor: pointer;
+    }
+    .tier-btn.outline {
+      background: transparent; color: var(--accent-hover);
+      border: 1px solid rgba(168,85,247,0.3);
+    }
+    .tier-btn.outline:hover { background: var(--accent-glow); }
+    .tier-btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: white;
+    }
+    .tier-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(168,85,247,0.3); }
+
+    .cta {
+      text-align: center;
+      background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 60%);
+      padding: 80px 0;
+    }
+    .cta-card {
+      max-width: 560px; margin: 0 auto;
+      background: var(--bg-card); border: 2px solid var(--accent);
+      border-radius: 20px; padding: 40px 32px;
+      position: relative; overflow: hidden;
+    }
+    .cta-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
+    }
+    .cta-card h2 {
+      font-family: var(--font-serif); font-size: 1.8rem;
+      font-weight: 400; margin-bottom: 16px; line-height: 1.2;
+    }
+    .cta-card p { color: var(--text-muted); margin-bottom: 28px; font-size: 1rem; }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: white; padding: 16px 40px; border-radius: 10px;
+      font-size: 1.05rem; font-weight: 800; text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(168,85,247,0.35); }
+
+    .footer {
+      text-align: center; padding: 48px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .footer p { color: var(--text-muted); font-size: 0.85rem; }
+    .footer .mark {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; margin-bottom: 12px; opacity: 0.5;
+    }
+    .footer .mark img { height: 28px; }
+    .footer .mark span { font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
+
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .hero-logos { flex-wrap: wrap; gap: 12px; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .phase { grid-template-columns: 1fr; }
+      .phase-label { padding-top: 0; margin-bottom: -12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-logos">
+        <div style="background: white; padding: 12px 18px; border-radius: 8px; color: #1e3a5f; font-weight: 800; font-size: 1.1rem; letter-spacing: 0.5px;">
+          Renaissance Ranch
+        </div>
+        <span style="font-size: 1.5rem; opacity: 0.2;">×</span>
+        <img src="/gull-logo.png" alt="GullStack">
+      </div>
+      <div class="badge">AI Transformation Proposal</div>
+      <h1>Run the ranch <span class="glow">at 10× the throughput.</span></h1>
+      <p>You're expanding faster than any men's recovery program in Utah. Manual processes, a ballooning Dazos bill, and admissions calls going to voicemail are the tax on that growth. We're here to remove the tax.</p>
+      <div class="prepared-for">
+        <div class="label">Prepared for</div>
+        <div class="name">Preston &amp; Tyson — Renaissance Ranch</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Moment -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Moment</div>
+        <div class="section-title">You're scaling. The systems aren't.</div>
+        <p class="section-sub">14+ active locations. 24 new Dazos licenses just requested for Brigham City and the new women's program. Billing rosters that take hours to decipher. Admissions calls rolling to voicemail between 10pm and 8am. The growth curve is the goal — the operating system underneath it is the risk.</p>
+
+        <div class="stats-row">
+          <div class="stat"><div class="number">14+</div><div class="label">Active locations billing weekly</div></div>
+          <div class="stat muted"><div class="number">$65K</div><div class="label">Dazos renewal on the clock</div></div>
+          <div class="stat"><div class="number">10 hrs</div><div class="label">Nightly admissions window with no live coverage</div></div>
+          <div class="stat gold"><div class="number">4.8★</div><div class="label">Google rating — above every direct competitor</div></div>
+        </div>
+
+        <div class="callout">
+          <div class="number">$65,000<span style="color: var(--muted); font-size: 0.5em;"> + $50/user</span></div>
+          <div class="label">Annual Dazos spend, growing with every new license</div>
+          <div class="sublabel">Plus the SEO agency you're ready to retire, plus the live-chat tool on the site</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagnosis -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Diagnosis</div>
+        <div class="section-title">Best reputation in the state. Hidden behind manual work.</div>
+        <p class="section-sub">Renaissance Ranch has the highest Google rating of any men's residential program in Utah, CARF accreditation, a multi-location footprint, and a faith-based positioning no competitor can authentically copy. The bottleneck isn't the treatment — it's the throughput of everything surrounding it.</p>
+
+        <div class="card problem">
+          <h3>Where time and money are leaking</h3>
+          <ul>
+            <li><strong>After-hours admissions</strong> — 10 hours a night with no live coverage. Leads roll to voicemail, competitors like Spirit Mountain and Ardu catch them in the morning.</li>
+            <li><strong>Dazos lock-in</strong> — $65K/yr + $50 per added user. Change management cost is why you can't walk yet.</li>
+            <li><strong>Billing roster analysis</strong> — weekly rosters across 14+ locations are hard to read; variance gets caught late or not at all.</li>
+            <li><strong>SOPs</strong> — inches-thick binder, much of it stale. Updating anything is a multi-week clinical-team tour.</li>
+            <li><strong>External SEO agency</strong> — paying for generic output that doesn't speak your voice or clinical depth.</li>
+            <li><strong>Manual lead capture</strong> — website leads hand-entered into the CRM, no drip, no tagging, no attribution.</li>
+          </ul>
+        </div>
+
+        <div class="card win">
+          <h3>The advantages you're not yet pressing</h3>
+          <ul>
+            <li><strong>CARF + 4.8★ Google</strong> — higher rated than Ardu (4.7★), stronger clinical accreditation story than most national directories surface.</li>
+            <li><strong>Faith-based positioning</strong> — Spirit Mountain, Alpine, First Step can't authentically compete on Christian recovery.</li>
+            <li><strong>14+ locations</strong> — nobody else in Utah has your geographic reach. Page-per-location SEO is almost free to build and devastating to compete against.</li>
+            <li><strong>Accreditation for insurance billing</strong> — most of your SOPs already meet audit standards. Ready to scale without re-certification drag.</li>
+            <li><strong>Leadership that's already moved</strong> — Preston has bots running; Tyson is ready for a Jarvis. The culture is ahead of the tooling.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competitive Landscape -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Landscape</div>
+        <div class="section-title">What the rest of the Utah men's recovery market looks like.</div>
+        <p class="section-sub">We audited the six programs most likely to compete with you on a Google search. Here's where they're ahead, where they're behind, and where the opening is.</p>
+
+        <div style="overflow-x: auto; margin: 32px 0;">
+          <table style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.85rem;">
+            <thead>
+              <tr>
+                <th style="text-align: left; padding: 14px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border); font-weight: 600;">Program</th>
+                <th style="padding: 14px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border); font-weight: 600;">Positioning</th>
+                <th style="padding: 14px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border); font-weight: 600;">Footprint</th>
+                <th style="padding: 14px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border); font-weight: 600;">Google</th>
+                <th style="padding: 14px 16px; color: var(--accent-hover); border-bottom: 2px solid var(--accent); font-weight: 700;">Gap to exploit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text); font-weight: 600;">Spirit Mountain Recovery</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted);">Luxury dual-diagnosis, Wasatch setting</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted);">1 (Eden) + IOP (Roy)</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">Strong</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--gold); background: rgba(168,85,247,0.03);">No faith-based story; single location</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text); font-weight: 600;">Ardu Recovery Center</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted);">Men-only, CARF, evidence-based</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted);">1 (Provo)</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">4.7★</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--gold); background: rgba(168,85,247,0.03);">You already outrank on reviews</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text); font-weight: 600;">Alpine Recovery Lodge</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted);">In-house detox, spiritual track</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted);">1</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">Decent</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--gold); background: rgba(168,85,247,0.03);">Spiritual, not explicitly Christian; thin content</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text); font-weight: 600;">First Step House</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted);">Nonprofit, Joint Commission</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted);">2 (SLC)</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">Decent</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--gold); background: rgba(168,85,247,0.03);">Budget tier; non-overlapping audience</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text); font-weight: 600;">Mountain Valley Recovery</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted);">"Ranch program" naming overlap</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted);">1</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">Thin</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--gold); background: rgba(168,85,247,0.03);">Direct name confusion — branded SEO pays off fast</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; color: var(--accent-hover); font-weight: 800; background: var(--accent-glow);">Renaissance Ranch</td>
+                <td style="padding: 12px 16px; color: var(--text); background: var(--accent-glow);">Men-only, Christian, CARF, multi-site</td>
+                <td style="padding: 12px 16px; color: var(--text); background: var(--accent-glow);">14+ and growing</td>
+                <td style="padding: 12px 16px; text-align: center; color: var(--gold); background: var(--accent-glow); font-weight: 700;">4.8★</td>
+                <td style="padding: 12px 16px; color: var(--accent-hover); background: var(--accent-glow); font-weight: 700;">Every advantage — unrealized online</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card opportunity">
+          <h3>The unfair move</h3>
+          <ul>
+            <li><strong>Page-per-location × page-per-substance SEO</strong> — 14+ locations × 8 substance categories = 100+ pages your competitors can't economically match.</li>
+            <li><strong>Faith-based authority hub</strong> — long-form, clinician-voiced content that owns "Christian men's recovery Utah" and its variants. Nobody else can write it.</li>
+            <li><strong>Always-on admissions voice agent</strong> — answer the 10pm–8am window competitors leave to voicemail.</li>
+            <li><strong>AEO (answer-engine optimization)</strong> — structured for ChatGPT, Grok, and Gemini to cite you when families ask "what's the best Christian rehab in Utah?"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Build -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Build</div>
+        <div class="section-title">A phased plan. Early wins fund the bigger moves.</div>
+        <p class="section-sub">We come in as advisory contractors, not a SaaS vendor. We stand up your AI staff on hardware you own, train Preston and Tyson to drive, and prove the leverage before we ever touch anything load-bearing.</p>
+
+        <div class="timeline">
+          <div class="phase">
+            <div class="phase-label">Weeks 1–4</div>
+            <div>
+              <h4>Phase 1 · Foundation &amp; Tyson's Jarvis</h4>
+              <p>Dedicated Mac bot host in the cold-storage room, hardwired to your new fiber. Personal assistants live in Slack and iMessage for Preston and Tyson — email triage, calendar, Zoom setup, vendor calls (Verizon, Divvy orders).</p>
+              <div class="result">Outcome: Tyson books meetings with a text message. Preston delegates vendor ops.</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Weeks 4–10</div>
+            <div>
+              <h4>Phase 2 · Marketing, SEO, &amp; Content</h4>
+              <p>Retire the external SEO agency. Bot writes blogs in your clinicians' voice (one 2-hour recording = a year of posts), builds location-and-substance landing pages, and cuts social clips from your video shoots.</p>
+              <div class="result">Outcome: 100+ new pages live; organic traffic compounding; SEO agency fee redirected to retainer.</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Weeks 8–16</div>
+            <div>
+              <h4>Phase 3 · Admissions &amp; Intake</h4>
+              <p>Voice agent answers after-hours calls through Call Rail with a voice trained on your top admissions team. Replaces website live chat with a bot that actually knows your programs. Every lead auto-captured, tagged, and put on a drip.</p>
+              <div class="result">Outcome: Zero leads lost overnight. Admissions team focused on high-intent daytime calls.</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Weeks 12–24</div>
+            <div>
+              <h4>Phase 4 · Billing, Compliance, &amp; SOPs</h4>
+              <p>Billing roster variance alerts across all 14+ locations. SOP library read, organized, and auto-updated. Kipu-aware compliance co-pilot flags missing documentation and drafts audit responses.</p>
+              <div class="result">Outcome: Weekly variance caught in hours, not weeks. SOPs current without clinician tours.</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Months 6–9</div>
+            <div>
+              <h4>Phase 5 · Owned CRM (Dazos replacement)</h4>
+              <p>Stand up an encrypted intake + CRM platform on infrastructure you own, ahead of the next Dazos renewal. Migrate users on the same login flow, retire per-seat licensing entirely.</p>
+              <div class="result">Outcome: Next Dazos renewal is a decision, not a dependency. Recurring license spend → zero.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Stack</div>
+        <div class="section-title">Best model for each job. Redundancy everywhere.</div>
+        <p class="section-sub">Your data and your bots' learning stay on a machine you own. Every bot has a fallback model so a single vendor outage never stops the business.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 24px;">
+          <div class="card" style="margin: 0;">
+            <h3 style="color: var(--accent-hover);">Primary inference</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Claude Sonnet for most bots, Opus for billing &amp; compliance reasoning. Top-scoring model for math &amp; logic.</p>
+          </div>
+          <div class="card" style="margin: 0;">
+            <h3 style="color: var(--accent-hover);">Redundancy</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">xAI Grok + Google Gemini as fallbacks. Bots keep working through cool-downs and outages.</p>
+          </div>
+          <div class="card" style="margin: 0;">
+            <h3 style="color: var(--accent-hover);">Memory &amp; skills</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Claude Code + open-memory layer on a dedicated Mac. Persistent skills, personality, and SOPs across all bots.</p>
+          </div>
+          <div class="card" style="margin: 0;">
+            <h3 style="color: var(--accent-hover);">Host hardware</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Mac M5 Pro, 48GB RAM, hardwired fiber, cold-storage room. Always-on. Your data never leaves it.</p>
+          </div>
+          <div class="card" style="margin: 0;">
+            <h3 style="color: var(--accent-hover);">Interface</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Slack (team), iMessage (mobile), email. No new app to learn. Staff talks to bots the way they already communicate.</p>
+          </div>
+          <div class="card" style="margin: 0;">
+            <h3 style="color: var(--accent-hover);">Integrations</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Gmail, Calendar, Zoom, Call Rail, Kipu, Divvy, Dazos (for now), Airtable, Stripe. No rip-and-replace year one.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Investment</div>
+        <div class="section-title">Three shapes of engagement.</div>
+        <p class="section-sub">We recommend starting at Transformation Partner. Scope is month-to-month after a 90-day anchor. No per-seat licensing — ever.</p>
+
+        <div class="pricing-grid">
+          <div class="tier">
+            <div class="tier-label">Advisory Start</div>
+            <div class="price">$8,500</div>
+            <div class="price-note">/month · 90-day anchor</div>
+            <ul>
+              <li>Phase 1 scope (bot host + Tyson's Jarvis)</li>
+              <li>Weekly 60–90 min working session</li>
+              <li>1–2 bots deployed per month</li>
+              <li>Slack channel w/ same-day responses</li>
+              <li>Hardware spec + setup included</li>
+              <li>Upgrade to Transformation anytime</li>
+            </ul>
+            <button class="tier-btn outline">Start narrow</button>
+          </div>
+
+          <div class="tier featured">
+            <div class="tier-label">⚡ Transformation Partner — Recommended</div>
+            <div class="price" style="color: var(--accent-hover);">$22,500</div>
+            <div class="price-note">/month · 90-day anchor, then monthly</div>
+            <ul>
+              <li>Everything in Advisory Start</li>
+              <li>Phases 1–4 delivered in 6 months</li>
+              <li>Marketing, SEO, &amp; content bot live</li>
+              <li>After-hours admissions voice agent</li>
+              <li>Billing &amp; compliance co-pilot</li>
+              <li>100+ location/substance landing pages</li>
+              <li>Retire external SEO agency — net $0 add</li>
+            </ul>
+            <button class="tier-btn primary">Choose partner tier</button>
+          </div>
+
+          <div class="tier">
+            <div class="tier-label">Strategic Partner</div>
+            <div class="price">$45,000</div>
+            <div class="price-note">/month · includes Phase 5</div>
+            <ul>
+              <li>Everything in Transformation Partner</li>
+              <li>Owned CRM build — replaces Dazos</li>
+              <li>Dedicated project lead on-site monthly</li>
+              <li>Priority feature requests</li>
+              <li>Multi-location rollout engineering</li>
+              <li>Quarterly exec strategy reviews</li>
+            </ul>
+            <button class="tier-btn outline">Full transformation</button>
+          </div>
+        </div>
+
+        <div class="card win" style="margin-top: 32px;">
+          <h3>What this replaces</h3>
+          <ul>
+            <li><strong>External SEO agency</strong> — typical spend $3K–$6K/mo, replaced in Phase 2</li>
+            <li><strong>Website live chat tool</strong> (Podium/Weave-class) — $300–$800/mo, replaced in Phase 3</li>
+            <li><strong>After-hours answering service</strong> — replaced by always-on voice agent in Phase 3</li>
+            <li><strong>Dazos licensing</strong> ($65K/yr + $50/user) — exited in Phase 5, Strategic Partner tier</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why GullStack -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Why GullStack</div>
+        <div class="section-title">We already did this for a regulated services business.</div>
+        <p class="section-sub">A financial planner we work with went from 3 new clients a week to 17 in weeks. Rebuilt their 312-page website, took over their Salesforce, built an SEC-compliant drip, and an encrypted iPad check-in — in the time a traditional agency would have kicked off discovery.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 32px;">
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">Capital Wealth (financial)</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">SEC-regulated · 312-page rebuild</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">3 → 17 new clients / wk</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">In weeks, not quarters. Event at Weaver State hit record attendance.</p>
+          </div>
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">Behavioral health client</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">Counseling practice · medical billing</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">~8% saved per transaction</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">Replaced clearinghouse with owned Stripe-backed flow. Practice went from red to profitable.</p>
+          </div>
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">Dr. Noot (biomimetic dentistry)</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">Healthcare · niche specialty</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">48-hr site deploy</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">Emergency rebuild from broken 404s to publishing in two days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Let's get Phase 1 live before the M5 Pro arrives.</h2>
+        <p>Hardware lands April 28–29. Fiber installs next week. We can have Tyson's assistant answering Slacks the day the Mac boots.</p>
+        <a href="mailto:bryce@gullstack.com?subject=Renaissance%20Ranch%20-%20Phase%201%20Greenlight&body=Hi%20Bryce%2C%0A%0ALet%27s%20move%20on%20Phase%201.%20Available%20times%20this%20week%3A%0A%0A" class="cta-btn">Greenlight Phase 1 →</a>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 16px;">No per-seat licensing · Month-to-month after 90-day anchor</p>
+        <div style="margin-top: 20px; padding: 12px 20px; background: var(--gold-soft); border: 1px solid rgba(34,211,238,0.2); border-radius: 8px; display: inline-block;">
+          <p style="color: var(--gold); font-size: 0.8rem; font-weight: 600; margin: 0;">⚡ This proposal is held for 14 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="mark">
+      <img src="/gull-logo.png" alt="GullStack">
+      <span>GullStack</span>
+    </div>
+    <p><strong>Bryce Morgan</strong> · bryce@gullstack.com · GullStack.com</p>
+    <p style="margin-top: 8px; opacity: 0.5; font-size: 0.75rem;">Prepared April 2026 · Renaissance Ranch × GullStack</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
