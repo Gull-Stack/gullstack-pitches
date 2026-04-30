@@ -271,6 +271,82 @@
     .footer .mark img { height: 28px; }
     .footer .mark span { font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
 
+    /* Before/After pattern */
+    .before-after { margin: 24px 0; }
+    .before-after .before-state {
+      font-size: 0.9rem; color: #ef4444; font-weight: 500;
+      margin-bottom: 12px; padding: 12px 16px;
+      background: rgba(239,68,68,0.06); border-left: 3px solid #ef4444;
+      border-radius: 0 8px 8px 0;
+    }
+    .before-after h3 {
+      font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; color: var(--text);
+    }
+    .before-after .description {
+      font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;
+    }
+    .before-after .use-case {
+      background: rgba(168,85,247,0.04); border: 1px solid rgba(168,85,247,0.1);
+      border-radius: 10px; padding: 14px 18px; font-size: 0.85rem;
+      line-height: 1.7; color: rgba(240,240,245,0.55); font-style: italic; margin-bottom: 12px;
+    }
+    .before-after .use-case strong { color: var(--accent); font-style: normal; font-weight: 600; }
+    .before-after .result-line {
+      font-size: 0.9rem; color: var(--gold); font-weight: 500;
+      padding: 10px 14px; background: var(--gold-soft);
+      border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0;
+    }
+
+    /* Chat Mockup */
+    .chat-mock {
+      background: #111128; border: 1px solid rgba(168,85,247,0.15);
+      border-radius: 16px; overflow: hidden; margin: 24px 0; max-width: 600px;
+    }
+    .chat-header {
+      background: #1a1a3a; padding: 14px 20px; font-size: 13px; font-weight: 600;
+      color: var(--accent); letter-spacing: 1px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .chat-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: drift 2s infinite; }
+    .chat-body { padding: 20px; }
+    .chat-msg { margin-bottom: 16px; max-width: 85%; }
+    .chat-msg:last-child { margin-bottom: 0; }
+    .chat-msg.user { margin-left: auto; text-align: right; }
+    .chat-msg .bubble {
+      display: inline-block; padding: 10px 16px; border-radius: 12px;
+      font-size: 0.85rem; line-height: 1.5; text-align: left;
+    }
+    .chat-msg.bot .bubble {
+      background: rgba(168,85,247,0.1); color: rgba(240,240,245,0.85);
+      border-bottom-left-radius: 4px;
+    }
+    .chat-msg.user .bubble {
+      background: rgba(255,255,255,0.06); color: rgba(240,240,245,0.7);
+      border-bottom-right-radius: 4px;
+    }
+    .chat-msg .msg-label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; font-weight: 500; }
+    .chat-result {
+      margin-top: 12px; padding: 12px 16px;
+      background: rgba(34,211,238,0.06); border: 1px solid rgba(34,211,238,0.12);
+      border-radius: 8px; font-size: 0.8rem; color: var(--gold); line-height: 1.5;
+    }
+
+    /* How You Use It */
+    .use-it-grid { display: flex; flex-direction: column; gap: 20px; margin-top: 28px; }
+    .use-it-item { display: flex; align-items: flex-start; gap: 16px; }
+    .use-it-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .use-it-item strong { color: var(--text); font-size: 1rem; display: block; margin-bottom: 4px; }
+    .use-it-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* Why This Works */
+    .why-grid { display: flex; flex-direction: column; gap: 28px; margin-top: 40px; max-width: 640px; }
+    .why-item h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; }
+    .why-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
@@ -405,62 +481,140 @@
             </tbody>
           </table>
         </div>
+
+        <div style="text-align: center; margin-top: 32px; padding: 24px; background: rgba(168,85,247,0.04); border: 1px solid rgba(168,85,247,0.1); border-radius: 12px;">
+          <p style="font-size: 1.1rem; color: var(--text); font-weight: 600; line-height: 1.6;">Spirit Mountain has 2 locations. You have 14.<br>They outrank you on Google.<br><span style="color: var(--accent-hover);">That's the gap we close.</span></p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Exactly What You Get -->
+  <!-- Exactly What You Get — Before/After Format -->
   <section>
     <div class="container">
       <div class="fade-in">
         <div class="section-label">Exactly What You Get</div>
-        <div class="section-title">Here is every deliverable, listed out.</div>
+        <div class="section-title">Here's what changes — and why it matters.</div>
+        <p class="section-sub">Every deliverable, shown as the gap it closes. Not just what we build — what it fixes.</p>
 
-        <div class="card opportunity">
-          <h3>1. New website — built from scratch</h3>
-          <ul>
-            <li><strong>Custom-coded site</strong> — replaces WordPress/Divi. No page builders, no plugins to maintain. Fast, clean, lightweight code.</li>
-            <li><strong>Mobile-first design</strong> — loads in under 2 seconds. Most families searching for help are on a phone, often late at night.</li>
-            <li><strong>14+ location pages</strong> — one dedicated page per facility with address, programs available, photos, and local information.</li>
-            <li><strong>8+ substance pages</strong> — alcohol, meth, fentanyl, heroin, opioids, cocaine, prescription drugs, marijuana. Each page has real clinical content specific to Renaissance Ranch's approach.</li>
-            <li><strong>Program pages</strong> — residential, outpatient, IOP, detox, sober living, family programs. Each one covers what the program is, who it's for, what to expect, and how to start.</li>
-            <li><strong>Insurance verification page</strong> — front and center. Families need to know you take their insurance before they call.</li>
-            <li><strong>Staff &amp; team pages</strong> — your 40+ clinicians and staff presented with bios and credentials. Builds trust and supports E-E-A-T for Google.</li>
-            <li><strong>Testimonial integration</strong> — your existing video testimonials and written reviews, organized and accessible.</li>
-            <li><strong>Clear navigation</strong> — families in crisis need to find the right page in one click. Programs, locations, insurance, contact — all immediately accessible.</li>
-          </ul>
+        <!-- 1. Website -->
+        <div class="before-after" style="margin-top: 40px;">
+          <div class="before-state">Right now: WordPress + Divi. Slow on mobile. 140 pages untouched since March 2024. Zero location-specific landing pages for 14 facilities. A family searches "drug rehab Brigham City" and finds Spirit Mountain instead of you.</div>
+          <h3>A custom-built site that loads in 2 seconds and ranks for every location you operate.</h3>
+          <p class="description">No page builders. No plugins to maintain. 14+ location pages, 8 substance-specific pages, program pages, insurance verification, staff bios with credentials. Families in crisis find the right page in one click.</p>
+          <div class="use-case"><strong>Example:</strong> A father in Brigham City searches "meth recovery near me" at 1 AM. Your new page — "Meth Recovery in Brigham City | Renaissance Ranch" — appears first. He sees the address, the program details, the insurance he carries, and a button to start admissions. He clicks it. Right now, he'd find Spirit Mountain instead.</div>
+          <div class="result-line">What you get: 14 facilities, each with their own front door on Google. Not one generic homepage for the whole operation.</div>
         </div>
 
-        <div class="card opportunity">
-          <h3>2. SEO — 100+ pages, indexed from launch</h3>
-          <ul>
-            <li><strong>Location × substance matrix</strong> — 14 locations × 8 substances = 112 unique pages. Example: "Meth Recovery in Brigham City," "Alcohol Rehab in Sandy," "Fentanyl Treatment in Ogden." Each page targets a specific search query.</li>
-            <li><strong>Clinician-voiced content</strong> — we record a 60–90 minute conversation with your clinical team. That single session produces the source material for all content across the site. Written in their voice, with their expertise.</li>
-            <li><strong>Faith-based content hub</strong> — dedicated pages covering Christian recovery, your philosophy, spiritual components of treatment. These target searches like "Christian rehab Utah" and "faith-based addiction treatment" — terms your competitors can't authentically rank for.</li>
-            <li><strong>Technical SEO</strong> — proper meta titles and descriptions on every page, XML sitemap, internal linking structure, schema markup for local business + medical organization, image optimization, canonical URLs.</li>
-            <li><strong>Blog framework</strong> — ongoing content system we populate weekly during consulting sessions. Fresh content signals to Google that the site is active.</li>
-          </ul>
+        <!-- 2. SEO -->
+        <div class="before-after">
+          <div class="before-state">Right now: Competitors with 1 location outrank you because they have dedicated pages. You have 14 locations and zero location pages. Your SEO agency produced generic content that reads like every other rehab site.</div>
+          <h3>112 unique pages. Each one targeting a specific family searching for help.</h3>
+          <p class="description">14 locations × 8 substances = 112 pages. "Alcohol Rehab in Sandy." "Fentanyl Treatment in Ogden." "Heroin Recovery in Provo." Each written in your clinicians' voice from a single 90-minute recorded session. Plus a faith-based content hub targeting "Christian rehab Utah" — searches your competitors can't authentically rank for.</p>
+          <div class="use-case"><strong>Example:</strong> A mother in Sandy Googles "alcohol rehab Sandy Utah." Right now, she gets Ardu Recovery. With your new site, she gets "Alcohol Recovery in Sandy | Renaissance Ranch" — with your specific program details, your 4.8★ rating, your CARF accreditation, and a click-to-call button. Ardu has 1 location. You have 14. But they outrank you because they have the page.</div>
+          <div class="result-line">What you get: 112 pages indexed from launch. Every location. Every substance. Every search query covered.</div>
         </div>
 
-        <div class="card opportunity">
-          <h3>3. AEO — structured for AI answer engines</h3>
-          <ul>
-            <li><strong>What AEO is</strong> — when someone asks ChatGPT, Grok, or Gemini a question like "what's the best Christian rehab in Utah," the AI pulls its answer from websites. AEO is structuring your site so it gets cited.</li>
-            <li><strong>Schema markup on every page</strong> — structured data that tells AI models exactly what each page contains: programs, locations, accreditations, reviews, FAQs.</li>
-            <li><strong>FAQ sections</strong> — real questions families ask ("Do you take Medicaid?", "How long is the program?", "Is it faith-based?"), answered directly on the relevant pages. AI models use these as source material.</li>
-            <li><strong>Entity clarity</strong> — the site clearly identifies Renaissance Ranch as a CARF-accredited, faith-based, multi-location treatment provider. AI models need this structured information to recommend you accurately.</li>
-            <li><strong>Why this matters now</strong> — most rehab sites have zero AEO. The sites that structure their content first will be the ones AI engines default to recommending.</li>
-          </ul>
+        <!-- 3. AEO -->
+        <div class="before-after">
+          <div class="before-state">Right now: When someone asks ChatGPT "what's the best Christian rehab in Utah," your site isn't structured to be cited. No schema markup. No structured data. The AI doesn't know you exist.</div>
+          <h3>The first rehab site in Utah built for AI answer engines.</h3>
+          <p class="description">Schema markup on every page. FAQ sections with real questions families ask. Entity clarity that tells AI models exactly what Renaissance Ranch is — CARF-accredited, faith-based, 14 locations, men's and women's programs. Most rehab sites have zero AEO. First mover wins.</p>
+          <div class="use-case"><strong>Example:</strong> A family member asks Gemini: "Is there a faith-based rehab in Utah that takes Medicaid?" Right now, Gemini doesn't cite you. With AEO in place, your FAQ answers that exact question, your schema markup confirms it, and Gemini recommends Renaissance Ranch by name — with your phone number.</div>
+          <div class="result-line">What you get: The site AI engines cite when families ask about faith-based recovery in Utah.</div>
         </div>
 
-        <div class="card opportunity">
-          <h3>4. AI website assistant</h3>
-          <ul>
-            <li><strong>What it is</strong> — a chatbot on your site that answers visitor questions about Renaissance Ranch 24 hours a day, 7 days a week.</li>
-            <li><strong>Trained on your programs</strong> — it knows your locations, services, insurance policies, admissions process, and faith-based approach. It gives accurate, specific answers — not generic responses.</li>
-            <li><strong>Lead capture</strong> — when someone engages, the bot collects their name, contact info, substance concern, and urgency. That information is delivered to your admissions team automatically.</li>
-            <li><strong>After-hours coverage</strong> — a family on your site at 2am gets a real conversation about your programs instead of a contact form. They get answers. You get their information.</li>
-          </ul>
+        <!-- 4. AI Assistant -->
+        <div class="before-after">
+          <div class="before-state">Right now: A family finds your site at 2 AM. Their son just got arrested. They're panicking. They land on your Contact Form 7. They fill it out. Nobody responds until Monday morning. By then, they've called 3 other programs and their son is already at Spirit Mountain.</div>
+          <h3>Every family gets a real conversation. Every hour. Every day.</h3>
+          <p class="description">An AI assistant on your site, trained on your specific programs, locations, insurance policies, admissions process, and faith-based approach. It doesn't give generic answers. It knows your 14 locations. It knows which programs accept Medicaid. It captures name, contact info, substance concern, and urgency — and delivers it to admissions automatically.</p>
+          <div class="use-case"><strong>Example:</strong> 2:47 AM on a Saturday. A mother in Ogden types: "My son was just arrested for meth. Do you have a program that can help? We have Blue Cross." The bot responds: "Yes — Renaissance Ranch has a residential treatment program for meth recovery. Your closest location is our Ogden facility. Blue Cross Blue Shield is accepted. I can have our admissions team call you first thing in the morning — what's the best number?" She gives her number. By 8 AM Monday, your admissions team has her name, her son's situation, her insurance, and her phone number. She never called Spirit Mountain.</div>
+          <div class="result-line">What you get: Zero missed families. The bot captures them while your team sleeps.</div>
+        </div>
+
+        <!-- Chat Mockup -->
+        <div style="margin-top: 40px;">
+          <div class="section-label" style="margin-bottom: 16px;">What this looks like</div>
+          <div class="chat-mock">
+            <div class="chat-header"><span class="chat-dot"></span> Renaissance Ranch — AI Assistant</div>
+            <div class="chat-body">
+              <div class="chat-msg user"><div class="msg-label">Visitor — 2:47 AM</div><div class="bubble">My son was arrested for meth possession tonight. We need help. Do you take Blue Cross?</div></div>
+              <div class="chat-msg bot"><div class="msg-label">AI Assistant</div><div class="bubble">I'm sorry you're going through this. Yes — Renaissance Ranch has a residential treatment program specifically for meth recovery, grounded in a Christian, faith-based approach. Blue Cross Blue Shield is accepted. Your closest location is our Ogden facility. Would you like our admissions team to call you first thing in the morning?</div></div>
+              <div class="chat-msg user"><div class="msg-label">Visitor</div><div class="bubble">Yes please. My number is 801-555-0142. His name is Tyler. He's 23.</div></div>
+              <div class="chat-msg bot"><div class="msg-label">AI Assistant</div><div class="bubble">Got it. I've sent Tyler's information and your contact details to our admissions team. Someone will call you by 8 AM. In the meantime, here's what to expect in the first 48 hours of our residential program: [link]. You're not alone in this.</div></div>
+              <div class="chat-result">&#9989; Lead captured: name, phone, insurance, substance, urgency &bull; Admissions notified &bull; 2:49 AM — no staff required</div>
+            </div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 12px; font-style: italic;">This is what happens at 2 AM with the AI assistant. Right now, they get a contact form.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How You Use It -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">How You Use It</div>
+        <div class="section-title">You open your phone. That's it.</div>
+        <p class="section-sub">No dashboard to learn. No software to install. No login to remember. Preston and Tyson manage the system from a group chat.</p>
+
+        <div class="card" style="margin-top: 32px;">
+          <div class="use-it-grid">
+            <div class="use-it-item">
+              <div class="use-it-icon" style="background: rgba(34,211,238,0.1);">&#128241;</div>
+              <div>
+                <strong>On your phone, any time</strong>
+                <p>Need to update the site? Tell the AI in the chat. "Add the new Brigham City facility to the locations page with this address." Done in minutes. Not days.</p>
+              </div>
+            </div>
+            <div class="use-it-item">
+              <div class="use-it-icon" style="background: rgba(168,85,247,0.1);">&#128101;</div>
+              <div>
+                <strong>Your whole leadership team</strong>
+                <p>Preston, Tyson, admissions leads — everyone in one group. Anyone can ask the AI to do something. Everyone sees what's happening. No chain of command for a website update.</p>
+              </div>
+            </div>
+            <div class="use-it-item">
+              <div class="use-it-icon" style="background: rgba(239,68,68,0.1);">&#9889;</div>
+              <div>
+                <strong>It talks back</strong>
+                <p>It doesn't just take orders. It alerts you when a lead comes in at 2 AM. It delivers weekly reports into the chat. "3 leads captured overnight — 2 meth, 1 alcohol. Ogden and Sandy. Admissions has the details." You wake up and it's already there.</p>
+              </div>
+            </div>
+          </div>
+
+          <p style="margin-top: 24px; font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;">No computer required. No training manual. If you can send a text message, you can run the entire system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why This Works — Emotional Close -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Why This Works</div>
+        <div class="section-title">Four reasons this isn't just another agency pitch.</div>
+
+        <div class="why-grid">
+          <div class="why-item">
+            <h3 style="color: var(--text);">It never stops.</h3>
+            <p>It works at 2 AM on Christmas Eve. It doesn't forget to follow up. It doesn't call in sick. It doesn't take lunch. When a family needs help at the worst moment of their lives, it's there.</p>
+          </div>
+          <div class="why-item">
+            <h3 style="color: var(--text);">It costs less than one admissions coordinator.</h3>
+            <p>This system does the work of a web developer, an SEO specialist, a content writer, and an after-hours intake team. Combined. For 3 months. For less than you'd pay one additional FTE.</p>
+          </div>
+          <div class="why-item">
+            <h3 style="color: var(--text);">It gets smarter over time.</h3>
+            <p>Every lead the bot captures teaches it what families actually ask. Every page that ranks reveals which searches matter most. Every month, the system improves based on real data — not guesses.</p>
+          </div>
+          <div class="why-item">
+            <h3 style="color: var(--text);">Your competitors can't match this.</h3>
+            <p>Spirit Mountain has 2 locations. Ardu has 1. You have 14. They don't have an AI assistant. They don't have AEO. They don't have 112 location-specific pages. The gap between your program and your website is the only thing keeping them competitive. We close that gap.</p>
+          </div>
         </div>
       </div>
     </div>
