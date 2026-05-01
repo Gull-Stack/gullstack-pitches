@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Byrne Orthodontics × GullStack | Smarter Web, Straighter Smiles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #06192a;
+      --bg-elevated: #0a2536;
+      --bg-card: #0e2e42;
+      --text: #f0f0f5;
+      --text-muted: #8aa2b0;
+      --accent: #07485c;
+      --accent-hover: #4d8fa8;
+      --accent-glow: rgba(77, 143, 168, 0.18);
+      --gold: #e3b15c;
+      --gold-soft: rgba(227, 177, 92, 0.10);
+      --muted: #6b7280;
+      --muted-soft: rgba(107, 114, 128, 0.15);
+      --border: rgba(255,255,255,0.06);
+      --font-serif: 'Young Serif', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative;
+      background: radial-gradient(ellipse at top, var(--accent-glow) 0%, transparent 50%);
+    }
+    .hero::after {
+      content: '↓'; position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%); font-size: 2rem; opacity: 0.2;
+      animation: drift 2s ease-in-out infinite;
+    }
+    @keyframes drift {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+    .hero-logos {
+      display: flex; align-items: center; justify-content: center;
+      gap: 28px; margin-bottom: 40px;
+    }
+    .hero-logos img { height: 44px; }
+    .hero-logos .x { color: var(--text-muted); font-size: 1.5rem; opacity: 0.5; font-weight: 300; }
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 400; line-height: 1.12; margin-bottom: 20px;
+    }
+    .hero h1 .glow {
+      background: linear-gradient(135deg, var(--accent-hover), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-glow), rgba(77,143,168,0.08));
+      border: 1px solid rgba(77,143,168,0.2);
+      color: var(--accent-hover); padding: 6px 18px; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .prepared-for {
+      margin-top: 40px; padding: 16px 24px;
+      background: var(--bg-elevated); border-radius: 10px; display: inline-block;
+      border: 1px solid var(--border);
+    }
+    .prepared-for .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 2px; }
+    .prepared-for .name { font-size: 1.1rem; font-weight: 700; }
+
+    section { padding: 80px 0; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent-hover); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400; margin-bottom: 16px; line-height: 1.2;
+    }
+    .section-sub { color: var(--text-muted); font-size: 1rem; max-width: 640px; margin-bottom: 40px; }
+
+    .stats-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin: 40px 0;
+    }
+    .stat {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px; text-align: center;
+      transition: all 0.3s ease;
+    }
+    .stat:hover { transform: translateY(-2px); border-color: rgba(77,143,168,0.3); }
+    .stat .number {
+      font-family: var(--font-serif); font-size: 2rem; font-weight: 400;
+      color: var(--accent-hover); margin-bottom: 6px; line-height: 1;
+    }
+    .stat .label { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; }
+    .stat.gold .number { color: var(--gold); }
+    .stat.muted .number { color: var(--muted); }
+
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px; margin: 24px 0;
+    }
+    .card.problem {
+      border-left: 3px solid var(--muted);
+      background: linear-gradient(135deg, var(--muted-soft), transparent 40%);
+    }
+    .card.opportunity {
+      border-left: 3px solid var(--accent-hover);
+      background: linear-gradient(135deg, var(--accent-glow), transparent 40%);
+    }
+    .card.win {
+      border-left: 3px solid var(--gold);
+      background: linear-gradient(135deg, var(--gold-soft), transparent 40%);
+    }
+    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; }
+    .card.problem h3 { color: var(--muted); }
+    .card.opportunity h3 { color: var(--accent-hover); }
+    .card.win h3 { color: var(--gold); }
+    .card ul { list-style: none; margin: 0; }
+    .card li {
+      position: relative; padding: 7px 0 7px 28px;
+      color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;
+      border-bottom: 1px solid var(--border);
+    }
+    .card li:last-child { border-bottom: none; }
+    .card.problem li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+    .card.opportunity li::before { content: '→'; position: absolute; left: 0; color: var(--accent-hover); font-weight: 600; }
+    .card.win li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+    .card li strong { color: var(--text); }
+    .card li code {
+      font-family: 'SF Mono', Consolas, monospace; font-size: 0.8rem;
+      background: rgba(0,0,0,0.3); color: var(--gold);
+      padding: 1px 6px; border-radius: 4px;
+    }
+
+    .callout {
+      text-align: center; padding: 48px 32px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; margin: 40px 0;
+      position: relative; overflow: hidden;
+    }
+    .callout::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
+    }
+    .callout .number {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 400; margin-bottom: 10px; line-height: 1;
+    }
+    .callout .number.gold { color: var(--gold); }
+    .callout .label { font-size: 1.1rem; color: var(--text-muted); }
+    .callout .sublabel { font-size: 0.85rem; color: var(--text-muted); opacity: 0.7; margin-top: 6px; }
+
+    /* Audit findings table */
+    .audit-table {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden; margin: 32px 0;
+    }
+    .audit-row {
+      display: grid; grid-template-columns: 200px 1fr 80px;
+      gap: 20px; padding: 20px 24px; align-items: center;
+      border-bottom: 1px solid var(--border); font-size: 0.9rem;
+    }
+    .audit-row:last-child { border-bottom: none; }
+    .audit-row .practice { font-weight: 700; color: var(--text); }
+    .audit-row .practice .self { display: block; color: var(--gold); font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; margin-top: 2px; }
+    .audit-row .finding { color: var(--text-muted); }
+    .audit-row .grade {
+      text-align: center; font-family: var(--font-serif); font-size: 1.6rem;
+    }
+    .grade.f { color: #ef4444; }
+    .grade.d { color: #f59e0b; }
+    .grade.c { color: var(--gold); }
+    @media (max-width: 768px) {
+      .audit-row { grid-template-columns: 1fr 60px; }
+      .audit-row .practice { grid-column: 1 / -1; }
+    }
+
+    /* Before/After pattern */
+    .before-after { margin: 24px 0; }
+    .before-after .before-state {
+      font-size: 0.9rem; color: #ef4444; font-weight: 500;
+      margin-bottom: 12px; padding: 12px 16px;
+      background: rgba(239,68,68,0.06); border-left: 3px solid #ef4444;
+      border-radius: 0 8px 8px 0;
+    }
+    .before-after h3 {
+      font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; color: var(--text);
+    }
+    .before-after .description {
+      font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;
+    }
+    .before-after .use-case {
+      background: rgba(77,143,168,0.06); border: 1px solid rgba(77,143,168,0.15);
+      border-radius: 10px; padding: 14px 18px; font-size: 0.85rem;
+      line-height: 1.7; color: rgba(240,240,245,0.55); font-style: italic; margin-bottom: 12px;
+    }
+    .before-after .use-case strong { color: var(--accent-hover); font-style: normal; font-weight: 600; }
+    .before-after .result-line {
+      font-size: 0.9rem; color: var(--gold); font-weight: 500;
+      padding: 10px 14px; background: var(--gold-soft);
+      border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0;
+    }
+
+    /* Chat Mockup */
+    .chat-mock {
+      background: var(--bg-elevated); border: 1px solid rgba(77,143,168,0.18);
+      border-radius: 16px; overflow: hidden; margin: 24px 0; max-width: 600px;
+    }
+    .chat-header {
+      background: var(--bg-card); padding: 14px 20px; font-size: 13px; font-weight: 600;
+      color: var(--accent-hover); letter-spacing: 1px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .chat-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: drift 2s infinite; }
+    .chat-body { padding: 20px; }
+    .chat-msg { margin-bottom: 16px; max-width: 85%; }
+    .chat-msg:last-child { margin-bottom: 0; }
+    .chat-msg.user { margin-left: auto; text-align: right; }
+    .chat-msg .bubble {
+      display: inline-block; padding: 10px 16px; border-radius: 12px;
+      font-size: 0.85rem; line-height: 1.5; text-align: left;
+    }
+    .chat-msg.bot .bubble {
+      background: rgba(77,143,168,0.15); color: rgba(240,240,245,0.9);
+      border-bottom-left-radius: 4px;
+    }
+    .chat-msg.user .bubble {
+      background: rgba(255,255,255,0.06); color: rgba(240,240,245,0.7);
+      border-bottom-right-radius: 4px;
+    }
+    .chat-msg .msg-label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; font-weight: 500; }
+    .chat-result {
+      margin-top: 12px; padding: 12px 16px;
+      background: rgba(227,177,92,0.06); border: 1px solid rgba(227,177,92,0.15);
+      border-radius: 8px; font-size: 0.8rem; color: var(--gold); line-height: 1.5;
+    }
+
+    /* Why grid */
+    .why-grid { display: flex; flex-direction: column; gap: 28px; margin-top: 40px; max-width: 640px; }
+    .why-item h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; }
+    .why-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Trade offer */
+    .trade-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0;
+    }
+    @media (max-width: 768px) { .trade-grid { grid-template-columns: 1fr; } }
+    .trade-side {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px; position: relative; overflow: hidden;
+    }
+    .trade-side.we {
+      border-top: 3px solid var(--accent-hover);
+    }
+    .trade-side.you {
+      border-top: 3px solid var(--gold);
+      background: linear-gradient(180deg, var(--gold-soft), var(--bg-card) 60%);
+    }
+    .trade-side .trade-label {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 2px; margin-bottom: 8px;
+    }
+    .trade-side.we .trade-label { color: var(--accent-hover); }
+    .trade-side.you .trade-label { color: var(--gold); }
+    .trade-side h3 {
+      font-family: var(--font-serif); font-size: 1.4rem; font-weight: 400;
+      margin-bottom: 18px; line-height: 1.25;
+    }
+    .trade-side ul { list-style: none; }
+    .trade-side li {
+      padding: 8px 0 8px 22px; position: relative;
+      color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;
+      border-bottom: 1px solid var(--border);
+    }
+    .trade-side li:last-child { border-bottom: none; }
+    .trade-side.we li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-hover); font-weight: 600; }
+    .trade-side.you li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+    .trade-side li strong { color: var(--text); }
+
+    .cta {
+      text-align: center;
+      background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 60%);
+      padding: 80px 0;
+    }
+    .cta-card {
+      max-width: 560px; margin: 0 auto;
+      background: var(--bg-card); border: 2px solid var(--accent-hover);
+      border-radius: 20px; padding: 40px 32px;
+      position: relative; overflow: hidden;
+    }
+    .cta-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
+    }
+    .cta-card h2 {
+      font-family: var(--font-serif); font-size: 1.8rem;
+      font-weight: 400; margin-bottom: 16px; line-height: 1.2;
+    }
+    .cta-card p { color: var(--text-muted); margin-bottom: 28px; font-size: 1rem; }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: white; padding: 16px 40px; border-radius: 10px;
+      font-size: 1.05rem; font-weight: 800; text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(77,143,168,0.4); }
+
+    .footer {
+      text-align: center; padding: 48px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .footer p { color: var(--text-muted); font-size: 0.85rem; }
+    .footer .mark {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; margin-bottom: 12px; opacity: 0.5;
+    }
+    .footer .mark img { height: 28px; }
+    .footer .mark span { font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
+
+    .fade-in { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .js-loaded .fade-in { opacity: 0; transform: translateY(24px); }
+    .js-loaded .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @media print {
+      .js-loaded .fade-in { opacity: 1 !important; transform: translateY(0) !important; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-logos { flex-wrap: wrap; gap: 12px; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-logos">
+        <img src="byrne-logo-white.png" alt="Byrne Orthodontics" style="height: 64px; width: auto; display: block;">
+        <span class="x">×</span>
+        <img src="gull-logo.png" alt="GullStack">
+      </div>
+      <div class="badge">A Proposal · May 2026</div>
+      <h1>Smarter web. <span class="glow">Straighter smiles.</span></h1>
+      <p>You've spent 50 years building Saratoga's most-loved orthodontic practice. Your website hasn't kept up. Here's the gap — and how we close it together.</p>
+      <div class="prepared-for">
+        <div class="label">Prepared For</div>
+        <div class="name">Dr. Brian Byrne &amp; Dr. Natalie Pinckney</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Audit -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Where Things Stand</div>
+        <div class="section-title">We audited byrneorthodontics.com. Here's what we found.</div>
+        <p class="section-sub">Live HTTP headers, raw HTML, and on-page SEO signals — captured this week. No assumptions. Just the data.</p>
+
+        <div class="card problem">
+          <h3>The technical reality</h3>
+          <ul>
+            <li><strong>30 JavaScript files + 18 CSS files</strong> load on every page — every one is a render-blocking round-trip the browser has to wait for before showing content.</li>
+            <li><strong>Zero lazy-loading</strong> — every image on the homepage downloads at full size on first paint, even the ones below the fold.</li>
+            <li><strong>4 of 11 images missing <code>alt</code> attributes</strong> — Google can't read them, screen readers can't either (ADA exposure).</li>
+            <li><strong>TTFB ~1.0s</strong> — modern dental sites hit ~200ms. Slow servers bleed into every Core Web Vitals score Google measures.</li>
+            <li><strong>WordPress + WP Engine + WPRocket cache</strong> — well-configured at the server, but choked at the theme. The theme is the bottleneck.</li>
+          </ul>
+        </div>
+
+        <div class="card problem">
+          <h3>What's missing entirely</h3>
+          <ul>
+            <li><strong>No live website chat.</strong> Patients who want to ask "do you take my insurance?" at 9pm have no way to do it.</li>
+            <li><strong>No embedded online scheduler.</strong> Booking the free consult means calling during business hours and hoping someone picks up.</li>
+            <li><strong>No pay-by-text.</strong> Every balance is a paper statement, a phone call, or a portal login the patient has to remember.</li>
+            <li><strong>No AI search optimization.</strong> When a Saratoga parent asks ChatGPT "best orthodontist for Invisalign near me," the answer doesn't include you yet — but it could.</li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <div class="number gold">5×</div>
+          <div class="label">More likely to convert</div>
+          <div class="sublabel">when a website has chat + online scheduling vs. without (Forrester)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competitive landscape -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Competitive Landscape</div>
+        <div class="section-title">Saratoga Springs Invisalign providers — graded.</div>
+        <p class="section-sub">We audited every Invisalign provider in town. The good news: nobody's winning the digital game. The first practice to fix this owns the next decade of search.</p>
+
+        <div class="audit-table">
+          <div class="audit-row">
+            <div class="practice">Saratoga Springs Family Dentistry</div>
+            <div class="finding">Brand domain returns a <strong>503 error with a TLS protocol mismatch</strong> — the site is broken. Their working presence lives on a multi-location umbrella domain, splitting their SEO authority.</div>
+            <div class="grade f">F</div>
+          </div>
+          <div class="audit-row">
+            <div class="practice">Saratoga Smile Care + Spa</div>
+            <div class="finding">Homepage <code>&lt;title&gt;</code> tag reads "Expert Facial Rejuvenation &amp; Skincare Treatments" — the single most important SEO signal points to spa work, not dentistry. 11 H1 tags. No meta description.</div>
+            <div class="grade f">F</div>
+          </div>
+          <div class="audit-row">
+            <div class="practice">Daniello &amp; Eigo Orthodontics</div>
+            <div class="finding"><strong>Zero H1 tags. Zero JSON-LD schema markup.</strong> Google and AI search engines (ChatGPT, Perplexity, Gemini) cannot parse what the practice is, where it is, or what it offers.</div>
+            <div class="grade f">F</div>
+          </div>
+          <div class="audit-row">
+            <div class="practice">Smiles For Life Saratoga</div>
+            <div class="finding">No meta description. <strong>PHP 7.4 — end-of-life since November 2022</strong> — security liability and measurable speed drag. 11 JS + 8 CSS files.</div>
+            <div class="grade d">D</div>
+          </div>
+          <div class="audit-row">
+            <div class="practice">Byrne Orthodontics<span class="self">YOU</span></div>
+            <div class="finding">Strong fundamentals — clear title, 7 schema blocks, mobile viewport, single H1. Held back by theme bloat (30 JS + 18 CSS), no lazy-loading, and zero patient-facing tools (chat, online booking, pay-by-text).</div>
+            <div class="grade c">C+</div>
+          </div>
+        </div>
+
+        <p class="section-sub" style="margin-top: 32px;">You're already the best of the bunch. But "best of a flat field" is a vulnerable position — the moment any one of these practices invests in their digital, the math shifts. We can lock in your lead instead.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Exactly What You Get</div>
+        <div class="section-title">Three patient actions. One redesigned site.</div>
+        <p class="section-sub">Every deliverable shown as the gap it closes. Not just what we build — what it fixes.</p>
+
+        <div class="before-after">
+          <div class="before-state">Today: a patient with a question at 9pm has to wait until tomorrow to call.</div>
+          <h3>1. Two-way text chat (Podium-style)</h3>
+          <p class="description">A website chat widget that's actually yours, not rented. Front desk replies from one inbox — web messages, SMS, and Google Business Profile DMs all in one place. Patients get answered in under a minute, not on next-day callback.</p>
+          <div class="chat-mock">
+            <div class="chat-header"><span class="chat-dot"></span> BYRNE ORTHODONTICS · WEBSITE CHAT</div>
+            <div class="chat-body">
+              <div class="chat-msg user">
+                <div class="msg-label">Mom in Saratoga · 9:14 PM</div>
+                <div class="bubble">Do you take Delta Dental? My daughter wants to get a consult for Invisalign.</div>
+              </div>
+              <div class="chat-msg bot">
+                <div class="msg-label">Byrne Orthodontics</div>
+                <div class="bubble">Yes! We accept Delta Dental and most major insurance. The first consult is free. Want me to grab you a slot this week?</div>
+              </div>
+              <div class="chat-msg user">
+                <div class="msg-label">Mom in Saratoga · 9:15 PM</div>
+                <div class="bubble">Yes, anything Tuesday after 3?</div>
+              </div>
+              <div class="chat-result">→ Booked 4:00 PM Tuesday. Confirmation sent by text. Total time: 47 seconds.</div>
+            </div>
+          </div>
+          <div class="result-line">Result: A consult booked while she puts her kids to bed — instead of a Google search that lands on Daniello &amp; Eigo tomorrow morning.</div>
+        </div>
+
+        <div class="before-after">
+          <div class="before-state">Today: every consult requires a phone call during business hours.</div>
+          <h3>2. Self-serve consult scheduling</h3>
+          <p class="description">Embedded scheduler tied to your existing system (FocusOrtho — we already see you're using it). Patients pick a real time slot from your real calendar. SMS confirmation. 24-hour text reminder. ICS file added to their phone calendar automatically.</p>
+          <div class="use-case"><strong>Real-world impact:</strong> Published dental case studies show <strong>30–40% reduction in no-shows</strong> when text-based confirmation + reminder is standard. For a practice doing ~80 consults a month, that's 24+ recovered appointments quarterly.</div>
+          <div class="result-line">Result: Front desk stops being a dispatcher. They become the warm, in-office welcome they're already known for.</div>
+        </div>
+
+        <div class="before-after">
+          <div class="before-state">Today: balances are paper statements, mailed envelopes, and "I forgot to send that check."</div>
+          <h3>3. Pay-by-text patient billing</h3>
+          <p class="description">Send a HIPAA-aware secure payment link by SMS. Patient taps, pays in 20 seconds with Apple Pay, Google Pay, or card on file. Eliminates the paper-statement cycle and the 60-day "forgot about it" AR sitting in your books.</p>
+          <div class="use-case"><strong>Real-world impact:</strong> Average dental practice cuts <strong>AR days by 18+</strong> after rolling out pay-by-text. Cash flow improves and your front desk stops chasing balances.</div>
+          <div class="result-line">Result: You get paid faster. Patients feel respected, not nagged.</div>
+        </div>
+
+        <div class="before-after">
+          <div class="before-state">Today: 30 JS + 18 CSS files. No lazy-loading. ~1s TTFB. Theme bloat from a 2018-era WordPress build.</div>
+          <h3>4. Full site rebuild — fast, schema-first, AI-search ready</h3>
+          <p class="description">Mobile-first rebuild with Invisalign as the primary search target. JSON-LD schema on every page (LocalBusiness, Dentist, MedicalProcedure, FAQPage, Review). Lazy-loaded media. Edge-cached. AEO-optimized for ChatGPT, Perplexity, and Gemini — where the next decade of patient intake is shifting.</p>
+          <div class="result-line">Result: Core Web Vitals pass. Top 3 organic results for "Invisalign Saratoga Springs." First-mention in AI search results in the Capital Region.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why this works -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Why This Works</div>
+        <div class="section-title">Four reasons this isn't just another agency pitch.</div>
+
+        <div class="why-grid">
+          <div class="why-item">
+            <h3>1. The audit is real, not boilerplate.</h3>
+            <p>Every finding above came from live HTTP headers and raw HTML inspection of your site this week — not a generic "your site needs SEO" template. We can show you the exact files, the exact tags, and the exact lines.</p>
+          </div>
+          <div class="why-item">
+            <h3>2. Built for AI search, not just Google.</h3>
+            <p>Most agencies are still optimizing for 2018 Google. We architect schema-first so ChatGPT, Perplexity, and Gemini cite your practice when patients ask "best orthodontist near me." That's where the next 10 years of patient intake is going.</p>
+          </div>
+          <div class="why-item">
+            <h3>3. Capital Region local. Accountable.</h3>
+            <p>GullStack is based here. You can call us. We answer. No outsourced offshore team, no junior account manager you've never met running point. Bryce builds your site and Bryce answers your texts.</p>
+          </div>
+          <div class="why-item">
+            <h3>4. Skin in the game.</h3>
+            <p>We're proposing this as a trade — not a sale. We rebuild your digital presence; you deliver Invisalign treatment for two patients. Both sides commit. Both sides win. The numbers below show why this is fair on paper, too.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The trade -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Trade</div>
+        <div class="section-title">A scope-for-scope swap. No invoices.</div>
+        <p class="section-sub">Built around the simple principle that great work compounds when both sides have skin in the game.</p>
+
+        <div class="trade-grid">
+          <div class="trade-side we">
+            <div class="trade-label">GullStack Delivers</div>
+            <h3>A complete digital rebuild</h3>
+            <ul>
+              <li>Mobile-first website rebuild, Invisalign-focused</li>
+              <li>Two-way SMS + website chat (Podium-style)</li>
+              <li>Online consult scheduler tied to FocusOrtho</li>
+              <li>Pay-by-text patient billing</li>
+              <li>Schema-first SEO + AI search optimization</li>
+              <li>Core Web Vitals pass + accessibility (WCAG 2.2 AA)</li>
+              <li>30 days of post-launch monitoring + tuning</li>
+              <li><strong>Comparable retail value: ~$22,000–$28,000</strong></li>
+            </ul>
+          </div>
+          <div class="trade-side you">
+            <div class="trade-label">Byrne Orthodontics Delivers</div>
+            <h3>Two Invisalign treatments</h3>
+            <ul>
+              <li><strong>Full Invisalign treatment</strong> for Bryce — primary GullStack lead and the person you'll work with directly throughout the engagement</li>
+              <li><strong>Retainer-only treatment</strong> for Bryce's wife — limited scope, fast case</li>
+              <li><strong>Comparable retail value: ~$8,000–$12,000</strong></li>
+              <li style="border-bottom: none; color: var(--text); font-style: italic; padding-top: 16px;">The gap is the discount we extend in exchange for being your first orthodontic agency reference — and the case study we'll publish together.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top: 40px;">
+          <div class="number">No cash exchanged.</div>
+          <div class="label">Both sides get a transformation.</div>
+          <div class="sublabel">Plus a referenceable case study and a long-term partner referral relationship.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Timeline</div>
+        <div class="section-title">Six weeks. Kickoff to live.</div>
+
+        <div class="card opportunity">
+          <h3>Week 1 — Audit + Strategy</h3>
+          <ul>
+            <li>Full technical SEO audit (more thorough than the snapshot above)</li>
+            <li>Patient journey mapping with your front desk team</li>
+            <li>Competitive positioning + content map sign-off</li>
+          </ul>
+        </div>
+        <div class="card opportunity">
+          <h3>Weeks 2–3 — Design + Build</h3>
+          <ul>
+            <li>Mobile-first design preserving your Byrne brand identity</li>
+            <li>Invisalign as primary keyword target across every page</li>
+            <li>Schema-first content architecture</li>
+          </ul>
+        </div>
+        <div class="card opportunity">
+          <h3>Week 4 — Integrate Tools</h3>
+          <ul>
+            <li>Chat widget + unified inbox setup</li>
+            <li>Scheduler integration with FocusOrtho</li>
+            <li>Pay-by-text rollout + Google Business Profile sync</li>
+          </ul>
+        </div>
+        <div class="card opportunity">
+          <h3>Week 5 — QA + Compliance</h3>
+          <ul>
+            <li>Cross-device QA + WCAG 2.2 AA accessibility</li>
+            <li>HIPAA-aware vendor checks (BAA review on chat + payment partners)</li>
+            <li>Core Web Vitals pass + page-speed verification</li>
+          </ul>
+        </div>
+        <div class="card win">
+          <h3>Week 6 — Launch + Train</h3>
+          <ul>
+            <li>DNS cutover with rollback plan</li>
+            <li>Front-desk training session on chat + scheduler workflow</li>
+            <li>30-day monitoring window with weekly reports</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Past work -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Past Work</div>
+        <div class="section-title">Similar projects we've shipped.</div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 32px;">
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">Capital Wealth (financial services)</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">SEC-regulated · 312-page rebuild · AI + SEO</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">3 → 17 new clients / wk</p>
+          </div>
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">Behavioral health practice</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">Counseling · medical billing · website + AI</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">~8% saved per transaction</p>
+          </div>
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">Dr. Noot (biomimetic dentistry)</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">Healthcare · emergency rebuild</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">48-hour site deploy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>20-minute call. Real proof-of-concept demo.</h2>
+        <p>If we can't show you something concrete that moves Byrne Orthodontics forward in the first 20 minutes, you walk. No follow-up emails. No retainer pitches.</p>
+        <a href="mailto:bryce@gullstack.com?subject=Byrne%20Orthodontics%20%C3%97%20GullStack%20-%20Let%27s%20Talk&body=Hi%20Bryce%2C%0A%0AWe%27d%20like%20to%20schedule%20the%20demo%20call.%20Available%20times%20this%20week%3A%0A%0A" class="cta-btn">Book the call →</a>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 16px;">Or text/call directly: 518-XXX-XXXX</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="mark">
+      <img src="gull-logo.png" alt="GullStack">
+      <span>GULLSTACK</span>
+    </div>
+    <p><strong>Bryce Gulley</strong> · bryce@gullstack.com · GullStack.com</p>
+    <p style="margin-top: 8px; opacity: 0.5; font-size: 0.75rem;">Prepared May 2026 · Byrne Orthodontics × GullStack</p>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add('js-loaded');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
