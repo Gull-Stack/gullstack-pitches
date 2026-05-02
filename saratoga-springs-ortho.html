@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saratoga Springs Orthodontics × GullStack | AI Growth Proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a1a;
+      --bg-elevated: #111128;
+      --bg-card: #16163a;
+      --text: #f0f0f5;
+      --text-muted: #8888a8;
+      --accent: #a855f7;
+      --accent-hover: #c084fc;
+      --accent-glow: rgba(168, 85, 247, 0.15);
+      --gold: #22d3ee;
+      --gold-soft: rgba(34, 211, 238, 0.10);
+      --muted: #6b7280;
+      --muted-soft: rgba(107, 114, 128, 0.15);
+      --border: rgba(255,255,255,0.06);
+      --font-serif: 'Young Serif', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative;
+      background: radial-gradient(ellipse at top, var(--accent-glow) 0%, transparent 50%);
+    }
+
+    .hero::after {
+      content: '↓'; position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%); font-size: 2rem; opacity: 0.2;
+      animation: drift 2s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .hero-logos {
+      display: flex; align-items: center; justify-content: center;
+      gap: 28px; margin-bottom: 40px;
+    }
+    .hero-logos img { height: 44px; border-radius: 8px; }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 400; line-height: 1.12; margin-bottom: 20px;
+    }
+    .hero h1 .glow {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--text-muted); max-width: 580px; margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-glow), rgba(168,85,247,0.08));
+      border: 1px solid rgba(168,85,247,0.2);
+      color: var(--accent-hover); padding: 6px 18px; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+
+    .prepared-for {
+      margin-top: 40px; padding: 16px 24px;
+      background: var(--bg-elevated); border-radius: 10px; display: inline-block;
+      border: 1px solid var(--border);
+    }
+    .prepared-for .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 2px; }
+    .prepared-for .name { font-size: 1.1rem; font-weight: 700; }
+
+    /* Sections */
+    section { padding: 80px 0; }
+
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400; margin-bottom: 16px; line-height: 1.2;
+    }
+    .section-sub {
+      color: var(--text-muted); font-size: 1rem; max-width: 680px; margin-bottom: 40px;
+    }
+
+    /* Stats */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin: 40px 0;
+    }
+
+    .stat {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px; text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-2px);
+      border-color: rgba(168,85,247,0.2);
+    }
+
+    .stat .number {
+      font-family: var(--font-serif); font-size: 2rem; font-weight: 400;
+      color: var(--accent-hover); margin-bottom: 6px; line-height: 1;
+    }
+
+    .stat .label {
+      color: var(--text-muted); font-size: 0.85rem; line-height: 1.4;
+    }
+
+    .stat.gold .number { color: var(--gold); }
+    .stat.muted .number { color: var(--muted); }
+
+    /* Insight cards */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px; margin: 24px 0;
+    }
+
+    .card.problem {
+      border-left: 3px solid var(--muted);
+      background: linear-gradient(135deg, var(--muted-soft), transparent 40%);
+    }
+    .card.opportunity {
+      border-left: 3px solid var(--accent);
+      background: linear-gradient(135deg, var(--accent-glow), transparent 40%);
+    }
+    .card.win {
+      border-left: 3px solid var(--gold);
+      background: linear-gradient(135deg, var(--gold-soft), transparent 40%);
+    }
+
+    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; }
+    .card.problem h3 { color: var(--muted); }
+    .card.opportunity h3 { color: var(--accent-hover); }
+    .card.win h3 { color: var(--gold); }
+
+    .card ul { list-style: none; margin: 0; }
+    .card li {
+      position: relative; padding: 7px 0 7px 28px;
+      color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;
+      border-bottom: 1px solid var(--border);
+    }
+    .card li:last-child { border-bottom: none; }
+    .card.problem li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+    .card.opportunity li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+    .card.win li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+    .card li strong { color: var(--text); }
+
+    /* Big callout */
+    .callout {
+      text-align: center; padding: 48px 32px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; margin: 40px 0;
+      position: relative; overflow: hidden;
+    }
+    .callout::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
+    }
+    .callout .number {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 400; margin-bottom: 10px; line-height: 1;
+    }
+    .callout .number.gold { color: var(--gold); }
+    .callout .number.muted { color: var(--muted); }
+    .callout .label { font-size: 1.1rem; color: var(--text-muted); }
+    .callout .sublabel { font-size: 0.85rem; color: var(--text-muted); opacity: 0.7; margin-top: 6px; }
+
+    /* Timeline */
+    .timeline { margin: 40px 0; }
+
+    .phase {
+      display: grid; grid-template-columns: 100px 1fr; gap: 20px;
+      padding: 24px 0; border-bottom: 1px solid var(--border);
+    }
+    .phase:last-child { border-bottom: none; }
+
+    .phase-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--accent);
+      padding-top: 4px;
+    }
+
+    .phase h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .phase p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+
+    .phase .result {
+      margin-top: 10px; padding: 10px 14px;
+      background: var(--gold-soft); border-left: 3px solid var(--gold);
+      border-radius: 8px; font-size: 0.85rem; color: var(--gold);
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin: 40px 0;
+    }
+    @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+    .tier {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px; text-align: center;
+      transition: all 0.3s ease;
+    }
+    .tier.featured {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, rgba(168,85,247,0.08) 0%, var(--bg-card) 40%);
+      transform: scale(1.02);
+    }
+    .tier .tier-label {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px;
+    }
+    .tier.featured .tier-label { color: var(--accent); }
+
+    .tier .price {
+      font-family: var(--font-serif); font-size: 2.2rem;
+      font-weight: 400; margin-bottom: 4px;
+    }
+    .tier .price-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; }
+    .tier ul { list-style: none; text-align: left; margin-bottom: 24px; }
+    .tier li {
+      padding: 6px 0 6px 22px; position: relative;
+      color: var(--text-muted); font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .tier li:last-child { border-bottom: none; }
+    .tier li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+
+    .tier-btn {
+      display: block; width: 100%; padding: 14px;
+      border-radius: 10px; font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; transition: all 0.2s ease; text-align: center;
+      border: none; cursor: pointer;
+    }
+    .tier-btn.outline {
+      background: transparent; color: var(--accent-hover);
+      border: 1px solid rgba(168,85,247,0.3);
+    }
+    .tier-btn.outline:hover { background: var(--accent-glow); }
+    .tier-btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: white;
+    }
+    .tier-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(168,85,247,0.3); }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 60%);
+      padding: 80px 0;
+    }
+
+    .cta-card {
+      max-width: 540px; margin: 0 auto;
+      background: var(--bg-card); border: 2px solid var(--accent);
+      border-radius: 20px; padding: 40px 32px;
+      position: relative; overflow: hidden;
+    }
+    .cta-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover), var(--gold));
+    }
+
+    .cta-card h2 {
+      font-family: var(--font-serif); font-size: 1.8rem;
+      font-weight: 400; margin-bottom: 16px; line-height: 1.2;
+    }
+    .cta-card p { color: var(--text-muted); margin-bottom: 28px; font-size: 1rem; }
+
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: white; padding: 16px 40px; border-radius: 10px;
+      font-size: 1.05rem; font-weight: 800; text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(168,85,247,0.35);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center; padding: 48px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .footer p { color: var(--text-muted); font-size: 0.85rem; }
+    .footer .mark {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; margin-bottom: 12px; opacity: 0.5;
+    }
+    .footer .mark img { height: 28px; }
+    .footer .mark span { font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-logos { flex-wrap: wrap; gap: 12px; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .phase { grid-template-columns: 1fr; }
+      .phase-label { padding-top: 0; margin-bottom: -12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-logos">
+        <div style="background: white; padding: 12px 18px; border-radius: 8px; color: #0e7490; font-weight: 800; font-size: 1rem; letter-spacing: 0.3px;">
+          Saratoga Springs Orthodontics
+        </div>
+        <span style="font-size: 1.5rem; opacity: 0.2;">×</span>
+        <img src="/gull-logo.png" alt="GullStack">
+      </div>
+      <div class="badge">AI Growth Proposal</div>
+      <h1>40 Years of Trust.<br><span class="glow">Zero AI Leverage.</span></h1>
+      <p>Dr. Arnold has built four decades of reputation in Utah Valley. The phone still rings. But every after-hours call, unanswered text, and Google search going to a faster competitor is revenue you'll never see.</p>
+      <div class="prepared-for">
+        <div class="label">Prepared for</div>
+        <div class="name">Dr. Steven Arnold &amp; Dr. Craig Young</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cost of Inaction -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Cost of Standing Still</div>
+        <div class="section-title">A phone-first practice in a text-first world.</div>
+        <p class="section-sub">Saratoga Springs is the fastest-growing city in Utah. Every new family is searching, comparing, and booking on their phone — at 9pm, after the kids are asleep. Your office is closed. The chat box doesn't exist. The fax line still works.</p>
+
+        <div class="callout">
+          <div class="number muted">68%</div>
+          <div class="label">Of new ortho consults book outside business hours</div>
+          <div class="sublabel">Industry data: ZocDoc, NexHealth 2024 patient behavior reports</div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <div class="number">2,400+</div>
+            <div class="label">Monthly "orthodontist Saratoga Springs" + related searches</div>
+          </div>
+          <div class="stat muted">
+            <div class="number">0</div>
+            <div class="label">Chat, SMS, or AI on your site today</div>
+          </div>
+          <div class="stat">
+            <div class="number">$5,800</div>
+            <div class="label">Average ortho case value in Utah Valley</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagnosis -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Site Audit</div>
+        <div class="section-title">Beautiful brand. Brochureware bones.</div>
+        <p class="section-sub">We did a deep technical audit of saratogaspringsortho.com. Your team built something warm and honest — "When you're here, you are family." The infrastructure underneath isn't keeping up.</p>
+
+        <div class="card problem">
+          <h3>What's Missing Right Now</h3>
+          <ul>
+            <li><strong>No live chat or AI chatbot</strong> — every after-hours visitor leaves without a way to engage</li>
+            <li><strong>No online scheduling</strong> — every CTA is "call us" or a static contact form</li>
+            <li><strong>No SMS / texting</strong> — no Weave, no Podium, no two-way patient texting advertised</li>
+            <li><strong>No Google Analytics or Meta Pixel</strong> — you cannot measure conversions or run paid retargeting</li>
+            <li><strong>No schema.org markup</strong> — Google can't read you as a LocalBusiness</li>
+            <li><strong>No FAQ, blog, or before/after gallery</strong> — thin SEO surface for a practice this established</li>
+            <li><strong>No virtual smile assessment</strong> — competitors are converting leads from photos at 3am</li>
+            <li><strong>Fax intake fallback</strong> — 801.766.5341 is on your contact page in 2026</li>
+            <li><strong>WordPress + Elementor 4.0 + 8 addon plugins</strong> — page-speed and security risk</li>
+          </ul>
+        </div>
+
+        <div class="card win">
+          <h3>What You Already Have That Most Don't</h3>
+          <ul>
+            <li><strong>40+ years of Dr. Arnold's reputation</strong> — newer practices can't manufacture this</li>
+            <li><strong>Two doctors, in-house aligners, and pricing transparency</strong> — rare and powerful</li>
+            <li><strong>HIPAA-compliant intake (Hipaatizer)</strong> — the foundation for digital is already there</li>
+            <li><strong>Strong "family" voice</strong> — warm cookies, sensory-friendly, kids-first storytelling</li>
+            <li><strong>Saratoga Springs location</strong> — fastest-growing city in Utah, lowest median age in the county</li>
+            <li><strong>Interest-free in-house financing</strong> — a marketing weapon that's currently buried</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emotional Hook -->
+  <section>
+    <div class="container">
+      <div class="fade-in" style="max-width: 680px; margin: 0 auto; text-align: center;">
+        <div class="section-label">Imagine This</div>
+        <div class="section-title" style="font-size: clamp(1.6rem, 3vw, 2.2rem); font-style: italic; color: var(--accent-hover);">
+          A Saratoga Springs mom googles "clear aligners near me" at 10:47pm. Your AI greets her by name from the ad she clicked, answers her insurance question, asks for a smile photo, and books her free consult — all before she puts down her phone.
+        </div>
+        <p class="section-sub" style="margin: 20px auto 0;">
+          That's a 9pm-to-9am revenue channel that doesn't exist for you today. It's the reason patients pick the practice they pick.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategy -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Strategy</div>
+        <div class="section-title">Three layers. One growth engine.</div>
+        <p class="section-sub">We're not pitching a tool. We're pitching the AI-native operating layer for your practice — front door, conversion, and follow-up — built on top of your existing reputation.</p>
+
+        <div class="card opportunity">
+          <h3>Layer 1 — AI Patient Front Door</h3>
+          <ul>
+            <li><strong>24/7 AI chat on your website</strong> — answers cost, age, insurance, financing in seconds</li>
+            <li><strong>Two-way SMS receptionist</strong> — patients text 801.768.4554 and an AI responds, with handoff to staff</li>
+            <li><strong>Missed-call text-back</strong> — every unanswered call gets an automatic SMS within 30 seconds</li>
+            <li><strong>AI billing &amp; payment-link replies</strong> — "text me my bill" works the way patients want</li>
+            <li><strong>One inbox for staff</strong> — chat, SMS, web form all unified — no more app sprawl</li>
+            <li><strong>Replaces Podium / Weave / Birdeye</strong> at a fraction of the cost</li>
+          </ul>
+        </div>
+
+        <div class="card opportunity">
+          <h3>Layer 2 — New Patient Acquisition Engine</h3>
+          <ul>
+            <li><strong>GA4 + Meta Pixel + call tracking</strong> — finally know what marketing actually works</li>
+            <li><strong>AI virtual smile assessment</strong> — upload a photo, get a same-day qualification + booking</li>
+            <li><strong>Local SEO + schema.org markup</strong> — own "orthodontist Saratoga Springs" page-1</li>
+            <li><strong>AI-generated FAQ &amp; blog</strong> — 40+ articles in your voice, weekly cadence</li>
+            <li><strong>Google review automation</strong> — happy-patient SMS prompts post-appointment</li>
+            <li><strong>Spanish-language landing pages</strong> — Utah County demographic you're not capturing</li>
+          </ul>
+        </div>
+
+        <div class="card opportunity">
+          <h3>Layer 3 — Modern, Fast, AI-Ready Website</h3>
+          <ul>
+            <li><strong>Full rebuild on a modern stack</strong> — drops the Elementor plugin bloat, &lt;1s load on mobile</li>
+            <li><strong>Conversion-first architecture</strong> — every page leads to a consult, not a phone number</li>
+            <li><strong>Embedded chat, smile assessment, and online scheduling</strong> — no more contact-form bottleneck</li>
+            <li><strong>HIPAA stays HIPAA</strong> — Hipaatizer integration preserved, BAAs in place</li>
+            <li><strong>Built to be edited by your team</strong> — staff can update without calling a developer</li>
+            <li><strong>Designed around Dr. Arnold's 40-year story</strong> — legacy as the differentiator, not a footnote</li>
+          </ul>
+        </div>
+
+        <div class="timeline">
+          <div class="phase">
+            <div class="phase-label">Weeks 1-3</div>
+            <div>
+              <h4>AI Front Door — Live in 21 Days</h4>
+              <p>We deploy the AI chat widget, SMS receptionist, missed-call text-back, and unified staff inbox on your existing site. Analytics + Meta Pixel installed. You start measuring, capturing, and converting before the rebuild even begins.</p>
+              <div class="result">After-hours leads captured · Every call answered · First clean attribution data flowing</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Weeks 4-8</div>
+            <div>
+              <h4>New Site Build + Smile AI</h4>
+              <p>We design and ship a modern site built around Dr. Arnold's story, the in-house aligner program, and Saratoga Springs growth. AI virtual smile assessment goes live. Schema markup, local SEO foundation, Spanish pages, FAQ library — all in one launch.</p>
+              <div class="result">Site live · Smile AI converting photo uploads · 40+ FAQ pages indexed</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-label">Months 3-6</div>
+            <div>
+              <h4>Acquisition Engine + Reviews + Optimization</h4>
+              <p>Paid Meta + Google campaigns turned on with proper tracking. AI-driven review generation post-appointment. Weekly content. Monthly reporting against patient acquisition cost and lifetime value, not vanity metrics.</p>
+              <div class="result">Page 1 for "orthodontist Saratoga Springs" · 4.9★ review velocity · CPA &lt; $90/lead</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">The Return</div>
+        <div class="section-title">Conservative Year 1 projection.</div>
+        <p class="section-sub">Based on $5,800 average ortho case, 12% chat-to-consult, 40% consult-to-start. Math we'll show you in the call — no fairy dust.</p>
+
+        <div class="callout">
+          <div class="number gold">$870K</div>
+          <div class="label">Projected additional Year 1 revenue</div>
+          <div class="sublabel">150 net-new starts from after-hours capture, smile AI, and paid acquisition</div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat gold">
+            <div class="number">+38%</div>
+            <div class="label">After-hours leads<br><span style="font-size:0.75rem;">currently lost to voicemail</span></div>
+          </div>
+          <div class="stat gold">
+            <div class="number">150</div>
+            <div class="label">New ortho starts / year<br><span style="font-size:0.75rem;">12-13 per month</span></div>
+          </div>
+          <div class="stat gold">
+            <div class="number">8x</div>
+            <div class="label">Year 1 ROI on Growth tier</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why GullStack -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Why GullStack</div>
+        <div class="section-title">Built for practices, not portfolios.</div>
+        <p class="section-sub">Most agencies sell you a website. The "AI tool" companies sell you a chatbot. We're the only team building all three layers — front door, acquisition, site — in one stack, designed for healthcare specifically.</p>
+
+        <!-- Comparison Table -->
+        <div style="overflow-x: auto; margin: 32px 0;">
+          <table style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.85rem;">
+            <thead>
+              <tr>
+                <th style="text-align: left; padding: 14px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border); font-weight: 600;"></th>
+                <th style="padding: 14px 16px; color: var(--muted); border-bottom: 1px solid var(--border); font-weight: 600;">Podium / Weave</th>
+                <th style="padding: 14px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border); font-weight: 600;">Traditional Agency</th>
+                <th style="padding: 14px 16px; color: var(--accent-hover); border-bottom: 2px solid var(--accent); font-weight: 700; background: var(--accent-glow); border-radius: 8px 8px 0 0;">GullStack</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text);">AI chatbot trained on your practice</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">Generic templates</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">❌</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">✓ Custom-trained</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text);">Two-way SMS + missed-call text-back</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">$400+/mo per seat</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">❌</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">✓ Included</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text);">AI virtual smile assessment</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">❌</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">SmileSnap add-on</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">✓ Built-in</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text);">New website build</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">❌</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">12-16 weeks</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">8 weeks</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text);">Paid ads + analytics setup</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">❌</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">Separate retainer</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">✓ Included in Growth</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text);">Content + FAQ library</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--muted);">❌</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-muted);">$200/page</td>
+                <td style="padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">AI-assisted, in your voice</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; color: var(--text);">Lock-in</td>
+                <td style="padding: 12px 16px; text-align: center; color: var(--muted);">12-month contracts</td>
+                <td style="padding: 12px 16px; text-align: center; color: var(--text-muted);">Annual retainers</td>
+                <td style="padding: 12px 16px; text-align: center; color: var(--gold); background: rgba(168,85,247,0.03);">Month-to-month after build</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Social Proof -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 40px;">
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">Sun Dermatology</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">Healthcare / Panama City, FL</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">400% organic traffic growth</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">New patient bookings doubled in 4 months</p>
+          </div>
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">Hidden Valley Eye Care</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">Healthcare / Utah</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">Page 1 in 90 days</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">Specialty clinic, full digital rebuild</p>
+          </div>
+          <div class="card win" style="margin: 0;">
+            <h3 style="font-size: 1rem;">White Smiles Family Dentistry</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">Dental / Orem, UT</p>
+            <p style="color: var(--gold); font-size: 1.4rem; font-family: var(--font-serif); margin-bottom: 4px;">Trust amplification</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">24-year practice, modern digital footprint</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Investment</div>
+        <div class="section-title">Three pathways. All include the AI front door.</div>
+        <p class="section-sub">Every tier deploys the AI chat + SMS + missed-call text-back layer first, so you start capturing revenue before the rest builds. No "discovery phase" billing.</p>
+
+        <div class="pricing-grid">
+          <!-- Starter -->
+          <div class="tier">
+            <div class="tier-label">AI Front Door</div>
+            <div class="price">$1,800</div>
+            <div class="price-note">/month</div>
+            <ul>
+              <li>AI website chat (custom-trained)</li>
+              <li>Two-way SMS receptionist</li>
+              <li>Missed-call text-back</li>
+              <li>Unified staff inbox</li>
+              <li>GA4 + Meta Pixel install</li>
+              <li>Replaces Podium/Weave</li>
+            </ul>
+            <button class="tier-btn outline">Start Capturing</button>
+          </div>
+
+          <!-- Growth (Featured) -->
+          <div class="tier featured">
+            <div class="tier-label">⚡ Growth Engine — Recommended</div>
+            <div class="price" style="color: var(--accent-hover);">$3,800</div>
+            <div class="price-note">/month + one-time $9,500 site build</div>
+            <ul>
+              <li>Everything in AI Front Door</li>
+              <li>Full website rebuild (8 weeks)</li>
+              <li>AI virtual smile assessment</li>
+              <li>Local SEO + schema markup</li>
+              <li>AI-generated FAQ + blog</li>
+              <li>Google review automation</li>
+              <li>Spanish landing pages</li>
+              <li>Paid Meta + Google management</li>
+              <li>Monthly reporting</li>
+            </ul>
+            <button class="tier-btn primary">Choose Growth</button>
+          </div>
+
+          <!-- Dominate -->
+          <div class="tier">
+            <div class="tier-label">Market Leader</div>
+            <div class="price">$6,500</div>
+            <div class="price-note">/month + $9,500 build</div>
+            <ul>
+              <li>Everything in Growth</li>
+              <li>Patient video testimonials</li>
+              <li>Reputation management</li>
+              <li>Quarterly strategy sessions</li>
+              <li>Dedicated account lead</li>
+              <li>Multi-doctor profile expansion</li>
+            </ul>
+            <button class="tier-btn outline">Lead the Market</button>
+          </div>
+        </div>
+
+        <div class="card win" style="margin-top: 32px;">
+          <h3>What to Expect</h3>
+          <ul>
+            <li><strong>AI front door live in 21 days</strong> — capturing after-hours leads before anything else changes</li>
+            <li><strong>New website live in 8 weeks</strong> — Dr. Arnold's 40-year story finally gets the showcase it deserves</li>
+            <li><strong>Month-to-month after launch</strong> — no annual contracts, no kill-fees</li>
+            <li><strong>Full transparency</strong> — every chat, SMS, call, lead, and consult tracked in one dashboard</li>
+            <li><strong>HIPAA stays HIPAA</strong> — BAAs signed, Hipaatizer integration preserved</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pilot Partner / Founders Offer -->
+  <section style="background: var(--bg-elevated);">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-label">Founders Pilot</div>
+        <div class="section-title">A real partnership — not a vendor relationship.</div>
+        <p class="section-sub">We want one Utah Valley orthodontist to be our flagship case study. In exchange for full case-study rights (before/after metrics, video, named co-marketing), we offer a partnership package that pays for itself before you write the first check.</p>
+
+        <div class="card opportunity">
+          <h3>The Founders Pilot Includes</h3>
+          <ul>
+            <li><strong>Growth Engine tier — site build credited 100%</strong> when case-study milestones are hit</li>
+            <li><strong>Locked rate for 24 months</strong> — no agency-style annual increases</li>
+            <li><strong>Trade component</strong> — one full clear-aligner case + one retainer-only case provided to GullStack's founder and spouse, treated as case-study patients with full before/after documentation rights</li>
+            <li><strong>Co-branded case study</strong> — published with your name across our network of healthcare practice pitches</li>
+            <li><strong>Priority engineering queue</strong> — feature requests jump the line</li>
+          </ul>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: -8px;">Available to one practice. We'll walk through the math, the trade structure, and the case-study rights on the call.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Ready to turn 40 years of trust into a 24/7 growth engine?</h2>
+        <p>Every night Saratoga Springs Orthodontics goes dark at 5pm, a competitor's chatbot is converting your next patient. Let's fix that in 21 days.</p>
+        <a href="mailto:bryce@gullstack.com?subject=Saratoga Springs Orthodontics — AI Growth Strategy&body=Hi Bryce,%0A%0AI'd like to discuss the AI growth strategy for Saratoga Springs Orthodontics.%0A%0ABest regards" class="cta-btn">Schedule a Call →</a>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 16px;">30-minute strategy call · No commitment</p>
+        <div style="margin-top: 20px; padding: 12px 20px; background: var(--gold-soft); border: 1px solid rgba(34,211,238,0.2); border-radius: 8px; display: inline-block;">
+          <p style="color: var(--gold); font-size: 0.8rem; font-weight: 600; margin: 0;">⚡ Founders Pilot reserved for one Utah Valley orthodontist. This proposal expires in 14 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="mark">
+      <img src="/gull-logo.png" alt="GullStack">
+      <span>GullStack</span>
+    </div>
+    <p><strong>Bryce Morgan</strong> · bryce@gullstack.com · GullStack.com</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
