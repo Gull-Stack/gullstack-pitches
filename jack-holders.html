@@ -313,13 +313,112 @@ footer a{color:var(--gold);text-decoration:none}
     <p class="caption">Net deposited after fees and $67.22 in other withholdings: $483,691.44.</p>
 
     <div class="callout">
-      <h4>First, the honest part: your rate is good.</h4>
-      <p>1.733% + $0.15 on card-present Visa/MC/Discover is a sharp number. Anyone who tells you they'll cut your rate in half is lying to you. <strong>We are not going to try to beat your rate — we're going to change who pays it.</strong></p>
+      <h4>First, the honest part: 1.733% is a sharp number.</h4>
+      <p>Anyone who tells you they'll cut that in half is lying to you, and you should show them the door. <strong>But "sharp" and "correctly priced" aren't the same thing</strong> — and the word doing the damage on your statement is <em>flat</em>.</p>
     </div>
 
     <div class="callout red">
       <h4>Annualized, that's real money.</h4>
       <p>At June's run rate you'll process <strong>$5.92M</strong> this year and hand over <strong>$119,872</strong> in card fees — plus <strong>$8,774</strong> a year to Toast for software and handhelds, before you buy a single piece of hardware. <strong>$128,645 a year, leaving the building.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="flat">
+  <div class="wrap">
+    <div class="eyebrow">The Word "Flat"</div>
+    <h2 class="section-title">You pay 1.733% on a card that costs 25&cent; to run.</h2>
+    <p class="lede">A flat rate charges you the same price for every card. But every card does <em>not</em> cost the same to accept — and the gap is where your processor lives.</p>
+
+    <div class="tbl-wrap">
+      <table class="stmt">
+        <thead>
+          <tr>
+            <th>On a $72.58 ticket</th>
+            <th>What the card actually costs</th>
+            <th>What you pay</th>
+            <th>Processor keeps</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Regulated debit card <span style="color:#6E6459">— capped by federal law</span></td>
+            <td class="rate">$0.25</td>
+            <td>$1.41</td>
+            <td class="flag">$1.16</td>
+          </tr>
+          <tr>
+            <td>Standard restaurant credit</td>
+            <td class="rate">$1.26</td>
+            <td>$1.41</td>
+            <td>$0.15</td>
+          </tr>
+          <tr>
+            <td>Premium rewards credit <span style="color:#6E6459">— the airline-miles cards</span></td>
+            <td class="rate">$1.52</td>
+            <td>$1.41</td>
+            <td style="color:var(--green)">−$0.11</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">Debit interchange is capped at 0.05% + $0.21 for regulated issuers. Card-present restaurant credit interchange runs roughly 1.60% + $0.10; premium rewards tiers run higher.</p>
+
+    <div class="callout red">
+      <h4>Your processor is making about $1,500–2,500 a month on you.</h4>
+      <p>Every time somebody taps a debit card for breakfast, you pay $1.41 for something that costs a quarter. Your processor eats a small loss on the platinum-rewards cards and more than makes it back on debit. On 6,300 card-present transactions a month, we model their gross margin at <strong>$1,165 to $2,764</strong> depending on your debit mix — <strong>$14,000 to $33,000 a year</strong>. That's not a scandal. That's what flat pricing is <em>for</em>.</p>
+    </div>
+
+    <h3 style="font-family:var(--display);font-size:1.5rem;margin:52px 0 14px">So here's how we'd actually compete.</h3>
+    <p class="lede" style="margin-bottom:32px">Interchange-plus pricing: you pay the true cost of each card, plus a fixed, disclosed markup. Debit gets cheap again. Here's what that looks like at your volume.</p>
+
+    <div class="tbl-wrap">
+      <table class="stmt">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Your debit mix</th>
+            <th>Effective rate</th>
+            <th>Saved / month</th>
+            <th>Saved / year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Today — 1.733% + $0.15 flat</td>
+            <td>—</td>
+            <td class="flag">1.94%</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Interchange + 0.25% + $0.08</td>
+            <td>30%</td>
+            <td class="rate">1.84%</td>
+            <td style="color:var(--green)">$477</td>
+            <td style="color:var(--green)">$5,726</td>
+          </tr>
+          <tr>
+            <td>Interchange + 0.15% + $0.05</td>
+            <td>30%</td>
+            <td class="rate">1.69%</td>
+            <td style="color:var(--green)">$1,123</td>
+            <td style="color:var(--green)">$13,481</td>
+          </tr>
+          <tr class="total">
+            <td>Interchange + 0.15% + $0.05</td>
+            <td>40%</td>
+            <td class="rate">1.55%</td>
+            <td style="color:var(--green)">$1,763</td>
+            <td style="color:var(--green)">$21,155</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <h4>What we need from you to quote this for real.</h4>
+      <p>Everything above turns on one number we don't have: <strong>your debit-to-credit mix.</strong> Your statement summary doesn't break it out — the interchange detail pages do. Send us those and we'll replace every modeled figure here with your actual ones, in writing, before you sign anything. <strong>If the mix comes back low, we'll tell you this path isn't worth switching for.</strong></p>
     </div>
   </div>
 </section>
@@ -439,9 +538,9 @@ footer a{color:var(--gold);text-decoration:none}
         <div class="num">01</div>
         <div>
           <h3>Card fees you're absorbing</h3>
-          <p>California allows a compliant cash-price / card-price program with proper signage and receipt disclosure. Cash and debit customers pay the shelf price; card customers cover the cost of the card. Structured correctly, the $9,989 a month stops coming out of your margin. This is exactly the mechanism the "AIO" guys are pitching — the difference is whether it's implemented compliantly and who supports it when a customer asks at the register.</p>
+          <p><strong>Two paths, and you pick.</strong> The quiet one is interchange-plus repricing — nothing changes at the register, no customer ever notices, and you keep roughly $6,000–21,000 a year depending on your debit mix. The loud one is a compliant California cash-price / card-price program: cash and debit customers pay the shelf price, card customers cover the cost of the card, and the $9,989 a month stops coming out of your margin entirely. That's the mechanism the "AIO" guys are pitching — the difference is whether it's implemented compliantly, and who's standing there when a customer asks about it at the register.</p>
         </div>
-        <div class="amt"><div class="v">$119,872</div><div class="u">per year</div></div>
+        <div class="amt"><div class="v">$119,872</div><div class="u">per year, path B</div></div>
       </div>
 
       <div class="bucket">
@@ -557,7 +656,13 @@ footer a{color:var(--gold);text-decoration:none}
             <td>Who pays the card fee</td>
             <td>You — $9,989/mo</td>
             <td class="yes">Customer</td>
-            <td class="us yes">Customer</td>
+            <td class="us yes">Your call — customer, or repriced</td>
+          </tr>
+          <tr>
+            <td>Pricing model offered</td>
+            <td class="no">Flat, bundled</td>
+            <td class="no">Flat, bundled</td>
+            <td class="us yes">Interchange-plus, itemized</td>
           </tr>
           <tr>
             <td>New website included</td>
@@ -647,7 +752,7 @@ footer a{color:var(--gold);text-decoration:none}
 
     <details class="q" open>
       <summary>Will customers get mad about a card price?</summary>
-      <p>Some will notice, almost nobody leaves. The programs that fail are the ones with a surprise line item at the bottom of the check. The ones that work post the cash price and the card price on the menu and the door, train the staff on a one-sentence answer, and never argue about it — if a regular objects, you comp the difference and move on. We handle the signage and the training script.</p>
+      <p>Then take path A instead — interchange-plus repricing changes nothing at the register and still saves you real money. If you do want the bigger number: some customers will notice, almost nobody leaves. The programs that fail are the ones with a surprise line item at the bottom of the check. The ones that work post the cash price and the card price on the menu and the door, train the staff on a one-sentence answer, and never argue about it — if a regular objects, you comp the difference and move on. We handle the signage and the training script.</p>
     </details>
     <details class="q">
       <summary>Is this even legal in California?</summary>
@@ -681,7 +786,7 @@ footer a{color:var(--gold);text-decoration:none}
       <a class="btn btn-ghost" href="mailto:bryce@gullstack.com?subject=Jack%20Holder's%20—%20let's%20talk">Email Bryce</a>
     </div>
     <p class="fine" style="margin:44px auto 0;text-align:left">
-      <strong>Sources and assumptions.</strong> All card figures are transcribed from the Jack Holder's merchant processing statement for 6/1/26–6/30/26 (merchant ID ending 394988). All software figures are transcribed from Toast invoice #INV10030049, service period 7/13/26–8/12/26, and exclude hardware. Annualized figures are the stated month × 12 and assume flat volume and device count; actual results will vary with seasonality. Savings from a cash-price / card-price program depend on customer mix, debit share and compliant implementation, and are not guaranteed. GullStack is not a law firm or a tax advisor — confirm program structure with your own counsel before launch.
+      <strong>Sources and assumptions.</strong> All card figures are transcribed from the Jack Holder's merchant processing statement for 6/1/26–6/30/26 (merchant ID ending 394988). All software figures are transcribed from Toast invoice #INV10030049, service period 7/13/26–8/12/26, and exclude hardware. Annualized figures are the stated month × 12 and assume flat volume and device count; actual results will vary with seasonality. Interchange figures are <em>modeled</em>, not quoted: regulated debit at 0.05% + $0.21, card-present restaurant credit at approximately 1.60% + $0.10, plus network assessments — applied across a 15–40% debit-mix range because your statement summary does not disclose your actual mix. Every interchange-plus number on this page is an estimate and will be replaced with a firm written quote off your interchange detail pages before you commit to anything. Savings from a cash-price / card-price program depend on customer mix, debit share and compliant implementation, and are not guaranteed. GullStack is not a law firm or a tax advisor — confirm program structure with your own counsel before launch.
     </p>
   </div>
 </section>
