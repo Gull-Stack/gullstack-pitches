@@ -11,15 +11,37 @@ Deployed to Vercel project `gullstack-pitches` (team `gull-stack`) on push to
 `main`. `vercel.json` rewrites `/(.*)` → `/$1.html`, so `/jack-holders` serves
 `jack-holders.html`.
 
-**Known issue:** the project has Vercel SSO protection enabled
-(`all_except_custom_domains`) and no custom domain attached, so
-`gullstack-pitches-gull-stack.vercel.app/*` returns a 302 to Vercel login for
-anyone outside the team. Prospect links will not open. Fix is either turning
-SSO off for the project or attaching a custom domain (e.g.
-`pitches.gullstack.com`). Until then, share via a `?_vercel_share=` bypass link
-(23h expiry).
+**Sharing:** the clean host is **`pitches.gullstack.com`** — already aliased to
+this project. Use it for anything sent to a prospect. Vercel SSO protection was
+turned off on 2026-07-31 (`vercel project protection disable --sso
+gullstack-pitches --scope gull-stack`), so every pitch in this repo is publicly
+reachable by URL on both hosts. Re-enable with `... protection enable --sso ...`,
+but note that only re-gates `*.vercel.app`, not the custom domain.
 
 ## Session Log
+
+### 2026-07-31 (evening) — Intro made, round 1.1 shipped
+
+- **Kyle introduced Bryce to Dan (the owner) by text.** Dan: +1 (408) 839-7716.
+  Meeting **Monday 2026-08-03**. Dan: "Love the website… Like to pick your mind
+  on Toast application and POS potential."
+- **Intel:** Dan volunteered that Alex Hult's AIO is an "AI generated POS" and
+  that Hult was raising $100k from investors a year ago. Dan has already spotted
+  that it's a v1 from an unfunded startup. Counter is proven-POS-plus-our-layer,
+  not "our AI is better" — and we must not overclaim, we don't have a POS either.
+- **Shipped `/jack-holders-app`** (commit `9f717c4`) as the promised "round 1.1":
+  operator dashboard on their real June statement + Toast invoice, plus a live
+  card-cost modeler with debit-mix and markup (bps) sliders across three pricing
+  models. Sales/Labor/Menu/Reviews tabs shown as roadmap, explicitly not built.
+- **The modeler tells Dan when NOT to switch** — at low debit mix, interchange-
+  plus shows a negative saving and says so in red. Deliberate; that honesty is
+  the differentiation against Hult.
+- **Website is now $500/mo in the pitch, not free** (commit `7f78a8b`). Free was
+  what created Dan's "how are you making money" objection and left our floor at
+  $0. Pitch now discloses all three revenue lines including margin in bps.
+- **Still the blocker:** no processor or POS reseller agreement. Dan will ask for
+  a basis-point number Monday and we cannot answer it. Say we're finalizing the
+  partner; do not bluff a rate.
 
 ### 2026-07-31 (later) — Multi-page rebuild, Toast invoice, rate strategy
 
