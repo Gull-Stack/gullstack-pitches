@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jack Holder's Operator View | GullStack — Round 1.1</title>
+<meta name="description" content="A working operator dashboard built on Jack Holder's real June 2026 numbers, with a live card-cost model.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/jackholders/cropped-Jack_Holders_Logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  color-scheme:dark;
+  --bg:#0F0D0B;
+  --surface-1:#1D1A16;
+  --surface-2:#252119;
+  --line:rgba(255,255,255,.09);
+  --line-strong:rgba(255,255,255,.16);
+  --text-primary:#F2EDE4;
+  --text-secondary:#A79E90;
+  --text-muted:#6E6459;
+  --crimson:#C4303C;
+  --gold:#D9A94A;
+  --good:#5FBF7F;
+  /* validated categorical slots — dark surface #1D1A16, all six checks PASS */
+  --series-1:#3987e5;
+  --series-2:#d95926;
+  --series-3:#199e70;
+  --series-4:#c98500;
+  --display:'Fraunces',Georgia,serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+
+body{
+  font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text-primary);
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.15;letter-spacing:-.015em}
+a{color:inherit}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+/* ---------- app chrome ---------- */
+.appbar{
+  border-bottom:1px solid var(--line);background:var(--surface-1);
+  position:sticky;top:0;z-index:40;
+}
+.appbar-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0;flex-wrap:wrap}
+.appbar-left{display:flex;align-items:center;gap:14px}
+.appbar-left img{height:38px;background:#fff;padding:5px 8px;border-radius:3px}
+.appbar-left .who{font-size:.82rem;color:var(--text-secondary)}
+.appbar-left .who strong{display:block;color:var(--text-primary);font-size:.95rem;font-weight:600}
+.tabs{display:flex;gap:4px;background:var(--bg);padding:4px;border-radius:3px;border:1px solid var(--line)}
+.tabs span{
+  padding:7px 15px;font-size:.82rem;font-weight:600;border-radius:2px;color:var(--text-muted);
+}
+.tabs span.on{background:var(--surface-2);color:var(--text-primary)}
+.tabs span.soon{opacity:.45}
+
+.ribbon{
+  background:#16130F;color:var(--gold);text-align:center;font-size:.75rem;letter-spacing:.08em;
+  padding:8px 16px;border-bottom:1px solid var(--line);
+}
+.ribbon a{color:#fff}
+
+/* ---------- page head ---------- */
+.head{padding:52px 0 8px}
+.head .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.head h1{font-size:clamp(1.9rem,4vw,2.9rem);margin-bottom:14px;font-weight:500}
+.head p{color:var(--text-secondary);max-width:64ch;font-size:1.02rem}
+
+section{padding:44px 0}
+.sec-head{margin-bottom:24px}
+.sec-head h2{font-size:1.45rem;margin-bottom:6px}
+.sec-head p{color:var(--text-secondary);font-size:.92rem;max-width:64ch}
+
+/* ---------- stat tiles ---------- */
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.tile{background:var(--surface-1);padding:22px 20px}
+.tile .l{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
+.tile .n{font-family:var(--display);font-size:clamp(1.35rem,2.4vw,1.9rem);line-height:1;letter-spacing:-.02em}
+.tile .s{font-size:.78rem;color:var(--text-secondary);margin-top:8px}
+.tile .n.red{color:var(--crimson)}
+.tile .n.gold{color:var(--gold)}
+@media(max-width:1000px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.tiles{grid-template-columns:1fr}}
+
+/* ---------- chart card ---------- */
+.card{background:var(--surface-1);border:1px solid var(--line);border-radius:3px;padding:28px 30px 30px}
+.card + .card{margin-top:20px}
+.card h3{font-size:1.12rem;margin-bottom:4px}
+.card .sub{font-size:.85rem;color:var(--text-secondary);margin-bottom:26px}
+
+.legend{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+.legend .key{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-secondary)}
+.legend .swatch{width:11px;height:11px;border-radius:2px;flex-shrink:0}
+
+/* horizontal bar rows */
+.rows{display:flex;flex-direction:column;gap:14px}
+.row-item{display:grid;grid-template-columns:minmax(150px,1.1fr) 1fr auto;gap:18px;align-items:center}
+.row-item .lab{font-size:.86rem;color:var(--text-secondary)}
+.row-item .lab em{font-style:normal;color:var(--text-muted);font-size:.78rem;display:block}
+.track{position:relative;height:22px;background:rgba(255,255,255,.04);border-radius:2px;overflow:hidden}
+.bar{
+  position:absolute;left:0;top:0;bottom:0;border-radius:0 4px 4px 0;
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+}
+.row-item .val{font-family:var(--mono);font-size:.84rem;text-align:right;min-width:82px;font-variant-numeric:tabular-nums}
+.row-item:hover .track{background:rgba(255,255,255,.07)}
+
+/* grouped two-bar rows */
+.track-pair{display:flex;flex-direction:column;gap:2px}
+.track-pair .track{height:12px}
+
+/* ---------- modeler ---------- */
+.modeler{display:grid;grid-template-columns:340px 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.controls{background:var(--surface-2);padding:30px 28px}
+.controls h3{font-size:1.08rem;margin-bottom:6px}
+.controls .hint{font-size:.82rem;color:var(--text-secondary);margin-bottom:28px}
+.field{margin-bottom:28px}
+.field label{display:flex;justify-content:space-between;align-items:baseline;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:12px}
+.field label .v{font-family:var(--mono);font-size:.95rem;color:var(--gold);letter-spacing:0;text-transform:none}
+input[type=range]{
+  width:100%;-webkit-appearance:none;appearance:none;height:3px;background:var(--line-strong);
+  border-radius:2px;outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;
+  background:var(--gold);cursor:pointer;border:3px solid var(--surface-2);
+}
+input[type=range]::-moz-range-thumb{
+  width:20px;height:20px;border-radius:50%;background:var(--gold);cursor:pointer;border:3px solid var(--surface-2);
+}
+.field .ends{display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-muted);margin-top:8px}
+
+.seg{display:flex;flex-direction:column;gap:8px}
+.seg button{
+  text-align:left;background:var(--bg);border:1px solid var(--line);color:var(--text-secondary);
+  padding:13px 16px;border-radius:2px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.88rem;
+  transition:.15s;
+}
+.seg button strong{display:block;color:var(--text-primary);font-weight:600;margin-bottom:2px}
+.seg button:hover{border-color:var(--line-strong)}
+.seg button.on{border-color:var(--gold);background:rgba(217,169,74,.08)}
+.seg button.on strong{color:var(--gold)}
+
+.readout{background:var(--surface-1);padding:30px 32px}
+.readout-top{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:30px}
+.ro .l{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.ro .n{font-family:var(--display);font-size:2.1rem;line-height:1;letter-spacing:-.02em}
+.ro .n.good{color:var(--good)}
+.ro .n.bad{color:var(--crimson)}
+.ro .n.gold{color:var(--gold)}
+.ro .s{font-size:.78rem;color:var(--text-secondary);margin-top:7px}
+.note{font-size:.8rem;color:var(--text-muted);line-height:1.6;border-top:1px solid var(--line);padding-top:18px;margin-top:6px}
+@media(max-width:900px){
+  .modeler{grid-template-columns:1fr}
+  .readout-top{grid-template-columns:1fr;gap:20px}
+}
+
+/* ---------- table view ---------- */
+details.tbl{margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+details.tbl summary{cursor:pointer;font-size:.8rem;color:var(--text-secondary);list-style:none}
+details.tbl summary::-webkit-details-marker{display:none}
+details.tbl summary::before{content:'▸ ';color:var(--gold)}
+details.tbl[open] summary::before{content:'▾ '}
+details.tbl table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.84rem}
+details.tbl th{text-align:right;padding:9px 12px;color:var(--text-muted);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line)}
+details.tbl th:first-child{text-align:left}
+details.tbl td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+details.tbl td:first-child{text-align:left;color:var(--text-secondary)}
+
+/* ---------- roadmap ---------- */
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+.road div{background:var(--surface-1);border:1px solid var(--line);border-radius:3px;padding:26px 24px}
+.road h4{font-family:var(--display);font-size:1.05rem;margin-bottom:8px}
+.road p{font-size:.88rem;color:var(--text-secondary)}
+.road .tag{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+@media(max-width:860px){.road{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding:36px 0 60px;margin-top:40px;font-size:.82rem;color:var(--text-muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--gold);text-decoration:none}
+.fine{font-size:.78rem;color:var(--text-muted);line-height:1.65;max-width:78ch;margin-top:20px}
+.fine strong{color:var(--text-secondary)}
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ROUND 1.1 &mdash; concept build for Dan at Jack Holder's, by <a href="https://gullstack.com">GullStack</a>. Running on your real June numbers.
+</div>
+
+<div class="appbar">
+  <div class="wrap appbar-inner">
+    <div class="appbar-left">
+      <img src="/jackholders/cropped-Jack_Holders_Logo.png" alt="Jack Holder's">
+      <div class="who">
+        <strong>Operator View</strong>
+        Meridian Ave &middot; June 2026
+      </div>
+    </div>
+    <div class="tabs">
+      <span class="on">Payments</span>
+      <span class="soon">Sales</span>
+      <span class="soon">Labor</span>
+      <span class="soon">Menu</span>
+      <span class="soon">Reviews</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap head">
+  <div class="eyebrow">Round 1.1</div>
+  <h1>The layer that sits on top of your POS.</h1>
+  <p>Round 1 was the website. This is the other half &mdash; the operator view. Every number on this page is read off your actual June statement and your Toast invoice, not a sample dataset. The point isn't the numbers though; it's that this is the kind of thing we build, and it works on whatever POS you end up running.</p>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="tiles">
+      <div class="tile">
+        <div class="l">Card volume</div>
+        <div class="n">$493,681</div>
+        <div class="s">June 2026</div>
+      </div>
+      <div class="tile">
+        <div class="l">Processing cost</div>
+        <div class="n red">$9,989</div>
+        <div class="s">$119,872 annualized</div>
+      </div>
+      <div class="tile">
+        <div class="l">Effective rate</div>
+        <div class="n gold">2.02%</div>
+        <div class="s">Blended, all card types</div>
+      </div>
+      <div class="tile">
+        <div class="l">Transactions</div>
+        <div class="n">6,779</div>
+        <div class="s">226 a day</div>
+      </div>
+      <div class="tile">
+        <div class="l">Average ticket</div>
+        <div class="n">$72.83</div>
+        <div class="s">$1.47 of it is card cost</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Where the $9,989 went</h2>
+      <p>Four card types, four different prices. The keyed transactions are the ones worth looking at &mdash; they cost you double what a tapped card does.</p>
+    </div>
+
+    <div class="card">
+      <h3>Processing cost by card type</h3>
+      <div class="sub">June 2026 &middot; fees paid, and the effective rate you paid on each</div>
+
+      <div class="legend">
+        <div class="key"><span class="swatch" style="background:var(--series-1)"></span> Swipe / dip / tap</div>
+        <div class="key"><span class="swatch" style="background:var(--series-2)"></span> Keyed &mdash; manually entered</div>
+      </div>
+
+      <div class="rows" id="cardRows"></div>
+
+      <details class="tbl">
+        <summary>View as table</summary>
+        <table>
+          <thead><tr><th>Card type</th><th>Txns</th><th>Volume</th><th>Fees</th><th>Effective</th></tr></thead>
+          <tbody>
+            <tr><td>Visa / MC / Discover — swipe, dip, tap</td><td>6,300</td><td>$457,284.14</td><td>$8,869.73</td><td>1.94%</td></tr>
+            <tr><td>Amex — swipe, dip, tap</td><td>389</td><td>$30,739.34</td><td>$906.23</td><td>2.95%</td></tr>
+            <tr><td>Visa / MC / Discover — keyed</td><td>83</td><td>$5,183.54</td><td>$193.87</td><td>3.74%</td></tr>
+            <tr><td>Amex — keyed</td><td>7</td><td>$473.73</td><td>$19.48</td><td>4.11%</td></tr>
+            <tr><td>Total</td><td>6,779</td><td>$493,680.75</td><td>$9,989.31</td><td>2.02%</td></tr>
+          </tbody>
+        </table>
+      </details>
+    </div>
+
+    <div class="card">
+      <h3>Your Toast invoice, by line</h3>
+      <div class="sub">Invoice #INV10030049 &middot; $731.13/month &middot; the device lines are highlighted</div>
+
+      <div class="legend">
+        <div class="key"><span class="swatch" style="background:var(--series-2)"></span> Per-device charge</div>
+        <div class="key"><span class="swatch" style="background:var(--series-3)"></span> Everything else</div>
+      </div>
+
+      <div class="rows" id="toastRows"></div>
+
+      <details class="tbl">
+        <summary>View as table</summary>
+        <table>
+          <thead><tr><th>Line item</th><th>Qty</th><th>Rate</th><th>Monthly</th><th>Annual</th></tr></thead>
+          <tbody>
+            <tr><td>Handheld software subscription</td><td>7</td><td>$48.74</td><td>$341.18</td><td>$4,094.16</td></tr>
+            <tr><td>Additional tablet software subscription</td><td>2</td><td>$48.74</td><td>$97.48</td><td>$1,169.76</td></tr>
+            <tr><td>Software monthly subscription</td><td>1</td><td>$87.74</td><td>$87.74</td><td>$1,052.88</td></tr>
+            <tr><td>Toast Digital Storefront Essentials</td><td>1</td><td>$73.12</td><td>$73.12</td><td>$877.44</td></tr>
+            <tr><td>Gift card program</td><td>1</td><td>$48.74</td><td>$48.74</td><td>$584.88</td></tr>
+            <tr><td>DoorDash integration</td><td>1</td><td>$29.25</td><td>$29.25</td><td>$351.00</td></tr>
+            <tr><td>Uber Eats integration</td><td>1</td><td>$29.25</td><td>$29.25</td><td>$351.00</td></tr>
+            <tr><td>API monthly subscription</td><td>1</td><td>$24.37</td><td>$24.37</td><td>$292.44</td></tr>
+            <tr><td>Total</td><td>—</td><td>—</td><td>$731.13</td><td>$8,773.56</td></tr>
+          </tbody>
+        </table>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Move the sliders</h2>
+      <p>This is the part I'd normally have to email you a spreadsheet for. Two things drive your card cost: how much of your volume is debit, and what your processor's markup is. Change either and watch what happens &mdash; including what happens to the markup &mdash; the part nobody in payments shows you.</p>
+    </div>
+
+    <div class="modeler">
+      <div class="controls">
+        <h3>Assumptions</h3>
+        <div class="hint">Your statement summary doesn't disclose your debit mix. Until we see the interchange detail, this is the one number we're guessing at &mdash; and if you slide it low enough, this tool will tell you not to switch.</div>
+
+        <div class="field">
+          <label for="debit">Debit share of volume <span class="v" id="debitVal">30%</span></label>
+          <input type="range" id="debit" min="10" max="50" step="1" value="30">
+          <div class="ends"><span>10%</span><span>50%</span></div>
+        </div>
+
+        <div class="field">
+          <label for="markup">Our markup <span class="v" id="markupVal">20 bps</span></label>
+          <input type="range" id="markup" min="5" max="60" step="1" value="20">
+          <div class="ends"><span>5 bps</span><span>60 bps</span></div>
+        </div>
+
+        <div class="field" style="margin-bottom:0">
+          <label>Pricing model</label>
+          <div class="seg" id="seg">
+            <button data-model="today" class="on"><strong>What you pay today</strong>1.733% + $0.15, flat</button>
+            <button data-model="icplus"><strong>Interchange-plus</strong>True cost + our markup</button>
+            <button data-model="dual"><strong>Cash price / card price</strong>Card cost moves to the cardholder</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="readout">
+        <div class="readout-top">
+          <div class="ro">
+            <div class="l">Your effective rate</div>
+            <div class="n gold" id="outRate">2.02%</div>
+            <div class="s" id="outRateSub">Blended across all card types</div>
+          </div>
+          <div class="ro">
+            <div class="l">You'd save</div>
+            <div class="n good" id="outSave">$0</div>
+            <div class="s" id="outSaveSub">Per year vs. today</div>
+          </div>
+          <div class="ro">
+            <div class="l">Markup above cost</div>
+            <div class="n" id="outUs">$0</div>
+            <div class="s" id="outUsSub">Per year, processing side</div>
+          </div>
+        </div>
+
+        <div class="legend">
+          <div class="key"><span class="swatch" style="background:var(--series-4)"></span> True network cost</div>
+          <div class="key"><span class="swatch" style="background:var(--series-1)"></span> Markup above cost</div>
+          <div class="key"><span class="swatch" style="background:var(--series-3)"></span> Your saving</div>
+        </div>
+        <div class="rows" id="modelRows"></div>
+
+        <div class="note" id="modelNote"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What rounds 2 and 3 look like</h2>
+      <p>The tabs at the top aren't decoration &mdash; they're the build order. Each one needs a live feed off your POS, which is the actual reason the POS conversation matters.</p>
+    </div>
+    <div class="road">
+      <div>
+        <div class="tag">Round 2</div>
+        <h4>Sales &amp; daypart</h4>
+        <p>Covers, average ticket and sales by hour and by daypart. You run an all-day breakfast house &mdash; you should be able to see exactly when the breakfast crowd stops and the burger crowd starts, and staff to it.</p>
+      </div>
+      <div>
+        <div class="tag">Round 3</div>
+        <h4>Delivery reconciliation</h4>
+        <p>DoorDash and Uber Eats commissions next to first-party orders, per item, with the real margin after commission. Most operators never see this side by side.</p>
+      </div>
+      <div>
+        <div class="tag">Round 3</div>
+        <h4>Menu profitability</h4>
+        <p>What each item actually contributes after food cost and card cost. Which is a different list than what sells the most.</p>
+      </div>
+    </div>
+
+    <p class="fine">
+      <strong>What's real and what isn't.</strong> Every figure on this page under &ldquo;Where the $9,989 went&rdquo; and &ldquo;Your Toast invoice&rdquo; is transcribed directly from your June 2026 merchant statement (MID ending 394988) and Toast invoice #INV10030049 &mdash; the line items reconcile to the penny. The modeler is exactly that: a model. Regulated debit interchange is capped at 0.05% + $0.21; card-present restaurant credit interchange is estimated at 1.60% + $0.10, plus network assessments of roughly 0.13% + $0.02 per item. Your real debit mix and your real card-tier mix will move these numbers, which is why we want the interchange detail pages before anyone signs anything. The Sales, Labor, Menu and Reviews tabs are not built &mdash; they're the roadmap, and they need a live POS feed to be real.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Built for Dan at Jack Holder's &middot; GullStack &middot; July 2026</span>
+    <span><a href="/jack-holders">The numbers</a> &middot; <a href="/jack-holders-demo">The website</a> &middot; <a href="mailto:bryce@gullstack.com">bryce@gullstack.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  // ---- real figures, June 2026 statement -------------------------------
+  var VMD_VOL = 457284.14, VMD_TXN = 6300, VMD_FEES = 8869.73;
+  var TOTAL_VOL = 493680.75, TOTAL_FEES = 9989.31;
+  var OTHER_FEES = TOTAL_FEES - VMD_FEES;      // amex + keyed, held constant
+
+  // interchange model constants
+  var DEBIT_PCT = 0.0005, DEBIT_FIX = 0.21;
+  var CREDIT_PCT = 0.0160, CREDIT_FIX = 0.10;
+  var ASSESS_PCT = 0.0013, ASSESS_FIX = 0.0195;
+  var PER_TXN_MARKUP = 0.06;
+  var CARD_PRICE = 0.035;                      // modelled card price for dual pricing
+
+  var money = function(n){
+    return '$' + Math.round(n).toLocaleString('en-US');
+  };
+  var money2 = function(n){
+    return '$' + n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  };
+
+  // ---- static chart 1: cost by card type -------------------------------
+  var CARD_ROWS = [
+    {label:'Visa / MC / Discover', sub:'swipe, dip, tap · 6,300 txns', fees:8869.73, rate:1.94, keyed:false},
+    {label:'Amex', sub:'swipe, dip, tap · 389 txns', fees:906.23, rate:2.95, keyed:false},
+    {label:'Visa / MC / Discover', sub:'keyed · 83 txns', fees:193.87, rate:3.74, keyed:true},
+    {label:'Amex', sub:'keyed · 7 txns', fees:19.48, rate:4.11, keyed:true}
+  ];
+  (function(){
+    var max = 8869.73, html = '';
+    CARD_ROWS.forEach(function(r){
+      var color = r.keyed ? 'var(--series-2)' : 'var(--series-1)';
+      var w = Math.max((r.fees / max) * 100, 0.6);
+      html += '<div class="row-item" title="' + r.label + ' — ' + money2(r.fees) +
+              ' in fees, ' + r.rate.toFixed(2) + '% effective">' +
+                '<div class="lab">' + r.label + '<em>' + r.sub + '</em></div>' +
+                '<div class="track"><div class="bar" style="width:' + w + '%;background:' + color + '"></div></div>' +
+                '<div class="val">' + money2(r.fees) + '<br><span style="color:var(--text-muted)">' + r.rate.toFixed(2) + '%</span></div>' +
+              '</div>';
+    });
+    document.getElementById('cardRows').innerHTML = html;
+  })();
+
+  // ---- static chart 2: toast invoice -----------------------------------
+  var TOAST_ROWS = [
+    {label:'Handheld software', sub:'7 × $48.74', amt:341.18, device:true},
+    {label:'Additional tablets', sub:'2 × $48.74', amt:97.48, device:true},
+    {label:'Software subscription', sub:'the actual POS', amt:87.74, device:false},
+    {label:'Digital Storefront', sub:'their website product', amt:73.12, device:false},
+    {label:'Gift card program', sub:'1 × $48.74', amt:48.74, device:false},
+    {label:'DoorDash integration', sub:'1 × $29.25', amt:29.25, device:false},
+    {label:'Uber Eats integration', sub:'1 × $29.25', amt:29.25, device:false},
+    {label:'API subscription', sub:'1 × $24.37', amt:24.37, device:false}
+  ];
+  (function(){
+    var max = 341.18, html = '';
+    TOAST_ROWS.forEach(function(r){
+      var color = r.device ? 'var(--series-2)' : 'var(--series-3)';
+      var w = Math.max((r.amt / max) * 100, 0.6);
+      html += '<div class="row-item" title="' + r.label + ' — ' + money2(r.amt) + '/mo, ' +
+              money2(r.amt * 12) + '/yr">' +
+                '<div class="lab">' + r.label + '<em>' + r.sub + '</em></div>' +
+                '<div class="track"><div class="bar" style="width:' + w + '%;background:' + color + '"></div></div>' +
+                '<div class="val">' + money2(r.amt) + '</div>' +
+              '</div>';
+    });
+    document.getElementById('toastRows').innerHTML = html;
+  })();
+
+  // ---- modeler ---------------------------------------------------------
+  var debitEl = document.getElementById('debit');
+  var markupEl = document.getElementById('markup');
+  var model = 'today';
+
+  function trueCost(debitMix){
+    var dTxn = VMD_TXN * debitMix, dVol = VMD_VOL * debitMix;
+    var cTxn = VMD_TXN - dTxn,     cVol = VMD_VOL - dVol;
+    return dVol * DEBIT_PCT + dTxn * DEBIT_FIX +
+           cVol * CREDIT_PCT + cTxn * CREDIT_FIX +
+           VMD_VOL * ASSESS_PCT + VMD_TXN * ASSESS_FIX;
+  }
+
+  function render(){
+    var debitMix = +debitEl.value / 100;
+    var bps = +markupEl.value;
+    document.getElementById('debitVal').textContent = debitEl.value + '%';
+    document.getElementById('markupVal').textContent = bps + ' bps';
+
+    var cost = trueCost(debitMix);
+    var costAll = cost + OTHER_FEES;          // true network cost, all card types
+    var margin, merchantPays, note;
+
+    if (model === 'today') {
+      merchantPays = TOTAL_FEES;
+      margin = TOTAL_FEES - costAll;
+      note = 'This is your statement as it stands. The gap between what the card networks charge and what ' +
+             'you pay is about ' + money(margin) + ' a month — ' + money(margin * 12) + ' a year — and your ' +
+             'current processor keeps all of it. That is not a scandal, it is what a flat rate is for. ' +
+             'It is also the money that is on the table.';
+    } else if (model === 'icplus') {
+      margin = VMD_VOL * (bps / 10000) + VMD_TXN * PER_TXN_MARKUP;
+      merchantPays = costAll + margin;
+      note = 'You pay the true cost of each card plus a markup of ' + bps + ' basis points and $' +
+             PER_TXN_MARKUP.toFixed(2) + ' per transaction — disclosed on the agreement and visible on your ' +
+             'statement every month. Nothing changes at the register and no customer ever notices. ' +
+             'That markup is split between us and the acquirer who sponsors the account, so we see a share of ' +
+             'it, not all of it. Slide it down and you keep more; slide it up and we do. That is the whole ' +
+             'negotiation, and you can see both sides of it.';
+    } else {
+      merchantPays = 0;
+      margin = TOTAL_VOL * CARD_PRICE - costAll;
+      note = 'Under a compliant California cash-price / card-price program, card acceptance is priced into the ' +
+             'card price — modelled here at ' + (CARD_PRICE * 100).toFixed(1) + '% — so your net processing ' +
+             'cost goes to roughly zero. Note what that does to the third number: this saves you the most and ' +
+             'it pays the program the most, and we would rather say that out loud than have you work it out ' +
+             'later. California requires clear up-front disclosure, and debit cards cannot be surcharged under ' +
+             'federal rules regardless of what any salesperson tells you.';
+    }
+
+    var saving = TOTAL_FEES - merchantPays;
+    var rate = merchantPays / TOTAL_VOL * 100;
+
+    document.getElementById('outRate').textContent = rate.toFixed(2) + '%';
+    document.getElementById('outRateSub').textContent =
+      model === 'dual' ? 'Your net cost after the card price' : 'Blended across all card types';
+    var saveEl = document.getElementById('outSave');
+    if (model === 'today') {
+      saveEl.textContent = '$0';
+      saveEl.className = 'n';
+      document.getElementById('outSaveSub').textContent = 'This is the baseline';
+    } else if (saving < -0.5) {
+      saveEl.textContent = '\u2212' + money(Math.abs(saving) * 12);
+      saveEl.className = 'n bad';
+      document.getElementById('outSaveSub').textContent =
+        'You would pay MORE — at this debit mix, don\u2019t switch';
+    } else {
+      saveEl.textContent = money(Math.max(saving,0) * 12);
+      saveEl.className = 'n good';
+      document.getElementById('outSaveSub').textContent = 'Per year vs. today';
+    }
+    document.getElementById('outUs').textContent = money(Math.max(margin,0) * 12);
+    document.getElementById('outUs').className = 'n gold';
+    document.getElementById('outUsSub').textContent =
+      model === 'today' ? 'Per year — all of it to your current processor'
+                        : 'Per year — split between us and the acquirer';
+    document.getElementById('modelNote').textContent = note;
+
+    // stacked comparison bars, annualized
+    var base = Math.max(TOTAL_FEES, costAll + Math.max(margin,0), TOTAL_VOL * CARD_PRICE) * 12;
+    var parts = [
+      {label:'True network cost', v:costAll * 12, c:'var(--series-4)'},
+      {label:'Markup above cost', v:Math.max(margin,0) * 12, c:'var(--series-1)'},
+      {label:saving < -0.5 ? 'Extra you would pay' : 'Your saving', v:Math.abs(saving) * 12, c:saving < -0.5 ? 'var(--crimson)' : 'var(--series-3)'}
+    ];
+    var html = '';
+    parts.forEach(function(p){
+      var w = Math.max((p.v / base) * 100, 0);
+      html += '<div class="row-item" title="' + p.label + ' — ' + money(p.v) + ' a year">' +
+                '<div class="lab">' + p.label + '</div>' +
+                '<div class="track"><div class="bar" style="width:' + w + '%;background:' + p.c + '"></div></div>' +
+                '<div class="val">' + money(p.v) + '</div>' +
+              '</div>';
+    });
+    document.getElementById('modelRows').innerHTML = html;
+  }
+
+  debitEl.addEventListener('input', render);
+  markupEl.addEventListener('input', render);
+  document.getElementById('seg').addEventListener('click', function(e){
+    var b = e.target.closest('button');
+    if (!b) return;
+    model = b.dataset.model;
+    Array.prototype.forEach.call(this.querySelectorAll('button'), function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+    render();
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
