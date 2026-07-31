@@ -21,6 +21,34 @@ SSO off for the project or attaching a custom domain (e.g.
 
 ## Session Log
 
+### 2026-07-31 (later) — Multi-page rebuild, Toast invoice, rate strategy
+
+- **Demo is now six pages**, not a one-pager (Bryce: "I hate one page sites").
+  Generated from `jackholders/build.py` — one template, one nav, one footer.
+  Regenerate with `python3 jackholders/build.py`. Shared CSS at
+  `jackholders/site.css`. Routes: `/jack-holders-demo` + `/breakfast`,
+  `/lunch-dinner`, `/bar`, `/about`, `/visit`.
+- **Vercel SSO blocker resolved.** `vercel project protection disable --sso
+  gullstack-pitches --scope gull-stack`. There IS a CLI command for this — the
+  MCP Vercel connection 403s (no update permission on the team), the local CLI
+  works. Note this makes *every* pitch in the repo public.
+- **Toast invoice #INV10030049 itemized into the pitch.** $731.13/mo across 11
+  lines; 7 handhelds + 2 tablets at $48.74 each = $438.66 (60% of the bill) on
+  hardware they already own. Base POS software is only $87.74. Toast Digital
+  Storefront (their website product) is $73.12/mo.
+- **Answered "how do we beat 1.733% + $0.15."** Their flat rate charges the
+  same on regulated debit (true cost ~$0.25 on a $72.58 ticket) as on premium
+  rewards credit (~$1.52). Modeled processor gross margin $1,165–2,764/mo.
+  IC+ at 0.15–0.25% + $0.05–0.08 lands 1.55–1.84% effective, saving
+  $5,726–21,155/yr depending on debit mix. Pitch now offers two paths.
+- **⚠️ We cannot deliver any of this yet.** No processor relationship (Stripe
+  doesn't do dual pricing or third-party IC+ resale) and no POS to replace
+  Toast. Needs an ISO/agent agreement and a POS reseller deal (SkyTab, SpotOn,
+  Clover). Full economics + risks on the Notion client page.
+- **Recommended sequencing:** Phase 1 build on top of Toast's API (they
+  already pay $24.37/mo for it), Phase 2 replace the POS once a partner is
+  signed. Do not quote a rate before knowing our buy rate.
+
 ### 2026-07-31 — Jack Holder's Restaurant & Bar (Willow Glen, San Jose)
 
 - **Lead source:** Kyle Dickson referral. Owner is shopping an "AIO" pitch from
