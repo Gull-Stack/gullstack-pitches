@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jack Holder's Restaurant &amp; Bar | All-Day Breakfast in Willow Glen, San Jose</title>
+<meta name="description" content="Family-owned everyday eatery and family-friendly tavern in Willow Glen. All-day breakfast, Harris Ranch burgers, 14 beers on tap and craft cocktails. Open 7am daily. Order online or call (408) 613-2365.">
+<link rel="icon" href="/jackholders/cropped-Jack_Holders_Logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#16130F;
+  --ink-soft:#4A443C;
+  --crimson:#8E1622;
+  --crimson-bright:#B3242F;
+  --gold:#C3922E;
+  --cream:#F7F3EA;
+  --cream-deep:#EFE8DA;
+  --white:#FFFFFF;
+  --line:rgba(22,19,15,.12);
+  --display:'Fraunces',Georgia,serif;
+  --shadow:0 1px 2px rgba(22,19,15,.05),0 12px 32px rgba(22,19,15,.07);
+}
+
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--cream);color:var(--ink);line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.narrow{max-width:820px;margin:0 auto;padding:0 28px}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.1;letter-spacing:-.015em}
+.eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--crimson);margin-bottom:14px;
+}
+.section-title{font-size:clamp(2rem,4.2vw,3.1rem);margin-bottom:16px}
+.lede{font-size:1.08rem;color:var(--ink-soft);max-width:60ch}
+
+section{padding:96px 0}
+@media(max-width:768px){section{padding:64px 0}}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:'Inter',sans-serif;font-size:.94rem;font-weight:600;letter-spacing:.01em;
+  padding:14px 28px;border-radius:2px;text-decoration:none;border:1.5px solid transparent;
+  transition:transform .16s ease,background .16s ease,color .16s ease,border-color .16s ease;
+  min-height:48px;cursor:pointer;
+}
+.btn-primary{background:var(--crimson);color:#fff}
+.btn-primary:hover{background:var(--crimson-bright);transform:translateY(-2px)}
+.btn-ghost{border-color:currentColor;color:var(--ink);background:transparent}
+.btn-ghost:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.btn-light{border-color:rgba(255,255,255,.55);color:#fff;background:transparent}
+.btn-light:hover{background:#fff;color:var(--ink);border-color:#fff}
+
+/* ---------- utility bar ---------- */
+.utility{
+  background:var(--ink);color:#DCD5C8;font-size:.8rem;letter-spacing:.02em;
+  padding:9px 0;
+}
+.utility .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.utility-left{display:flex;align-items:center;gap:10px}
+.dot-open{width:7px;height:7px;border-radius:50%;background:#5FBF7F;box-shadow:0 0 0 3px rgba(95,191,127,.2)}
+.utility a{text-decoration:none;color:#DCD5C8}
+.utility a:hover{color:#fff}
+.utility-right{display:flex;gap:22px}
+@media(max-width:720px){.utility-right span.hide-sm{display:none}}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:60;background:rgba(247,243,234,.94);
+  backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{height:46px;width:auto}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{
+  text-decoration:none;font-size:.9rem;font-weight:500;color:var(--ink);
+  padding:6px 0;border-bottom:1.5px solid transparent;transition:border-color .16s,color .16s;
+}
+.nav-links a:hover{color:var(--crimson);border-color:var(--crimson)}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.nav-cta .btn{padding:11px 22px;font-size:.88rem;min-height:44px}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:2px;padding:10px;cursor:pointer}
+.nav-toggle span{display:block;width:20px;height:1.5px;background:var(--ink);margin:4px 0;transition:.2s}
+
+@media(max-width:960px){
+  .nav-links{
+    position:absolute;top:100%;left:0;right:0;background:var(--cream);
+    flex-direction:column;align-items:stretch;gap:0;padding:8px 28px 24px;
+    border-bottom:1px solid var(--line);
+    opacity:0;visibility:hidden;transform:translateY(-8px);transition:.2s;
+  }
+  .nav-links.open{opacity:1;visibility:visible;transform:none}
+  .nav-links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  .nav-toggle{display:block}
+  .nav-cta .btn-ghost{display:none}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;padding:0;overflow:hidden}
+.hero-img{position:absolute;inset:0}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img::after{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(22,19,15,.68) 0%,rgba(22,19,15,.42) 42%,rgba(22,19,15,0) 74%),
+    linear-gradient(180deg,rgba(22,19,15,.34) 0%,rgba(22,19,15,.10) 34%,rgba(22,19,15,.60) 100%);
+}
+.hero-content{position:relative;z-index:2;color:#fff;padding:0 0 72px;width:100%}
+.hero-tag{
+  display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.45);border-radius:100px;padding:7px 16px;margin-bottom:22px;
+}
+.hero h1{font-size:clamp(2.6rem,6.4vw,5rem);color:#fff;max-width:16ch;margin-bottom:20px;font-weight:500}
+.hero h1 em{font-style:italic;color:#F0C96A}
+.hero p{font-size:1.12rem;color:rgba(255,255,255,.9);max-width:52ch;margin-bottom:32px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+@media(max-width:768px){.hero{min-height:76vh}.hero-content{padding-bottom:48px}}
+
+/* ---------- action strip ---------- */
+.strip{background:var(--ink);color:var(--cream);padding:0}
+.strip-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.strip-item{
+  padding:34px 26px;text-decoration:none;color:var(--cream);
+  border-right:1px solid rgba(255,255,255,.09);transition:background .18s;
+  display:flex;flex-direction:column;gap:6px;
+}
+.strip-item:last-child{border-right:none}
+.strip-item:hover{background:rgba(255,255,255,.055)}
+.strip-item .k{font-family:var(--display);font-size:1.22rem;font-weight:600}
+.strip-item .v{font-size:.85rem;color:#A79E90}
+.strip-item .arrow{margin-top:8px;font-size:.8rem;color:var(--gold);letter-spacing:.1em}
+@media(max-width:900px){.strip-grid{grid-template-columns:repeat(2,1fr)}
+  .strip-item:nth-child(2n){border-right:none}
+  .strip-item:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.09)}}
+
+/* ---------- intro ---------- */
+.intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center}
+.intro-copy p{color:var(--ink-soft);margin-bottom:18px}
+.intro-copy p.first{font-size:1.22rem;color:var(--ink);font-family:var(--display);line-height:1.45}
+.intro-media{position:relative}
+.intro-media img{border-radius:2px;box-shadow:var(--shadow)}
+.intro-badge{
+  position:absolute;bottom:-26px;left:-26px;background:var(--crimson);color:#fff;
+  padding:22px 26px;border-radius:2px;max-width:210px;
+}
+.intro-badge .n{font-family:var(--display);font-size:2rem;line-height:1;margin-bottom:4px}
+.intro-badge .l{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+@media(max-width:900px){.intro-grid{grid-template-columns:1fr;gap:48px}.intro-badge{left:auto;right:16px;bottom:-20px}}
+
+/* ---------- menu ---------- */
+.menu-section{background:var(--white)}
+.menu-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:40px;flex-wrap:wrap}
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line);margin-bottom:52px;flex-wrap:wrap}
+.tab{
+  background:none;border:none;font-family:var(--display);font-size:1.18rem;font-weight:600;
+  color:var(--ink-soft);padding:14px 26px 16px;cursor:pointer;position:relative;
+  border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .16s,border-color .16s;
+  letter-spacing:-.01em;
+}
+.tab:hover{color:var(--ink)}
+.tab.active{color:var(--crimson);border-color:var(--crimson)}
+@media(max-width:600px){.tab{padding:12px 16px;font-size:1rem}}
+
+.panel{display:none}
+.panel.active{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.menu-cols{columns:2;column-gap:64px}
+@media(max-width:860px){.menu-cols{columns:1}}
+.menu-group{break-inside:avoid;margin-bottom:44px;display:inline-block;width:100%}
+.menu-group h3{
+  font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--crimson);padding-bottom:10px;margin-bottom:18px;border-bottom:1px solid var(--line);
+  font-family:'Inter',sans-serif;
+}
+.menu-group .note{font-size:.8rem;color:var(--ink-soft);font-style:italic;margin:-10px 0 18px}
+.item{margin-bottom:17px;break-inside:avoid}
+.item .name{font-family:var(--display);font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
+.item .desc{font-size:.88rem;color:var(--ink-soft);line-height:1.5}
+
+.menu-foot{
+  margin-top:12px;padding:30px;background:var(--cream);border-radius:2px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.menu-foot p{font-size:.94rem;color:var(--ink-soft);max-width:46ch}
+
+/* ---------- bar feature ---------- */
+.bar-feature{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.bar-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.bar-feature .eyebrow{color:var(--gold)}
+.bar-feature h2{color:#fff}
+.bar-feature p{color:#B5AC9E}
+.bar-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:36px 0 34px}
+.bar-stat .n{font-family:var(--display);font-size:2.3rem;color:var(--gold);line-height:1}
+.bar-stat .l{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:#8F8676;margin-top:6px}
+.bar-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bar-photos img{border-radius:2px;aspect-ratio:3/4;object-fit:cover}
+.bar-photos img:nth-child(1){margin-top:32px}
+@media(max-width:900px){.bar-grid{grid-template-columns:1fr;gap:44px}}
+
+/* ---------- proof ---------- */
+.proof{background:var(--cream-deep)}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.proof-card{background:var(--white);padding:34px 30px;border-radius:2px;box-shadow:var(--shadow)}
+.stars{color:var(--gold);letter-spacing:3px;font-size:1.05rem;margin-bottom:12px}
+.proof-card .score{font-family:var(--display);font-size:2.6rem;line-height:1;margin-bottom:4px}
+.proof-card .src{font-size:.85rem;color:var(--ink-soft)}
+.proof-card .cnt{font-size:.78rem;color:var(--ink-soft);opacity:.75;margin-top:10px}
+@media(max-width:820px){.proof-grid{grid-template-columns:1fr}}
+
+/* ---------- gallery ---------- */
+.gallery{padding:0;overflow:hidden;background:var(--white)}
+.marquee{display:flex;gap:14px;animation:slide 46s linear infinite;width:max-content;padding:14px 0}
+.marquee:hover{animation-play-state:paused}
+.marquee img{height:280px;width:auto;border-radius:2px;object-fit:cover;flex-shrink:0}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:768px){.marquee img{height:190px}}
+
+/* ---------- visit ---------- */
+.visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px}
+.hours-table{width:100%;border-collapse:collapse;margin:26px 0 32px}
+.hours-table td{padding:13px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.hours-table td:last-child{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-soft)}
+.hours-table tr.today td{font-weight:700;color:var(--crimson)}
+.hours-table tr.today td:last-child{color:var(--crimson)}
+.visit-detail{margin-bottom:26px}
+.visit-detail .lbl{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--crimson);margin-bottom:7px}
+.visit-detail p,.visit-detail a{font-size:1.02rem;color:var(--ink);text-decoration:none}
+.visit-detail a:hover{color:var(--crimson)}
+.map-embed{border:0;width:100%;height:100%;min-height:420px;border-radius:2px;filter:grayscale(.25)}
+@media(max-width:900px){.visit-grid{grid-template-columns:1fr;gap:40px}.map-embed{min-height:320px}}
+
+/* ---------- faq ---------- */
+.faq{background:var(--white)}
+details.q{border-bottom:1px solid var(--line);padding:6px 0}
+details.q summary{
+  list-style:none;cursor:pointer;padding:22px 44px 22px 0;position:relative;
+  font-family:var(--display);font-size:1.14rem;font-weight:600;letter-spacing:-.01em;
+}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{
+  content:'+';position:absolute;right:6px;top:19px;font-size:1.5rem;color:var(--crimson);
+  font-family:'Inter',sans-serif;font-weight:400;transition:transform .2s;
+}
+details.q[open] summary::after{content:'−'}
+details.q p{padding:0 44px 24px 0;color:var(--ink-soft);font-size:.98rem}
+
+/* ---------- cta band ---------- */
+.cta-band{background:var(--crimson);color:#fff;text-align:center}
+.cta-band h2{color:#fff;font-size:clamp(2rem,4.6vw,3.2rem);margin-bottom:16px}
+.cta-band p{color:rgba(255,255,255,.86);max-width:52ch;margin:0 auto 32px;font-size:1.05rem}
+.cta-band .btn-primary{background:#fff;color:var(--crimson)}
+.cta-band .btn-primary:hover{background:var(--cream)}
+.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#A79E90;padding:72px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;padding-bottom:52px}
+footer h4{color:#fff;font-size:.76rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  margin-bottom:18px;font-family:'Inter',sans-serif}
+footer a{color:#A79E90;text-decoration:none;display:block;padding:5px 0;font-size:.92rem}
+footer a:hover{color:#fff}
+footer .foot-brand img{height:60px;margin-bottom:18px;filter:brightness(0) invert(1);opacity:.92}
+footer .foot-brand p{font-size:.9rem;max-width:34ch}
+.foot-bottom{
+  border-top:1px solid rgba(255,255,255,.09);padding:24px 0 30px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.82rem;
+}
+.gullstack-credit a{display:inline;color:#A79E90;text-decoration:underline}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr}}
+
+/* ---------- mobile order bar ---------- */
+.mobile-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:70;display:none;
+  background:var(--ink);border-top:1px solid rgba(255,255,255,.1);
+  grid-template-columns:1fr 1fr;
+}
+.mobile-bar a{
+  padding:16px;text-align:center;text-decoration:none;color:#fff;font-size:.9rem;font-weight:600;
+}
+.mobile-bar a.order{background:var(--crimson)}
+@media(max-width:768px){.mobile-bar{display:grid}body{padding-bottom:56px}}
+
+/* demo ribbon */
+.demo-ribbon{
+  background:#16130F;color:#F0C96A;text-align:center;font-size:.76rem;letter-spacing:.08em;
+  padding:8px 16px;border-bottom:1px solid rgba(255,255,255,.1);
+}
+.demo-ribbon a{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="demo-ribbon">
+  CONCEPT DEMO — built for Jack Holder's by <a href="https://gullstack.com">GullStack</a>. Not the live site.
+</div>
+
+<div class="utility">
+  <div class="wrap">
+    <div class="utility-left">
+      <span class="dot-open"></span>
+      <span id="open-status">Open today · 7:00am – 9:00pm</span>
+    </div>
+    <div class="utility-right">
+      <span class="hide-sm">3153 Meridian Ave, Willow Glen</span>
+      <a href="tel:+14086132365">(408) 613-2365</a>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Jack Holder's Restaurant &amp; Bar">
+      <img src="/jackholders/cropped-Jack_Holders_Logo.png" alt="Jack Holder's Restaurant &amp; Bar">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#menus">Menus</a>
+      <a href="#bar">The Bar</a>
+      <a href="#story">Our Story</a>
+      <a href="#visit">Visit</a>
+      <a href="https://www.toasttab.com/jackholders/giftcards">Gift Cards</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="tel:+14086132365">Call</a>
+      <a class="btn btn-primary" href="https://order.toasttab.com/online/jackholders">Order Online</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-img">
+    <img src="/jackholders/best-restaurant-willow-glen-plates-of-food.webp"
+         alt="Overhead spread of French toast, eggs benedict, salmon tacos, Chinese chicken salad and cocktails at Jack Holder's">
+  </div>
+  <div class="hero-content">
+    <div class="wrap">
+      <span class="hero-tag">Willow Glen · San Jose</span>
+      <h1>Breakfast served <em>all day.</em> Every day.</h1>
+      <p>A family-owned everyday eatery and family-friendly tavern. Pancakes at 7am, a burger and a cold draft at 7pm, and a patio that's happy to see you either way.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://order.toasttab.com/online/jackholders">Order Pickup</a>
+        <a class="btn btn-light" href="#menus">See the Menus</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap" style="padding:0">
+    <div class="strip-grid">
+      <a class="strip-item" href="https://order.toasttab.com/online/jackholders">
+        <span class="k">Order Online</span>
+        <span class="v">Pickup, ready in about 20 minutes</span>
+        <span class="arrow">START AN ORDER →</span>
+      </a>
+      <a class="strip-item" href="https://www.toasttab.com/jackholders/giftcards">
+        <span class="k">Gift Cards</span>
+        <span class="v">Delivered by email, any amount</span>
+        <span class="arrow">BUY A CARD →</span>
+      </a>
+      <a class="strip-item" href="tel:+14086132365">
+        <span class="k">Large Parties</span>
+        <span class="v">Call ahead and we'll set the table</span>
+        <span class="arrow">(408) 613-2365 →</span>
+      </a>
+      <a class="strip-item" href="https://maps.google.com/?q=3153+Meridian+Ave+Ste+20,+San+Jose,+CA+95124">
+        <span class="k">Find Us</span>
+        <span class="v">3153 Meridian Ave, Ste 20</span>
+        <span class="arrow">GET DIRECTIONS →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<section id="story">
+  <div class="wrap intro-grid">
+    <div class="intro-copy">
+      <div class="eyebrow">Our Story</div>
+      <h2 class="section-title">The neighborhood's kitchen table.</h2>
+      <p class="first">We're family-owned, we're on Meridian Ave, and we've spent years getting this menu exactly right.</p>
+      <p>Jack Holder's isn't trying to be the newest thing in San Jose. We're the place you bring your parents on Sunday morning and your softball team on Thursday night. Omelette soufflés and Swedish crepes before noon. Harris Ranch burgers, pecan-smoked ribs and pasta jambalaya after. Fourteen beers on tap the whole time.</p>
+      <p>Everything is made to order, the portions are honest, and nobody rushes you off the patio.</p>
+      <a class="btn btn-ghost" href="#menus" style="margin-top:12px">Browse the menu</a>
+    </div>
+    <div class="intro-media">
+      <img src="/jackholders/Jack-Holders-Photos_web-29.jpg" alt="The Jack Holder's Restaurant &amp; Bar sign on Meridian Avenue in Willow Glen">
+      <div class="intro-badge">
+        <div class="n">7am</div>
+        <div class="l">Doors open, seven days a week</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menus">
+  <div class="wrap">
+    <div class="menu-head">
+      <div>
+        <div class="eyebrow">The Menus</div>
+        <h2 class="section-title">Everything, all day.</h2>
+        <p class="lede">Breakfast doesn't stop at 11. Order any of it, any hour we're open.</p>
+      </div>
+      <a class="btn btn-primary" href="https://order.toasttab.com/online/jackholders">Order Online</a>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-panel="breakfast" role="tab" aria-selected="true">Breakfast</button>
+      <button class="tab" data-panel="lunch" role="tab" aria-selected="false">Lunch &amp; Dinner</button>
+      <button class="tab" data-panel="drinks" role="tab" aria-selected="false">Cocktails &amp; Bar</button>
+    </div>
+
+    <!-- BREAKFAST -->
+    <div class="panel active" id="breakfast" role="tabpanel">
+      <div class="menu-cols">
+
+        <div class="menu-group">
+          <h3>Signature Breakfast</h3>
+          <div class="item"><div class="name">Chile Verde &amp; Eggs</div><div class="desc">Two eggs, spicy pork, refried beans, salsa verde, hash browns, corn tortillas</div></div>
+          <div class="item"><div class="name">Chorizo Scramble</div><div class="desc">Chorizo, onion, tomato, jalapeño, pico de gallo, jack &amp; cheddar, hash browns, corn tortillas</div></div>
+          <div class="item"><div class="name">Joe's Special</div><div class="desc">Scrambled eggs, ground beef, spinach, onion, mushroom, jack &amp; cheddar, hash browns, toast or pancakes</div></div>
+          <div class="item"><div class="name">Breakfast Burrito</div><div class="desc">Flour tortilla, scrambled eggs, chorizo, avocado, tomatoes, pinto beans, jack &amp; white cheddar, hash browns, tomatillo salsa</div></div>
+          <div class="item"><div class="name">Biscuits &amp; Gravy Deluxe</div><div class="desc">Two eggs, biscuits, country gravy, two pieces of bacon</div></div>
+          <div class="item"><div class="name">Meat Lovers Scramble</div><div class="desc">Scrambled eggs, linguica, sausage, bacon, ham, mushrooms, onions, jack &amp; cheddar, hash browns, toast or pancakes</div></div>
+          <div class="item"><div class="name">Santa Cruz Scramble</div><div class="desc">Scrambled eggs, artichoke hearts, mushrooms, onion, spinach, jack &amp; cheddar, hash browns, toast or pancakes</div></div>
+          <div class="item"><div class="name">Chicken Fried Steak &amp; Eggs</div><div class="desc">Country gravy</div></div>
+        </div>
+
+        <div class="menu-group">
+          <h3>Omelette Soufflés</h3>
+          <div class="note">All served with jack &amp; white cheddar, hash browns and toast or pancakes.</div>
+          <div class="item"><div class="name">Supreme</div><div class="desc">Linguica, pork sausage, bacon, ham, mushroom, bell peppers, Spanish sauce</div></div>
+          <div class="item"><div class="name">Crab</div><div class="desc">Lump and snow crab, fresh avocado, tomato, hollandaise</div></div>
+          <div class="item"><div class="name">Philly</div><div class="desc">Rib-eye sliced thin, melted Swiss, mushrooms, bell peppers, onions</div></div>
+          <div class="item"><div class="name">California</div><div class="desc">Avocado, tomato, mushrooms</div></div>
+          <div class="item"><div class="name">Mushroom &amp; Avocado</div><div class="desc">Mushrooms, avocado, spinach</div></div>
+          <div class="item"><div class="name">Bacon &amp; Avocado</div><div class="desc">Bacon, avocado, mushroom</div></div>
+          <div class="item"><div class="name">Garden</div><div class="desc">Zucchini, onion, bell pepper, mushrooms, spinach, avocado</div></div>
+          <div class="item"><div class="name">Denver</div><div class="desc">Ham, onion, bell pepper</div></div>
+        </div>
+
+        <div class="menu-group">
+          <h3>Benedicts</h3>
+          <div class="note">Poached eggs, English muffin, hollandaise and hash browns.</div>
+          <div class="item"><div class="name">Eggs Benedict</div><div class="desc">Thick-cut Canadian bacon</div></div>
+          <div class="item"><div class="name">California Benedict</div><div class="desc">Canadian bacon, avocado, tomato</div></div>
+          <div class="item"><div class="name">Steak &amp; Avocado</div><div class="desc">Thinly sliced Angus steak, avocado, tomato</div></div>
+          <div class="item"><div class="name">Blackened Salmon</div><div class="desc">Fresh filet strips, spinach, avocado, cilantro, red onions, sour cream</div></div>
+          <div class="item"><div class="name">Crab &amp; Avocado</div><div class="desc">Lump crab, spinach, avocado, cilantro, red onions, sour cream</div></div>
+        </div>
+
+        <div class="menu-group">
+          <h3>The Classics</h3>
+          <div class="note">Two large eggs, hash browns and toast or pancakes.</div>
+          <div class="item"><div class="name">Rib Eye Steak &amp; Eggs</div><div class="desc">10 oz. aged Angus beef</div></div>
+          <div class="item"><div class="name">Portuguese Linguica &amp; Eggs</div><div class="desc">Mildly spiced Evergood sausage</div></div>
+          <div class="item"><div class="name">Bacon &amp; Eggs</div><div class="desc">Four thick slices of hickory smoked bacon</div></div>
+          <div class="item"><div class="name">Chicken Apple Sausage &amp; Eggs</div><div class="desc">All natural Evergood</div></div>
+          <div class="item"><div class="name">Hash &amp; Eggs</div><div class="desc">Old fashioned corned beef hash</div></div>
+          <div class="item"><div class="name">Ham &amp; Eggs</div><div class="desc">Hickory smoked</div></div>
+          <div class="item"><div class="name">Sausage &amp; Eggs</div><div class="desc">All natural skinless sausage</div></div>
+        </div>
+
+        <div class="menu-group">
+          <h3>Hot Off the Griddle</h3>
+          <div class="item"><div class="name">Buttermilk Pancakes</div><div class="desc">Full stack of three, or a short stack of two</div></div>
+          <div class="item"><div class="name">Swedish Crepes</div><div class="desc">Four French crepes, lingonberry butter, powdered sugar</div></div>
+          <div class="item"><div class="name">Fresh Fruit Crepes</div><div class="desc">Three French crepes, strawberries, blueberries, bananas, powdered sugar, whipped cream</div></div>
+          <div class="item"><div class="name">French Toast</div><div class="desc">Texas toast dipped in special egg batter, two strips of bacon, powdered sugar</div></div>
+          <div class="item"><div class="name">Berries &amp; Cream French Toast</div><div class="desc">Strawberries, blueberries, powdered sugar, whipped cream</div></div>
+          <div class="item"><div class="name">Belgian Waffle</div><div class="desc">Plain, blueberry, strawberry, chocolate or banana walnut</div></div>
+          <div class="item"><div class="name">Banana Walnut Pancakes</div><div class="desc">Three buttermilk pancakes, banana, walnut, powdered sugar, whipped cream</div></div>
+          <div class="item"><div class="name">Chocolate Pancakes</div><div class="desc">Three buttermilk pancakes, Hershey's chocolate &amp; chips, powdered sugar, whipped cream</div></div>
+        </div>
+
+        <div class="menu-group">
+          <h3>Healthy Choice</h3>
+          <div class="item"><div class="name">Fresh Veggie Scramble</div><div class="desc">Egg whites, zucchini, onion, bell pepper, spinach, avocado, mushroom, fire roasted salsa, fresh fruit, toast</div></div>
+          <div class="item"><div class="name">Protein Scramble</div><div class="desc">Egg whites, chicken apple sausage, spinach, onion, mushrooms, fire roasted salsa, fresh fruit, toast</div></div>
+          <div class="item"><div class="name">Keto Scramble</div><div class="desc">Three eggs, broccoli, cauliflower, zucchini, avocado, Swiss, two strips of bacon, cup of fresh fruit</div></div>
+          <div class="item"><div class="name">Petite Steak</div><div class="desc">6 oz. flat iron, egg whites, avocado, fresh fruit, toast, charred corn salsa</div></div>
+          <div class="item"><div class="name">Morning Starter</div><div class="desc">Oatmeal, raisin, banana, fresh fruit, toast</div></div>
+        </div>
+
+      </div>
+      <div class="menu-foot">
+        <p>Live prices, add-ons and today's availability are on the ordering menu.</p>
+        <a class="btn btn-primary" href="https://order.toasttab.com/online/jackholders">View prices &amp; order</a>
+      </div>
+    </div>
+
+    <!-- LUNCH & DINNER -->
+    <div class="panel" id="lunch" role="tabpanel">
+      <div class="menu-cols">
+
+        <div class="menu-group">
+          <h3>Small Plates</h3>
+          <div class="item"><div class="name">Jack's Chicken Wings</div><div class="desc">Large drumettes and wings with your choice of Korean BBQ, bourbon glaze, mango, parmesan garlic, sweet and spicy or spicy</div></div>
+          <div class="item"><div class="name">Pecan Smoked Ribs</div><div class="desc">Meaty St. Louis ribs, French fries, house BBQ sauce</div></div>
+          <div class="item"><div class="name">Blackened Salmon Tacos</div><div class="desc">Shredded cabbage, avocado, jalapeño vinaigrette, cilantro aioli, pinto beans</div></div>
+          <div class="item"><div class="name">Shrimp &amp; Grits</div><div class="desc">Large shrimp, chipotle garlic sauce, southern white grits</div></div>
+          <div class="item"><div class="name">Thai Chicken Lettuce Wraps</div><div class="desc">Asian slaw, rice noodles, peanut sauce</div></div>
+          <div class="item"><div class="name">Fish and Chips</div><div class="desc">Beer battered Alaskan cod, French fries, cole slaw</div></div>
+          <div class="item"><div class="name">Calamari</div><div class="desc">Fresh calamari, panko bread crumbs, deep fried, chipotle tartar</div></div>
+          <div class="item"><div class="name">Tempura Green Beans</div><div class="desc">Crispy green beans, saffron aioli</div></div>
+        </div>
+
+        <div class="menu-group">
+          <h3>Harris Ranch Burgers</h3>
+          <div class="item"><div class="name">Hamburger</div><div class="desc">Lettuce, tomato, pickles, special sauce</div></div>
+          <div class="item"><div class="name">Bacon Cheeseburger</div><div class="desc">Aged cheddar cheese, bacon, lettuce, tomato, pickles, special sauce</div></div>
+          <div class="item"><div class="name">49er Burger</div><div class="desc">Bacon, grilled onion, jack &amp; cheddar, special sauce, grilled sourdough</div></div>
+          <div class="item"><div class="name">Black n Bleu</div><div class="desc">Bleu cheese crumbles, cajun spice, lettuce, tomato, pickles, special sauce</div></div>
+          <div class="item"><div class="name">California Burger</div><div class="desc">Swiss, avocado, lettuce, tomato, pickles, special sauce</div></div>
+          <div class="item"><div class="name">Mushroom Burger</div><div class="desc">Mushrooms, Swiss, lettuce, tomato, pickles, special sauce</div></div>
+          <div class="item"><div class="name">Vegetarian Burger</div><div class="desc">Black bean patty, Swiss, avocado, lettuce, tomato, sprouts, special sauce</div></div>
+          <div class="item"><div class="name">Cheeseburger Special</div><div class="desc">The cheeseburger, your choice of cheese, and an old-fashioned milkshake</div></div>
+        </div>
+
+        <div class="menu-group">
+          <h3>Signature Sandwiches</h3>
+          <div class="item"><div class="name">Steak &amp; Avocado</div><div class="desc">Thinly sliced Angus steak, chipotle aioli, avocado, grilled onions, jack &amp; white cheddar, ciabatta roll</div></div>
+          <div class="item"><div class="name">Prime Rib Dip</div><div class="desc">Thinly sliced prime rib of beef, Swiss cheese, au jus, ciabatta roll</div></div>
+          <div class="item"><div class="name">Crab Melt</div><div class="desc">Lump crab, prawns, avocado, tomato, jack &amp; cheddar on grilled sourdough</div></div>
+          <div class="item"><div class="name">Crispy Chicken Sandwich</div><div class="desc">All natural breast, cabbage, dijon mustard, ciabatta roll</div></div>
+          <div class="item"><div class="name">The Reuben</div><div class="desc">Tender corned beef, sauerkraut, Swiss, 1000 Island, pickles, grilled rye</div></div>
+          <div class="item"><div class="name">Clubhouse</div><div class="desc">Triple decker, turkey, bacon, lettuce, tomato, sourdough toast</div></div>
+          <div class="item"><div class="name">Rosemary Chicken</div><div class="desc">All natural chicken breast, bacon, lettuce, pesto aioli, Swiss, tomatoes, ciabatta roll</div></div>
+          <div class="item"><div class="name">Turkey &amp; Avocado</div><div class="desc">Turkey, avocado, jack &amp; white cheddar, lettuce, sprouts, pesto aioli, ciabatta roll</div></div>
+          <div class="item"><div class="name">Grilled B.L.T.</div><div class="desc">Bacon, lettuce, tomato, mayonnaise, grilled sourdough</div></div>
+          <div class="item"><div class="name">The Vegetarian</div><div class="desc">Avocado, lettuce, tomatoes, cucumber, sprouts, pesto aioli, jack &amp; white cheddars, ciabatta roll</div></div>
+        </div>
+
+        <div class="menu-group">
+          <h3>Steak &amp; Pasta</h3>
+          <div class="item"><div class="name">Rib Eye Steak</div><div class="desc">10 oz. aged Angus beef, maître d' butter, fresh veggies, mashed potatoes</div></div>
+          <div class="item"><div class="name">New York Steak</div><div class="desc">12 oz. Angus beef, bell peppers, mushrooms, demi-glace, fresh veggies, mashed potatoes</div></div>
+          <div class="item"><div class="name">Pasta Jambalaya</div><div class="desc">Shrimp, chicken, cajun hot sausage, sweet peppers, tomato, chipotle cream sauce, penne, garlic bread</div></div>
+          <div class="item"><div class="name">Prawn Pomodoro</div><div class="desc">Large prawns, tomato, basil, garlic, olive oil, parmesan, linguini, garlic bread</div></div>
+          <div class="item"><div class="name">Rosemary Chicken Raviolis</div><div class="desc">Pasta stuffed with rosemary chicken, provolone, white garlic cream sauce, mushroom, pancetta, garlic bread</div></div>
+          <div class="item"><div class="name">Chicken Pesto Pasta</div><div class="desc">All natural chicken breast, mushrooms, pine nuts, basil, olive oil, linguini, garlic bread</div></div>
+          <div class="item"><div class="name">Pasta Bolognese</div><div class="desc">Ground beef, sausage, marinara, penne pasta, garlic bread</div></div>
+          <div class="item"><div class="name">Pasta Primavera</div><div class="desc">Fresh broccoli, cauliflower, zucchini, squash, red onions, marinara over linguine, garlic bread</div></div>
+        </div>
+
+        <div class="menu-group">
+          <h3>Farm Fresh Salads</h3>
+          <div class="item"><div class="name">Apple Harvest Salad</div><div class="desc">Grilled chicken breast, apple, avocado, tomato, cucumber, walnuts, cranberries, crumbled bleu cheese, apple cider dressing</div></div>
+          <div class="item"><div class="name">Blackened Salmon Salad</div><div class="desc">Seared salmon filet, tomatoes, cucumbers, olives, mixed greens, balsamic vinaigrette</div></div>
+          <div class="item"><div class="name">Steakhouse Salad</div><div class="desc">Aged Angus flat iron steak, bleu cheese crumbles, tomatoes, cucumbers, mixed greens, balsamic vinaigrette</div></div>
+          <div class="item"><div class="name">Crab Salad</div><div class="desc">Lump and snow crab meat, cucumbers, tomato, boiled egg, avocado, fresh greens, choice of dressing</div></div>
+          <div class="item"><div class="name">Chinese Chicken Salad</div><div class="desc">All natural chicken breast, shredded lettuce, cabbage, peanuts, rice noodles, spicy mandarin dressing</div></div>
+          <div class="item"><div class="name">Chopped Cobb Salad</div><div class="desc">All natural chicken breast, mixed greens, bacon bits, avocado, tomatoes, cucumbers, hard boiled eggs, bleu cheese crumbles</div></div>
+        </div>
+
+        <div class="menu-group">
+          <h3>Flatbreads &amp; Jack's Fries</h3>
+          <div class="item"><div class="name">Margherita Flatbread</div><div class="desc">Tomato, mozzarella, fresh basil, olive oil, parmesan</div></div>
+          <div class="item"><div class="name">BBQ Chicken Flatbread</div><div class="desc">BBQ sauce, mozzarella, chicken breast, red onion, cilantro</div></div>
+          <div class="item"><div class="name">Rio Grande Flatbread</div><div class="desc">Nacho cheese sauce, chorizo, sliced jalapeño, onions, cilantro, sour cream</div></div>
+          <div class="item"><div class="name">Pepperoni Flatbread</div><div class="desc">Tomato sauce, pepperoni, mozzarella cheese</div></div>
+          <div class="item"><div class="name">Gilroy Garlic Fries</div><div class="desc">Garlic, parmesan, fresh parsley</div></div>
+          <div class="item"><div class="name">Truffle Fries</div><div class="desc">Truffle oil, shaved parmesan, parsley</div></div>
+          <div class="item"><div class="name">Buffalo Fries</div><div class="desc">Spicy buffalo sauce, bleu cheese crumbles, fresh parsley, buttermilk ranch</div></div>
+          <div class="item"><div class="name">Chili Cheese Fries</div><div class="desc">Nacho cheese sauce, chorizo, sliced jalapeño, onions, cilantro, sour cream</div></div>
+        </div>
+
+      </div>
+      <div class="menu-foot">
+        <p>Live prices, add-ons and today's availability are on the ordering menu.</p>
+        <a class="btn btn-primary" href="https://order.toasttab.com/online/jackholders">View prices &amp; order</a>
+      </div>
+    </div>
+
+    <!-- DRINKS -->
+    <div class="panel" id="drinks" role="tabpanel">
+      <div class="menu-cols">
+
+        <div class="menu-group">
+          <h3>Sunrise Cocktails</h3>
+          <div class="item"><div class="name">Brazilian Mimosa</div><div class="desc">Brazilian mango mix, simple syrup, sparkling wine</div></div>
+          <div class="item"><div class="name">Mimosa Sunrise</div><div class="desc">Sauza silver tequila, champagne, orange &amp; pineapple juice, grenadine</div></div>
+          <div class="item"><div class="name">Classic Mimosa</div><div class="desc">Wolf Blass Brut</div></div>
+          <div class="item"><div class="name">Bellini</div><div class="desc">Peach purée, simple syrup, sparkling wine</div></div>
+          <div class="item"><div class="name">Aperol Spritz</div><div class="desc">Prosecco, Aperol, soda water, orange slice</div></div>
+          <div class="item"><div class="name">Chavela</div><div class="desc">Modelo Especial, salted rim, lime juice</div></div>
+          <div class="item"><div class="name">Michelada</div><div class="desc">Modelo, tomato juice</div></div>
+          <div class="item"><div class="name">Jack's Iced Coffee</div><div class="desc">Stoli vanilla, Kahlúa, alchemist spiced syrup, coffee, cream, nutmeg</div></div>
+        </div>
+
+        <div class="menu-group">
+          <h3>On Tap</h3>
+          <div class="note">Fourteen rotating handles — local Bay Area brewers, West Coast IPAs, lagers and seasonals. Ask your server what just kicked.</div>
+          <div class="item"><div class="name">Draft Beer</div><div class="desc">Fourteen taps, poured cold all day</div></div>
+          <div class="item"><div class="name">Bottles &amp; Cans</div><div class="desc">Domestics, imports and non-alcoholic options</div></div>
+          <div class="item"><div class="name">Wine by the Glass</div><div class="desc">Reds, whites and sparkling</div></div>
+        </div>
+
+        <div class="menu-group">
+          <h3>God Bless Bourbon</h3>
+          <div class="note">Our bourbon program — the reason the sign out back says what it says.</div>
+          <div class="item"><div class="name">Bourbon Flights</div><div class="desc">Three pours, side by side, picked by the bar</div></div>
+          <div class="item"><div class="name">Craft Cocktails</div><div class="desc">Classics done right, plus whatever the bar is playing with this month</div></div>
+          <div class="item"><div class="name">Old Fashioned</div><div class="desc">Your bourbon, sugar, bitters, big cube</div></div>
+        </div>
+
+      </div>
+      <div class="menu-foot">
+        <p>Full bar open until close. Happy hour on the patio is the neighborhood's worst-kept secret.</p>
+        <a class="btn btn-primary" href="tel:+14086132365">Call the bar</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="bar-feature" id="bar">
+  <div class="wrap bar-grid">
+    <div>
+      <div class="eyebrow">God Bless Bourbon</div>
+      <h2 class="section-title">Fourteen taps and a patio that stays warm.</h2>
+      <p>The tavern half of Jack Holder's runs from open to close. Cold drafts, craft cocktails, an honest bourbon list and a patio where nobody minds if you stay for the second half.</p>
+      <div class="bar-stats">
+        <div class="bar-stat"><div class="n">14</div><div class="l">Beers on tap</div></div>
+        <div class="bar-stat"><div class="n">7am</div><div class="l">Mimosas start</div></div>
+        <div class="bar-stat"><div class="n">9pm</div><div class="l">Last call, Mon–Sat</div></div>
+      </div>
+      <a class="btn btn-light" href="tel:+14086132365">Reserve the patio</a>
+    </div>
+    <div class="bar-photos">
+      <img src="/jackholders/cocktail-jack-holders-willow-glen.jpg" alt="Craft cocktail served at the Jack Holder's bar">
+      <img src="/jackholders/bloody-mary-in-a-glass-with-bacon-olives-and-vegetables.jpg" alt="Bloody Mary garnished with bacon, olives and vegetables">
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap">
+    <div class="eyebrow">The Neighborhood Verdict</div>
+    <h2 class="section-title">Willow Glen keeps coming back.</h2>
+    <p class="lede">Thousands of reviews across the platforms that matter — and a dining room that's full on a Tuesday.</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="stars">★★★★★</div>
+        <div class="score">4.4</div>
+        <div class="src">Google reviews</div>
+        <div class="cnt">1,100+ ratings</div>
+      </div>
+      <div class="proof-card">
+        <div class="stars">★★★★★</div>
+        <div class="score">4.4</div>
+        <div class="src">Aggregated across platforms</div>
+        <div class="cnt">2,900+ ratings</div>
+      </div>
+      <div class="proof-card">
+        <div class="stars">★★★★★</div>
+        <div class="score">750+</div>
+        <div class="src">Yelp reviews</div>
+        <div class="cnt">843 photos and counting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gallery">
+  <div class="marquee">
+    <img src="/jackholders/french-toast-jack-holders-restaurant-bar-and-grill-willow-glen.jpg" alt="French toast with berries and whipped cream">
+    <img src="/jackholders/hamburger-jack-holders-restaurant-bar-and-grill-willow-glen-scaled.jpg" alt="Harris Ranch burger with fries">
+    <img src="/jackholders/eggs-benedict-jack-holders-restaurant-bar-and-grill-willow-glen.jpg" alt="Eggs benedict with hash browns">
+    <img src="/jackholders/chicken-tacos-jack-holders-restaurant-bar-and-grill-willow-glen.jpg" alt="Blackened salmon tacos with avocado and slaw">
+    <img src="/jackholders/omlette-jack-holders-restaurant-bar-and-grill-willow-glen.jpg" alt="Omelette soufflé with hash browns">
+    <img src="/jackholders/plate-of-pasta-with-garlic-bread-and-tomatoes-with-red-sauce.jpg" alt="Pasta with garlic bread and red sauce">
+    <img src="/jackholders/salad-jack-holders-restaurant-bar-and-grill-willow-glen.jpg" alt="Farm fresh salad">
+    <img src="/jackholders/syrup-dripping-onto-pancakes-with-with-butter.jpg" alt="Syrup dripping onto buttermilk pancakes">
+    <img src="/jackholders/sandwich-jack-holders-restaurant-bar-and-grill-willow-glen.jpg" alt="Signature sandwich with fries">
+    <img src="/jackholders/lemon-cocktail-jack-holders-willow-glen.jpg" alt="Lemon cocktail">
+    <!-- duplicate set for seamless loop -->
+    <img src="/jackholders/french-toast-jack-holders-restaurant-bar-and-grill-willow-glen.jpg" alt="" aria-hidden="true">
+    <img src="/jackholders/hamburger-jack-holders-restaurant-bar-and-grill-willow-glen-scaled.jpg" alt="" aria-hidden="true">
+    <img src="/jackholders/eggs-benedict-jack-holders-restaurant-bar-and-grill-willow-glen.jpg" alt="" aria-hidden="true">
+    <img src="/jackholders/chicken-tacos-jack-holders-restaurant-bar-and-grill-willow-glen.jpg" alt="" aria-hidden="true">
+    <img src="/jackholders/omlette-jack-holders-restaurant-bar-and-grill-willow-glen.jpg" alt="" aria-hidden="true">
+    <img src="/jackholders/plate-of-pasta-with-garlic-bread-and-tomatoes-with-red-sauce.jpg" alt="" aria-hidden="true">
+    <img src="/jackholders/salad-jack-holders-restaurant-bar-and-grill-willow-glen.jpg" alt="" aria-hidden="true">
+    <img src="/jackholders/syrup-dripping-onto-pancakes-with-with-butter.jpg" alt="" aria-hidden="true">
+    <img src="/jackholders/sandwich-jack-holders-restaurant-bar-and-grill-willow-glen.jpg" alt="" aria-hidden="true">
+    <img src="/jackholders/lemon-cocktail-jack-holders-willow-glen.jpg" alt="" aria-hidden="true">
+  </div>
+</div>
+
+<section id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <div class="eyebrow">Visit</div>
+      <h2 class="section-title">Find us on Meridian.</h2>
+      <table class="hours-table">
+        <tr data-day="1"><td>Monday</td><td>7:00am – 9:00pm</td></tr>
+        <tr data-day="2"><td>Tuesday</td><td>7:00am – 9:00pm</td></tr>
+        <tr data-day="3"><td>Wednesday</td><td>7:00am – 9:00pm</td></tr>
+        <tr data-day="4"><td>Thursday</td><td>7:00am – 9:00pm</td></tr>
+        <tr data-day="5"><td>Friday</td><td>7:00am – 9:00pm</td></tr>
+        <tr data-day="6"><td>Saturday</td><td>7:00am – 9:00pm</td></tr>
+        <tr data-day="0"><td>Sunday</td><td>7:00am – 8:00pm</td></tr>
+      </table>
+      <div class="visit-detail">
+        <div class="lbl">Address</div>
+        <a href="https://maps.google.com/?q=3153+Meridian+Ave+Ste+20,+San+Jose,+CA+95124">3153 Meridian Avenue, Suite 20<br>San Jose, CA 95124</a>
+      </div>
+      <div class="visit-detail">
+        <div class="lbl">Phone</div>
+        <a href="tel:+14086132365">(408) 613-2365</a>
+      </div>
+      <div class="visit-detail">
+        <div class="lbl">Good to know</div>
+        <p>Free lot parking. Family friendly, high chairs available. Dog-friendly patio. Large parties welcome — call ahead.</p>
+      </div>
+      <a class="btn btn-primary" href="https://maps.google.com/?q=3153+Meridian+Ave+Ste+20,+San+Jose,+CA+95124">Get directions</a>
+    </div>
+    <div>
+      <iframe class="map-embed" loading="lazy" title="Map to Jack Holder's Restaurant &amp; Bar"
+        src="https://www.google.com/maps?q=3153+Meridian+Ave+Ste+20,+San+Jose,+CA+95124&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="narrow">
+    <div class="eyebrow">Good Questions</div>
+    <h2 class="section-title" style="margin-bottom:36px">Before you come in.</h2>
+
+    <details class="q" open>
+      <summary>Do you serve breakfast all day?</summary>
+      <p>Yes. Every breakfast item — omelette soufflés, benedicts, pancakes, crepes, the whole list — is available from the moment we open at 7am until we close. You can order a rib eye and eggs at 8pm.</p>
+    </details>
+    <details class="q">
+      <summary>What are your hours?</summary>
+      <p>We're open 7:00am to 9:00pm Monday through Saturday, and 7:00am to 8:00pm on Sunday. Seven days a week.</p>
+    </details>
+    <details class="q">
+      <summary>Can I order online for pickup?</summary>
+      <p>Yes — order online any time we're open and it's usually ready in about 20 minutes. You can also call the restaurant directly at (408) 613-2365.</p>
+    </details>
+    <details class="q">
+      <summary>Do you take reservations or large parties?</summary>
+      <p>We're a walk-in dining room, but we're glad to plan ahead for larger groups, birthdays and team dinners. Call us at (408) 613-2365 and we'll get the table set.</p>
+    </details>
+    <details class="q">
+      <summary>Do you sell gift cards?</summary>
+      <p>We do. Gift cards are available online in any amount and are delivered by email, so you can buy one five minutes before you need it.</p>
+    </details>
+    <details class="q">
+      <summary>Is there parking, and are kids welcome?</summary>
+      <p>There's a free lot right out front on Meridian. We're a family-friendly tavern — high chairs, a kids-welcome dining room and a patio that works for strollers and dogs alike.</p>
+    </details>
+    <details class="q">
+      <summary>Do you have vegetarian and lighter options?</summary>
+      <p>Plenty. The Healthy Choice breakfast section runs egg-white scrambles and a keto scramble, and lunch has a black bean burger, the vegetarian sandwich, flatbreads and six farm-fresh salads.</p>
+    </details>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="narrow">
+    <h2>Hungry now?</h2>
+    <p>Start an order for pickup, or just walk in — we're open until 9.</p>
+    <div class="cta-actions">
+      <a class="btn btn-primary" href="https://order.toasttab.com/online/jackholders">Order Online</a>
+      <a class="btn btn-light" href="tel:+14086132365">Call (408) 613-2365</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="/jackholders/cropped-Jack_Holders_Logo.png" alt="Jack Holder's Restaurant &amp; Bar">
+        <p>Everyday eatery and family-friendly tavern in Willow Glen, San Jose. All-day breakfast and American comfort food since day one.</p>
+      </div>
+      <div>
+        <h4>Menus</h4>
+        <a href="#menus">Breakfast</a>
+        <a href="#menus">Lunch &amp; Dinner</a>
+        <a href="#menus">Cocktails &amp; Bar</a>
+        <a href="#bar">God Bless Bourbon</a>
+      </div>
+      <div>
+        <h4>Order</h4>
+        <a href="https://order.toasttab.com/online/jackholders">Order Online</a>
+        <a href="https://www.toasttab.com/jackholders/giftcards">Gift Cards</a>
+        <a href="tel:+14086132365">Call for Large Parties</a>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <a href="https://maps.google.com/?q=3153+Meridian+Ave+Ste+20,+San+Jose,+CA+95124">3153 Meridian Ave, Ste 20<br>San Jose, CA 95124</a>
+        <a href="tel:+14086132365">(408) 613-2365</a>
+        <a href="https://www.facebook.com/Jackholdersrandb/">Facebook</a>
+        <a href="https://www.instagram.com/jackholdersrandb/">Instagram</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr">2026</span> Jack Holder's Restaurant &amp; Bar. All rights reserved.</span>
+      <span class="gullstack-credit">Concept site built by <a href="https://gullstack.com">GullStack</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a href="tel:+14086132365">Call</a>
+  <a class="order" href="https://order.toasttab.com/online/jackholders">Order Online</a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"Jack Holder's Restaurant & Bar",
+  "url":"https://jackholders.com/",
+  "image":"https://jackholders.com/wp-content/uploads/2023/07/best-restaurant-willow-glen-plates-of-food.webp",
+  "logo":"https://jackholders.com/wp-content/uploads/2025/04/cropped-Jack_Holders_Logo.png",
+  "description":"Family-owned everyday eatery and family-friendly tavern in Willow Glen, San Jose, serving all-day breakfast, American comfort food, 14 beers on tap and craft cocktails.",
+  "telephone":"+1-408-613-2365",
+  "servesCuisine":["American","Breakfast","Comfort Food"],
+  "priceRange":"$$",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"3153 Meridian Avenue, Suite 20",
+    "addressLocality":"San Jose",
+    "addressRegion":"CA",
+    "postalCode":"95124",
+    "addressCountry":"US"
+  },
+  "areaServed":["Willow Glen","San Jose","Cambrian Park","Campbell","Los Gatos"],
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"21:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"07:00","closes":"20:00"}
+  ],
+  "acceptsReservations":"False",
+  "hasMenu":"https://order.toasttab.com/online/jackholders",
+  "potentialAction":{
+    "@type":"OrderAction",
+    "target":{"@type":"EntryPoint","urlTemplate":"https://order.toasttab.com/online/jackholders","inLanguage":"en-US"},
+    "deliveryMethod":"http://purl.org/goodrelations/v1#PickUp"
+  },
+  "sameAs":[
+    "https://www.facebook.com/Jackholdersrandb/",
+    "https://www.instagram.com/jackholdersrandb/"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Do you serve breakfast all day?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every breakfast item is available from open at 7am until close, including omelette soufflés, benedicts, pancakes and crepes."}},
+    {"@type":"Question","name":"What are Jack Holder's hours?","acceptedAnswer":{"@type":"Answer","text":"Open 7:00am to 9:00pm Monday through Saturday, and 7:00am to 8:00pm on Sunday, seven days a week."}},
+    {"@type":"Question","name":"Can I order online for pickup?","acceptedAnswer":{"@type":"Answer","text":"Yes. Order online any time we're open, usually ready in about 20 minutes, or call (408) 613-2365."}},
+    {"@type":"Question","name":"Do you take reservations or large parties?","acceptedAnswer":{"@type":"Answer","text":"Jack Holder's is walk-in, but larger groups, birthdays and team dinners can be arranged by calling (408) 613-2365."}},
+    {"@type":"Question","name":"Do you sell gift cards?","acceptedAnswer":{"@type":"Answer","text":"Yes. Gift cards are available online in any amount and are delivered by email."}},
+    {"@type":"Question","name":"Is there parking, and are kids welcome?","acceptedAnswer":{"@type":"Answer","text":"There is a free lot in front on Meridian Avenue. Jack Holder's is a family-friendly tavern with high chairs and a dog-friendly patio."}}
+  ]
+}
+</script>
+
+<script>
+(function(){
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // mobile nav
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded','false');
+    });
+  });
+
+  // menu tabs
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      document.getElementById(tab.dataset.panel).classList.add('active');
+    });
+  });
+
+  // today's hours + open/closed status
+  var now = new Date();
+  var day = now.getDay();
+  var closeHour = (day === 0) ? 20 : 21;
+  var mins = now.getHours() * 60 + now.getMinutes();
+  var isOpen = mins >= 7 * 60 && mins < closeHour * 60;
+  var closeLabel = (day === 0) ? '8:00pm' : '9:00pm';
+
+  var status = document.getElementById('open-status');
+  var dot = document.querySelector('.dot-open');
+  if (isOpen) {
+    status.textContent = 'Open now · until ' + closeLabel;
+  } else {
+    status.textContent = 'Closed · opens 7:00am';
+    dot.style.background = '#C3922E';
+    dot.style.boxShadow = '0 0 0 3px rgba(195,146,46,.2)';
+  }
+
+  var row = document.querySelector('.hours-table tr[data-day="' + day + '"]');
+  if (row) row.classList.add('today');
+})();
+</script>
+
+</body>
+</html>
