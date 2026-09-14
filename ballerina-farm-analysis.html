@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>The Analysis &middot; Ballerina Farm</title>
+<meta name="description" content="What we read from Ballerina Farm's public store, with sources, and what we did not measure.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--ground:#FFFBF0;--ink:#1c1a17;--ink2:#4a443b;--muted:#7a7061;--faint:#b9ae9c;--rule:#dcd1bd;--rule2:#1c1a17;--flag:#9C3F24;
+--serif:"Source Serif 4",Georgia,"Times New Roman",serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+.bar{border-bottom:1px solid var(--rule);font-size:12px;color:var(--muted)}
+.bar .wrap{display:flex;gap:16px;min-height:44px;align-items:center;flex-wrap:wrap;padding-block:8px}
+.bar a{text-decoration:none;border-bottom:1px solid var(--rule)}
+header{padding:34px 0 8px}
+header img{height:28px;width:auto;display:block}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(32px,5vw,48px);letter-spacing:-.02em;line-height:1.05;margin-top:18px}
+.dek{color:var(--ink2);margin-top:10px;max-width:62ch}
+hr.r2{border:0;border-top:2px solid var(--rule2);margin-top:20px}hr.r1{border:0;border-top:1px solid var(--rule2);margin-top:3px}
+section{padding:30px 0 10px;border-bottom:1px solid var(--rule)}
+h2{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:-.01em;line-height:1.15}
+h2 .n{font-family:var(--sans);font-size:12px;color:var(--muted);display:block;margin-bottom:4px;letter-spacing:.02em}
+p{margin-top:10px;max-width:70ch;color:var(--ink2)}
+p b{color:var(--ink);font-weight:600}
+.tw{overflow-x:auto;margin-top:14px;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px}
+th{text-align:left;font-weight:500;font-size:11.5px;color:var(--muted);padding:6px 12px 6px 0;border-bottom:1px solid var(--rule2)}
+td{padding:9px 12px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+td.r,th.r{text-align:right;padding-right:0;font-variant-numeric:tabular-nums}
+code{font-family:var(--mono);font-size:12px;background:#f3ead7;padding:1px 5px;border-radius:2px;word-break:break-word}
+.src{font-size:12px;color:var(--muted);margin-top:6px}
+.flag{color:var(--flag)}
+ul.plain{list-style:none;margin-top:12px;max-width:70ch}
+ul.plain li{padding:8px 0;border-top:1px solid var(--rule);color:var(--ink2)}
+ul.plain li b{color:var(--ink);font-weight:600}
+.foot{padding:30px 0 60px;font-size:12px;color:var(--muted)}
+.foot a{text-decoration:none;border-bottom:1px solid var(--rule)}
+</style>
+</head>
+<body>
+<div class="bar"><div class="wrap"><a href="/ballerina-farm">&larr; The deck</a><a href="/ballerina-farm-demo">The Morning Report</a></div></div>
+<main class="wrap">
+<header>
+  <img src="https://ballerinafarm.com/cdn/shop/files/BF-Logo-Black.png?width=600" alt="Ballerina Farm">
+  <h1>The analysis</h1>
+  <p class="dek">Everything the deck and the Morning Report claim, with where it came from. All of it was read from your public website or Semrush on 14 September 2026. Nothing here needed a login.</p>
+  <hr class="r2"><hr class="r1">
+</header>
+
+<section>
+  <h2><span class="n">01</span>What runs the store</h2>
+  <p>Read from the page source of your homepage and a product page. Each app leaves its name in the code it loads.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Tool</th><th>What it does for you</th><th>Evidence in your page source</th></tr></thead>
+    <tbody>
+      <tr><td>Shopify</td><td>The store</td><td><code>powered-by: Shopify</code>, theme &ldquo;Nostalgia&rdquo; 2.1.0</td></tr>
+      <tr><td>Skio</td><td>Subscriptions (new)</td><td>Selling plans with <code>app_id: SKIO</code>; theme name includes &ldquo;Skio Pre-Launch Filter&rdquo;</td></tr>
+      <tr><td>Recharge</td><td>Subscriptions (existing)</td><td>Recharge storefront styles and cart overlay; footer portal link <code>/tools/recurring/</code></td></tr>
+      <tr><td>Attentive</td><td>Text messaging</td><td><code>attn.tv</code></td></tr>
+      <tr><td>Northbeam</td><td>Ad attribution</td><td><code>northbeam.io</code></td></tr>
+      <tr><td>Redo</td><td>Returns</td><td><code>redo-v2</code> app embed</td></tr>
+      <tr><td>Stamped</td><td>Reviews</td><td><code>stamped.io</code></td></tr>
+      <tr><td>ShopMy</td><td>Creator links</td><td><code>shopmy.us</code>; products with &ldquo;ShopMy&rdquo; in the name</td></tr>
+      <tr><td>Back in stock, free gifts, gift note, form builder, product options</td><td>Storefront apps</td><td>App embed names in <code>cdn.shopify.com/extensions/</code></td></tr>
+    </tbody>
+  </table></div>
+  <p><b>What we didn&rsquo;t find:</b> a help desk or chat widget. Support runs through a contact form and <code>support@ballerinafarm.com</code>. You may use a help desk behind that address; the public site doesn&rsquo;t show one.</p>
+</section>
+
+<section>
+  <h2><span class="n">02</span>The subscription move</h2>
+  <p>Three things on the live site show a move from Recharge to Skio in progress. None of this is a problem on its own. The risk sits in the gap, while subscribers can still land in either system.</p>
+  <ul class="plain">
+    <li><b>New plans run on Skio.</b> The subscription options on the Pumpkin Pie Farmer Protein page come from Skio.</li>
+    <li><b>The subscriber portal is still Recharge&rsquo;s.</b> &ldquo;Manage Subscriptions&rdquo; in the footer points to <code>/tools/recurring/get-subscription-access</code>, Recharge&rsquo;s portal path.</li>
+    <li><b>The cart still loads Recharge&rsquo;s upsell,</b> and a script named <code>SkioHidePlansInRechargeUpsell</code> hides 15 Skio plans inside it.</li>
+  </ul>
+  <p>What we can&rsquo;t see: how many subscribers are on each system, and when the move is meant to finish.</p>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Where the site disagrees with itself</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Topic</th><th>One page says</th><th>Another page says</th></tr></thead>
+    <tbody>
+      <tr><td>Processing time, non-perishables</td><td>FAQ: &ldquo;2-7 business days (M-F)&rdquo;</td><td>Shipping policy: &ldquo;2-8 business days (Monday to Friday)&rdquo;</td></tr>
+      <tr><td>Free-shipping exclusions</td><td>Cart drawer: 8 items</td><td>FAQ: 11 items</td></tr>
+    </tbody>
+  </table></div>
+  <p>The two exclusion lists overlap on build-your-own boxes, Encore boxes, frozen boxes, the Scalloped Cutting Board and flour. <b>Only the cart lists</b> Einkorn Flour, gift cards and all subscriptions. <b>Only the FAQ lists</b> the Baked Goods Box, Breakfast Box, Dandy Table, flowers, the Everyday Bowl and ready-made boxes.</p>
+  <p>Checkout decides what a customer actually pays, and we couldn&rsquo;t see that from outside. Whichever list checkout follows, the other one is wrong for some customers. The Everyday Bowl is &ldquo;back in stock&rdquo; in your announcement bar today.</p>
+  <p class="src">Sources: ballerinafarm.com/pages/faqs, /policies/shipping-policy, and the cart drawer text on every page.</p>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Support, from the customer&rsquo;s side</h2>
+  <ul class="plain">
+    <li><b>Reply window:</b> &ldquo;1-3 business days (M-F)&rdquo;, from the contact page.</li>
+    <li><b>Thawed meat:</b> the shipping policy promises a replacement box, given a name and order number.</li>
+    <li><b>Delivered but not received:</b> a four-step self-check, then contact within 7 days.</li>
+    <li><b>Lost in transit:</b> no tracking update for 7&ndash;10+ business days.</li>
+    <li><b>Returns:</b> none on food; non-food within 21 days, customer pays return shipping.</li>
+    <li><b>Old help links:</b> <code>/pages/faq</code>, <code>/pages/help</code>, <code>/pages/shipping</code> and <code>/pages/subscriptions</code> all redirect to the homepage, not to the FAQ.</li>
+  </ul>
+  <p>Every item above has a written answer already. That&rsquo;s why drafted replies can quote your policy instead of inventing one.</p>
+</section>
+
+<section>
+  <h2><span class="n">05</span>The catalog today</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Measure</th><th class="r">Count</th></tr></thead>
+    <tbody>
+      <tr><td>Published product records</td><td class="r">144</td></tr>
+      <tr><td>Tagged &ldquo;hidden&rdquo;</td><td class="r">75</td></tr>
+      <tr><td>Not tagged hidden</td><td class="r">69</td></tr>
+      <tr><td>&nbsp;&nbsp;In stock</td><td class="r">57</td></tr>
+      <tr><td>&nbsp;&nbsp;Sold out</td><td class="r">12</td></tr>
+      <tr><td>Newest product</td><td class="r">Pumpkin Pie Farmer Protein, 31 Aug</td></tr>
+    </tbody>
+  </table></div>
+  <p class="src">Source: the store&rsquo;s public <code>/products.json</code>, read 14 Sept 2026. It shows published products only, not drafts.</p>
+</section>
+
+<section>
+  <h2><span class="n">06</span>Search</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Keyword</th><th class="r">Position</th><th class="r">Searches a month</th><th>Lands on</th></tr></thead>
+    <tbody>
+      <tr><td>ballerina farm protein powder</td><td class="r">1</td><td class="r">9,900</td><td>Farmer Protein Powder</td></tr>
+      <tr><td>ballerina farm</td><td class="r">1</td><td class="r">74,000</td><td>Homepage</td></tr>
+      <tr><td>sourdough starter kit</td><td class="r">3</td><td class="r">18,100</td><td>Sourdough Starter Kit</td></tr>
+      <tr><td>high protein flour</td><td class="r">3</td><td class="r">8,100</td><td>High Protein Farm Flour</td></tr>
+      <tr><td>bone broth hot chocolate</td><td class="r">1</td><td class="r">4,400</td><td>Bone Broth Hot Cocoa</td></tr>
+    </tbody>
+  </table></div>
+  <p>Semrush estimates <b>52,926 US organic visits a month</b> across <b>5,092 ranking keywords</b>. Most of it is people searching your name or your products by name. That&rsquo;s a strong brand, and it isn&rsquo;t the part that needs work.</p>
+  <p class="src">Source: Semrush, US database, 14 Sept 2026. These are estimates, not your analytics.</p>
+</section>
+
+<section>
+  <h2><span class="n">07</span>What we did not measure</h2>
+  <ul class="plain">
+    <li><b>Sales, conversion rate, average order value.</b> These need Shopify access.</li>
+    <li><b>Ad return by channel.</b> This needs Northbeam.</li>
+    <li><b>Subscriber counts and cancellations.</b> These need Skio and Recharge.</li>
+    <li><b>Ticket volume and reasons.</b> These need the support inbox.</li>
+    <li><b>Site speed and mobile experience.</b> We didn&rsquo;t test them, so we make no claim.</li>
+    <li><b>What checkout charges for shipping.</b> We didn&rsquo;t place an order.</li>
+  </ul>
+  <p>Every sample figure in the Morning Report is marked as a sample. None of it is your data.</p>
+</section>
+
+<div class="foot">Prepared by GullStack for Ballerina Farm. Not affiliated with Ballerina Farm. Questions: Bryce Morgan, <a href="mailto:bryce@gullstack.com">bryce@gullstack.com</a></div>
+</main>
+</body>
+</html>

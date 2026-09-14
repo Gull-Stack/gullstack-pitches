@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>The Morning Report &middot; Ballerina Farm</title>
+<meta name="description" content="A working morning report for Ballerina Farm's e-commerce team, built from the public store.">
+<meta property="og:title" content="The Morning Report &middot; Ballerina Farm">
+<meta property="og:description" content="Every number the Director of E-Commerce needs, on one page by 6 am.">
+<meta property="og:image" content="https://ballerinafarm.com/cdn/shop/files/collections_grocery.jpg?width=1200">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--ground:#FFFBF0;--paper:#F7F0DF;--ink:#1c1a17;--ink2:#4a443b;--muted:#7a7061;--faint:#b9ae9c;--rule:#dcd1bd;--rule2:#1c1a17;--flag:#9C3F24;--flagbg:#f6e3d8;
+--serif:"Source Serif 4",Georgia,"Times New Roman",serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.bar{border-bottom:1px solid var(--rule);font-size:12px;color:var(--muted)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;flex-wrap:wrap;padding-block:8px}
+.bar a{text-decoration:none;border-bottom:1px solid var(--rule)}.bar a:hover{color:var(--ink)}
+.bar nav{display:flex;gap:16px;flex-wrap:wrap}
+.toggle{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);background:transparent;color:var(--ink);font:inherit;font-size:12px;height:30px;padding:0 12px;border-radius:2px;cursor:pointer}
+.toggle[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+.mast{padding-top:34px}
+.mast .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.mast img{height:30px;width:auto;display:block}
+.mast h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5vw,54px);letter-spacing:-.02em;line-height:1;margin-top:18px}
+.dateline{font-family:var(--serif);font-size:15px;color:var(--ink2)}
+.rule2{border:0;border-top:2px solid var(--rule2);margin-top:16px}
+.rule1{border:0;border-top:1px solid var(--rule2);margin-top:3px}
+.honest{font-size:12.5px;color:var(--muted);padding:10px 0 0;max-width:90ch}
+.honest b{color:var(--ink2);font-weight:600}
+.sample-stamp{display:none;position:fixed;right:18px;bottom:18px;z-index:10;background:var(--flag);color:#fff;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:2px}
+body.sample .sample-stamp{display:block}
+/* headline band */
+.band{display:grid;grid-template-columns:1.3fr repeat(4,1fr);border-bottom:1px solid var(--rule);margin-top:22px}
+.fig{padding:18px 18px 16px;border-left:1px solid var(--rule);min-width:0}
+.fig:first-child{border-left:0;padding-left:0}
+.fig .l{font-size:12px;color:var(--muted)}
+.fig .v{font-family:var(--serif);font-size:36px;line-height:1.05;margin-top:6px;font-variant-numeric:lining-nums tabular-nums;letter-spacing:-.01em}
+.fig:first-child .v{font-size:56px}
+.fig .src{font-size:11.5px;color:var(--muted);margin-top:6px}
+.fig .chg{font-size:12px;color:var(--ink2);margin-top:4px}
+.fig .chg.bad{color:var(--flag)}
+.dash{color:var(--faint)}
+.sv{display:none}body.sample .sv{display:inline}body.sample .rv0{display:none}
+.src .sv{color:var(--flag)}
+/* body grid */
+.cols{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:0 44px;margin-top:10px}
+section.blk{padding:26px 0 24px;border-bottom:1px solid var(--rule)}
+.blk h2{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:-.01em;line-height:1.1}
+.blk .sub{font-size:12.5px;color:var(--muted);margin-top:4px;max-width:70ch}
+.stamp{font-size:11px;color:var(--muted);text-align:right;margin-top:10px}
+.chip{display:inline-block;font-size:10.5px;letter-spacing:.02em;border:1px solid var(--rule);color:var(--ink2);padding:1px 6px;border-radius:2px;vertical-align:1px;white-space:nowrap}
+.chip.real{border-color:var(--ink2)}
+.chip.flag{border-color:var(--flag);color:var(--flag)}
+/* statement ledger */
+.stmt{margin-top:14px;width:100%;border-collapse:collapse;font-size:13.5px}
+.stmt td{padding:9px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.stmt td.n{text-align:right;font-family:var(--serif);font-size:17px;font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:16px}
+.stmt td .why{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.stmt tr.tot td{border-top:2px solid var(--rule2);border-bottom:0;font-weight:600}
+/* tables */
+.tbl-wrap{overflow-x:auto;margin-top:14px}
+table.t{width:100%;border-collapse:collapse;font-size:13px;min-width:420px}
+table.t th{text-align:left;font-weight:500;font-size:11.5px;color:var(--muted);padding:6px 10px 6px 0;border-bottom:1px solid var(--rule2)}
+table.t td{padding:9px 10px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+table.t td.r,table.t th.r{text-align:right;padding-right:0;font-variant-numeric:tabular-nums}
+.circle{display:inline-block;width:12px;height:12px;border:1.5px solid var(--ink2);border-radius:50%;vertical-align:-1px;margin-right:8px}
+.circle.done{background:var(--ink2)}
+.circle.warn{border-color:var(--flag);background:var(--flag)}
+.circle.open{border-style:dashed;border-color:var(--faint)}
+/* drafts */
+.draft{margin-top:16px;border-top:1px solid var(--rule);padding-top:14px}
+.draft .hd{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.draft .ask{font-family:var(--serif);font-size:17px;margin-top:6px;line-height:1.35}
+.draft .reply{margin-top:10px;padding-left:14px;border-left:2px solid var(--rule);color:var(--ink2);font-size:13.5px;line-height:1.55}
+.draft .cite{margin-top:8px;font-size:11.5px;color:var(--muted)}
+.draft .act{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.draft .act span{font-size:12px;border:1px solid var(--rule);padding:3px 10px;border-radius:2px;color:var(--ink2)}
+.draft .act span.pri{border-color:var(--ink);color:var(--ink)}
+.diff{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;margin-top:14px;font-size:13px}
+.diff h3{font-size:11.5px;font-weight:500;color:var(--muted);padding-bottom:6px;border-bottom:1px solid var(--rule2)}
+.diff ul{list-style:none}
+.diff li{padding:6px 0;border-bottom:1px solid var(--rule)}
+.diff li.only{color:var(--flag)}
+.diff li.only::after{content:" only here";font-size:11px}
+.foot{padding:30px 0 60px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot a{text-decoration:none;border-bottom:1px solid var(--rule)}
+@media (max-width:980px){
+  .band{grid-template-columns:1fr 1fr}
+  .fig:first-child{grid-column:1/-1;padding-left:0;border-bottom:1px solid var(--rule)}
+  .fig:nth-child(2),.fig:nth-child(4){border-left:0;padding-left:0}
+  .cols{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){.diff{grid-template-columns:1fr}.diff>div+div{margin-top:14px}.fig .v{font-size:30px}.fig:first-child .v{font-size:44px}}
+@media print{.bar,.sample-stamp{display:none}}
+</style>
+</head>
+<body>
+<div class="sample-stamp">Sample figures &middot; not your data</div>
+
+<div class="bar"><div class="wrap">
+  <nav><a href="/ballerina-farm">&larr; The deck</a><a href="/ballerina-farm-analysis">The analysis</a></nav>
+  <button class="toggle" id="sampleBtn" type="button" aria-pressed="false">Preview with sample figures</button>
+</div></div>
+
+<header class="wrap mast">
+  <div class="top">
+    <img src="https://ballerinafarm.com/cdn/shop/files/BF-Logo-Black.png?width=600" alt="Ballerina Farm">
+    <div class="dateline">Monday, 14 September 2026 &middot; As of 6:00 am MT</div>
+  </div>
+  <h1>The Morning Report</h1>
+  <hr class="rule2"><hr class="rule1">
+  <p class="honest"><b>What&rsquo;s real here.</b> Items marked <span class="chip real">From your store</span> were read from ballerinafarm.com on 14 September 2026. A grey dash means the number lives in an account we can&rsquo;t see yet, and the line under it names that account. Use the button above to see the page filled in with sample figures.</p>
+</header>
+
+<main class="wrap">
+
+  <div class="band" aria-label="Headline figures">
+    <div class="fig">
+      <div class="l">Sales yesterday</div>
+      <div class="v"><span class="rv0 dash">&mdash;</span><span class="sv">$48,210</span></div>
+      <div class="chg"><span class="rv0">&nbsp;</span><span class="sv">+6.4% vs last Sunday</span></div>
+      <div class="src"><span class="rv0">Waiting on Shopify</span><span class="sv">Sample</span></div>
+    </div>
+    <div class="fig">
+      <div class="l">Conversion rate</div>
+      <div class="v"><span class="rv0 dash">&mdash;</span><span class="sv">2.9%</span></div>
+      <div class="chg"><span class="rv0">&nbsp;</span><span class="sv">&minus;0.2 pts vs 7-day</span></div>
+      <div class="src"><span class="rv0">Waiting on Shopify</span><span class="sv">Sample</span></div>
+    </div>
+    <div class="fig">
+      <div class="l">Average order</div>
+      <div class="v"><span class="rv0 dash">&mdash;</span><span class="sv">$96</span></div>
+      <div class="chg"><span class="rv0">&nbsp;</span><span class="sv">+$4 vs 7-day</span></div>
+      <div class="src"><span class="rv0">Waiting on Shopify</span><span class="sv">Sample</span></div>
+    </div>
+    <div class="fig">
+      <div class="l">Ad return</div>
+      <div class="v"><span class="rv0 dash">&mdash;</span><span class="sv">3.1&times;</span></div>
+      <div class="chg"><span class="rv0">&nbsp;</span><span class="sv">Meta 3.4&times; &middot; TikTok 2.2&times;</span></div>
+      <div class="src"><span class="rv0">Waiting on Northbeam</span><span class="sv">Sample</span></div>
+    </div>
+    <div class="fig">
+      <div class="l">Subscribers lost</div>
+      <div class="v"><span class="rv0 dash">&mdash;</span><span class="sv">41</span></div>
+      <div class="chg bad"><span class="rv0">&nbsp;</span><span class="sv">+12 vs last week</span></div>
+      <div class="src"><span class="rv0">Waiting on Skio + Recharge</span><span class="sv">Sample</span></div>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div>
+
+      <section class="blk" id="support">
+        <h2>Support, by reason</h2>
+        <p class="sub">The reasons come from your own FAQ and policy pages, so they&rsquo;re the questions your policies already answer. The counts come from the support inbox.</p>
+        <table class="stmt">
+          <tr><td>Where is my order<span class="why">Meat ships Mon&ndash;Wed; other goods in 2&ndash;8 business days</span></td><td class="n"><span class="rv0 dash">&mdash;</span><span class="sv">38</span></td></tr>
+          <tr><td>Meat box arrived thawed<span class="why">Policy: replacement box with name and order number</span></td><td class="n"><span class="rv0 dash">&mdash;</span><span class="sv">6</span></td></tr>
+          <tr><td>Marked delivered, not received<span class="why">Policy: check property, wait 72 hours, contact within 7 days</span></td><td class="n"><span class="rv0 dash">&mdash;</span><span class="sv">9</span></td></tr>
+          <tr><td>Charged shipping over $150<span class="why">Excluded items ship separately; the two lists disagree</span></td><td class="n"><span class="rv0 dash">&mdash;</span><span class="sv">7</span></td></tr>
+          <tr><td>Change or skip a subscription<span class="why">Two portals during the Skio move</span></td><td class="n"><span class="rv0 dash">&mdash;</span><span class="sv">14</span></td></tr>
+          <tr><td>Wrong or changed address<span class="why">Policy: only before the order is processed</span></td><td class="n"><span class="rv0 dash">&mdash;</span><span class="sv">5</span></td></tr>
+          <tr class="tot"><td>Tickets opened yesterday</td><td class="n"><span class="rv0 dash">&mdash;</span><span class="sv">79</span></td></tr>
+        </table>
+        <div class="stamp">Waiting on the support inbox &middot; published reply window: 1&ndash;3 business days</div>
+      </section>
+
+      <section class="blk" id="drafts">
+        <h2>Replies drafted, waiting for a person</h2>
+        <p class="sub">Each draft quotes the policy it relies on. Nothing sends until someone on your team reads it. <span class="chip">Sample tickets</span> The replies use your real policy wording.</p>
+
+        <div class="draft">
+          <div class="hd"><span>Meat box arrived thawed &middot; order placed Tuesday</span><span>Drafted 5:52 am</span></div>
+          <p class="ask">&ldquo;Our ground beef box came today and it&rsquo;s soft, not frozen. What do we do?&rdquo;</p>
+          <p class="reply">I&rsquo;m so sorry your box arrived that way. Perishables should reach you frozen, and when they don&rsquo;t, we&rsquo;ll ship you a replacement box. Could you reply with the name on the order and your order number? We ship meat Monday through Wednesday so it isn&rsquo;t stuck in transit over a weekend, so your replacement will go out on our next perishable shipping day.</p>
+          <p class="cite">Relies on: Shipping policy, &ldquo;If the meat does not arrive frozen&hellip;&rdquo; and FAQ, &ldquo;We ship meat boxes Monday-Wednesday&hellip;&rdquo;</p>
+          <div class="act"><span class="pri">Review and send</span><span>Edit</span><span>Hand to a person</span></div>
+        </div>
+
+        <div class="draft">
+          <div class="hd"><span>Shipping charge on a $150+ order</span><span>Drafted 5:54 am</span></div>
+          <p class="ask">&ldquo;My cart was over $150 but I still paid shipping. I thought it was free?&rdquo;</p>
+          <p class="reply">Thanks for asking. Free shipping applies to eligible items once your cart reaches $150. A few items need special packing, so they carry their own shipping cost, and everything else in your order still ships free. Your order included one of those items. I&rsquo;ve listed it below so you can see exactly what was charged.</p>
+          <p class="cite">Relies on: FAQ, &ldquo;What if my order is over $150 but includes an excluded item?&rdquo; <span class="chip flag">Held</span> The cart and FAQ exclusion lists disagree, so this draft waits until your team confirms which list checkout uses.</p>
+          <div class="act"><span class="pri">Review and send</span><span>Edit</span><span>Hand to a person</span></div>
+        </div>
+      </section>
+
+      <section class="blk" id="subs">
+        <h2>Subscriptions</h2>
+        <p class="sub">Your store is partway through moving subscriptions from Recharge to Skio. Until every subscriber is on one system, this section counts both.</p>
+        <div class="tbl-wrap"><table class="t">
+          <thead><tr><th>What we saw</th><th>Where</th><th class="r">Status</th></tr></thead>
+          <tbody>
+            <tr><td>New subscription plans on product pages run on Skio</td><td>Product page selling plans</td><td class="r"><span class="chip real">From your store</span></td></tr>
+            <tr><td>&ldquo;Manage Subscriptions&rdquo; opens the Recharge portal</td><td>Site footer</td><td class="r"><span class="chip real">From your store</span></td></tr>
+            <tr><td>Recharge cart upsell still loads, with Skio plans hidden inside it</td><td>Cart</td><td class="r"><span class="chip real">From your store</span></td></tr>
+            <tr><td>Active on Skio</td><td>Skio</td><td class="r"><span class="rv0 dash">&mdash;</span><span class="sv">3,420</span></td></tr>
+            <tr><td>Still on Recharge</td><td>Recharge</td><td class="r"><span class="rv0 dash">&mdash;</span><span class="sv">1,188</span></td></tr>
+            <tr><td>Cancelled yesterday, with reason</td><td>Skio + Recharge</td><td class="r"><span class="rv0 dash">&mdash;</span><span class="sv">41</span></td></tr>
+          </tbody>
+        </table></div>
+        <div class="stamp">Checked 14 Sept 2026, 9:40 am MT</div>
+      </section>
+
+    </div>
+    <div>
+
+      <section class="blk" id="soldout">
+        <h2>Sold out right now</h2>
+        <p class="sub">Published products with no variant in stock. Products tagged hidden are left out. <span class="chip real">From your store</span></p>
+        <div class="tbl-wrap"><table class="t">
+          <thead><tr><th>Product</th><th class="r">Price</th></tr></thead>
+          <tbody>
+            <tr><td><span class="circle warn"></span>Lemon Poppyseed Farmer Protein <span class="chip">Bestseller</span></td><td class="r">$42.00</td></tr>
+            <tr><td><span class="circle warn"></span>Farmer Jerky</td><td class="r">$13.00</td></tr>
+            <tr><td><span class="circle warn"></span>Forager Clog <span class="chip">Farm Favorite</span></td><td class="r">$45.00</td></tr>
+            <tr><td><span class="circle warn"></span>Ballet Sweats</td><td class="r">$98.00</td></tr>
+            <tr><td><span class="circle warn"></span>Classic Logo Sweats</td><td class="r">$98.00</td></tr>
+            <tr><td><span class="circle warn"></span>Everyday Dish Towels</td><td class="r">$40.00</td></tr>
+            <tr><td><span class="circle warn"></span>Wooden Measuring Spoons</td><td class="r">$39.00</td></tr>
+            <tr><td><span class="circle warn"></span>Hand &amp; Body Soap</td><td class="r">$26.00</td></tr>
+            <tr><td><span class="circle warn"></span>Large Yogurt</td><td class="r">$13.00</td></tr>
+            <tr><td><span class="circle warn"></span>Whole Milk &ndash; Half Gallon</td><td class="r">$7.00</td></tr>
+          </tbody>
+        </table></div>
+        <div class="stamp">12 of 69 listings not tagged hidden &middot; 2 more not shown are internal (Provisions, a ShopMy jerky link) &middot; read 14 Sept 2026</div>
+      </section>
+
+      <section class="blk" id="checks">
+        <h2>Does the site agree with itself?</h2>
+        <p class="sub">A launch check runs these before every drop. Two failed this morning. <span class="chip real">From your store</span></p>
+        <div class="tbl-wrap"><table class="t">
+          <thead><tr><th>Check</th><th class="r">Result</th></tr></thead>
+          <tbody>
+            <tr><td><span class="circle warn"></span>Free-shipping exclusions: cart vs FAQ</td><td class="r"><span class="chip flag">Disagree</span></td></tr>
+            <tr><td><span class="circle warn"></span>Processing time: FAQ vs shipping policy</td><td class="r"><span class="chip flag">2&ndash;7 vs 2&ndash;8 days</span></td></tr>
+            <tr><td><span class="circle done"></span>Meat ship days: FAQ vs shipping policy</td><td class="r">Mon&ndash;Wed both</td></tr>
+            <tr><td><span class="circle done"></span>Free-shipping threshold: cart vs FAQ</td><td class="r">$150 both</td></tr>
+            <tr><td><span class="circle open"></span>What checkout actually charges</td><td class="r">Needs Shopify</td></tr>
+          </tbody>
+        </table></div>
+        <div class="diff">
+          <div><h3>Cart drawer lists (8)</h3><ul>
+            <li>Build Your Own Boxes</li><li class="only">All Subscriptions</li><li>One-time frozen boxes</li><li>Encore subscription frozen boxes</li><li>Scalloped Cutting Board</li><li>Farm Flour</li><li class="only">Einkorn Flour</li><li class="only">Gift Cards</li>
+          </ul></div>
+          <div><h3>FAQ lists (11)</h3><ul>
+            <li>Build Your Own Box</li><li>Encore Boxes</li><li class="only">Baked Goods Box</li><li class="only">Breakfast Box</li><li>All other perishable items and boxes</li><li>All High Protein Farm Flour</li><li class="only">Dandy Table</li><li>Scalloped Cutting Board</li><li class="only">Flowers</li><li class="only">Everyday Bowl</li><li class="only">All ready-made boxes</li>
+          </ul></div>
+        </div>
+      </section>
+
+      <section class="blk" id="launches">
+        <h2>Launch checklist: Pumpkin Pie Farmer Protein</h2>
+        <p class="sub">Published 31 August. This is what the check would run before the next seasonal drop.</p>
+        <div class="tbl-wrap"><table class="t">
+          <thead><tr><th>Item</th><th class="r">Status</th></tr></thead>
+          <tbody>
+            <tr><td><span class="circle done"></span>In stock</td><td class="r">Yes</td></tr>
+            <tr><td><span class="circle done"></span>Price set</td><td class="r">$42.00</td></tr>
+            <tr><td><span class="circle done"></span>Subscription plan attached</td><td class="r">Skio</td></tr>
+            <tr><td><span class="circle open"></span>On the right free-shipping list</td><td class="r">Needs a single list</td></tr>
+            <tr><td><span class="circle open"></span>Ad spend and first-week sales</td><td class="r">Needs Northbeam</td></tr>
+            <tr><td><span class="circle open"></span>Attentive message scheduled</td><td class="r">Needs Attentive</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="blk" id="search">
+        <h2>Search, this month</h2>
+        <p class="sub">Estimated US organic visits and the non-brand terms you already rank for. <span class="chip">Semrush estimate</span></p>
+        <table class="stmt">
+          <tr><td>Organic visits a month<span class="why">5,092 ranking keywords</span></td><td class="n">52,926</td></tr>
+          <tr><td>sourdough starter kit<span class="why">18,100 searches a month</span></td><td class="n">#3</td></tr>
+          <tr><td>high protein flour<span class="why">8,100 searches a month</span></td><td class="n">#3</td></tr>
+          <tr><td>bone broth hot chocolate<span class="why">4,400 searches a month</span></td><td class="n">#1</td></tr>
+        </table>
+        <div class="stamp">Semrush US database &middot; 14 Sept 2026</div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Built by GullStack for Ballerina Farm as a working concept. Not affiliated with Ballerina Farm. Contact: Bryce Morgan, <a href="mailto:bryce@gullstack.com">bryce@gullstack.com</a></span>
+    <span><a href="/ballerina-farm">The deck</a> &middot; <a href="/ballerina-farm-analysis">The analysis</a></span>
+  </div>
+</main>
+
+<script>
+(function(){
+  var b=document.getElementById('sampleBtn');
+  function set(on){document.body.classList.toggle('sample',on);b.setAttribute('aria-pressed',on?'true':'false');b.textContent=on?'Show real data only':'Preview with sample figures'}
+  b.addEventListener('click',function(){set(!document.body.classList.contains('sample'))});
+  if(/[?&]sample/.test(location.search)) set(true);
+})();
+</script>
+</body>
+</html>

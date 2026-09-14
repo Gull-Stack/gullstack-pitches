@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Ballerina Farm &times; GullStack &middot; The machine under the seat</title>
+<meta name="description" content="The system that would sit under Ballerina Farm's Director of E-Commerce from day one.">
+<meta property="og:title" content="Ballerina Farm &times; GullStack">
+<meta property="og:description" content="Hire the leader. We'll run the machine.">
+<meta property="og:image" content="https://ballerinafarm.com/cdn/shop/files/DSCF7441_1aa4a2b5-8d81-43cf-89ba-ccf39e8a178d.jpg?width=1200">
+<style>
+:root{--bg:#080B10;--bg2:#0E131B;--panel:#141A24;--panel2:#1A212D;--line:#232B38;--line2:#313C4D;--ink:#F1F4F9;--muted:#9AA3B4;--muted2:#5C6577;
+--accent:#E1AD54;--accent-dim:color-mix(in srgb,#E1AD54 14%,transparent);
+--display:"Helvetica Neue",Helvetica,Arial,sans-serif;--body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:"SF Mono",ui-monospace,"Roboto Mono",Menlo,Consolas,monospace;--ease:cubic-bezier(.22,.61,.36,1)}
+*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);overflow:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+::selection{background:var(--accent-dim);color:var(--ink)}
+.fx{position:fixed;inset:0;pointer-events:none;z-index:30}
+.fx.vignette{background:radial-gradient(120% 100% at 50% 42%,transparent 55%,rgba(0,0,0,.55))}
+.fx.grain{opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.deck{position:fixed;inset:0;z-index:1}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(52px,6vw,88px) clamp(30px,6vw,96px) clamp(60px,6vw,88px);overflow:hidden;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s var(--ease),visibility 0s linear .7s;z-index:1}
+.slide.active{opacity:1;visibility:visible;pointer-events:auto;z-index:2;transition:opacity .6s var(--ease)}
+.slide .stage{width:100%;max-width:1180px;margin:0 auto;position:relative;z-index:5;transform:translateX(var(--enter,60px));opacity:0;filter:blur(6px);transition:transform .7s var(--ease),opacity .6s var(--ease),filter .6s var(--ease)}
+.slide.active .stage{transform:none;opacity:1;filter:none}
+.slide.leaving .stage{transform:translateX(var(--leave,-50px));opacity:0;filter:blur(6px);transition:transform .55s var(--ease),opacity .45s var(--ease),filter .45s var(--ease)}
+.bgphoto{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;transform:scale(1.02);transition:transform 9s ease-out;will-change:transform;opacity:.9}
+.slide.active .bgphoto{transform:scale(1.14)}
+.scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,11,16,.94) 0%,rgba(8,11,16,.82) 40%,rgba(8,11,16,.5) 100%),linear-gradient(0deg,rgba(8,11,16,.9),transparent 55%)}
+.scrim.center{background:linear-gradient(0deg,rgba(8,11,16,.92),rgba(8,11,16,.62) 55%,rgba(8,11,16,.8)),radial-gradient(90% 80% at 50% 45%,transparent 40%,rgba(8,11,16,.6))}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.slide.active .rv{opacity:1;transform:none}
+.eyebrow{font-family:var(--mono);font-size:clamp(10px,1.05vw,12.5px);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px}
+.eyebrow .tick{width:26px;height:1px;background:var(--accent);display:inline-block}
+h1,h2{font-family:var(--display);font-weight:800;line-height:.94;letter-spacing:-.022em;text-wrap:balance}
+h1{font-size:clamp(40px,7.6vw,108px)}h2{font-size:clamp(31px,5.1vw,64px)}
+.lede{color:#C4CBD8;font-size:clamp(15px,1.6vw,20px);line-height:1.5;max-width:60ch}
+.accent{color:var(--accent)}
+.note{margin-top:26px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted2);max-width:78ch;line-height:1.5}
+.note a{color:var(--muted)}
+.chip{display:inline-flex;align-items:center;justify-content:center;background:#FFFBF0;border-radius:8px;padding:14px 20px}
+.topbar{position:fixed;top:0;left:0;right:0;height:2px;z-index:40}.topbar .fill{height:100%;width:0;background:var(--accent);transition:width .6s var(--ease);box-shadow:0 0 10px var(--accent)}
+.hud{position:fixed;top:22px;left:clamp(20px,6vw,64px);z-index:41;font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}.hud b{color:var(--ink);font-weight:400}
+.actlbl{position:fixed;top:22px;left:50%;transform:translateX(-50%);z-index:41;font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted2);white-space:nowrap}
+.brandmark{position:fixed;top:20px;right:clamp(20px,6vw,64px);z-index:41;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted2)}
+.brandmark a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line2)}.brandmark a:hover{color:var(--ink)}
+.nav{position:fixed;bottom:20px;right:clamp(18px,5vw,54px);z-index:41;display:flex;gap:9px}
+.nav button{width:46px;height:42px;border:1px solid var(--line2);background:rgba(20,26,36,.62);color:var(--ink);border-radius:10px;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(8px);transition:border-color .2s,background .2s,transform .1s}
+.nav button:hover{border-color:var(--accent);background:var(--panel2)}.nav button:active{transform:translateY(1px)}.nav button:disabled{opacity:.3;cursor:default;border-color:var(--line)}
+.nav svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dots{position:fixed;bottom:27px;left:clamp(20px,6vw,64px);z-index:41;display:flex;gap:7px;align-items:center;flex-wrap:wrap;max-width:56vw}
+.dots button{width:8px;height:8px;padding:0;border:none;border-radius:50%;background:var(--line2);cursor:pointer;transition:background .25s,transform .25s}.dots button:hover{background:var(--muted)}
+.dots button.on{background:var(--accent);transform:scale(1.35);box-shadow:0 0 8px var(--accent)}
+.hint{position:fixed;bottom:58px;right:clamp(18px,5vw,54px);z-index:40;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);transition:opacity .6s}
+.tools{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:41;display:flex;gap:8px}
+.tools a,.tools button{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 16px;border:1px solid var(--line2);background:rgba(20,26,36,.62);backdrop-filter:blur(8px);border-radius:10px;color:var(--ink);font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.tools a:hover,.tools button:hover{border-color:var(--accent)}.tools svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#p1 .kicker{font-family:var(--mono);font-size:clamp(11px,1.2vw,13px);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+#p1 h1{font-size:clamp(36px,6vw,82px)}
+.partner{margin-top:32px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.partner .logo-client{height:clamp(26px,3vw,40px);width:auto;display:block}
+.partner .gs{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.4vw,30px);letter-spacing:-.02em}
+.x{color:var(--muted2);font-family:var(--display);font-weight:400;font-size:clamp(20px,2.3vw,32px)}
+.thesis{margin-top:36px;padding-top:24px;border-top:1px solid var(--line);max-width:56ch;font-size:clamp(16px,1.9vw,22px);line-height:1.42;color:var(--ink);font-weight:500}
+.bigrow{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.8vw,26px);margin-top:34px}
+.bignum{border-top:2px solid var(--line2);padding-top:15px}.bignum.key{border-top-color:var(--accent)}
+.bignum .n{font-family:var(--display);font-weight:800;font-size:clamp(22px,2.6vw,34px);letter-spacing:-.025em;line-height:.98}.bignum.key .n{color:var(--accent)}
+.bignum .c{margin-top:10px;font-size:13.5px;color:var(--muted);line-height:1.45}
+.stat{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,28px);margin-top:36px}
+.stat .s{border-top:2px solid var(--line2);padding-top:16px}.stat .s:first-child{border-top-color:var(--accent)}
+.stat .v{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.6vw,50px);letter-spacing:-.03em;line-height:1}
+.stat .s:first-child .v{color:var(--accent)}
+.stat .h{margin-top:12px;font-weight:600;font-size:clamp(13px,1.3vw,16px)}
+.stat p{margin-top:6px;font-size:clamp(12px,1.15vw,14px);color:var(--muted);line-height:1.5}
+.finds{margin-top:30px;display:grid;gap:0;max-width:880px}
+.find{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--line)}
+.find:last-child{border-bottom:1px solid var(--line)}
+.find .k{font-family:var(--mono);font-size:12px;color:var(--accent);padding-top:4px}
+.find b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(16px,1.8vw,22px);letter-spacing:-.01em}
+.find span{display:block;margin-top:5px;color:#C4CBD8;font-size:clamp(13px,1.25vw,15px);line-height:1.5;max-width:66ch}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,28px);margin-top:36px}
+.vcol{border-top:2px solid var(--line2);padding-top:16px}.vcol.key{border-top-color:var(--accent)}
+.vcol .num{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--muted2)}
+.vh{font-family:var(--display);font-weight:800;font-size:clamp(16px,1.6vw,21px);letter-spacing:-.01em;color:var(--accent);margin:8px 0 10px}
+.vcol p{font-size:clamp(12.5px,1.15vw,14.5px);color:#C4CBD8;line-height:1.5}
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.mini{background:#FFFBF0;color:#1c1c1c;border-radius:4px;padding:22px 24px 18px;font-family:Georgia,"Times New Roman",serif;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.mini .mh{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #1c1c1c;padding-bottom:8px}
+.mini .mh b{font-size:21px;font-weight:400;letter-spacing:-.01em}.mini .mh span{font-family:var(--body);font-size:11px;color:#6d6457}
+.mini .row{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid #d9cfbd}
+.mini .cell{padding:12px 10px 10px;border-left:1px solid #d9cfbd}.mini .cell:first-child{border-left:0;padding-left:0}
+.mini .cell i{display:block;font-style:normal;font-family:var(--body);font-size:10.5px;color:#6d6457}
+.mini .cell em{display:block;font-style:normal;font-size:28px;line-height:1.1;margin-top:4px;color:#b9ae9c}
+.mini .cell small{display:block;font-family:var(--body);font-size:9.5px;color:#8a8070;margin-top:2px}
+.mini .tbl{margin-top:12px;font-family:var(--body);font-size:12px}
+.mini .tbl div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #e8dfcf}
+.mini .tbl div span:last-child{color:#A4452A}
+.mini .foot{margin-top:10px;font-family:var(--body);font-size:10px;color:#8a8070;text-align:right}
+.btnrow{margin-top:26px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 20px;border:1px solid var(--accent);color:var(--ink);text-decoration:none;border-radius:10px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.btn:hover{background:var(--accent);color:#080B10}
+.btn.ghost{border-color:var(--line2)}.btn.ghost:hover{background:var(--panel2);color:var(--ink)}
+.human{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:0 40px;max-width:980px}
+.human div{padding:15px 0;border-top:1px solid var(--line);font-size:clamp(14px,1.4vw,17px);line-height:1.45;color:#C4CBD8}
+.human div b{color:var(--ink);font-weight:600}
+.poc{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--muted)}.poc b{color:var(--ink)}.poc a{color:var(--accent);text-decoration:none}
+.tl{position:relative;margin-top:40px}
+.tl-line{position:absolute;left:0;right:0;top:7px;height:2px;background:var(--line)}.tl-line .grow{height:100%;width:0;background:var(--accent);transition:width 1.6s var(--ease) .3s;box-shadow:0 0 12px var(--accent-dim)}
+.slide.active .tl-line .grow{width:100%}
+.nodes{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(10px,1.6vw,22px)}
+.node{padding-top:26px;position:relative}
+.node .bead{position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;border:2px solid var(--line2);background:var(--bg);transition:border-color .4s,background .4s,box-shadow .4s}
+.slide.active .node .bead{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 5px var(--accent-dim)}
+.slide.active .node:nth-child(1) .bead{transition-delay:.35s}.slide.active .node:nth-child(2) .bead{transition-delay:.65s}.slide.active .node:nth-child(3) .bead{transition-delay:.95s}.slide.active .node:nth-child(4) .bead{transition-delay:1.25s}.slide.active .node:nth-child(5) .bead{transition-delay:1.55s}
+.node .nn{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted2)}
+.node .nh{font-family:var(--display);font-weight:800;font-size:clamp(14px,1.5vw,18px);margin-top:6px;letter-spacing:-.01em}
+.node .np{margin-top:8px;font-size:clamp(11.5px,1.05vw,13.5px);color:var(--muted);line-height:1.45}
+#p9 .stage{text-align:center}
+#p9 h1{font-size:clamp(38px,6.4vw,90px)}
+.next{margin-top:30px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+.step{font-size:clamp(12.5px,1.2vw,15px);color:var(--muted)}.step b{color:var(--ink)}.step .num{font-family:var(--mono);color:var(--accent);margin-right:6px}
+.close-lock{margin-top:34px;display:flex;justify-content:center;align-items:center;gap:24px}
+.close-lock .logo-client{height:34px;width:auto;display:block}
+.close-lock .gs{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em}
+.contacts{margin-top:26px;display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+.contact .cn{font-family:var(--display);font-weight:800;font-size:17px}.contact .cr{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2);margin-top:4px}.contact .ce{color:var(--accent);font-size:13.5px;margin-top:4px;text-decoration:none;display:inline-block}
+#p9 .btnrow{justify-content:center}
+@media (max-width:900px){
+  body{overflow:auto}
+  .bigrow,.grid4,.stat,.nodes{grid-template-columns:1fr 1fr}.split,.human{grid-template-columns:1fr}
+  .actlbl,.tools,.hint,.brandmark{display:none}.hud{font-size:9px}.slide{padding:54px 22px 70px}
+  .find{grid-template-columns:34px 1fr;gap:10px}
+  .mini .row{grid-template-columns:1fr 1fr}.mini .cell:nth-child(3){border-left:0;padding-left:0}
+}
+@media (max-width:900px) and (max-height:900px){.slide{justify-content:flex-start;overflow-y:auto}}
+@media print{
+  @page{size:1600px 900px;margin:0}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  html,body{overflow:visible;height:auto;background:var(--bg)}
+  .deck{position:static}.fx,.topbar,.hud,.actlbl,.brandmark,.nav,.dots,.hint,.tools{display:none!important}
+  .slide{position:relative!important;inset:auto;width:1600px;height:900px;opacity:1!important;visibility:visible!important;page-break-after:always;break-after:page;transition:none}
+  .slide .stage,.rv{transform:none!important;opacity:1!important;filter:none!important;transition:none!important}
+  .bgphoto{transform:none!important;transition:none}.tl-line .grow{width:100%!important}.node .bead{border-color:var(--accent)!important;background:var(--accent)!important}
+}
+@media (prefers-reduced-motion:reduce){.rv,.stage,.bgphoto,.tl-line .grow{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="fx vignette"></div><div class="fx grain"></div>
+<div class="topbar" id="topbar"><div class="fill" id="pfill"></div></div>
+<div class="hud" id="hud"><b id="hnum">01</b> &nbsp;/&nbsp; <span id="hlab"></span></div>
+<div class="actlbl" id="actlbl"></div>
+<div class="brandmark"><span>GullStack &middot; Ballerina Farm</span> <a href="/ballerina-farm-demo">Morning Report</a> <a href="/ballerina-farm-analysis">Analysis</a></div>
+
+<div class="deck" id="deck">
+
+<!-- 01 cover -->
+<section class="slide" id="p1" data-label="Cover" data-act="Part I &middot; The seat">
+  <div class="bgphoto" style="background-image:url(https://ballerinafarm.com/cdn/shop/files/DSCF7441_1aa4a2b5-8d81-43cf-89ba-ccf39e8a178d.jpg?width=2200)"></div><div class="scrim"></div>
+  <div class="stage">
+    <div class="kicker rv">Prepared for Ballerina Farm &middot; September 2026 &middot; GullStack</div>
+    <h1 class="rv">Hire the leader.<br><span class="accent">We&rsquo;ll run the machine.</span></h1>
+    <div class="partner rv"><span class="chip"><img class="logo-client" src="https://ballerinafarm.com/cdn/shop/files/BF-Logo-Black.png?width=600" alt="Ballerina Farm"></span><span class="x">&times;</span><span class="gs">GullStack</span></div>
+    <div class="thesis rv">You&rsquo;re hiring a Director of E-Commerce to own the whole online journey. This is the system that would sit under that person from their first day.</div>
+  </div>
+</section>
+
+<!-- 02 one seat four jobs -->
+<section class="slide" id="p2" data-label="One seat, four jobs" data-act="Part I &middot; The seat">
+  <div class="stage">
+    <div class="eyebrow rv"><span class="tick"></span> What the posting asks for</div>
+    <h2 class="rv" style="margin-top:18px">One seat.<br><span class="accent">Four jobs.</span></h2>
+    <div class="bigrow">
+      <div class="bignum key rv"><div class="n">The store</div><div class="c">Merchandising, product launches, pricing, promotions, inventory visibility.</div></div>
+      <div class="bignum rv"><div class="n">The numbers</div><div class="c">Conversion rate, average order value, ad return. Your words, straight from the posting.</div></div>
+      <div class="bignum rv"><div class="n">Subscriptions</div><div class="c">Keeping every subscriber happy, and keeping them subscribed.</div></div>
+      <div class="bignum rv"><div class="n">Support</div><div class="c">Timely, empathetic replies from purchase through delivery and after.</div></div>
+    </div>
+    <p class="lede rv" style="margin-top:34px">Leading people is the job only a person can do. The other four run every day, and most of each one repeats. That repeating part is what we build.</p>
+  </div>
+</section>
+
+<!-- 03 what's working -->
+<section class="slide" id="p3" data-label="What's working" data-act="Part I &middot; The seat">
+  <div class="stage">
+    <div class="eyebrow rv"><span class="tick"></span> Start with what&rsquo;s working</div>
+    <h2 class="rv" style="margin-top:18px">People already<br><span class="accent">come looking for you.</span></h2>
+    <div class="stat">
+      <div class="s rv"><div class="v">74,000</div><div class="h">searches a month for your name</div><p>&ldquo;ballerina farm&rdquo; alone, in the US. You rank first for it.</p></div>
+      <div class="s rv"><div class="v">#1</div><div class="h">for your protein powder</div><p>&ldquo;ballerina farm protein powder&rdquo;, 9,900 searches a month, lands on the product page.</p></div>
+      <div class="s rv"><div class="v">#3</div><div class="h">on real category terms</div><p>&ldquo;sourdough starter kit&rdquo; (18,100 a month) and &ldquo;high protein flour&rdquo; (8,100).</p></div>
+      <div class="s rv"><div class="v">Good tools</div><div class="h">already in place</div><p>Shopify, Northbeam, Attentive, Redo, Stamped, and Skio. Nothing here needs replacing.</p></div>
+    </div>
+    <p class="note rv">Search figures: Semrush, US database, 14 September 2026. Tools: read from your public page source the same day.</p>
+  </div>
+</section>
+
+<!-- 04 what we noticed -->
+<section class="slide" id="p4" data-label="What we noticed" data-act="Part II &middot; What we found">
+  <div class="bgphoto" style="background-image:url(https://ballerinafarm.com/cdn/shop/files/collections_grocery.jpg?width=2200);background-position:70% center"></div><div class="scrim"></div>
+  <div class="stage">
+    <div class="eyebrow rv"><span class="tick"></span> Four small things, found by looking closely</div>
+    <h2 class="rv" style="margin-top:16px">What a growing<br><span class="accent">store collects.</span></h2>
+    <div class="finds">
+      <div class="find rv"><div class="k">01</div><div><b>Subscriptions are partway through a move.</b><span>New plans on your product pages run on Skio. Recharge&rsquo;s cart pieces still load, and &ldquo;Manage Subscriptions&rdquo; still opens Recharge&rsquo;s portal. That in-between stage is when subscriber questions pile up.</span></div></div>
+      <div class="find rv"><div class="k">02</div><div><b>Two free-shipping lists that don&rsquo;t match.</b><span>The cart names 8 exclusions and the FAQ names 11. The Everyday Bowl is on the FAQ&rsquo;s list and not the cart&rsquo;s.</span></div></div>
+      <div class="find rv"><div class="k">03</div><div><b>Two processing times.</b><span>The FAQ says 2&ndash;7 business days. The shipping policy says 2&ndash;8.</span></div></div>
+      <div class="find rv"><div class="k">04</div><div><b>Replies take 1&ndash;3 business days.</b><span>That&rsquo;s fine for a question about aprons. A meat box that arrived thawed is a same-day problem.</span></div></div>
+    </div>
+    <p class="note rv">Everything above is on your public site as of 14 September 2026. Detail and sources on the <a href="/ballerina-farm-analysis">analysis page</a>.</p>
+  </div>
+</section>
+
+<!-- 05 the four systems -->
+<section class="slide" id="p5" data-label="The four systems" data-act="Part III &middot; The machine">
+  <div class="stage">
+    <div class="eyebrow rv"><span class="tick"></span> What we build and run</div>
+    <h2 class="rv" style="margin-top:18px">Four systems<br><span class="accent">under your new hire.</span></h2>
+    <div class="grid4">
+      <div class="vcol key rv"><div class="num">01</div><div class="vh">The Morning Report</div><p>Every number the posting names, on one screen by 6 am. Sales, conversion, order value, ad return, subscriptions, support, and what sold out overnight.</p></div>
+      <div class="vcol rv"><div class="num">02</div><div class="vh">Support drafts</div><p>The common tickets get a reply drafted from your own policies: where&rsquo;s my order, thawed box, delivered but missing, skip a delivery. A person on your team reads it and sends it.</p></div>
+      <div class="vcol rv"><div class="num">03</div><div class="vh">Launch checks</div><p>Before a drop goes live: price, subscription plan, stock, shipping rules, and whether every list on the site says the same thing.</p></div>
+      <div class="vcol rv"><div class="num">04</div><div class="vh">Subscription care</div><p>Finish the Skio move cleanly. Every Recharge subscriber accounted for, and a note from your team to anyone who cancels.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 morning report preview -->
+<section class="slide" id="p6" data-label="The Morning Report" data-act="Part III &middot; The machine">
+  <div class="stage">
+    <div class="split">
+      <div>
+        <div class="eyebrow rv"><span class="tick"></span> See it working</div>
+        <h2 class="rv" style="margin-top:18px">The first thing<br><span class="accent">your Director reads.</span></h2>
+        <p class="lede rv" style="margin-top:18px">We built a working version from your public store. The catalog, the sold-out list and the policy checks are real, as of this morning. The numbers only your accounts hold are left blank, and each blank names where it comes from.</p>
+        <div class="btnrow rv"><a class="btn" href="/ballerina-farm-demo">Open the Morning Report &rarr;</a></div>
+      </div>
+      <div class="mini rv" aria-hidden="true">
+        <div class="mh"><b>The Morning Report</b><span>Mon 14 Sept &middot; 6:00 am</span></div>
+        <div class="row">
+          <div class="cell"><i>Sales yesterday</i><em>&mdash;</em><small>Shopify</small></div>
+          <div class="cell"><i>Conversion</i><em>&mdash;</em><small>Shopify</small></div>
+          <div class="cell"><i>Order value</i><em>&mdash;</em><small>Shopify</small></div>
+          <div class="cell"><i>Ad return</i><em>&mdash;</em><small>Northbeam</small></div>
+        </div>
+        <div class="tbl">
+          <div><span>Lemon Poppyseed Farmer Protein</span><span>Sold out</span></div>
+          <div><span>Farmer Jerky</span><span>Sold out</span></div>
+          <div><span>Free-shipping lists</span><span>Disagree</span></div>
+          <div><span>Processing time wording</span><span>Disagree</span></div>
+        </div>
+        <div class="foot">12 sold out &middot; 57 in stock</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 what stays human -->
+<section class="slide" id="p7" data-label="What stays human" data-act="Part III &middot; The machine">
+  <div class="bgphoto" style="background-image:url(https://ballerinafarm.com/cdn/shop/files/Sourdough-Essentials-Hero.jpg?width=2000);opacity:.5"></div><div class="scrim"></div>
+  <div class="stage">
+    <div class="eyebrow rv"><span class="tick"></span> Care is the brand</div>
+    <h2 class="rv" style="margin-top:18px">The machine drafts.<br><span class="accent">People decide.</span></h2>
+    <div class="human">
+      <div class="rv"><b>A person sends every reply.</b> Drafts wait for someone on your team to read, change and send.</div>
+      <div class="rv"><b>Your team sets prices and promotions.</b> The checks catch mistakes. They don&rsquo;t make the call.</div>
+      <div class="rv"><b>Your voice, from your own pages.</b> Replies quote the policies you already publish. We write no new policy.</div>
+      <div class="rv"><b>Your data stays in your accounts.</b> Shopify, Skio and Northbeam stay yours. We read with the access you grant.</div>
+    </div>
+    <div class="poc rv"><span>Accountable for all of it</span><b>Bryce Morgan, GullStack</b><a href="mailto:bryce@gullstack.com">bryce@gullstack.com</a></div>
+  </div>
+</section>
+
+<!-- 08 first 30 days -->
+<section class="slide" id="p8" data-label="The first 30 days" data-act="Part III &middot; The machine">
+  <div class="stage">
+    <div class="eyebrow rv"><span class="tick"></span> How it starts</div>
+    <h2 class="rv" style="margin-top:18px">Thirty days.<br><span class="accent">Nothing to rip out.</span></h2>
+    <div class="tl">
+      <div class="tl-line"><div class="grow"></div></div>
+      <div class="nodes">
+        <div class="node rv"><div class="bead"></div><div class="nn">Week 1</div><div class="nh">Read-only access</div><div class="np">A staff login for Shopify, plus Skio, Northbeam and the support inbox. No passwords shared.</div></div>
+        <div class="node rv"><div class="bead"></div><div class="nn">Week 2</div><div class="nh">Morning Report live</div><div class="np">Real numbers in the blanks. Your team says what else belongs on the page.</div></div>
+        <div class="node rv"><div class="bead"></div><div class="nn">Week 3</div><div class="nh">Support drafts</div><div class="np">The five most common ticket reasons get drafted replies, checked against your policies.</div></div>
+        <div class="node rv"><div class="bead"></div><div class="nn">Week 4</div><div class="nh">Launch checks</div><div class="np">Run on your next drop, before it goes live, with the results sent to your team.</div></div>
+        <div class="node rv"><div class="bead"></div><div class="nn">Every week</div><div class="nh">30 minutes</div><div class="np">With your Director, once they start. Until then, with whoever holds the seat today.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 next -->
+<section class="slide" id="p9" data-label="Next step" data-act="Part IV &middot; Next step">
+  <div class="bgphoto" style="background-image:url(https://ballerinafarm.com/cdn/shop/files/DSCF7441_1aa4a2b5-8d81-43cf-89ba-ccf39e8a178d.jpg?width=2200)"></div><div class="scrim center"></div>
+  <div class="stage">
+    <div class="eyebrow rv" style="justify-content:center"><span class="tick"></span> The next step</div>
+    <h1 class="rv" style="margin-top:18px">Use it first.<br><span class="accent">Decide after.</span></h1>
+    <div class="next rv">
+      <span class="step"><span class="num">01</span> <b>Open the Morning Report</b> &mdash; built from your store</span>
+      <span class="step"><span class="num">02</span> <b>Grant read-only access</b> &mdash; the blanks fill in</span>
+      <span class="step"><span class="num">03</span> <b>Judge it on a month</b> &mdash; alongside your hire</span>
+    </div>
+    <div class="btnrow rv"><a class="btn" href="/ballerina-farm-demo">Morning Report &rarr;</a><a class="btn ghost" href="/ballerina-farm-analysis">The analysis</a></div>
+    <div class="close-lock rv"><span class="chip"><img class="logo-client" src="https://ballerinafarm.com/cdn/shop/files/BF-Logo-Black.png?width=600" alt="Ballerina Farm"></span><span class="x">&times;</span><span class="gs">GullStack</span></div>
+    <div class="contacts rv"><div class="contact"><div class="cn">Bryce Morgan</div><div class="cr">GullStack</div><a class="ce" href="mailto:bryce@gullstack.com">bryce@gullstack.com</a></div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="dots" id="dots"></div>
+<div class="hint" id="hint">&larr; / &rarr; to move</div>
+<div class="tools">
+  <button id="pdfbtn" type="button"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>Download PDF</button>
+  <a id="htmlbtn" download="Ballerina-Farm-GullStack.html" href="#"><svg viewBox="0 0 24 24"><path d="M8 4l-5 8 5 8M16 4l5 8-5 8"/></svg>Save HTML</a>
+</div>
+<div class="nav"><button id="prev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><button id="next" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide')),N=slides.length,cur=-1;
+  var fill=document.getElementById('pfill'),hnum=document.getElementById('hnum'),hlab=document.getElementById('hlab'),act=document.getElementById('actlbl');
+  var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),hint=document.getElementById('hint');
+  slides.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','Page '+(i+1));b.addEventListener('click',function(){go(i)});dots.appendChild(b)});
+  function stagger(s){[].slice.call(s.querySelectorAll('.rv')).forEach(function(el,k){el.style.transitionDelay=(.12+k*.09)+'s'})}
+  function go(to){
+    to=Math.max(0,Math.min(N-1,to)); if(to===cur) return;
+    var dir=to>cur?1:-1;
+    if(cur>=0){var old=slides[cur];old.style.setProperty('--leave',(dir>0?-50:50)+'px');old.classList.add('leaving');old.classList.remove('active');setTimeout(function(){old.classList.remove('leaving')},600)}
+    var s=slides[to];s.style.setProperty('--enter',(dir>0?60:-60)+'px');stagger(s);s.classList.add('active');
+    cur=to;
+    fill.style.width=((to+1)/N*100)+'%';hnum.textContent=String(to+1).padStart(2,'0');hlab.textContent=s.getAttribute('data-label');act.textContent=s.getAttribute('data-act');
+    [].slice.call(dots.children).forEach(function(d,i){d.classList.toggle('on',i===to)});
+    prev.disabled=to===0;next.disabled=to===N-1;
+    if(to>0&&hint) hint.style.opacity='0';
+    try{history.replaceState(null,'','#p'+(to+1))}catch(e){}
+  }
+  prev.addEventListener('click',function(){go(cur-1)});next.addEventListener('click',function(){go(cur+1)});
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>=0){e.preventDefault();go(cur+1)}
+    if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>=0){e.preventDefault();go(cur-1)}
+    if(e.key==='Home'){go(0)}if(e.key==='End'){go(N-1)}
+  });
+  var tx=0;document.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)go(cur+(dx<0?1:-1))});
+  var pdf=document.getElementById('pdfbtn');if(pdf)pdf.addEventListener('click',function(){window.print()});
+  var save=document.getElementById('htmlbtn');if(save)save.setAttribute('href',location.href.split('#')[0]);
+  if(/[?&]static/.test(location.search)){
+    slides.forEach(function(s){s.classList.add('active');s.style.position='relative';s.style.inset='auto';s.style.height='100vh'});
+    [].slice.call(document.querySelectorAll('.rv,.stage')).forEach(function(el){el.style.transition='none'});
+    var only=location.search.match(/[?&]only=(\d+)/);
+    if(only){var k=parseInt(only[1],10)-1;slides.forEach(function(s,x){if(x!==k)s.style.display='none'})}
+    document.body.style.overflow='auto';['topbar','hud','actlbl','dots','hint'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none'});
+    var nv=document.querySelector('.nav');if(nv)nv.style.display='none';var tl=document.querySelector('.tools');if(tl)tl.style.display='none';
+    return;
+  }
+  var h=location.hash.match(/^#p(\d+)$/);go(h?parseInt(h[1],10)-1:0);
+})();
+</script>
+</body>
+</html>

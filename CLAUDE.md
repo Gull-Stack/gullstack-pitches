@@ -20,6 +20,28 @@ but note that only re-gates `*.vercel.app`, not the custom domain.
 
 ## Session Log
 
+### 2026-09-14 — Ballerina Farm: deck, Morning Report demo, analysis
+
+- **Lead:** Ballerina Farm's LinkedIn post for a Director of E-Commerce. Bryce: "build it and
+  I will send them a message." Pitch = the system under the seat, not a replacement for the
+  leader. Full facts and do-not-say list: `docs/prospects/ballerina-farm.md`.
+- **Shipped three pages:** `/ballerina-farm` (9-slide deck in the house style, gold #E1AD54
+  accent from their own CSS), `/ballerina-farm-demo` (cream editorial Morning Report; real
+  public data + blank slots naming the source account; "Preview with sample figures" toggle
+  stamps SAMPLE), `/ballerina-farm-analysis` (every claim with its source).
+- **Lead finding:** subscriptions are mid-move Recharge → Skio (theme name says "Skio
+  Pre-Launch Filter"). Also: cart and FAQ free-shipping lists disagree (8 vs 11), processing
+  time 2–7 vs 2–8 days, replies 1–3 business days on a perishables business.
+- **Caught before shipping:** Gorgias looked installed; it is only a CSS hide rule. Rendered
+  alt text is fine (theme falls back to titles) — not claimed.
+- Layout references from Mobbin: Stripe billing overview (hairline metric grid), Legora
+  (serif numerals), Shopify sales breakdown (statement rows), Tana to-do (checklist).
+- Verified: headless screenshots of deck slides 1/4/6 and the demo in both modes; 390px CDP
+  check shows 0 horizontal overflow on demo and analysis.
+
+**Next:** Bryce sends the first message (draft in the session reply) · on a reply: read-only
+Shopify staff access, Skio, Northbeam, support inbox · price is Bryce's call.
+
 ### 2026-08-20 — Wealth-management one-pager for a Texas prospect (Bret McCormack intro)
 
 - **Shipped `/wealth-management`** (commit `145c78d`, NOT pushed — see below). A
