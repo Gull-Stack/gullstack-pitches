@@ -1,6 +1,11 @@
 # Ballerina Farm — prospect notes
 
-**Status (14 Sept 2026):** pitch built, nothing sent. Bryce sends the first message himself.
+**Status (14 Sept 2026):** pitch built. Bryce sends the first message himself on **LinkedIn**
+(no hiring email is public; careers run through ballerinafarm.bamboohr.com).
+
+**The personal hook (Bryce):** his wife loves their Bone Broth Hot Cocoa. The message offers to
+discount the whole engagement for a hot cocoa subscription. Bryce's own words; keep the offer
+light, it is an opener, not a price.
 
 ## Why we're talking to them
 
@@ -11,6 +16,14 @@ e-commerce and customer support. Bryce's read: "We can crush this for them."
 **Pitch shape (decided 14 Sept):** do NOT pitch replacing the leader. Pitch the system
 under the seat: Morning Report, support reply drafts, launch checks, subscription care.
 A leadership seat that runs two teams cannot be a vendor.
+
+## The posting (BambooHR, read 14 Sept 2026)
+
+- https://ballerinafarm.bamboohr.com/careers/79 — **Director of E-Commerce**, department
+  **Executive**, full-time, **Springville UT 84663**, posted **28 Aug 2026**, no pay listed.
+- Hiring for marketing at the same time: **#71 Growth Marketing Analyst** (Midway) and
+  **#78 Manager, Integrated & Brand Marketing** (Kamas). The Morning Report serves those seats too.
+- Careers API (public JSON): `/careers/list` and `/careers/<id>/detail`.
 
 ## Live pages
 
