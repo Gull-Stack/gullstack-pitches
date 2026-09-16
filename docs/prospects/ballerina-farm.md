@@ -36,6 +36,13 @@ may not complete a CAPTCHA, and the submit is his identity.
 - Sponsorship required: **No**. Authorized to work in the US: **Yes**. Both are attestations
   about Bryce — he confirms them before submitting.
 - Left blank on purpose: Desired Pay (price is Bryce's call), Date Available, LinkedIn, Referred by.
+🔴 **BambooHR gotcha, hit 16 Sept:** an upload that has sat on the page too long fails at submit
+with *"We had a problem saving the Resume... the Cover Letter"*, and **the failed submit wipes every
+field**, including the ones that were fine. Fill the form, upload the two files LAST, and submit
+immediately. Two more traps in the same form: the State control looks like `<select name="state.value">`
+but the real one is a searchable button dropdown (click its search box first — typing straight after
+opening goes nowhere), and the radio buttons ignore programmatic value-setting, so click them.
+
 - Uploads (source HTML + PDFs in `docs/prospects/ballerina-farm-app/`):
   **Bryce-Morgan-GullStack-Resume.pdf** — one page, opens with "This is not a standard
   application", lists what we built for them and the four findings, then his real bio (facts taken
