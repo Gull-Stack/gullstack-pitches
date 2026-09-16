@@ -25,6 +25,24 @@ A leadership seat that runs two teams cannot be a vendor.
   **#78 Manager, Integrated & Brand Marketing** (Kamas). The Morning Report serves those seats too.
 - Careers API (public JSON): `/careers/list` and `/careers/<id>/detail`.
 
+## The BambooHR application (filled 16 Sept 2026, NOT submitted by Claude)
+
+Filled in Chrome on job #79. Bryce clicks the reCAPTCHA and **Submit Application** — an agent
+may not complete a CAPTCHA, and the submit is his identity.
+
+- Bryce Morgan · bryce@gullstack.com · (540) 424-0317 · 226 W Founders Blvd, Saratoga Springs,
+  UT 84045 (home address, his choice over the GullStack business address).
+- Website field: pitches.gullstack.com/ballerina-farm
+- Sponsorship required: **No**. Authorized to work in the US: **Yes**. Both are attestations
+  about Bryce — he confirms them before submitting.
+- Left blank on purpose: Desired Pay (price is Bryce's call), Date Available, LinkedIn, Referred by.
+- Uploads (source HTML + PDFs in `docs/prospects/ballerina-farm-app/`):
+  **Bryce-Morgan-GullStack-Resume.pdf** — one page, opens with "This is not a standard
+  application", lists what we built for them and the four findings, then his real bio (facts taken
+  verbatim from walkthrulabs.com: PPA employee no. 1 in 2019, President today, $200M+ Apollo
+  Sports Capital raise, 100+ events, 1.05M peak CBS, Blip Billboards, SUSE).
+  **Bryce-Morgan-Cover-Letter.pdf** — the hot cocoa message.
+
 ## Live pages
 
 - Deck: https://pitches.gullstack.com/ballerina-farm (9 slides, house deck style, PDF + Save HTML)

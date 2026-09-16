@@ -20,6 +20,28 @@ but note that only re-gates `*.vercel.app`, not the custom domain.
 
 ## Session Log
 
+### 2026-09-16 — Ballerina Farm: BambooHR application filled, awaiting Bryce's submit
+
+- Bryce: "Pitch it... Fill out that application." Filled job #79 on ballerinafarm.bamboohr.com in
+  Chrome. **Not submitted** — the form ends in a reCAPTCHA (an agent may not solve one) and the
+  submit is his identity. The tab is left open on the completed form.
+- Built two PDFs for it, kept in `docs/prospects/ballerina-farm-app/`: a one-page resume that opens
+  "This is not a standard application" and leads with the work already built, and a cover letter
+  carrying the bone-broth-hot-cocoa opener. Both uploaded; BambooHR returned file IDs.
+- Résumé bio facts are verbatim from walkthrulabs.com. Two inferred labels were caught and removed
+  before printing ("Before 2019" on Blip, "President" as the 2019 title).
+- Home address came from the macOS Contacts me-card and Bryce confirmed it in the same minute:
+  226 W Founders Blvd, Saratoga Springs, UT 84045. He chose home over the business address.
+- Desired Pay left blank deliberately — the price is still Bryce's to name.
+- Gotcha: BambooHR's State field looks like a `<select name="state.value">` but the real control is
+  a searchable button dropdown; the select holds one empty option. Type into its search box and
+  click the row. Radio buttons also ignore programmatic value-setting — click them.
+- The posting: department **Executive**, Springville UT, posted 28 Aug, no pay listed. They are
+  also hiring a Growth Marketing Analyst (Midway) and a Manager, Integrated & Brand Marketing (Kamas).
+
+**Next:** Bryce clicks reCAPTCHA + Submit · he sends the LinkedIn message to the person he knows ·
+price stays unnamed until he says.
+
 ### 2026-09-14 — Ballerina Farm: deck, Morning Report demo, analysis
 
 - **Lead:** Ballerina Farm's LinkedIn post for a Director of E-Commerce. Bryce: "build it and
