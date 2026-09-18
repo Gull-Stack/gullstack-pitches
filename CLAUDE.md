@@ -20,6 +20,19 @@ but note that only re-gates `*.vercel.app`, not the custom domain.
 
 ## Session Log
 
+### 2026-09-18 — Portfolio one-pager for Scott Warner's capital partners
+
+- New `portfolio.html` → **pitches.gullstack.com/portfolio**. For "Brian and Matt" at what the 31 Aug
+  Plaud call calls "Matt Capital" (a couple billion AUM; they want an agency for SEO that drives
+  purchases). The firm could not be identified online under that name, so the page is generic and
+  Scott forwards it.
+- Structure copies `wealth-management.html`: KPIs, PPA Tour frame (`portfolio/ppatour.jpg`, cropped
+  hero), first-thirty-days rows, per-company / fund cards, how-it-works, what-we-are-not-claiming,
+  CTA "send us one company" (the build-before-you-ask move against one of their portfolio sites).
+- Every figure and its source is in `docs/prospects/matt-capital.md`, with the do-not-say list.
+- Next: Scott names the firm → pick one portfolio company, run the baseline, rebuild its homepage
+  before the meeting.
+
 ### 2026-09-16 — Ballerina Farm: BambooHR application filled, awaiting Bryce's submit
 
 - Bryce: "Pitch it... Fill out that application." Filled job #79 on ballerinafarm.bamboohr.com in

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GullStack for a Portfolio | Search That Ends in a Purchase</title>
+<meta name="description" content="One partner for every company a fund holds: measure the baseline, build what it says to, run the ads, put every lead on one board.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0B0F0E;--bg-2:#121817;--card:#161D1B;--line:rgba(255,255,255,.08);
+  --text:#F2EDE4;--muted:#9A9A90;--brass:#B0894B;--brass-soft:rgba(176,137,75,.12);
+  --green:#5FBF7F;--green-soft:rgba(95,191,127,.10);
+  --display:'Fraunces',Georgia,serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1020px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.14;letter-spacing:-.015em}
+section{padding:76px 0;border-top:1px solid var(--line)}
+@media(max-width:768px){section{padding:52px 0}.wrap{padding:0 16px}}
+.eyebrow{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+.section-title{font-size:clamp(1.7rem,3.4vw,2.5rem);margin-bottom:14px}
+.lede{color:var(--muted);font-size:1.04rem;max-width:64ch;margin-bottom:38px}
+.hero{padding:74px 0 76px;border-top:none;background:radial-gradient(ellipse at 50% -14%,rgba(176,137,75,.16) 0%,transparent 58%)}
+.hero h1{font-size:clamp(2.1rem,5vw,3.5rem);font-weight:500;margin-bottom:20px;max-width:20ch}
+.hero h1 em{font-style:italic;color:var(--brass)}
+.hero p{color:var(--muted);font-size:1.08rem;max-width:60ch}
+.gs{font-family:var(--display);font-size:1.25rem;font-weight:600;letter-spacing:-.01em;margin-bottom:38px;display:inline-block;border-bottom:2px solid var(--brass);padding-bottom:4px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.kpi{background:var(--bg-2);padding:28px 22px}
+.kpi .n{font-family:var(--display);font-size:clamp(1.5rem,2.9vw,2.2rem);line-height:1;letter-spacing:-.02em;color:var(--brass)}
+.kpi .l{font-size:.78rem;color:var(--muted);margin-top:10px}
+@media(max-width:820px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.firms{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+@media(max-width:768px){.firms{grid-template-columns:1fr}}
+.firm{background:var(--bg-2);border:1px solid var(--line);border-radius:3px;padding:26px}
+.firm h3{font-size:1.2rem;margin-bottom:4px}
+.firm .meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-bottom:14px}
+.firm p{font-size:.94rem;color:var(--muted)}
+.chip{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:100px;margin-top:16px}
+.chip.live{background:var(--green-soft);border:1px solid rgba(95,191,127,.3);color:var(--green)}
+.chip.build{background:var(--brass-soft);border:1px solid rgba(176,137,75,.32);color:var(--brass)}
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:34px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}
+.row .idx{font-family:var(--mono);font-size:.78rem;color:var(--brass);padding-top:4px}
+.row h3{font-size:1.05rem;font-family:'Inter',sans-serif;font-weight:600;margin-bottom:5px;letter-spacing:0}
+.row p{font-size:.95rem;color:var(--muted)}
+.row .src{font-family:var(--mono);font-size:.72rem;color:#6E6E66;margin-top:8px;display:block}
+.callout{border-left:3px solid var(--brass);background:var(--brass-soft);padding:22px 26px;border-radius:0 3px 3px 0;margin-top:30px}
+.callout p{font-size:.96rem}
+.callout strong{color:var(--text)}
+.frame{border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--bg-2);margin-top:34px}
+.frame .bar{display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03)}
+.frame .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.14)}
+.frame .url{flex:1;text-align:center;font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shot{display:block;position:relative;background:#0e1c16;line-height:0}
+.shot img{width:100%;height:auto;display:block}
+.shot::after{content:"Open it \2192";position:absolute;right:16px;bottom:16px;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#0B0F0E;background:var(--brass);padding:8px 14px;border-radius:2px;opacity:0;transition:.18s}
+.shot:hover::after{opacity:1}
+.frame .foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 18px;border-top:1px solid var(--line);font-size:.84rem;color:var(--muted)}
+.frame .foot a{color:var(--brass);font-weight:600;text-decoration:none}
+.frame .foot a:hover{text-decoration:underline}
+.cta{text-align:center;background:linear-gradient(180deg,transparent,rgba(176,137,75,.07))}
+.cta h2{font-size:clamp(1.6rem,3.2vw,2.3rem);margin-bottom:16px}
+.cta p{color:var(--muted);max-width:52ch;margin:0 auto 30px}
+.btn{display:inline-flex;align-items:center;gap:9px;font-size:.94rem;font-weight:600;padding:14px 28px;border-radius:2px;text-decoration:none;background:var(--brass);color:#0B0F0E;min-height:48px;transition:.16s}
+.btn:hover{background:#C79B58;transform:translateY(-2px)}
+footer{padding:30px 0;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="gs">GullStack</span>
+    <div class="eyebrow">For a portfolio</div>
+    <h1>Search that ends in a <em>purchase</em>, for every company you hold.</h1>
+    <p>One partner, dropped into any portfolio company. We measure the baseline, build only what it says to,
+      run the ads in the company's own accounts, and put every lead on one board. Everything below is what we
+      built and what we measured. Sources named, nothing projected.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="kpis">
+      <div class="kpi"><div class="n">56,060</div><div class="l">organic visits a month on ppatour.com, the tour's site, rebuilt this summer</div></div>
+      <div class="kpi"><div class="n">15 days</div><div class="l">from a builder's site going live to three search campaigns with leads in its CRM</div></div>
+      <div class="kpi"><div class="n">$11&ndash;21</div><div class="l">our cost per lead on webinar ads for a wealth firm, on our own account</div></div>
+      <div class="kpi"><div class="n">489</div><div class="l">product pages found hidden from Google on a D2C brand that had no idea</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">See it</div>
+    <h2 class="section-title">The PPA Tour, live.</h2>
+    <p class="lede">Bryce Morgan is President and CMO of the PPA Tour. The tour's site is a content-first rebuild he
+      led: schedule, standings, athletes, streaming, and commerce that hands the buyer straight to the partner's
+      checkout. The tour cancelled its outside SEO vendor in September. This is the work Scott showed you.</p>
+
+    <div class="frame">
+      <div class="bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">ppatour.com &middot; live &middot; 9,942 ranking keywords</span>
+      </div>
+      <a class="shot" href="https://www.ppatour.com" target="_blank" rel="noopener">
+        <img src="/portfolio/ppatour.jpg" alt="Homepage of ppatour.com" width="1103" height="600">
+      </a>
+      <div class="foot">
+        <span>9,942 organic keywords &middot; 56,060 visits a month &middot; Semrush, 18 Sep 2026</span>
+        <a href="https://www.ppatour.com" target="_blank" rel="noopener">Open the site &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">01 &middot; The first thirty days</div>
+    <h2 class="section-title">Measure first. Build only what the baseline says to.</h2>
+    <p class="lede">The same sequence at every company, so every later number has something to be compared
+      against. Each example below is a real company we worked on this year.</p>
+
+    <div class="rows">
+      <div class="row"><div class="idx">01</div><div>
+        <h3>Week one is the baseline, written down</h3>
+        <p>Search rankings, traffic, analytics, every form and phone link, and where each lead actually lands.
+          At one fiduciary wealth firm the baseline was 31 keywords, 58 visits a month, and 96.55% of that from
+          the firm's own name. For anyone who did not already know the name, it did not exist. We reported that
+          before we quoted anything.</p>
+        <span class="src">Source: Semrush, live domain, 31 Jul 2026</span>
+      </div></div>
+      <div class="row"><div class="idx">02</div><div>
+        <h3>The baseline decides what gets built first</h3>
+        <p>That same firm had one page already earning: a 401(k) benchmarking calculator holding six commercial
+          keywords at $3.85 to $9.95 CPC. Not an article. A tool. So the tool got built first, and the homepage
+          waited.</p>
+        <span class="src">Source: Semrush keyword table for the page</span>
+      </div></div>
+      <div class="row"><div class="idx">03</div><div>
+        <h3>Sometimes the problem is plumbing, not marketing</h3>
+        <p>A Utah drinkware brand on a modern headless storefront had every one of its 489 product pages pointing
+          Google at a checkout domain that pointed back, so none of them could rank. No structured data anywhere.
+          Its product customizer ranked for nothing while "custom water bottles" draws 8,100 searches a month.
+          We rebuilt the customizer and sent them the finding free, with no strings.</p>
+        <span class="src">Source: crawl of the live store, 2 Sep 2026</span>
+      </div></div>
+      <div class="row"><div class="idx">04</div><div>
+        <h3>The site and the ads ship together, into the company's own accounts</h3>
+        <p>A Utah home builder: site live on 2 September, three Google Search campaigns live on 17 September,
+          one landing page per campaign, a 66-term shared negative list, and every lead posting into the
+          builder's own CRM. Ad spend runs on the builder's card, not ours. We manage it.</p>
+        <span class="src">Source: the Google Ads account and the CRM intake, 17 Sep 2026</span>
+      </div></div>
+      <div class="row"><div class="idx">05</div><div>
+        <h3>When search collapses, we find out why before anyone spends</h3>
+        <p>A Utah instrument maker went from 2,751 backlinks to 814,939 in one month, all spam, and its ranking
+          keywords fell from 525 to 72 by July. The incumbent agency's proposal called it "814.9K link equity
+          retained." We read the link data, dated the attack to a five-day window in May, and wrote the recovery
+          plan around removing it.</p>
+        <span class="src">Source: Semrush backlink history, Apr to Jul 2026</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">02 &middot; Across the portfolio</div>
+    <h2 class="section-title">One board for every company.</h2>
+    <p class="lede">We run our own sixty-plus clients on a single board: what shipped this week, every lead by
+      channel, spend, cost per lead, and what is owed. A fund gets the same thing with a roll-up across its
+      companies.</p>
+
+    <div class="firms">
+      <div class="firm">
+        <h3>Per company</h3>
+        <div class="meta">What the operator sees</div>
+        <p>Leads today and this week by channel. Cost per lead computed from real spend, carried through to
+          appointment and close. Every form carries its campaign, so nobody types a source by hand and nobody
+          forgets. Analytics ships with the site, never after it.</p>
+        <span class="chip live">Running today at several companies</span>
+      </div>
+      <div class="firm">
+        <h3>For the fund</h3>
+        <div class="meta">What the partners see</div>
+        <p>One roll-up: each company's baseline, what was built, what it costs, and what it produced, dated.
+          The same board, one level up. Nothing on it is a forecast.</p>
+        <span class="chip build">Built on request, from the board we already run</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>What we will talk you out of.</strong> Replatforming a company that already has real organic
+        traffic. We told the largest private-club operator in the country, with 680,000 organic visits a month,
+        that its CMS should stay and there would be no cutover weekend. Saying no to the rebuild is part of the
+        job.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">03 &middot; How it works</div>
+    <h2 class="section-title">Flat, per company, month to month.</h2>
+    <div class="rows">
+      <div class="row"><div class="idx">01</div><div>
+        <h3>Priced per company, flat and monthly</h3>
+        <p>No percentage of revenue. No long contract. Each company is its own line, so a partner can add one
+          or stop one without touching the others.</p>
+      </div></div>
+      <div class="row"><div class="idx">02</div><div>
+        <h3>The build is included</h3>
+        <p>When the baseline says a site should be rebuilt, the rebuild is part of the monthly fee. There is no
+          separate build invoice. A site we built is a site we can do great work on.</p>
+      </div></div>
+      <div class="row"><div class="idx">03</div><div>
+        <h3>Spend stays in the company's accounts</h3>
+        <p>Google, Meta, and the analytics all live in accounts the company owns. If we ever part ways, nothing
+          has to be migrated and no data leaves with us.</p>
+      </div></div>
+      <div class="row"><div class="idx">04</div><div>
+        <h3>Accountable humans, tools in the open</h3>
+        <p>We use AI heavily and say so. Every audit, page, and campaign has a named person who checked it.
+          Bryce Morgan and Josh Cohen are the two people on the call and the two people doing the work.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">What we are not claiming</div>
+    <h2 class="section-title">Read this part too.</h2>
+    <p class="lede">The PPA Tour numbers belong to the tour, where Bryce is president, not to a paying client.
+      The wealth-firm rebuild is built and awaiting its cutover. The drinkware brand has not hired us. Every
+      figure on this page is a measurement with a date, not a forecast, and each one should be re-checked
+      before it is repeated.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Send us one company.</h2>
+    <p>Pick any portfolio company. Before we meet, we will have its baseline written up and a rebuilt homepage
+      you can click. Yours either way.</p>
+    <a class="btn" href="mailto:bryce@gullstack.com?subject=One%20company%20for%20GullStack">bryce@gullstack.com</a>
+    <p style="margin-top:22px;font-size:.9rem">Bryce Morgan &middot; (540) 424-0317 &middot; gullstack.com</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>GullStack &middot; Saratoga Springs, Utah</span>
+    <span>Prepared September 2026 &middot; figures dated in place</span>
+  </div>
+</footer>
+
+</body>
+</html>
