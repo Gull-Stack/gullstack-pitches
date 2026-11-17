@@ -40,7 +40,12 @@ but note that only re-gates `*.vercel.app`, not the custom domain.
 - Route gotcha: a page can't share a name with a folder under this repo's rewrite, so Melissa's
   page is `/pickleball-hall-of-fame/melissa-mccurley`, not under `/inductees/`.
 
-**Next:** Bryce reviews, then texts Melissa the two links (draft in the session reply) · nothing sent.
+- Bryce tightened heading space after review (commit "tighten heading space"). Jackalope link swapped to
+  usejackalope.com/commercial at his call.
+- **SENT 17 Nov 2026** by text to Melissa (+1 843-415-8762), delivered: the commercial + her PHOF page,
+  ending "Want me to keep going on it?"
+
+**Next:** wait on Melissa's reply · if she wants more: full profiles for the other inductees.
 
 ### 2026-09-18 — Portfolio one-pager for Scott Warner's capital partners
 
