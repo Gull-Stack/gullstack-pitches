@@ -20,6 +20,28 @@ but note that only re-gates `*.vercel.app`, not the custom domain.
 
 ## Session Log
 
+### 2026-11-17 — Pickleball Hall of Fame concept for Melissa McCurley
+
+- Bryce, 17 Nov 2026: Melissa McCurley is an old colleague, 2025 Hall of Fame inductee (Contributor)
+  and the Hall's **Acting President**. He wants her help growing into other pickleball spaces. Ask:
+  make the Hall of Fame site "elaborate, animated, beautiful movement", then send her Jackalope.
+- **LIVE: https://pitches.gullstack.com/pickleball-hall-of-fame** (6 pages: home, /inductees,
+  /melissa-mccurley, /weekend, /nominate, /support). Source `hall-of-fame/build.py` + `data.py`
+  + `site.css` + `site.js`; images in `hall-of-fame/img/`. Rebuild: `python3 hall-of-fame/build.py`.
+- Motion: turning gold ring of class years in the hero, two-row drifting wall of all 41 faces,
+  a scroll-pinned horizontal "hall" of ten class plaques (swipe on phones), scroll-lit mission words,
+  count-ups, line-drawn plaque/jacket/ring, a gold ball that rides the timeline rails, card tilt,
+  cross-page view transitions. Reduced-motion safe. Verified 1440 + 390: 0 overflow, 0 JS errors.
+- All content is from pickleballhalloffame.global (read 17 Nov). 41 inductees = their "36 members"
+  plus the 5-person Class of 2026. Melissa's page leaves out her birth date and other personal details.
+  Nomination, donate, Keepers and sponsor buttons link to their real pages.
+- Their live site still sells tickets for the 12 to 14 Nov 2026 weekend. Ours treats it as done.
+- "Concept by GullStack" badge on every page, noindex, OG card at `hall-of-fame/og.jpg`.
+- Route gotcha: a page can't share a name with a folder under this repo's rewrite, so Melissa's
+  page is `/pickleball-hall-of-fame/melissa-mccurley`, not under `/inductees/`.
+
+**Next:** Bryce reviews, then texts Melissa the two links (draft in the session reply) · nothing sent.
+
 ### 2026-09-18 — Portfolio one-pager for Scott Warner's capital partners
 
 - New `portfolio.html` → **pitches.gullstack.com/portfolio**. For "Brian and Matt" at what the 31 Aug
