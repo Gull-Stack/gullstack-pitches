@@ -1,6 +1,6 @@
 /* Pickleball Hall of Fame concept: motion layer.
    Everything is visible without JS. html.anim only hides what an observer will reveal,
-   and three nets (observer, 1.5s check, 8s backstop) make sure nothing stays hidden. */
+   and three nets (observer, 1.5s in-view sweep, 8s backstop) make sure nothing stays hidden. */
 (function () {
   var root = document.documentElement;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -35,9 +35,7 @@
       es.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     items.forEach(function (el) { io.observe(el); });
-    document.body.dataset.revealReady = '1';
     setTimeout(function () {
-      if (document.body.dataset.revealReady !== '1') items.forEach(show);
       items.forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) show(el); });
     }, 1500);
     setTimeout(function () { items.forEach(show); }, 8000);
