@@ -32,7 +32,7 @@ p{margin:0 0 1em}
 .light .lede{color:var(--muted)}
 .light .label{color:var(--gold-lo)}
 section{position:relative}
-.pad{padding:clamp(80px,12vw,160px) 0}
+.pad{padding:clamp(56px,7vw,104px) 0}
 
 /* ---------- header ---------- */
 .hdr{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
@@ -80,7 +80,7 @@ html.anim .rv.zoom{transform:scale(.94)}
 html.anim .rv.zoom.in{transform:none}
 
 /* split headline: each word rises out of a mask */
-.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .24em;margin:0 -.04em -.24em}
 .split .w>span{display:inline-block}
 html.anim .split .w>span{transform:translateY(105%);transition:transform 1.15s var(--ease)}
 html.anim .split.in .w>span{transform:none}
@@ -91,7 +91,7 @@ html.anim .split.in .w>span{transform:none}
 .hero .bg img{width:100%;height:100%;object-fit:cover;animation:kb 26s ease-in-out infinite alternate;transform-origin:60% 40%}
 @keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.16) translate(-1.5%,1%)}}
 .hero .shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,10,8,.55) 0%,rgba(11,10,8,.25) 35%,rgba(11,10,8,.88) 78%,var(--ink) 100%)}
-.hero .wrap{width:100%;display:grid;grid-template-columns:1.25fr .75fr;align-items:end;gap:40px;padding-bottom:clamp(48px,8vw,96px);padding-top:120px}
+.hero .wrap{width:100%;display:grid;grid-template-columns:1.25fr .75fr;align-items:end;gap:40px;padding-bottom:clamp(40px,6vw,72px);padding-top:100px}
 .hero h1{font-size:clamp(54px,9.4vw,148px);line-height:.92}
 .hero h1 em{font-style:italic;color:var(--gold-hi);font-weight:500}
 .hero .lede{margin-top:28px}
@@ -153,7 +153,7 @@ html.anim .split.in .w>span{transform:none}
 /* ---------- classes: a horizontal hall you walk with the scroll ---------- */
 .hall{height:var(--hall-h,520vh)}
 .hall .stick{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
-.hall .head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px}
+.hall .head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:24px}
 .hall .meter{flex:1;max-width:340px;height:1px;background:var(--line-dark);position:relative}
 .hall .meter i{position:absolute;left:0;top:-1px;height:3px;width:100%;background:var(--gold);transform-origin:left;transform:scaleX(var(--p,0))}
 .track{display:flex;gap:28px;padding-left:var(--gutter);will-change:transform}
@@ -180,7 +180,7 @@ html.anim .split.in .w>span{transform:none}
 }
 
 /* ---------- class of 2026 spotlight ---------- */
-.spot{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:56px}
+.spot{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:36px}
 .spot a{text-decoration:none;display:block}
 .spot figure{margin:0;overflow:hidden;aspect-ratio:3/4;background:#e9e3d6}
 .spot img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
@@ -211,10 +211,10 @@ html.anim .honor.in svg *{stroke-dashoffset:0}
 @media (max-width:520px){.partners{grid-template-columns:repeat(2,1fr)}}
 
 /* ---------- page hero (inner pages) ---------- */
-.phero{padding:clamp(150px,20vw,230px) 0 clamp(60px,8vw,100px);overflow:hidden}
-.phero h1{font-size:clamp(52px,9vw,132px);line-height:.92;margin-top:22px}
+.phero{padding:clamp(104px,10vw,136px) 0 clamp(40px,5vw,64px);overflow:hidden}
+.phero h1{font-size:clamp(48px,7vw,104px);line-height:.92;margin-top:14px}
 .phero h1 em{font-style:italic;color:var(--gold-hi);font-weight:500}
-.phero .lede{margin-top:28px}
+.phero .lede{margin-top:20px}
 .phero .ghostyr{position:absolute;right:-2vw;bottom:-6vw;font:600 clamp(160px,30vw,440px)/1 var(--serif);color:transparent;-webkit-text-stroke:1px rgba(196,165,95,.22);pointer-events:none;user-select:none;z-index:-1}
 
 /* ---------- inductees page ---------- */
@@ -239,11 +239,11 @@ html.anim .honor.in svg *{stroke-dashoffset:0}
 .card .more{display:inline-block;margin-top:6px;font:700 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
 
 /* ---------- profile ---------- */
-.prof{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,90px);align-items:end}
+.prof{display:grid;grid-template-columns:.62fr 1.38fr;gap:clamp(32px,5vw,72px);align-items:center}
 .prof .portrait{position:relative}
 .prof .portrait img{width:100%;aspect-ratio:420/567;object-fit:cover}
 .prof .portrait::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--gold);z-index:-1}
-.prof h1{font-size:clamp(60px,9vw,128px);line-height:.9}
+.prof h1{font-size:clamp(52px,7vw,104px);line-height:.95}
 .prof .roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
 .prof .roles span{border:1px solid var(--line-dark);padding:9px 12px;font-size:13px;color:var(--on-ink-2)}
 @media (max-width:860px){.prof{grid-template-columns:1fr}.prof .portrait{max-width:360px}}
@@ -294,7 +294,7 @@ html.anim .growth.in .bar i{transform:scaleX(var(--w,1))}
 .awards span{color:var(--on-ink-2);font-size:15px}
 
 /* ---------- weekend ---------- */
-.days{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+.days{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
 .day{border:1px solid var(--line-dark);overflow:hidden;background:var(--ink2);display:flex;flex-direction:column}
 .day figure{margin:0;aspect-ratio:4/3;overflow:hidden;background:var(--ink3)}
 .day figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
@@ -377,3 +377,7 @@ h1,h2,h3,.plaque .yr,.fact .n,.awards b,.day .d,.crit .big,.ways .amt,.ghostyr,.
 .hall .head{width:100%}
 .foot .brand{display:flex}
 body,.names p,.ways .amt{font-variant-numeric:lining-nums}
+
+.phero:has(.prof){padding-top:clamp(96px,8vw,116px)}
+.prof .portrait img{max-height:min(68vh,560px);width:auto;max-width:100%}
+.day .typo span{font-variant-numeric:lining-nums}

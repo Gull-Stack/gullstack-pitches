@@ -242,13 +242,13 @@ def home():
 
 <section class="pad"><div class="wrap">
   <div class="label rv">What an inductee receives</div>
-  <h2 class="split" style="margin:14px 0 56px">Plaque. Jacket. Ring.</h2>
+  <h2 class="split" style="margin:14px 0 36px">Plaque. Jacket. Ring.</h2>
   {honors()}
 </div></section>
 
 <section class="light pad"><div class="wrap">
   <div class="label rv">Our partners</div>
-  <h2 class="split" style="margin:14px 0 48px;font-size:clamp(36px,4.6vw,60px)">The game's biggest names stand behind its history.</h2>
+  <h2 class="split" style="margin:14px 0 32px;font-size:clamp(36px,4.6vw,60px)">The game's biggest names stand behind its history.</h2>
   {partners()}
 </div></section>
 """
@@ -395,7 +395,7 @@ def weekend():
 
 <section class="pad"><div class="wrap">
   <div class="label rv">At the banquet</div>
-  <h2 class="split" style="margin:14px 0 56px">Plaque. Jacket. Ring.</h2>
+  <h2 class="split" style="margin:14px 0 36px">Plaque. Jacket. Ring.</h2>
   {honors()}
 </div></section>
 
