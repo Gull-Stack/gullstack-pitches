@@ -33,6 +33,8 @@ but note that only re-gates `*.vercel.app`, not the custom domain.
 - Content: re-measure of conexed.com on 24 Nov against the 23 Oct report. Still 8/45; 0 of the
   15 fixes live. Every figure was measured live on 24 Nov; search-snippet-only figures were left out.
 - Public by URL like every page here. Josh chose that over sending it as an attachment.
+- Same day: Josh is sending it to Kelly Taylor (ConexED CTO). Copy re-toned friendly and helpful, not
+  accusatory: strengths first, "To do" not "Not live", no before/after comparison with the October report.
 
 ### 2026-11-17 — Pickleball Hall of Fame concept for Melissa McCurley
 
