@@ -20,6 +20,20 @@ but note that only re-gates `*.vercel.app`, not the custom domain.
 
 ## Session Log
 
+### 2026-11-24 — ConexED search and AI visibility audit, as a web page
+
+- Josh, 24 Nov 2026: a full web page of the ConexED SEO + AEO audit "like we used to do for
+  Renaissance Ranch", then "make it weblink now". ConexED is a signed client (not a prospect).
+- **https://pitches.gullstack.com/conexed-seo-audit** = `conexed-seo-audit.html`. One
+  self-contained file: the `renaissance-ranch.html` CSS verbatim plus audit-table rules; logos
+  inlined; `noindex, nofollow`. On phones (≤640px) every table row becomes a labelled card.
+- Source and build live outside this repo: `~/conexed-data/2026-11-24-seo-aeo-page/body.src.html`
+  and `~/conexed-data/scripts/build_rr_style_audit.py` on Josh's Mac. Edit there, rebuild, copy
+  the output here. Don't hand-edit the HTML in this repo.
+- Content: re-measure of conexed.com on 24 Nov against the 23 Oct report. Still 8/45; 0 of the
+  15 fixes live. Every figure was measured live on 24 Nov; search-snippet-only figures were left out.
+- Public by URL like every page here. Josh chose that over sending it as an attachment.
+
 ### 2026-11-17 — Pickleball Hall of Fame concept for Melissa McCurley
 
 - Bryce, 17 Nov 2026: Melissa McCurley is an old colleague, 2025 Hall of Fame inductee (Contributor)
